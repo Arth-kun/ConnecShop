@@ -21,7 +21,7 @@ angular.module('app', [
 
     // App
     'app.auth',
-    //'app.layout',
+    'app.layout',
     //'app.chat',
     //'app.dashboard',
     //'app.calendar',
