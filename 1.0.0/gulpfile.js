@@ -43,6 +43,7 @@ gulp.task('build', function(){
     return es.merge(gulp.src(source.js.src) , getTemplateStream())
          .pipe(ngAnnotate())
          .pipe(uglify())
+         .pipe(ngTouch())
         .pipe(concat('app.js'))
         .pipe(gulp.dest(destinations.js));
 });

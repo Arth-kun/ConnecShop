@@ -1,9 +1,49 @@
-<div id="content">
-	<!-- content -->
+<div id="content" ng-controller="HomeController">
+<!-- content -->
 
-	<div class="row">
+	<!-- carousel news -->
+	<div id="homeCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#homeCarousel" data-slide-to="{{$index}}" ng-class="{active:!$index}" ng-repeat="image in imagesCarousel"></li>
+		</ol>
 
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item" ng-class="{active:!$index}" ng-repeat="image in imagesCarousel">
+				<a href="{{image.url}}"><img ng-src="{{image.src}}"></a>
+			</div>
+		</div>
+	</div>
+	<script>
+	//Swipe Carousel functions
+		$('.carousel').carousel({
+  			interval: 7000
+		});
+
+		$('.carousel').on("swipeleft", function(){
+			$(this).carousel('next');
+		});
+
+		$('.carousel').on("swiperight", function(){
+			$(this).carousel('prev');
+		});
+	</script>
+
+	<!-- Mise en avant -->
+	<div id="miseEnAvant">
+		<div class="miseAvantHome" ng-repeat="image in imagesMiseAvant">
+			<a href="{{image.url}}"><img class="imageMiseAvant" ng-src="{{image.src}}"></a>
+		</div>
+	</div>
+
+	<!-- Meilleures ventes -->
+	<div class="row" id="meilleuresVentesHome"> <!-- Style à rajouter sur le row pour agencer les produits à l'intérieur -->
+		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:!$index%2, impair:$index%2}" ng-click="goToDetail(articleVente.id)" ng-repeat="articleVente in articlesMeilleureVente">
+			<img class="imageArticle" ng-src="{{articleVente.img}}">
+			<p class="artDesignationVente">{{articleVente.designation}}</p>
+			<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.prixTTC}}</span></p>
+		</div>
 	</div>
 
 </div>
-	

@@ -35,7 +35,7 @@ angular.module('app', [
     //'app.appViews',
     //'app.misc',
     //'app.smartAdmin',
-    //'app.eCommerce'
+    //'app.eCommerce',
     'app.home'
 ])
 .config(function ($provide, $httpProvider, RestangularProvider) {

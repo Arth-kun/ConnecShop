@@ -10,6 +10,11 @@
  * unique to you with each update of SmartAdmin.
  */
 
+ /* Masquage d'erreur lié à un bug non gênant */
+.ui-corner-all{
+	display: none;
+}
+
 /*
  * INDEX
  * 
@@ -19,3 +24,9 @@
  */
 
  /* header.tpl.html */
+
+ /* home.html */
+#meilleuresVentesHome .articleMeilleureVente .imageArticle,
+#miseEnAvant .miseAvantHome .imageMiseAvant{
+ 	width: 100%;
+}
