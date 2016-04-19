@@ -25,8 +25,156 @@
 
  /* header.tpl.html */
 
+ 	/* Bouton menu */
+.pull-left #hide-menu .toggle-menu-a{
+	border: none;
+	background-image: none;
+	background-color: #fff;
+}
+
+	/* logo Octave */
+.pull-left #logo {
+	margin-top: 3px;
+	margin-left: -10px;
+}
+
+.pull-left #logo .logoImage {
+	width: 95%;
+}
+
+	/* Boutons pull-right */
+#buttonsPullRight {
+	margin-top: 10px;
+}
+
+#buttonsPullRight .buttonsRight {
+	border: none;
+	box-shadow: none;
+}
+
+#buttonsPullRight .buttonsRight .buttonsIcone {
+	/* à implémenter quand seront images et non span 
+	pour règler la taille */
+}
+
+
+/* layout.tpl.html */
+	/* Bar de recherche */
+#ribbon {
+	background-color: #313C3E;
+	height: 55px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-bottom: none;
+}
+
+#ribbon #homeSearchbar .inputSearch {
+	border: 1px solid #313C3E;
+	border-left: none;
+	border-bottom-right-radius: 3px!important;
+	border-top-right-radius: 3px!important;
+	padding-left: 0px;
+}
+
+#ribbon #homeSearchbar .buttonSearch {
+	border: 1px solid #313C3E;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
+	color: #b9b9b9;
+}
+
+#ribbon #homeSearchbar .inputSearch::-webkit-input-placeholder {
+	color: #313C3E;
+	font-family: Calibri;
+	font-size: 14px;
+}
+
+	/* Général */
+#main {
+	padding-bottom: 0px;
+	background-color: #F8F8F8;
+}
+
+#content {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+
  /* home.html */
-#meilleuresVentesHome .articleMeilleureVente .imageArticle,
-#miseEnAvant .miseAvantHome .imageMiseAvant{
- 	width: 100%;
+	/* carousel */
+#homeCarousel {
+	margin-top: 2px;
+}
+
+#homeCarousel img {
+	height: 196.313px;
+	width: 360px;
+}
+
+	/* images mises en avant */
+#miseEnAvant .miseAvantHome .imageMiseAvant {
+	width: 360px;
+	height: 140.625px;
+}
+
+	/* top ventes titre */
+#meilleuresVentesHome #paddingTitreMeilleuresVentes {
+	padding-top: 12px;
+	padding-bottom: 15px;
+	padding-left: 34%;
+	padding-right: 34%;
+}
+
+#meilleuresVentesHome #paddingTitreMeilleuresVentes #titreMeilleuresVentes {
+	text-align: center;
+	padding-top: 5px;
+	border: 2px solid #313C3E;
+	border-left: none;
+	border-right: none;
+}
+
+#meilleuresVentesHome #paddingTitreMeilleuresVentes #titreMeilleuresVentes #textTitreMeilleuresVentes {
+	color: #313C3E;
+	font-family: Calibri;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+	/* images top ventes */
+#meilleuresVentesHome .articleMeilleureVente .imageArticle {
+ 	width: 80%;
+}
+
+	/* Top ventes articles */
+#meilleuresVentesHome .articleMeilleureVente {
+	text-align: center;
+	font-family: calibri;
+	color: #313C3E;
+	background-color: white;
+	border: 1px solid #ececec;
+	border-radius: 3px;
+}
+
+#meilleuresVentesHome .pair {
+	
+}
+
+#meilleuresVentesHome .articleMeilleureVente .artDesignationVente {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: -4px;
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px solid #ececec;
+}
+
+#meilleuresVentesHome .articleMeilleureVente .prixTTCVente span {
+	color: #FD7454;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 2px;
 }

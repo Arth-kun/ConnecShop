@@ -10,26 +10,26 @@ angular.module('app.home')
 	$scope.articlesMeilleureVente = articlesMeilleureVente;
 
 	$scope.goToDetail = function (id) {
-		document.location.hash ='/#/product/detail/'+id;
+		document.location.hash ='#/product/detail/'+id;
 	}
 });
 
 var imagesCarsouel = [{
-	"src":"styles/img/superbox/superbox-full-1.jpg",
+	"src":"styles/img/octave/carousel.png",
 	"url":"http://getbootstrap.com/javascript/"
 },{
-	"src":"styles/img/superbox/superbox-full-2.jpg",
+	"src":"styles/img/octave/carousel.png",
 	"url":"http://getbootstrap.com/javascript/"
 },{
-	"src":"styles/img/superbox/superbox-full-3.jpg",
+	"src":"styles/img/octave/carousel.png",
 	"url":"http://getbootstrap.com/javascript/"
 }];
 
 var imagesMiseAvant = [{
-	"src":"styles/img/superbox/superbox-full-15.jpg",
+	"src":"styles/img/octave/miseavant1.png",
 	"url":"http://getbootstrap.com/javascript/"
 },{
-	"src":"styles/img/superbox/superbox-full-10.jpg",
+	"src":"styles/img/octave/miseavant2.png",
 	"url":"http://getbootstrap.com/javascript/"
 }];
 

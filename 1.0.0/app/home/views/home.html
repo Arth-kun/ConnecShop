@@ -29,6 +29,7 @@
 			$(this).carousel('prev');
 		});
 	</script>
+	<!-- end Carousel -->
 
 	<!-- Mise en avant -->
 	<div id="miseEnAvant">
@@ -39,11 +40,18 @@
 
 	<!-- Meilleures ventes -->
 	<div class="row" id="meilleuresVentesHome"> <!-- Style à rajouter sur le row pour agencer les produits à l'intérieur -->
+		<div id="paddingTitreMeilleuresVentes" class="col-xs-12">
+			<div id="titreMeilleuresVentes">
+				<p id="textTitreMeilleuresVentes">Les top ventes</p>
+			</div>
+		</div>
+
 		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:!$index%2, impair:$index%2}" ng-click="goToDetail(articleVente.id)" ng-repeat="articleVente in articlesMeilleureVente">
 			<img class="imageArticle" ng-src="{{articleVente.img}}">
 			<p class="artDesignationVente">{{articleVente.designation}}</p>
-			<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.prixTTC}}</span></p>
+			<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.prixTTC}} €</span></p>
 		</div>
+		
 	</div>
 
 </div>
