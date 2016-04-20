@@ -21,11 +21,11 @@
   			interval: 7000
 		});
 
-		$('.carousel').on("swipeleft", function(){
+		$('.carousel').hammer().on("swipeleft", function(){
 			$(this).carousel('next');
 		});
 
-		$('.carousel').on("swiperight", function(){
+		$('.carousel').hammer().on("swiperight", function(){
 			$(this).carousel('prev');
 		});
 	</script>
@@ -46,10 +46,12 @@
 			</div>
 		</div>
 
-		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:!$index%2, impair:$index%2}" ng-click="goToDetail(articleVente.id)" ng-repeat="articleVente in articlesMeilleureVente">
-			<img class="imageArticle" ng-src="{{articleVente.img}}">
-			<p class="artDesignationVente">{{articleVente.designation}}</p>
-			<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.prixTTC}} €</span></p>
+		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:$index%2==0, impair:$index%2}" ng-repeat="articleVente in articlesMeilleureVente" ng-click="goToDetail()">
+			<div>	
+				<img class="imageArticle" ng-src="{{articleVente.img}}">
+				<p class="artDesignationVente">{{articleVente.designation}}</p>
+				<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.prixTTC}} €</span></p>
+			</div>
 		</div>
 		
 	</div>

@@ -9,8 +9,8 @@ angular.module('app.home')
 
 	$scope.articlesMeilleureVente = articlesMeilleureVente;
 
-	$scope.goToDetail = function (id) {
-		document.location.hash ='#/product/detail/'+id;
+	$scope.goToDetail = function () {
+		document.location.hash ='#/register';
 	}
 });
 
@@ -36,6 +36,18 @@ var imagesMiseAvant = [{
 
 // Il y aura des propriété à ajouter avec les services
 var articlesMeilleureVente = [{
+	"id":"0",
+	"img":"styles/img/demo/e-comm/1.png",
+	"designation":"Sac à main",
+	"prixText":"à partir de",
+	"prixTTC": "49,00"
+},{
+	"id":"1",
+	"img":"styles/img/demo/e-comm/2.png",
+	"designation":"Rouge à lèvres",
+	"prixText":"",
+	"prixTTC": "26,90"
+},{
 	"id":"0",
 	"img":"styles/img/demo/e-comm/1.png",
 	"designation":"Sac à main",
