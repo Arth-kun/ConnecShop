@@ -10,11 +10,6 @@
  * unique to you with each update of SmartAdmin.
  */
 
- /* Masquage d'erreur lié à un bug non gênant */
-.ui-corner-all{
-	display: none;
-}
-
 /*
  * INDEX
  * 
@@ -24,18 +19,92 @@
  */
 
  /* header.tpl.html */
+ #header{
+
+}
 
  	/* Bouton menu */
-.pull-left #hide-menu .toggle-menu-a{
-	border: none;
-	background-image: none;
-	background-color: #fff;
+#menu-toggle-button {
+	position: fixed;
+	z-index: 910;
+	width: 54px;
+	height: 54px;
+}
+
+#menu-toggle-button span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: 22px;
+	height: 2px;
+	background-color: #313C3E;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+#menu-toggle-button span::before,
+#menu-toggle-button span::after {
+	content: '';
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: block;
+	width: 22px;
+	height: 2px;
+
+	background-color: #313C3E;
+
+	transform: translateY(-6px);
+	transition: transform 0.5s;
+}
+
+#menu-toggle-button span::after {
+	transform: translateY(6px);
+}
+
+#menu-toggle-button.menu-icon-cross {
+	transition: transform 0.5s;
+}
+
+#menu-toggle-button.menu-icon-cross span {
+	transition: background 0.3s, transform 0.5s;
+}
+
+#menu-toggle-button.menu-icon-cross span::before,
+#menu-toggle-button.menu-icon-cross span::after {
+	transform-origin: 50% 50%;
+}
+
+#menu-toggle-button.menu-icon-cross.is-opened {
+	transform: rotate(180deg);
+}
+
+#menu-toggle-button.menu-icon-cross.is-opened span,
+#menu-toggle-button.menu-icon-cross.is-opened span::before,
+#menu-toggle-button.menu-icon-cross.is-opened span::after {
+background-color: #FFF;
+}
+
+#menu-toggle-button.menu-icon-cross.is-opened span {
+	background: transparent;
+}
+
+#menu-toggle-button.menu-icon-cross.is-opened span::before {
+	transform: translateY(0) rotate(45deg);
+}
+
+#menu-toggle-button.menu-icon-cross.is-opened span::after {
+	transform: translateY(0) rotate(-45deg);
 }
 
 	/* logo Octave */
 .pull-left #logo {
-	margin-top: 3px;
-	margin-left: -10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateX(37px) translateY(-5px);
 }
 
 .pull-left #logo .logoImage {
@@ -61,6 +130,7 @@
 /* layout.tpl.html */
 	/* Bar de recherche */
 #ribbon {
+
 	background-color: #313C3E;
 	height: 55px;
 	padding-top: 10px;
@@ -86,9 +156,10 @@
 
 #ribbon #homeSearchbar .inputSearch::-webkit-input-placeholder {
 	color: #313C3E;
-	font-family: Calibri;
+	font-family: open sans;
 	font-size: 14px;
 }
+
 
 	/* Général */
 body {
@@ -106,6 +177,66 @@ body {
 	padding-bottom: 0px;
 }
 
+
+/* menu.tpl.html */
+#menu-panel {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+
+	background-color: rgba(255,255,255, 0.96);
+
+	font-family: open sans;
+
+	width: 103.5%;
+	z-index: 906;
+
+	transform: translateX(-100%);
+	transition: transform 0.5s;
+}
+
+#menu-panel.opened {
+	transform: translateX(0%);
+}
+
+#menu-panel #menu-interface .menu-content .menu-button {
+	position: absolute;
+	width: 54px;
+	height: 54px;
+}
+
+
+
+#menu-panel #menu-interface .menu-content .menu-head {
+	text-align: center;
+	font-size: 15px;
+
+	width: 104%;
+	height: 50px;
+
+	margin-top: 0px;
+	margin-bottom: 0px;
+
+	background-color: #313C3E;
+	color: #FFF;
+	padding-top: 5%;
+}
+
+.menu-categories {
+	padding-left: 0px;
+	width: 104%;
+}
+
+.menu-categories .menu-categorie {
+	list-style: none;
+	font-size: 15px;
+	font-weight: bold;
+	color: #313C3E;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	border-bottom: 1px solid #efefef;
+}
 
  /* home.html */
 	/* carousel */
@@ -126,8 +257,8 @@ body {
 #meilleuresVentesHome #paddingTitreMeilleuresVentes {
 	padding-top: 12px;
 	padding-bottom: 15px;
-	padding-left: 34%;
-	padding-right: 34%;
+	padding-left: 33%;
+	padding-right: 33%;
 }
 
 #meilleuresVentesHome #paddingTitreMeilleuresVentes #titreMeilleuresVentes {
@@ -140,10 +271,11 @@ body {
 
 #meilleuresVentesHome #paddingTitreMeilleuresVentes #titreMeilleuresVentes #textTitreMeilleuresVentes {
 	color: #313C3E;
-	font-family: Calibri;
-	font-size: 16px;
+	font-family: open sans;
+	font-size: 15px;
 	text-transform: uppercase;
 	font-weight: bold;
+	margin-bottom: 6px;
 }
 
 	/* images top ventes */
@@ -156,9 +288,9 @@ body {
  margin-bottom: 20px;
 }
 
-#meilleuresVentesHome .articleMeilleureVente div {
+#meilleuresVentesHome .articleMeilleureVente .inner {
 	text-align: center;
-	font-family: calibri;
+	font-family: open sans;
 	color: #313C3E;
 	background-color: white;
 	border: 1px solid #ececec;
@@ -167,18 +299,18 @@ body {
 	box-shadow: 0px 1.5px 1px #d3d3d3;
 }
 
-#meilleuresVentesHome .pair div{
+#meilleuresVentesHome .pair .inner{
 	margin-left: 10%;
 }
 
-#meilleuresVentesHome .impair div{
+#meilleuresVentesHome .impair .inner{
 	margin-right: 10%;
 }
 
 #meilleuresVentesHome .articleMeilleureVente .artDesignationVente {
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: bold;
-	margin-bottom: -4px;
+	margin-bottom: -2px;
 	margin-top: 5px;
 	padding-top: 5px;
 	border-top: 1px solid #ececec;
@@ -186,9 +318,8 @@ body {
 
 #meilleuresVentesHome .articleMeilleureVente .prixTTCVente span {
 	color: #FD7454;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: bold;
-	margin-left: 2px;
 }
 
 /* navigation.tpl.html */
