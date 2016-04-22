@@ -5,30 +5,16 @@
 	<div id="homeCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#homeCarousel" data-slide-to="{{$index}}" ng-class="{active:!$index}" ng-repeat="image in imagesCarousel"></li>
+			<li data-target="#homeCarousel" data-slide-to="{{$index}}" ng-class="{active:$first}" ng-repeat="image in imagesCarousel"></li>
 		</ol>
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-			<div class="item" ng-class="{active:!$index}" ng-repeat="image in imagesCarousel">
+			<div class="item" ng-class="{active:$first}" ng-repeat="image in imagesCarousel">
 				<a href="{{image.url}}"><img ng-src="{{image.src}}"></a>
 			</div>
 		</div>
 	</div>
-	<script>
-	//Swipe Carousel functions
-		$('.carousel').carousel({
-  			interval: 7000
-		});
-
-		$('.carousel').hammer().on("swipeleft", function(){
-			$(this).carousel('next');
-		});
-
-		$('.carousel').hammer().on("swiperight", function(){
-			$(this).carousel('prev');
-		});
-	</script>
 	<!-- end Carousel -->
 
 	<!-- Mise en avant -->
@@ -46,7 +32,7 @@
 			</div>
 		</div>
 
-		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:$index%2==0, impair:$index%2}" ng-repeat="articleVente in articlesMeilleureVente" ng-click="goToDetail()">
+		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:$even, impair:$odd}" ng-repeat="articleVente in articlesMeilleureVente" ng-click="goToDetail()">
 			<div class="inner">	
 				<img class="imageArticle" ng-src="{{articleVente.img}}">
 				<p class="artDesignationVente">{{articleVente.designation}}</p>

@@ -12,6 +12,24 @@ angular.module('app.home')
 	$scope.goToDetail = function () {
 		document.location.hash ='#/register';
 	}
+
+	//Swipe Carousel functions
+	$(document).ready(function () {
+
+		$('.carousel').carousel({
+  			interval: 7000
+		});
+
+		$('.carousel').hammer().on("swipeleft", function(){
+			$(this).carousel('next');
+		});
+
+		$('.carousel').hammer().on("swiperight", function(){
+			$(this).carousel('prev');
+		});
+		
+	});
+
 });
 
 var imagesCarsouel = [{
@@ -36,6 +54,42 @@ var imagesMiseAvant = [{
 
 // Il y aura des propriété à ajouter avec les services
 var articlesMeilleureVente = [{
+	"id":"0",
+	"img":"styles/img/demo/e-comm/1.png",
+	"designation":"Sac à main",
+	"prixText":"à partir de",
+	"prixTTC": "49,00"
+},{
+	"id":"1",
+	"img":"styles/img/demo/e-comm/2.png",
+	"designation":"Rouge à lèvres",
+	"prixText":"",
+	"prixTTC": "26,90"
+},{
+	"id":"0",
+	"img":"styles/img/demo/e-comm/1.png",
+	"designation":"Sac à main",
+	"prixText":"à partir de",
+	"prixTTC": "49,00"
+},{
+	"id":"1",
+	"img":"styles/img/demo/e-comm/2.png",
+	"designation":"Rouge à lèvres",
+	"prixText":"",
+	"prixTTC": "26,90"
+},{
+	"id":"0",
+	"img":"styles/img/demo/e-comm/1.png",
+	"designation":"Sac à main",
+	"prixText":"à partir de",
+	"prixTTC": "49,00"
+},{
+	"id":"1",
+	"img":"styles/img/demo/e-comm/2.png",
+	"designation":"Rouge à lèvres",
+	"prixText":"",
+	"prixTTC": "26,90"
+},{
 	"id":"0",
 	"img":"styles/img/demo/e-comm/1.png",
 	"designation":"Sac à main",

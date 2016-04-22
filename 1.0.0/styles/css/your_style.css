@@ -19,13 +19,11 @@
  */
 
  /* header.tpl.html */
- #header{
-
-}
-
  	/* Bouton menu */
 #menu-toggle-button {
 	position: fixed;
+	top: 0;
+
 	z-index: 910;
 	width: 54px;
 	height: 54px;
@@ -36,8 +34,10 @@
 	top: 50%;
 	left: 50%;
 	display: block;
+
 	width: 22px;
 	height: 2px;
+
 	background-color: #313C3E;
 	transform: translateX(-50%) translateY(-50%);
 }
@@ -84,7 +84,15 @@
 #menu-toggle-button.menu-icon-cross.is-opened span,
 #menu-toggle-button.menu-icon-cross.is-opened span::before,
 #menu-toggle-button.menu-icon-cross.is-opened span::after {
-background-color: #FFF;
+	transition: background-color 0.2s;
+	background-color: #FFF;
+}
+
+#menu-toggle-button.menu-icon-cross.is-closed span,
+#menu-toggle-button.menu-icon-cross.is-closed span::before,
+#menu-toggle-button.menu-icon-cross.is-closed span::after {
+	transition: background-color 1.5s;
+	background-color: #313C3E;
 }
 
 #menu-toggle-button.menu-icon-cross.is-opened span {
@@ -104,7 +112,7 @@ background-color: #FFF;
 	position: absolute;
 	top: 0;
 	left: 0;
-	transform: translateX(37px) translateY(-5px);
+	transform: translateX(37px) translateY(-13%);
 }
 
 .pull-left #logo .logoImage {
@@ -112,46 +120,96 @@ background-color: #FFF;
 }
 
 	/* Boutons pull-right */
-#buttonsPullRight {
-	margin-top: 10px;
+#buttonsPullRight .buttonContainer {
+	position: fixed;
+	top: 0px;
+
+	height: 50px;
+	width: 40px;
+	padding-left: 7px;
+	padding-top: 9px;
 }
 
-#buttonsPullRight .buttonsRight {
-	border: none;
-	box-shadow: none;
+#buttonsPullRight .buttonRight {
+	height: 30px;
+	width: 30px;
+
+	background-image: url(../img/octave/icons.png);
+	background-repeat: no-repeat;
+	background-size: 80%;
 }
 
-#buttonsPullRight .buttonsRight .buttonsIcone {
-	/* à implémenter quand seront images et non span 
-	pour règler la taille */
+#buttonsPullRight .buttonCartContainer {
+	right: 0px;
 }
 
+#buttonsPullRight .buttonCart {
+	background-position: 0 82%;
+}
+
+#buttonsPullRight .buttonAccContainer {
+	right: 40px;
+}
+
+#buttonsPullRight .buttonAcc {
+	background-position: 0 53%;
+}
+
+#buttonsPullRight .buttonMagContainer {
+	right: 80px;
+}
+
+#buttonsPullRight .buttonMag {
+	background-position: 0 25%;
+}
 
 /* layout.tpl.html */
 	/* Bar de recherche */
 #ribbon {
-
 	background-color: #313C3E;
 	height: 55px;
+
 	padding-top: 10px;
 	padding-right: 10px;
 	padding-left: 10px;
+
 	border-bottom: none;
 }
 
+#ribbon #homeSearchbar .buttonContainer {
+	background-color: #FFF;
+	width: 10%;
+	height: 32px;
+
+	padding-left: 2.5%;
+	padding-top: 2%;
+
+	border: 1px solid #313C3E;
+	border-right: none;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
 #ribbon #homeSearchbar .inputSearch {
+	width: 90%;
+
+	margin-left: 10%;
+	margin-top: -32px;
+	padding-left: 0px;
+
 	border: 1px solid #313C3E;
 	border-left: none;
 	border-bottom-right-radius: 3px!important;
 	border-top-right-radius: 3px!important;
-	padding-left: 0px;
 }
 
 #ribbon #homeSearchbar .buttonSearch {
-	border: 1px solid #313C3E;
-	border-bottom-left-radius: 3px;
-	border-top-left-radius: 3px;
-	color: #b9b9b9;
+	width: 30px;
+	height: 28px;
+
+	background-image: url(../img/octave/icons.png);	
+	background-size: 90%;
+	background-repeat: no-repeat;
 }
 
 #ribbon #homeSearchbar .inputSearch::-webkit-input-placeholder {
@@ -177,12 +235,16 @@ body {
 	padding-bottom: 0px;
 }
 
+.noscroll {
+	overflow-y: hidden;
+}
 
 /* menu.tpl.html */
 #menu-panel {
 	position: fixed;
 	top: 0;
 	bottom: 0;
+	overflow-y: auto;
 
 	background-color: rgba(255,255,255, 0.96);
 
@@ -198,14 +260,6 @@ body {
 #menu-panel.opened {
 	transform: translateX(0%);
 }
-
-#menu-panel #menu-interface .menu-content .menu-button {
-	position: absolute;
-	width: 54px;
-	height: 54px;
-}
-
-
 
 #menu-panel #menu-interface .menu-content .menu-head {
 	text-align: center;
@@ -225,18 +279,43 @@ body {
 .menu-categories {
 	padding-left: 0px;
 	width: 104%;
+	margin-bottom: 0px;
 }
 
 .menu-categories .menu-categorie {
 	list-style: none;
-	font-size: 15px;
+
+	font-size: 13px;
 	font-weight: bold;
 	color: #313C3E;
+
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 15px;
+	padding-right: 10px;
+}
+
+.menu-categories .menu-categorie .menu-fleche {
+	color: #a3a3a3;
+}
+
+/* angular ng-class */
+.menu-categories.main {
+	text-transform: uppercase;
+}
+
+.menu-categories .menu-categorie.notfirst {
+	border-top: 1px solid #efefef;
+}
+
+.menu-categories.last .menu-categorie.last {
 	border-bottom: 1px solid #efefef;
 }
+
+.menu-head .firstHead {
+	display: none;
+}
+
 
  /* home.html */
 	/* carousel */
@@ -255,15 +334,18 @@ body {
 
 	/* top ventes titre */
 #meilleuresVentesHome #paddingTitreMeilleuresVentes {
-	padding-top: 12px;
-	padding-bottom: 15px;
+	padding-top: 4%;
+	padding-bottom: 4%;
 	padding-left: 33%;
 	padding-right: 33%;
 }
 
 #meilleuresVentesHome #paddingTitreMeilleuresVentes #titreMeilleuresVentes {
 	text-align: center;
-	padding-top: 5px;
+
+	padding-top: 4%;
+	padding-bottom: 4%;
+
 	border: 2px solid #313C3E;
 	border-left: none;
 	border-right: none;
@@ -272,27 +354,31 @@ body {
 #meilleuresVentesHome #paddingTitreMeilleuresVentes #titreMeilleuresVentes #textTitreMeilleuresVentes {
 	color: #313C3E;
 	font-family: open sans;
-	font-size: 15px;
+	font-size: 115%;
 	text-transform: uppercase;
 	font-weight: bold;
-	margin-bottom: 6px;
+
+	margin-bottom: 0px;
 }
 
 	/* images top ventes */
 #meilleuresVentesHome .articleMeilleureVente .imageArticle {
  	width: 80%;
+ 	padding-bottom: 4%;
 }
 
 	/* Top ventes articles */
 #meilleuresVentesHome .articleMeilleureVente {
- margin-bottom: 20px;
+	margin-bottom: 5.185%;
 }
 
 #meilleuresVentesHome .articleMeilleureVente .inner {
 	text-align: center;
 	font-family: open sans;
 	color: #313C3E;
+
 	background-color: white;
+
 	border: 1px solid #ececec;
 	border-radius: 3px;
 	padding-top: 10px;
@@ -310,10 +396,15 @@ body {
 #meilleuresVentesHome .articleMeilleureVente .artDesignationVente {
 	font-size: 15px;
 	font-weight: bold;
-	margin-bottom: -2px;
-	margin-top: 5px;
-	padding-top: 5px;
+
+	margin-bottom: 0px;
+	padding-top: 3%;
+
 	border-top: 1px solid #ececec;
+}
+
+#meilleuresVentesHome .articleMeilleureVente .prixTTCVente {
+	margin-bottom: 3%;
 }
 
 #meilleuresVentesHome .articleMeilleureVente .prixTTCVente span {

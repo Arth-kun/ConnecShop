@@ -1,21 +1,14 @@
-<div id="menu-panel" class="row">	
+<div id="menu-panel" class="row" ng-controller="menuController">	
 	<div id="menu-interface" class="col-xs-12">
 
-		<div class="menu-content">
-			<div class='menu-button'></div>
+		<div class="menu-content" ng-repeat="menu in menus">
 			<h1 class="menu-head">
-				Menu
+				<span ng-class="{firstHead:$first}">{{menu.head}}</span>
 			</h1>
 
-			<ul class="menu-categories">
-				<li class="menu-categorie">
-					Meilleures ventes
-				</li>
-				<li class="menu-categorie">
-					Promotions du moment
-				</li>
-				<li class="menu-categorie">
-					Catégorie 1
+			<ul class="menu-categories" ng-class="{main:$first, last:$last}">
+				<li class="menu-categorie" ng-repeat=" categorie in menu.categories" ng-class="{notfirst:$index, last:$last}">
+					{{categorie}}<span class="glyphicon glyphicon-menu-right pull-right menu-fleche"></span>
 				</li>
 			</ul>
 		</div>
