@@ -12,39 +12,15 @@ angular.module('app.eCommerce', ['ui.router'])
             }
         })
 
-        .state('app.eCommerce.orders', {
-            url: '/e-commerce/orders',
-            data: {
-                title: 'Orders'
-            },
-            views: {
-                "content@app": {
-                    templateUrl: 'app/e-commerce/views/orders.html',
-                    controller: 'OrdersDemoCtrl',
-                    resolve: {
-                        orders: function($http, APP_CONFIG){
-                            return $http.get(APP_CONFIG.apiRootUrl + '/e-commerce/orders.json')
-                        }
-                    }
-                }
-            }, 
-            resolve: {
-                scripts: function(lazyScript){
-                    return lazyScript.register([
-                        'build/vendor.datatables.js'
-                    ]);
-                }
-            }
-        })
-
         .state('app.eCommerce.products', {
-            url: '/e-commerce/products-view',
+            url: '/e-commerce/products-list/:id',
             data: {
-                title: 'Products View'
+                title: 'Products List'
             },
             views: {
                 "content@app": {
-                    templateUrl: 'app/e-commerce/views/products.html'
+                    templateUrl: 'app/e-commerce/views/products-list.html',
+                    controller: 'products-listController'
                 }
             }
         })
@@ -56,7 +32,7 @@ angular.module('app.eCommerce', ['ui.router'])
             },
             views: {
                 "content@app": {
-                    templateUrl: 'app/e-commerce/views/detail.html'
+                    templateUrl: 'app/e-commerce/views/products-detail.html'
                 }
             }
         })

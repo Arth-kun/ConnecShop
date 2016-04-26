@@ -239,6 +239,10 @@ body {
 	overflow-y: hidden;
 }
 
+.displayNone {
+	display: none!important;
+}
+
 /* menu.tpl.html */
 #menu-panel {
 	position: fixed;
@@ -251,7 +255,7 @@ body {
 	font-family: open sans;
 
 	width: 103.5%;
-	z-index: 906;
+	z-index: 907;
 
 	transform: translateX(-100%);
 	transition: transform 0.5s;
@@ -286,7 +290,7 @@ body {
 	list-style: none;
 
 	font-size: 13px;
-	font-weight: bold;
+	font-weight: 600;
 	color: #313C3E;
 
 	padding-top: 10px;
@@ -356,7 +360,7 @@ body {
 	font-family: open sans;
 	font-size: 115%;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-weight: 600;
 
 	margin-bottom: 0px;
 }
@@ -395,7 +399,7 @@ body {
 
 #meilleuresVentesHome .articleMeilleureVente .artDesignationVente {
 	font-size: 15px;
-	font-weight: bold;
+	font-weight: 600;
 
 	margin-bottom: 0px;
 	padding-top: 3%;
@@ -409,11 +413,179 @@ body {
 
 #meilleuresVentesHome .articleMeilleureVente .prixTTCVente span {
 	color: #FD7454;
-	font-size: 14px;
-	font-weight: bold;
+	font-size: 110%;
+	font-weight: 600;
 }
 
-/* navigation.tpl.html */
-#left-panel {
-	padding-top: 0px;
+
+
+/* products-list.html */
+	/* header */
+#changes #headerChanges {
+	position: fixed;
+	top: 15px; left: 15px;
+	z-index: 906;
+
+	color: #313C3E;
+	font-family: open sans;
+	font-weight: 600;
+}
+
+#changes #headerChanges .returnButton {
+	margin-right: 5px;
+	margin-top: 3px;
+}
+
+#changes #ribbonChanges {
+	position: fixed;
+	top: 67px;
+	z-index: 906;
+
+	padding-left: 20px;
+}
+
+#changes #ribbonChanges .nbArticle {
+	color: #FFF;
+}
+
+#changes #ribbonChanges .trieArticle {
+	position: fixed;
+	right: 15px;
+	top: 60px;
+	width: 150px;
+	overflow: hidden;
+   	background: url(../img/octave/fleche-combo.png) no-repeat right #FFF;
+   	background-size: 19%;
+   	border: 1px solid #313C3E;
+   	border-radius: 3px;
+}
+
+#changes #ribbonChanges .trieArticle .comboTrieArticle {
+	background: transparent;
+	width: 150px;
+	padding: 7.8px;
+	padding-left: 10px;
+	border: none;
+	color: #778075;
+	font-family: open sans;
+	font-size: 12px;
+	-webkit-appearance: none
+}
+
+
+	/* articles */
+#productsList {
+	padding-top: 70px;
+}
+
+	/* images articles */
+#productsList .articleProductsList .imageArticle {
+ 	width: 80%;
+ 	padding-bottom: 4%;
+}
+
+	/* Liste articles */
+#productsList .articleProductsList {
+	margin-bottom: 5.185%;
+}
+
+#productsList .pair {
+	clear: left;
+}
+
+#productsList .articleProductsList .inner {
+	text-align: center;
+	font-family: open sans;
+	color: #313C3E;
+
+	height: 100%;
+
+	background-color: white;
+
+	border: 1px solid #ececec;
+	border-radius: 3px;
+	padding-top: 10px;
+	box-shadow: 0px 1.5px 1px #d3d3d3;
+}
+
+#productsList .pair .inner{
+	margin-left: 10%;
+}
+
+#productsList .impair .inner{
+	margin-right: 10%;
+}
+
+#productsList .articleProductsList .inner .promoTag{
+	position: absolute;
+	top: 0;
+
+	margin-left: -8%;
+
+	width: 28%;
+	height: 28%;
+
+	/*border: 1px solid #FD7454;
+	border-right: none;
+	border-bottom: none;
+	border-top-left-radius: 3px;
+
+	background: url(../img/octave/carre-promo.png);
+	transform: rotate(45deg) translateY(-10%) translateX(-10%);*/
+}
+
+#productsList .articleProductsList .artDesignationVente {
+	font-size: 15px;
+	font-weight: 600;
+
+	margin-bottom: 0px;
+	padding-top: 3%;
+
+	border-top: 1px solid #ececec;
+}
+
+#productsList .articleProductsList .prixTTCVente {
+	margin-bottom: 3%;
+}
+
+#productsList .articleProductsList .prixTTCVente .prixTTC {
+	color: #FD7454;
+	font-size: 90%;
+	font-weight: 600;
+}
+
+#productsList .articleProductsList .prixTTCVente .prixTTC.prixReduit {
+	font-size: 110%;
+}
+
+#productsList .articleProductsList .prixTTCVente .pourcentage {
+	font-size: 85%;
+	color: #FFF;
+	background-color: #FD7454;
+
+	border: 1px solid #FD7454;
+	border-radius: 15px;
+
+	margin-right: 2%;
+	padding: 0% 3%;
+}
+
+#productsList .articleProductsList .prixTTCVente .prixNonRemise {
+	font-size: 85%;
+	text-decoration: line-through;
+
+	margin-right: 2%;
+}
+
+#productsList .articleProductsList .starsProductsList {
+	margin-bottom: 0px;
+	font-size: 85%;
+}
+
+#productsList .articleProductsList .starsProductsList .yellow-star {
+	color: #FFB03B;
+}
+
+#productsList .articleProductsList .starsProductsList .grey-star {
+	color: #C6C6C6;
 }

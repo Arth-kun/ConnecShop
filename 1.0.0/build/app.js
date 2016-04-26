@@ -325,7 +325,7 @@ angular.module('app', [
     //'app.appViews',
     //'app.misc',
     //'app.smartAdmin',
-    //'app.eCommerce',
+    'app.eCommerce',
     'app.menu',
     'app.home'
 ])
@@ -699,39 +699,15 @@ angular.module('app.eCommerce', ['ui.router'])
             }
         })
 
-        .state('app.eCommerce.orders', {
-            url: '/e-commerce/orders',
-            data: {
-                title: 'Orders'
-            },
-            views: {
-                "content@app": {
-                    templateUrl: 'app/e-commerce/views/orders.html',
-                    controller: 'OrdersDemoCtrl',
-                    resolve: {
-                        orders: function($http, APP_CONFIG){
-                            return $http.get(APP_CONFIG.apiRootUrl + '/e-commerce/orders.json')
-                        }
-                    }
-                }
-            }, 
-            resolve: {
-                scripts: function(lazyScript){
-                    return lazyScript.register([
-                        'build/vendor.datatables.js'
-                    ]);
-                }
-            }
-        })
-
         .state('app.eCommerce.products', {
-            url: '/e-commerce/products-view',
+            url: '/e-commerce/products-list/:id',
             data: {
-                title: 'Products View'
+                title: 'Products List'
             },
             views: {
                 "content@app": {
-                    templateUrl: 'app/e-commerce/views/products.html'
+                    templateUrl: 'app/e-commerce/views/products-list.html',
+                    controller: 'products-listController'
                 }
             }
         })
@@ -743,7 +719,7 @@ angular.module('app.eCommerce', ['ui.router'])
             },
             views: {
                 "content@app": {
-                    templateUrl: 'app/e-commerce/views/detail.html'
+                    templateUrl: 'app/e-commerce/views/products-detail.html'
                 }
             }
         })
@@ -2342,7 +2318,7 @@ $templateCache.put("app/dashboard/todo/todo-widget.tpl.html","<div id=\"todo-wid
 $templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\n    <li class=\"dropdown\" dropdown>\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\n            <i class=\"fa fa-angle-down\"></i> </a>\n        <ul class=\"dropdown-menu pull-right\">\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\n            </li>\n        </ul>\n    </li>\n</ul>");
 $templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">SmartAdmin WebApp © 2013-2016</span>\n        </div>\n\n        <div class=\"col-xs-6 col-sm-6 text-right hidden-xs\">\n            <div class=\"txt-color-white inline-block\">\n                <i class=\"txt-color-blueLight hidden-mobile\">Last account activity <i class=\"fa fa-clock-o\"></i>\n                    <strong>52 mins ago &nbsp;</strong> </i>\n\n                <div class=\"btn-group dropup\">\n                    <button class=\"btn btn-xs dropdown-toggle bg-color-blue txt-color-white\" data-toggle=\"dropdown\">\n                        <i class=\"fa fa-link\"></i> <span class=\"caret\"></span>\n                    </button>\n                    <ul class=\"dropdown-menu pull-right text-left\">\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Download Progress</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 50%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Server Load</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 20%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Memory Load <span class=\"text-danger\">*critical*</span>\n                                </p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-danger\" style=\"width: 70%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <button class=\"btn btn-block btn-default\">refresh</button>\n                            </div>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
 $templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\n\n<!-- pulled left: menu + logo -->\n<div class=\"pull-left\">\n\n\n    <!-- multiple lang dropdown : find all flags in the flags page -->\n    <language-selector></language-selector>\n    <!-- end multiple lang -->\n\n    <span id=\"logo\"> <img class=\"logoImage\" src=\"styles/img/octave/logo.png\" alt=\"ConnecShop\"> </span>\n</div>\n<!-- end pulled left: menu + logo -->\n\n<!-- pulled right: button magasin, account, shopping cart -->\n<div id=\"buttonsPullRight\" class=\"pull-right\">\n    \n    <div class=\"buttonMagContainer buttonContainer\">\n        <div class=\"buttonMag buttonRight\"></div>\n    </div>\n\n    <div class=\"buttonAccContainer buttonContainer\">\n        <div class=\"buttonAcc buttonRight\"></div>\n    </div>\n\n    <div class=\"buttonCartContainer buttonContainer\">\n        <div class=\"buttonCart buttonRight\"></div>\n    </div>\n\n</div>\n<!-- end pulled right: buttons -->\n\n\n\n\n</header>");
-$templateCache.put("app/layout/partials/menu.tpl.html","<div id=\"menu-panel\" class=\"row\" ng-controller=\"menuController\">	\r\n	<div id=\"menu-interface\" class=\"col-xs-12\">\r\n\r\n		<div class=\"menu-content\" ng-repeat=\"menu in menus\">\r\n			<h1 class=\"menu-head\">\r\n				<span ng-class=\"{firstHead:$first}\">{{menu.head}}</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories\" ng-class=\"{main:$first, last:$last}\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in menu.categories\" ng-class=\"{notfirst:$index, last:$last}\">\r\n					{{categorie}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n	</div>\r\n</div>");
+$templateCache.put("app/layout/partials/menu.tpl.html","<div id=\"menu-panel\" class=\"row\" ng-controller=\"menuController\">	\r\n	<div id=\"menu-interface\" class=\"col-xs-12\">\r\n\r\n		<div class=\"menu-content\" ng-repeat=\"menu in menus\">\r\n			<h1 class=\"menu-head\">\r\n				<span ng-class=\"{firstHead:$first}\">{{menu.head}}</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories\" ng-class=\"{main:$first, last:$last}\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in menu.categories\" ng-class=\"{notfirst:$index, last:$last}\" ng-click=\"goToList($index)\">\r\n					{{categorie}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n	</div>\r\n</div>");
 $templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div login-info></div>\n    <!-- end user info -->\n\n    <nav>\n        <!-- NOTE: Notice the gaps after each icon usage <i></i>..\n        Please note that these links work a bit different than\n        traditional href=\"\" links. See documentation for details.\n        -->\n\n        <ul data-smart-menu>\n\n            <li data-ui-sref-active=\"active\">\n                <a data-ui-sref=\"app.home\" title=\"Outlook\">\n                    <i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">{{getWord(\'Home\')}}</span></a>\n            </li>\n\n        </ul>\n\n        <!-- NOTE: This allows you to pull menu items from server -->\n        <!-- <ul data-smart-menu-items=\"/api/menu-items.json\"></ul> -->\n    </nav>\n\n  <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\n    <i class=\"fa fa-arrow-circle-left hit\"></i>\n  </span>\n\n</aside>");
 $templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\n    <ul id=\"sparks\" class=\"\">\n        <li class=\"sparks-info\">\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n    </ul>\n</div>\n			");
 $templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\n\n<!-- MODAL PLACE HOLDER\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\n<div class=\"modal-dialog\">\n<div class=\"modal-content\"></div>\n</div>\n</div>   -->\n<!--////////////////////////////////////-->\n\n<!--<div class=\"modal-header\">\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\n&times;\n</button>\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\n</div>-->\n<div class=\"modal-body\">\n\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\n	<hr class=\"simple\">\n	<h5>Instruction</h5>\n\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\n	<br>\n	<br>\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\n	<br>\n	<br>\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\n	<br>\n	<br>\n	<h5>Commands</h5>\n	<ul>\n		<li>\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\n		</li>\n		<li>\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\n		</li>\n		<li>\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\n		</li>\n		<li>\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\n		</li>\n		<li>\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\n		</li>\n		<li>\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\n		</li>\n		<li>\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\n		</li>\n		<li>\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\n		</li>\n		<li>\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\n		</li>\n		<li>\n			<strong>\'logout\'</strong> - logs you out\n		</li>\n	</ul>\n	<br>\n	<h5>Adding your own commands</h5>\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \n\n	<hr class=\"simple\">\n	<div class=\"text-right\">\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\n			Got it!\n		</button>\n	</div>\n\n</div>\n<!--<div class=\"modal-footer\">\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\n</div> -->");
@@ -2853,6 +2829,24 @@ angular.module('app.eCommerce').controller('OrdersDemoCtrl', function ($scope, o
         ],
         "order": [[1, 'asc']]
     }
+});
+'use strict';
+
+angular.module('app.eCommerce')
+
+.controller('products-listController', function ($scope, $http) {
+
+	var hashCategory = document.location.hash.split("/");
+    var idCategory = hashCategory[3];
+
+    $http.get('http://ressource.octave.biz/ac01/connecshop/productslist/'+idCategory+'.json', { responseType: "json" })
+      .success(function (productsList) {
+      	$scope.productsList = productsList;
+    	$scope.nbArticle = productsList.products.length;
+    });
+
+
+
 });
 
 "use strict";
@@ -3650,6 +3644,18 @@ angular.module('app.inbox').factory('InboxMessage', function($resource, APP_CONF
     return InboxMessage;
 
 });
+function headerDispenser () {
+	if (document.location.hash==='#/home') {
+		$('#ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button').removeClass('displayNone');
+	} else {
+		$('#ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button').addClass('displayNone');
+		$('#header #buttonsPullRight .buttonCartContainer').removeClass('displayNone');
+	}
+}
+
+window.onhashchange = function () {
+	headerDispenser();
+}
 'use strict';
 
 angular.module('app.menu', ['ui.router'])
@@ -3658,57 +3664,60 @@ angular.module('app.menu', ['ui.router'])
 
 	$scope.menus = menus;
 
+	$scope.goToList = function (id) {
+		document.location.hash = '#/e-commerce/products-list/'+id;
+		closeMenu();
+	}
+
 	// Fonction de hiding du menu
-	$(document).ready(function () {
-		$('body').on('click', '#menu-toggle-button', function () {
+	$('body').on('click', '#menu-toggle-button', function () {
+		
+		if (!$(this).hasClass('is-opened')) {
+
+			$(this).addClass('is-opened').removeClass('is-closed');
+			$('#menu-panel').addClass('opened');
+			$('body').addClass('noscroll');
+			$('.menu-head .firstHead').fadeIn('1200');
 			
-			if (!$(this).hasClass('is-opened')) {
-
-				$(this).addClass('is-opened').removeClass('is-closed');
-				$('#menu-panel').addClass('opened');
-				$('body').addClass('noscroll');
-				$('.menu-head .firstHead').fadeIn('1200');
-				
-			} else {
-				closeMenu();
-			}
-		});
-
-		$('#menu-panel').hammer().on("swipeleft", function () {
+		} else {
 			closeMenu();
-		});
-
-		function closeMenu () {
-			$('#menu-toggle-button').addClass('is-closed').removeClass('is-opened');
-			$('#menu-panel').removeClass('opened');
-			$('body').removeClass('noscroll');
-			$('.menu-head .firstHead').fadeOut('1200');
 		}
-
 	});
+
+	$('#menu-panel').hammer().on("swipeleft", function () {
+		closeMenu();
+	});
+
+	function closeMenu () {
+		$('#menu-toggle-button').addClass('is-closed').removeClass('is-opened');
+		$('#menu-panel').removeClass('opened');
+		$('body').removeClass('noscroll');
+		$('.menu-head .firstHead').fadeOut('1200');
+	}
+
 
 });
 
 var menus = [{
 	"head":"Menu",
 	"categories":[
-		"meilleures ventes",
-		"promotions du moment",
-		"catégorie 1",
-		"catégorie 2",
-		"catégorie 3",
-		"catégorie 4",
-		"catégorie 5",
-		"catégorie 6",
-		"catégorie 7",
-		"catégorie 8",
+	"meilleures ventes",
+	"promotions du moment",
+	"catégorie 1",
+	"catégorie 2",
+	"catégorie 3",
+	"catégorie 4",
+	"catégorie 5",
+	"catégorie 6",
+	"catégorie 7",
+	"catégorie 8",
 	]
 }, {
 	"head":"A propos",
 	"categories":[
-		"Qui sommes nous ?",
-		"CGV",
-		"Nous contacter",
+	"Qui sommes nous ?",
+	"CGV",
+	"Nous contacter",
 	]
 }]
 "use strict";
