@@ -9,8 +9,8 @@ angular.module('app.home')
 
 	$scope.articlesMeilleureVente = articlesMeilleureVente;
 
-	$scope.goToDetail = function () {
-		document.location.hash ='#/register';
+	$scope.goToDetail = function (id) {
+		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id;
 	}
 
 	//Swipe Carousel functions

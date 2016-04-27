@@ -26,13 +26,14 @@ angular.module('app.eCommerce', ['ui.router'])
         })
 
         .state('app.eCommerce.detail', {
-            url: '/e-commerce/products-detail',
+            url: '/e-commerce/products-detail/:category/:id',
             data: {
                 title: 'Products Detail'
             },
             views: {
                 "content@app": {
-                    templateUrl: 'app/e-commerce/views/products-detail.html'
+                    templateUrl: 'app/e-commerce/views/products-detail.html',
+                    controller: 'products-detailController'
                 }
             }
         })

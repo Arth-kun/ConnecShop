@@ -13,6 +13,8 @@ angular.module('app.eCommerce')
     	$scope.nbArticle = productsList.products.length;
     });
 
-
+    $scope.goToDetail = function (id, category) {
+		document.location.hash ='#/e-commerce/products-detail/'+category+'/'+id;
+	}
 
 });
