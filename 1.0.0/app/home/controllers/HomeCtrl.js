@@ -34,21 +34,21 @@ angular.module('app.home')
 
 var imagesCarsouel = [{
 	"src":"styles/img/octave/carousel.png",
-	"url":"http://getbootstrap.com/javascript/"
+	"url":"#/e-commerce/products-detail/Accueil/2"
 },{
 	"src":"styles/img/octave/carousel.png",
-	"url":"http://getbootstrap.com/javascript/"
+	"url":"#/e-commerce/products-detail/Accueil/2"
 },{
 	"src":"styles/img/octave/carousel.png",
-	"url":"http://getbootstrap.com/javascript/"
+	"url":"#/e-commerce/products-detail/Accueil/2"
 }];
 
 var imagesMiseAvant = [{
 	"src":"styles/img/octave/miseavant1.png",
-	"url":"http://getbootstrap.com/javascript/"
+	"url":"#/e-commerce/products-list/13"
 },{
 	"src":"styles/img/octave/miseavant2.png",
-	"url":"http://getbootstrap.com/javascript/"
+	"url":"#/e-commerce/products-list/14"
 }];
 
 

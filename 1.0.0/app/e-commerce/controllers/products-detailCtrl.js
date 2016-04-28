@@ -9,7 +9,7 @@ angular.module('app.eCommerce')
 
 	var hashProduct = document.location.hash.split("/");
     var idProduct = hashProduct[4];
-    var categoryProduct = hashProduct[3];
+    var idCategory = hashProduct[3];
 
     $http.get('http://ressource.octave.biz/ac01/connecshop/products/'+idProduct+'.json', { responseType: "json" })
     .success(function (product) {
@@ -17,18 +17,57 @@ angular.module('app.eCommerce')
     	$scope.nbAvis = product.avisContent.length;
     });
 
-    $scope.category = decodeURI(categoryProduct);
+    if (idCategory==='Accueil') {
+    	$scope.category = idCategory;
+    } else {
+    	$scope.category = menuTitle[idCategory];
+	}
+
+    $scope.description = new Dispenser();
+    $scope.avis = new Dispenser();
+    $scope.addAvis = new Dispenser();
+
+    function Dispenser () {
+    	this.showDesc = false;
+
+    	this.dispDesc = function () {
+    		if (!this.showDesc) {
+    			this.showDesc = true;
+    			window.scrollTo(0,document.body.scrollHeight);
+    		} else {
+    			this.showDesc = false;
+    		}
+    	}
+    }
 
     $(document).ready(function () {
 
-		$('.carousel').hammer().on("swipeleft", function(){
-			$(this).carousel('next');
+		$('.carousel, .promoTag').hammer().on("swipeleft", function(){
+			$('.carousel').carousel('next');
 		});
 
-		$('.carousel').hammer().on("swiperight", function(){
-			$(this).carousel('prev');
+		$('.carousel, .promoTag').hammer().on("swiperight", function(){
+			$('.carousel').carousel('prev');
 		});
 		
 	});
 
 });
+
+var menuTitle = [
+	"Meilleures Ventes",
+	"Promotions du Moment",
+	"Catégorie 1",
+	"Catégorie 2",
+	"Catégorie 3",
+	"Catégorie 4",
+	"Catégorie 5",
+	"Catégorie 6",
+	"Catégorie 7",
+	"Catégorie 8",
+	"Qui sommes nous ?",
+	"CGV",
+	"Nous contacter",
+	"Mode Femme",
+	"Nouvelle Collection"
+	];

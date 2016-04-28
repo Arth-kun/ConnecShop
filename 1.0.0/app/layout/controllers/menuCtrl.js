@@ -42,23 +42,47 @@ angular.module('app.menu', ['ui.router'])
 
 var menus = [{
 	"head":"Menu",
-	"categories":[
-	"meilleures ventes",
-	"promotions du moment",
-	"catégorie 1",
-	"catégorie 2",
-	"catégorie 3",
-	"catégorie 4",
-	"catégorie 5",
-	"catégorie 6",
-	"catégorie 7",
-	"catégorie 8",
-	]
+	"categories":[{
+	"name":"Meilleures Ventes",
+	"id":0
+},{
+	"name":"Promotions du Moment",
+	"id":1
+},{
+	"name":"Catégorie 1",
+	"id":2
+},{
+	"name":"Catégorie 2",
+	"id":3
+},{
+	"name":"Catégorie 3",
+	"id":4
+},{
+	"name":"Catégorie 4",
+	"id":5
+},{
+	"name":"Catégorie 5",
+	"id":6
+},{
+	"name":"Catégorie 6",
+	"id":7
+},{
+	"name":"Catégorie 7",
+	"id":8
+},{
+	"name":"Catégorie 8",
+	"id":9
+	}]
 }, {
 	"head":"A propos",
-	"categories":[
-	"Qui sommes nous ?",
-	"CGV",
-	"Nous contacter",
-	]
+	"categories":[{
+	"name":"Qui sommes nous ?",
+	"id":10
+},{
+	"name":"CGV",
+	"id":11
+},{
+	"name":"Nous contacter",
+	"id":12
+	}]
 }]

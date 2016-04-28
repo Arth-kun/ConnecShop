@@ -7,8 +7,8 @@
 			</h1>
 
 			<ul class="menu-categories" ng-class="{main:$first, last:$last}">
-				<li class="menu-categorie" ng-repeat=" categorie in menu.categories" ng-class="{notfirst:$index, last:$last}" ng-click="goToList($index)">
-					{{categorie}}<span class="glyphicon glyphicon-menu-right pull-right menu-fleche"></span>
+				<li class="menu-categorie" ng-repeat=" categorie in menu.categories" ng-class="{notfirst:$index, last:$last}" ng-click="goToList(categorie.id)">
+					{{categorie.name}}<span class="glyphicon glyphicon-menu-right pull-right menu-fleche"></span>
 				</li>
 			</ul>
 		</div>
