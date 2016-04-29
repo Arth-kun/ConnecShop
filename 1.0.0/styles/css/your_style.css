@@ -661,7 +661,7 @@ body {
 #productsDetail .inner .productBlock .promoTag{
 	position: absolute;
 	top: 0;
-	z-index: 907;
+	z-index: 904;
 
 	width: 50%;
 	height: 50%;
@@ -676,7 +676,6 @@ body {
 #productsDetail .inner .productBlock .promoTag .backgroundPromo {
 	position: absolute;
 	top: 0;
-	z-index: 907;
 
 	width: 200px;
 	height: 200px;
@@ -867,4 +866,182 @@ body {
 #productsDetail .inner .avisProduct .avisProductContent .listAvis .listAvisProduct .listAvisProductDate {
 	font-size: 0.85em;
 	font-weight: 300;
+}
+
+
+/* beacon.tpl.html */
+
+#beacon {
+	position: fixed;
+	top: 0; bottom: 0;
+	width: 100%;
+	z-index: 1000;
+
+	padding-left: 12%;
+
+	transform: translateX(88%);
+	transition: transform 0.3s;
+}
+
+#beacon .flecheHome {
+	position: absolute;
+	top:50%; left: 15px;
+
+	height: 50px;
+
+	z-index: 1000;
+
+	padding: 15px 8px;
+
+	background-color: #FD7454;
+
+	border: 1px solid #FD7454;
+	border-right: 0px;
+	border-bottom-left-radius: 27px;
+	border-top-left-radius: 27px;
+}
+
+#beacon .flecheHome .fleche-span {
+	color: #FFF;
+	font-size: 0.9em;
+}
+
+#beacon .beaconPanel {
+	width: 100%;
+	height: 100%;
+
+	background-color: #FFF;
+
+	overflow-y: auto;
+
+	font-family: Open Sans;  
+}
+
+#beacon .beaconPanel .excluMag {
+	background-color: #313C3E;
+}
+
+	/* TRANSFORMATIONS */
+/*#bodyMainContent {
+	transition: transform 0.3s;
+}
+
+#header, #ribbon {
+	transition: transform 0s;
+}*/
+
+.translateBody {
+	transition: transform 0.3s;
+	transform: translateX(-88%);
+}
+
+.translateRibbonHeader {
+	transform: translateY(-49px);
+}
+
+.translateBeacon {
+	transform: translateX(0%)!important;
+}
+
+
+		/* Calque noir */
+.calqueOpacite {
+	position: fixed;
+	top: 0; right: 0; left: 0; bottom: 0;
+
+	width: 100%;
+
+	background-color : #313C3E;
+	opacity: 0.8;
+}
+
+.calqueOpacite.calqueOpaciteBeacon {
+	z-index: 999;
+	top: -49px;
+}
+
+	/* Exclu magasin */
+#beacon .beaconPanel .excluMag {
+	padding-top: 20px;
+}
+
+#beacon .beaconPanel .excluMag .excluMagTitre {
+	position: relative;
+}
+
+#beacon .beaconPanel .excluMag .excluMagTitre .traitExclu {
+	position: absolute;
+	top: 32%;
+	left: 0%;
+
+	width: 100%;
+	height: 2px;
+
+	background-color: #5A6465;
+}
+
+#beacon .beaconPanel .excluMag .excluMagTitre {
+	text-align: center;
+}
+
+#beacon .beaconPanel .excluMag .excluMagTitre .exclusivite {
+	position: relative;
+
+	color: #FD7454;
+	font-size: 2em;
+	font-weight: 300;
+
+	margin-bottom: -7px;
+	margin-left: 25%;
+	margin-right: 25%;
+	background-color: #313C3E;
+}
+
+#beacon .beaconPanel .excluMag .excluMagTitre .magasin {
+	position: relative;
+
+	color: #FFF;
+	font-size: 1.1em;
+	font-weight: 600;
+}
+
+#beacon .beaconPanel .excluMag .nomRayon {
+	color: #FFF;
+	text-align: center;
+	font-size: 0.9em;
+
+	padding: 6px 0px;
+
+	background-color: #FD7454;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon {
+	padding: 8px 5% 20px;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon {
+	position: relative;
+
+	background-color: #FFF;
+
+	border: 1px solid #FFF;
+	border-radius: 4px;	
+
+	padding-left: 30%
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon.notLast {
+	margin-bottom: 10px;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .spanImg {
+	position: absolute;
+	left: 0; top: 0;
+
+	width: 30%;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .spanImg img {
+	padding: 10% 0% 0% 10%;
+	width: 80%;
 }

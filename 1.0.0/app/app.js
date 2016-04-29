@@ -37,6 +37,7 @@ angular.module('app', [
     //'app.smartAdmin',
     'app.eCommerce',
     'app.menu',
+    'app.beacon',
     'app.home'
 ])
 .config(function ($provide, $httpProvider, RestangularProvider) {
