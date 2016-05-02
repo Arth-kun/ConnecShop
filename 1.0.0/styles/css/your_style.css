@@ -24,7 +24,7 @@
 	position: fixed;
 	top: 0;
 
-	z-index: 910;
+	z-index: 1002;
 	width: 54px;
 	height: 54px;
 }
@@ -261,7 +261,7 @@ body {
 	font-family: open sans;
 
 	width: 103.5%;
-	z-index: 907;
+	z-index: 1001;
 
 	transform: translateX(-100%);
 	transition: transform 0.5s;
@@ -526,6 +526,7 @@ body {
 #productsList .articleProductsList .inner .promoTag{
 	position: absolute;
 	top: 0;
+	z-index: 904;
 
 	margin-left: -8.6%;
 
@@ -885,7 +886,7 @@ body {
 
 #beacon .flecheHome {
 	position: absolute;
-	top:50%; left: 15px;
+	top:50%; left: 4.15%;
 
 	height: 50px;
 
@@ -952,6 +953,8 @@ body {
 	width: 100%;
 
 	background-color : #313C3E;
+
+	transition: opacity 0.3s;
 	opacity: 0.8;
 }
 
@@ -959,6 +962,7 @@ body {
 	z-index: 999;
 	top: -49px;
 }
+
 
 	/* Exclu magasin */
 #beacon .beaconPanel .excluMag {
@@ -1020,14 +1024,12 @@ body {
 }
 
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon {
-	position: relative;
-
 	background-color: #FFF;
 
 	border: 1px solid #FFF;
 	border-radius: 4px;	
 
-	padding-left: 30%
+	margin: 0px;
 }
 
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon.notLast {
@@ -1035,13 +1037,52 @@ body {
 }
 
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .spanImg {
-	position: absolute;
-	left: 0; top: 0;
+	padding: 0px;
+	
+	padding: 2.5% 1.75%;
 
-	width: 30%;
+	border-right: 1px solid #ececec;
 }
 
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .spanImg img {
-	padding: 10% 0% 0% 10%;
-	width: 80%;
+	position: relative;
+	width: 100%;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .produitContent {
+	padding: 2% 4%;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .produitContent .produitNote {
+	font-size: 0.8em;
+
+	margin-bottom: 5%;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .produitContent .produitPrix .produitRemise {
+	border: 1px solid #313C3E;
+	border-radius: 20px;
+
+	font-size: 0.9em;
+	color: #FFF;
+	background-color: #313C3E;
+
+	padding: 0% 2%;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .produitContent .produitPrix .prixGroup {
+	position: absolute;
+	right: 5%;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .produitContent .produitPrix .produitPrixBarre {
+	text-decoration: line-through;
+	font-size: 0.8em;
+}
+
+#beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .produitContent .produitPrix .produitPrixTTC {
+	color: #FD7454;
+	font-size: 1.2em;
+	font-weight: 600;
+	padding-left: 5px;
 }

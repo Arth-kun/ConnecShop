@@ -17,10 +17,10 @@
 			<p class="nomRayon">Rayon {{rayon.nomRayon}}</p>
 
 			<div class="produitsPromoBeacon">
-				<div class="produitBeacon" ng-repeat="bProd in rayon.products" ng-class="{notLast:!$last}">
+				<div class="produitBeacon row" ng-repeat="bProd in rayon.products" ng-class="{notLast:!$last}">
 					<div class="promTagBeacon"></div>
-					<span class="spanImg"><img ng-src="{{bProd.imgs[0]}}"></span>
-					<div class="produitContent">
+					<span class="spanImg col-xs-3"><img ng-src="{{bProd.imgs[0]}}"></span>
+					<div class="produitContent col-xs-9">
 						<div class="produitName">{{bProd.designation}}</div>
 						<div class="produitNote">
 							<span ng-switch="bProd.stars" class="noteMoy">
@@ -45,9 +45,11 @@
 							</span>
 						</div>
 						<div class="produitPrix">
-							<span class="produitRemise">{{bProd.pourcentage}}</span>
-							<span class="produitPrixBarre">{{bProd.prixNonRemise}}</span>
-							<span class="produitPrixTTC">{{bProd.prixTTC}}</span>
+							<span class="produitRemise">{{bProd.pourcentage}} %</span>
+							<span class="prixGroup">
+								<span class="produitPrixBarre">{{bProd.prixNonRemise}} €</span>
+								<span class="produitPrixTTC">{{bProd.prixTTC}} €</span>
+							</span>
 						</div>
 					</div>
 				</div>
