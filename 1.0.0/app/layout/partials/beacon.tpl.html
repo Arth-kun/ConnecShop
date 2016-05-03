@@ -1,7 +1,7 @@
 <div id="beacon" ng-controller="beaconController" ng-class="{translateBeacon:showBeacon.doShow}">
 
 	<!-- Button collapse beacon -->
-	<div class="flecheHome" ng-click="showBeacon.show()">
+	<div class="flecheHome" ng-click="showBeacon.show()" ng-class="{'menu-open':showBeacon.doShow}">
 		<span class="glyphicon fleche-span" ng-class="{'glyphicon-menu-right':showBeacon.doShow, 'glyphicon-menu-left':!showBeacon.doShow}"></span>
 	</div>   
 	<!-- end Button collapse beacon -->
@@ -18,7 +18,9 @@
 
 			<div class="produitsPromoBeacon">
 				<div class="produitBeacon row" ng-repeat="bProd in rayon.products" ng-class="{notLast:!$last}">
-					<div class="promTagBeacon"></div>
+					<div class="promTagBeacon">
+						<span class="backgroundPromo"><span class="textPromo"><p class="exclu">Exclusivité</p><p class="mag">MAGASIN</p></span></span>
+					</div>
 					<span class="spanImg col-xs-3"><img ng-src="{{bProd.imgs[0]}}"></span>
 					<div class="produitContent col-xs-9">
 						<div class="produitName">{{bProd.designation}}</div>
@@ -55,7 +57,9 @@
 				</div>
 			</div>
 
-			<div class="dejaVus"></div>
+			<div class="dejaVus">
+					<span class="textDejaVus">produits déjà vus</span>
+			</div>
 		</div>
 
 

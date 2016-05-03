@@ -25,7 +25,11 @@ angular.module('app.beacon', ['ui.router'])
 				this.doShow = true;
 			} else {
 				$('#bodyMainContent, #header, #ribbon').removeClass('translateBody');
-				$('#header, #ribbon').removeClass('translateRibbonHeader');
+				
+				window.setTimeout(function() {
+					$('#header, #ribbon').removeClass('translateRibbonHeader');
+				}, 300);
+				
 				$('.calqueOpacite').removeClass('calqueOpaciteBeacon');
 				$('body').removeClass('noscroll');
 				this.doShow = false;	
