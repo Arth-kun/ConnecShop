@@ -33,7 +33,6 @@ angular.module('app.eCommerce')
     	this.dispDesc = function () {
     		if (!this.showDesc) {
     			this.showDesc = true;
-    			window.scrollTo(0,document.body.scrollHeight);
     		} else {
     			this.showDesc = false;
     		}
