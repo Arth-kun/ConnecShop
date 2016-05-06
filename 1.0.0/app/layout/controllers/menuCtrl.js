@@ -18,6 +18,7 @@ angular.module('app.menu', ['ui.router'])
 
 			$(this).addClass('is-opened').removeClass('is-closed');
 			$('#menu-panel').addClass('opened');
+			document.addEventListener('touchmove', stopScroll, false);
 			$('body').addClass('noscroll');
 			$('.menu-head .firstHead').fadeIn('1200');
 			
@@ -33,10 +34,14 @@ angular.module('app.menu', ['ui.router'])
 	function closeMenu () {
 		$('#menu-toggle-button').addClass('is-closed').removeClass('is-opened');
 		$('#menu-panel').removeClass('opened');
+		document.removeEventListener('touchmove', stopScroll, false);
 		$('body').removeClass('noscroll');
 		$('.menu-head .firstHead').fadeOut('1200');
 	}
 
+	function stopScroll (e) { 
+		e.preventDefault(); 
+	}
 
 });
 

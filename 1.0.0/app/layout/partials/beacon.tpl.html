@@ -17,7 +17,7 @@
 			<p class="nomRayon">Rayon {{rayon.nomRayon}}</p>
 
 			<div class="produitsPromoBeacon">
-				<div class="produitBeacon row product{{$index}}" ng-repeat="bProd in rayon.products" ng-class="{notLast:!$last}" ng-click="detailProduct.open($index)">
+				<div class="produitBeacon row product{{$index}}" ng-repeat="bProd in rayon.products" ng-class="{notLast:!$last}" ng-click="bProd.detailProduct.open($index, bProd)">
 					<div class="promTagBeacon">
 						<span class="backgroundPromo"><span class="textPromo"><p class="exclu">Exclusivité</p><p class="mag">MAGASIN</p></span></span>
 					</div>
@@ -117,8 +117,18 @@
 
 
 		<div class="conseils">
-			<div class="conseilsTitre">CONSEILS</div>
-			<div class="conseilsContent"></div>
+			<div class="conseilsTitreContainer">
+				<div class="conseilsTitre">CONSEILS</div>
+			</div>
+			<div class="conseilsContent row" ng-repeat="conseil in rayon.conseils">
+				<div class="imgContainer col-xs-3">
+					<img ng-src="{{conseil.img}}">
+				</div>
+				<div class="conseilContainer col-xs-9">
+					<p class="titreConseil">{{conseil.titre}}</p>
+					<p class="apercuConseil">{{conseil.apercu}}</p>
+				</div>
+			</div>
 		</div>
 
 	</div>

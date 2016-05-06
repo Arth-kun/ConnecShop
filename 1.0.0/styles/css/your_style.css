@@ -275,7 +275,8 @@ body {
 
 #menu-panel #menu-interface .menu-content .menu-head {
 	text-align: center;
-	font-size: 15px;
+	font-size: 1.1em;
+	font-weight: normal;
 
 	width: 104%;
 	height: 50px;
@@ -784,6 +785,7 @@ body {
 	color: #F8F8F8;
 	text-align: center;
 	font-size: 1.000em;
+	text-shadow: 1px 1px 0px rgba(45, 45, 45, 0.25);
 
 	padding: 4% 0%;
 }
@@ -903,11 +905,11 @@ body {
 	border-bottom-left-radius: 27px;
 	border-top-left-radius: 27px;
 
-	box-shadow: -1px 0px 2px 0px rgba(201, 201, 201, 1);
+	box-shadow: -1px 0px 2px 0px rgba(201, 201, 201, 0.25);
 }
 
 #beacon .flecheHome.menu-open {
-	box-shadow: -1px 0px 2px 0px rgba(201, 201, 201, 0);
+	box-shadow: -1px 0px 2px 0px rgba(201, 201, 201, 0.1);
 }
 
 #beacon .flecheHome .fleche-span {
@@ -942,11 +944,11 @@ body {
 }
 
 .translateButtunToggleMenu {
-	top:-49px !important;
+	top:-48px !important;
 }
 
 .translateRibbonHeader {
-	transform: translateY(-49px);
+	transform: translateY(-48px);
 }
 
 .translateBeacon {
@@ -1325,12 +1327,20 @@ body {
 
 	/* Conseils */
 #beacon .beaconPanel .conseils {
-	text-align: center;
+	padding: 5% 5%;
 
-	padding: 5% 36.5%;
+	background-color: #FFF;
 }
 
-#beacon .beaconPanel .conseils .conseilsTitre {
+#beacon .beaconPanel .conseils .conseilsTitreContainer {
+	text-align: center;
+
+	padding: 0% 33%;
+
+	margin-bottom: 5%;
+}
+
+#beacon .beaconPanel .conseils .conseilsTitreContainer .conseilsTitre {
 	font-size: 1.1em;
 	font-weight: 600;
 	font-family: open sans;
@@ -1342,8 +1352,52 @@ body {
 	border-top: 2px solid #313C3E;
 }
 
+#beacon .beaconPanel .conseils .conseilsContent {
+	border: 1px solid #ececec;
+	border-top: none;
+	border-radius: 4px;
 
-	/* OPEN DETAIL */
+	margin: 0px;
+
+	box-shadow: 0px 1px 3px 0px rgba(155, 155, 155, 0.5);
+
+	font-family: open sans;
+	color: #313C3E;
+}
+
+#beacon .beaconPanel .conseils .conseilsContent .imgContainer {
+	padding: 0px;
+	padding-top: 5%;
+}
+
+#beacon .beaconPanel .conseils .conseilsContent .imgContainer img {
+	width: 100%;
+}
+
+#beacon .beaconPanel .conseils .conseilsContent .conseilContainer {
+	border-left: 1px solid #ececec;
+
+	background-color: #F3F3F3;
+
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+#beacon .beaconPanel .conseils .conseilsContent .conseilContainer .titreConseil {
+	font-size: 0.9em;
+	font-weight: 600;
+
+	margin-bottom: 3px;
+}
+
+#beacon .beaconPanel .conseils .conseilsContent .conseilContainer .apercuConseil {
+	font-size: 0.8em;
+}
+
+
+
+
+	/* OPEN DETAIL MODIFICATION ON BPRODUCTS*/
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .spanImg.openDetail {
 	border-right: none;
 	border-bottom: 1px solid #ececec;
