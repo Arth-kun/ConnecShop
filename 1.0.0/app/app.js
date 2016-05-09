@@ -38,7 +38,8 @@ angular.module('app', [
     'app.eCommerce',
     'app.menu',
     'app.beacon',
-    'app.home'
+    'app.home',
+    'app.panier'
 ])
 .config(function ($provide, $httpProvider, RestangularProvider) {
 

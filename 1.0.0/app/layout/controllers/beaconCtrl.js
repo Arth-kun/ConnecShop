@@ -30,6 +30,21 @@ angular.module('app.beacon', ['ui.router'])
 		$scope.rayon = rayon;
 	});
 
+	$scope.addCart = function (product) {
+
+		if ($.isEmptyObject(localStorage)) {
+			var products=[];
+			products[0]=product;
+		}
+		else {
+			var products=JSON.parse(localStorage.getItem('articlesPanier'));
+			products[products.length]=product;
+		}
+
+		localStorage.articlesPanier = JSON.stringify(products);
+  		alert(localStorage.getItem('articlesPanier'));
+	}
+
 
 	function Opener () {
 

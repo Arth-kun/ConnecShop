@@ -15,7 +15,7 @@
 <!-- pulled right: button magasin, account, shopping cart -->
 <div id="buttonsPullRight" class="pull-right">
     
-    <div class="buttonMagContainer buttonContainer">
+    <div class="buttonMagContainer buttonContainer" onclick="localStorage.clear()">
         <div class="buttonMag buttonRight"></div>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="buttonAcc buttonRight"></div>
     </div>
 
-    <div class="buttonCartContainer buttonContainer">
+    <div class="buttonCartContainer buttonContainer" onclick="document.location.hash='#/panier'">
         <div class="buttonCart buttonRight"></div>
     </div>
 
