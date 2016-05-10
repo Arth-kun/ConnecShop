@@ -1,6 +1,6 @@
 <div class="changes">
-    <div class="headerChanges">
-        <span class="glyphicon glyphicon-menu-left returnButton" onclick="history.back()"></span>
+    <div class="headerChanges" onclick="history.back()">
+        <span class="glyphicon glyphicon-menu-left returnButton"></span>
         {{category}}
     </div>
 </div>
@@ -64,7 +64,7 @@
                 </p>
 
                 <div class="addCartProduct">
-                    <div class="addCartButton">AJOUTER AU PANIER</div>
+                    <div class="addCartButton" ng-click="addCart(product)">AJOUTER AU PANIER</div>
                 </div>
             </div>
 

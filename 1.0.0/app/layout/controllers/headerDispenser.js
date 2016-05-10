@@ -1,11 +1,13 @@
 function headerDispenser () {
 	if (document.location.hash==='#/home') {
-		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').removeClass('displayNone');
+		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome, #header #buttonsPullRight .nbArticlesPanier').removeClass('displayNone');
 	} else {
-		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').addClass('displayNone');
+		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome, #header #buttonsPullRight .nbArticlesPanier').addClass('displayNone');
 		
-		if (document.location.hash!=='#/panier') 
+		if (document.location.hash!=='#/panier') {
 			$('#header #buttonsPullRight .buttonCartContainer').removeClass('displayNone');
+			$('#header #buttonsPullRight .nbArticlesPanier').removeClass('displayNone');
+		}
 
 	}
 

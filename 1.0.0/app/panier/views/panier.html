@@ -2,9 +2,9 @@
 <div id="panier">
 
 	<div class="changes">
-	    <div class="headerChanges">
+	    <div class="headerChanges panierOverride">
 	        <span class="glyphicon glyphicon-menu-left returnButton" onclick="history.back()"></span>
-	        <span class="panierHeader"><span class="panierTitre">Mon Panier</span><span class="PanierNbArticles">({{nbArticles}} articles)</span></span>
+	        <span class="panierHeader"><span class="panierTitre">Mon Panier</span><span class="PanierNbArticles">({{nbArticles}} article<span ng-class="{displayNone:nbArticles<2}">s</span>)</span></span>
 	    </div>
 	</div>
 
@@ -18,9 +18,6 @@
 			<li class="panierStepsNumber panier5">5</li>
 		</ul>
 	</div>
-
-	
-
 
 
 
