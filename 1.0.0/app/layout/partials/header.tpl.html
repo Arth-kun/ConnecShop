@@ -15,7 +15,7 @@
 <!-- pulled right: button magasin, account, shopping cart -->
 <div id="buttonsPullRight" class="pull-right">
     
-    <div class="buttonMagContainer buttonContainer" onclick="sessionStorage.clear()">
+    <div class="buttonMagContainer buttonContainer">
         <div class="buttonMag buttonRight"></div>
     </div>
 
@@ -26,9 +26,10 @@
     <span class="controllerContainer" ng-controller="PanierController">
     <div class="buttonCartContainer buttonContainer" ng-click="goToPanier()">
         <div class="buttonCart buttonRight"></div>
+        <span class="nbArticlesPanier" ng-class="{displayNone:!nbArticles, twoDigits:nbArticles>9}">{{nbArticles}}</span>
     </div>
 
-    <span class="nbArticlesPanier" ng-class="{displayNone:!nbArticles, twoDigits:nbArticles>9}">{{nbArticles}}</span></span>
+    </span>
 
 </div>
 <!-- end pulled right: buttons -->

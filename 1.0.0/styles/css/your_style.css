@@ -1530,3 +1530,271 @@ body {
 	background-color: #FD7454;
 	border: 1px solid #FD7454;
 }
+
+
+/* panier_1.tpl.html */
+#panier_1stStep {
+	padding: 2% 8%;
+}
+
+#panier_1stStep .panierProducts {
+	position: relative;
+
+	background-color: #FFF;
+
+	border: 1px solid #ececec;
+	border-top: none;
+	border-radius: 6px;
+
+	box-shadow: 0px 1px 2px 0px rgba(155, 155, 155, 0.7); 
+
+	margin-bottom: 4%;
+}
+
+#panier_1stStep .panierProducts .imgContainer {
+	padding: 0px;
+	padding: 2.5% 1.75%;
+
+	border-right: 1px solid #ececec;
+
+	text-align: center;
+}
+
+#panier_1stStep .panierProducts .imgContainer img {
+	width: 100%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer {
+	font-family: Open Sans;
+	color: #313C3E;
+
+	padding-top: 3%;
+	padding-right: 0%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .removeFromPanier {
+	position: absolute;
+	top: 2px;
+	right: 5px;
+
+	width: 16px;
+	height: 16px;
+
+	padding-top: 4px; 
+
+	font-size: 0.7em;
+	color: #D2D2D2;
+	text-align: center;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productDesignation {
+	font-size: 1.1em;
+	font-weight: 600;
+
+	margin-bottom: 10%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productQuantity {
+	border: 1px solid #dfdfdf;
+	padding: 0% 9% 0% 2%;
+
+	position: relative;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productQuantity .quantityMoins,
+#panier_1stStep .panierProducts .productContentContainer .productQuantity .quantityPlus {
+	font-size: 0.7em;
+	font-weight: lighter;
+	color: #FFF;
+
+	background-color: #D2D2D2;
+
+	border: 1px solid #D2D2D2;
+	border-radius: 10px;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productQuantity .quantityNumber {
+	font-size: 0.9em;
+	font-weight: 600;
+	margin: 0% 2%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productQuantity .quantityPlus {
+	font-size: 0.5em;
+	padding: 2px;
+
+	position: absolute;
+	top: 5px;
+	bottom: 2px;
+	right: 5%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productsPrices {
+	position: absolute;
+	right: 7%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productsPrices .productRemise {
+	border: 1px solid #FD7454;
+	border-radius: 20px;
+
+	font-size: 0.8em;
+	color: #FFF;
+	background-color: #FD7454;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productsPrices .productRemise.beaconBg {
+	border: 1px solid #313C3E;
+	background-color: #313C3E;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productsPrices .productPrixBarre {
+	text-decoration: line-through;
+	font-size: 0.8em;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productsPrices .productPrixTTC {
+	color: #FD7454;
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+
+	/* Promo Tag Panier */
+
+#panier_1stStep .panierProducts .promTag{
+	position: absolute;
+	top: 0;
+	z-index: 904;
+
+	width: 25%;
+	height: 100%;
+
+	border: 0px solid transparent;
+	border-right: none;
+	border-bottom: none;
+	border-top-left-radius: 5px;
+	overflow: hidden;
+
+	margin-top: -1px;
+	margin-left: -1px;
+}
+
+#panier_1stStep .panierProducts .promTag .backgroundPromo {
+	position: absolute;
+	top: 0;
+
+	width: 90px;
+	height: 90px;
+
+	transform: rotate(-45deg) translateY(-70px) translateX(0px);
+}
+
+#panier_1stStep .panierProducts .promTagBeacon .backgroundPromo {
+	background: url(../img/octave/carre-beacon.png);
+}
+
+#panier_1stStep .panierProducts .promTagClassique .backgroundPromo {
+	background: url(../img/octave/carre-promo.png);
+}
+
+#panier_1stStep .panierProducts .promTag .textPromo {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+	color: #FFF;
+	font-size: 0.75em;
+	text-align: center;
+}
+
+#panier_1stStep .panierProducts .promTagBeacon .textPromo {
+	font-size: 0.6em;
+}
+
+#panier_1stStep .panierProducts .promTagBeacon .textPromo .exclu {
+	color: #FD7454;
+
+	margin-bottom: -2px;
+}
+
+#panier_1stStep .panierProducts .promTagBeacon .textPromo .mag {
+	margin-bottom: 1px;
+}
+
+	/* Frais de Port, Total + Boutton Continuer */
+#panier_1stStep .bilanPanier {
+	position: relative;
+
+	background-color: #FFF;
+
+	border: 1px solid #ececec;
+	border-top: none;
+	border-radius: 6px;
+
+	box-shadow: 0px 1px 2px 0px rgba(155, 155, 155, 0.7); 
+
+	margin-bottom: 4%;
+
+	font-family: Open Sans;
+	color: #313C3E;
+
+	padding: 0% 5%;
+}
+
+#panier_1stStep .bilanPanier .fraisDePort,
+#panier_1stStep .bilanPanier .prixTotal {
+	padding: 7% 0%;
+	position: relative;
+}
+
+#panier_1stStep .bilanPanier .prixTotal {
+	padding: 8% 0%;
+}
+
+#panier_1stStep .bilanPanier .fraisDePort {
+	border-bottom: 1px solid #ececec;
+}
+
+#panier_1stStep .bilanPanier .fraisDePort .textFraisDePort,
+#panier_1stStep .bilanPanier .prixTotal .textPrixTotal {
+	position: absolute;
+	left: 0%;
+	top: 25%;
+}
+
+#panier_1stStep .bilanPanier .fraisDePort .prixFraisDePort,
+#panier_1stStep .bilanPanier .prixTotal .prixPrixTotal {
+	position: absolute;
+	right: 0%;
+	top: 25%;
+}
+
+#panier_1stStep .bilanPanier .prixTotal .textPrixTotal {
+	font-weight: 600;
+}
+
+#panier_1stStep .bilanPanier .prixTotal .prixPrixTotal {
+	color: #FD7454;
+	font-size: 1.4em;
+	font-weight: 800;
+}
+
+#panier_1stStep .bouttonContinuerContainer {
+	padding: 0% 30%;
+}
+
+#panier_1stStep .bouttonContinuerContainer .bouttonContinuer {
+	background-color: #FD7454;
+	border: 1px solid #FD7454;
+	border-radius: 2px;
+
+	color: #F8F8F8;
+	text-align: center;
+	font-size: 1.000em;
+	text-shadow: 1px 1px 0px rgba(45, 45, 45, 0.25);
+
+	box-shadow: 0px 1px 3px rgba(45, 45, 45, 0.25);
+
+	padding: 5% 0% 6%;
+}

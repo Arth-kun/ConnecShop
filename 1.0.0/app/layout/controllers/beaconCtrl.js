@@ -31,49 +31,7 @@ angular.module('app.beacon', ['ui.router'])
 	});
 
 	$scope.addCart = function (product) {
-		//Il faudrait que le nombre d'article à choisir se fasse en fonction de nombre d'article disponible
-		var addCartPopup = {
-			state0: {
-				title: 'Quantité',
-				html:'<select name="quantity" class="form-control">'+
-				'<option value="1" selected>1</option>'+
-				'<option value="2">2</option>'+
-				'<option value="3">3</option>'+
-				'<option value="4">4</option>'+
-				'<option value="5">5</option>'+
-				'</select>',
-				buttons: { "Ajouter": true },
-				submit:function(e,v,m,f){
-
-				 	var quantity = parseInt(f.quantity);
-
-					if ($.isEmptyObject(sessionStorage)) {
-						var products=[];
-						product.quantity=quantity;
-						products[0]=product;
-					}
-					else {
-						var products=JSON.parse(sessionStorage.getItem('articlesPanier'));
-						product.quantity=quantity;
-						products[products.length]=product;
-					}
-
-					sessionStorage.articlesPanier = JSON.stringify(products);
-			  		//alert(sessionStorage.getItem('articlesPanier'));
-
-			  		angular.element($("#header #buttonsPullRight .buttonCartContainer")).scope().recalcNbArticles(quantity);
-
-
-			  		e.preventDefault();
-			  		$.prompt.nextState();
-  				}
-  			},
-  			state1: {
-  				title: 'Ajouté !',
-  				html: '<p>Votre produit a bien été ajouté.</p>',
-  			}
-		};
-		$.prompt(addCartPopup);
+    	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
 	}
 
 
