@@ -1558,6 +1558,8 @@ body {
 	border-right: 1px solid #ececec;
 
 	text-align: center;
+
+	min-height: 79px;
 }
 
 #panier_1stStep .panierProducts .imgContainer img {

@@ -1,6 +1,10 @@
 function headerDispenser () {
 	if (document.location.hash==='#/home') {
 		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').removeClass('displayNone');
+		if (newRayon) {
+			angular.element($("#beacon")).scope().showBeacon.show();
+			newRayon = false; //On décharge le booléan
+		}
 	} else {
 		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').addClass('displayNone');
 		

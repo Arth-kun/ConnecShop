@@ -3,6 +3,7 @@
 angular.module('app.home')
 
 .controller('HomeController', function ($scope) {
+
 	$scope.imagesCarousel = imagesCarsouel;
 
 	$scope.imagesMiseAvant = imagesMiseAvant;
