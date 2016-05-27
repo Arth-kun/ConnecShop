@@ -4,6 +4,15 @@ angular.module('app.home')
 
 .controller('HomeController', function ($scope) {
 
+
+	//FOR REAL WEB SERVICE
+	//MEILLEURESVENTES
+	/*$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
+  	.done(function(data) {
+    alert(JSON.stringify(data));
+  	});*/
+
+
 	$scope.imagesCarousel = imagesCarsouel;
 
 	$scope.imagesMiseAvant = imagesMiseAvant;
