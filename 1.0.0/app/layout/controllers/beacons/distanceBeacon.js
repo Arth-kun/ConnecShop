@@ -13,7 +13,7 @@ function distanceCalculator (beaconInfo) {
 		// On initialise chaque case beacon si elles n'existent pas
 		if (!distanceManager[beacon.minor])
 			distanceManager[beacon.minor]=[];
-		distanceManager[beacon.minor][compt]=beacon.distance;		
+		distanceManager[beacon.minor][compt]=beacon.distance;
 	}
 
 	//Verif value minor update
@@ -79,10 +79,10 @@ function distanceCalculating () {
 			for (var j in distances) {
 				if (distances[j]!=null) {
 					distanceTotal[distanceCompt]+=distances[j];
-					distLen[distanceCompt]=distances.length;
 				}
-
 			}
+			distLen[distanceCompt]=distances.length;
+
 
 			minors[distanceCompt]=i;
 

@@ -19,7 +19,7 @@ angular.module('app.panier')
 				$scope.nbArticles+=article.quantity;
 
 				article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity);
-				article.prixTTCStr=multiplyStr(article.prixTTC, article.quantity);
+				article.prixTTCStr=multiplyStr(article.PrixTTC, article.quantity);
 
 				totalPrix(article.prixTTCStr);
 			}
@@ -113,7 +113,10 @@ angular.module('app.panier')
   				html: '<p>Votre produit a bien été ajouté.</p>',
   			}
 		};
-		$.prompt(addCartPopup);
+		if (product.Stock)
+			$.prompt(addCartPopup);
+		else
+			$.prompt('Le produit n\'est plus en stock')
 	}
 
 	$scope.goToPanier = function () {

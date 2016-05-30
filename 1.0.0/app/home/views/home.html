@@ -32,11 +32,11 @@
 			</div>
 		</div>
 
-		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:$even, impair:$odd}" ng-repeat="articleVente in articlesMeilleureVente" ng-click="goToDetail(articleVente.id)">
+		<div class="col-xs-6 articleMeilleureVente" ng-class="{pair:$even, impair:$odd}" ng-repeat="articleVente in articlesMeilleureVente" ng-click="goToDetail(articleVente.ID)">
 			<div class="inner">	
 				<img class="imageArticle" ng-src="{{articleVente.img}}">
-				<p class="artDesignationVente">{{articleVente.designation}}</p>
-				<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.prixTTC}} €</span></p>
+				<p class="artDesignationVente">{{articleVente.ArtDesignation}}</p>
+				<p class="prixTTCVente">{{articleVente.prixText}} <span>{{articleVente.PrixTTC}} €</span></p>
 			</div>
 		</div>
 		

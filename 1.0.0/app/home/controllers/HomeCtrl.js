@@ -7,17 +7,21 @@ angular.module('app.home')
 
 	//FOR REAL WEB SERVICE
 	//MEILLEURESVENTES
-	/*$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
-  	.done(function(data) {
-    alert(JSON.stringify(data));
-  	});*/
+	$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
+  	.done(function(articlesMeilleureVente) {
+    	for (var article of articlesMeilleureVente) {
+    		article.img = "styles/img/demo/e-comm/1.png";
+    		article.prixText = "";
+    		article.PrixTTC = priceToString(article.PrixTTC);
+    	}
+
+    	$scope.articlesMeilleureVente = articlesMeilleureVente;
+  	});
 
 
 	$scope.imagesCarousel = imagesCarsouel;
 
 	$scope.imagesMiseAvant = imagesMiseAvant;
-
-	$scope.articlesMeilleureVente = articlesMeilleureVente;
 
 	$scope.goToDetail = function (id) {
 		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id;

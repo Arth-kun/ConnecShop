@@ -23,7 +23,7 @@ angular.module('app.beacon', ['ui.router'])
 		if (idRayon!=undefined) {
 
 			//FOR REAL WEB SERVICE
-			/*$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: "RAYON1" })
+			/*$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleParID", { id: "2299" })
   			.done(function(data) {
     			alert(JSON.stringify(data));
   			});*/
