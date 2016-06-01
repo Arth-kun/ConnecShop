@@ -18,11 +18,11 @@ angular.module('app.eCommerce')
 
         for (var product of products) {
 
-            product.imgs=[
-                "styles/img/demo/e-comm/1.png",
-                "styles/img/demo/e-comm/3.png",
-                "styles/img/demo/e-comm/4.png"
+            product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
             ];
+            for (var image of product.ImagesSecondaires) {
+                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
+            }
             product.idPromo = 1;
             product.remise = true;
             product.pourcentage = -30;
@@ -30,6 +30,7 @@ angular.module('app.eCommerce')
             product.PrixTTC = priceToString(product.PrixTTC);
              for (var avis of product.ListeAvis) {
                 avis.DateCreation = dateReformate(avis.DateCreation);
+                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
                 avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
             }
             if (product.ListeAvis.length>0)
@@ -54,23 +55,27 @@ angular.module('app.eCommerce')
         $scope.products = products;
     });
 
-    $scope.menuTitle =[
-        "Meilleures Ventes",
-        "Promotions du Moment"
-    ];
+    $scope.menuTitle={
+        "best":"Meilleures Ventes",
+        "PROMOMOMENT":"Promotions du Moment"
+    };
 
     getMenuByID(2);
     getMenuByID(0);
     getMenuByID(1);
 
-    if (idCategory==='Accueil') {
-    	$scope.category = idCategory;
-    } else {
-    	$scope.category = menuTitle[idCategory];
-	}
 
     $scope.description = new Dispenser();
     $scope.avis = new Dispenser();
+
+
+    $scope.category = function () {
+        if (idCategory==='Accueil') {
+            return idCategory;
+        } else {
+            return $scope.menuTitle[idCategory];
+        }
+    }
 
 
     $scope.addCart = function (product) {
@@ -94,11 +99,10 @@ angular.module('app.eCommerce')
     function getMenuByID (idMenu) {
         $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
-            var menuTitle = [];
+
             for (var category of categories) {
-                menuTitle.push(category.Theme);
+                $scope.menuTitle[category.KeyTheme] = category.Theme;
             }
-            $scope.menuTitle.push.apply(menuTitle);
         });
     }
 

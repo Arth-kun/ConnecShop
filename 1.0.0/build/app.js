@@ -2354,10 +2354,10 @@ $templateCache.put("app/calendar/views/calendar.tpl.html","<!-- MAIN CONTENT -->
 $templateCache.put("app/dashboard/projects/recent-projects.tpl.html","<div class=\"project-context hidden-xs dropdown\" dropdown>\n\n    <span class=\"label\">{{getWord(\'Projects\')}}:</span>\n    <span class=\"project-selector dropdown-toggle\" data-toggle=\"dropdown\">{{getWord(\'Recent projects\')}} <i ng-if=\"projects.length\"\n            class=\"fa fa-angle-down\"></i></span>\n\n    <ul class=\"dropdown-menu\" ng-if=\"projects.length\">\n        <li ng-repeat=\"project in projects\">\n            <a href=\"{{project.href}}\">{{project.title}}</a>\n        </li>\n        <li class=\"divider\"></li>\n        <li>\n            <a ng-click=\"clearProjects()\"><i class=\"fa fa-power-off\"></i> Clear</a>\n        </li>\n    </ul>\n\n</div>");
 $templateCache.put("app/dashboard/todo/todo-widget.tpl.html","<div id=\"todo-widget\" jarvis-widget data-widget-editbutton=\"false\" data-widget-color=\"blue\"\n     ng-controller=\"TodoCtrl\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-check txt-color-white\"></i> </span>\n\n        <h2> ToDo\'s </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <button class=\"btn btn-xs btn-default\" ng-class=\"{active: newTodo}\" ng-click=\"toggleAdd()\"><i ng-class=\"{ \'fa fa-plus\': !newTodo, \'fa fa-times\': newTodo}\"></i> Add</button>\n\n        </div>\n    </header>\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding smart-form\">\n            <!-- content goes here -->\n            <div ng-show=\"newTodo\">\n                <h5 class=\"todo-group-title\"><i class=\"fa fa-plus-circle\"></i> New Todo</h5>\n\n                <form name=\"newTodoForm\" class=\"smart-form\">\n                    <fieldset>\n                        <section>\n                            <label class=\"input\">\n                                <input type=\"text\" required class=\"input-lg\" ng-model=\"newTodo.title\"\n                                       placeholder=\"What needs to be done?\">\n                            </label>\n                        </section>\n                        <section>\n                            <div class=\"col-xs-6\">\n                                <label class=\"select\">\n                                    <select class=\"input-sm\" ng-model=\"newTodo.state\"\n                                            ng-options=\"state as state for state in states\"></select> <i></i> </label>\n                            </div>\n                        </section>\n                    </fieldset>\n                    <footer>\n                        <button ng-disabled=\"newTodoForm.$invalid\" type=\"button\" class=\"btn btn-primary\"\n                                ng-click=\"createTodo()\">\n                            Add\n                        </button>\n                        <button type=\"button\" class=\"btn btn-default\" ng-click=\"toggleAdd()\">\n                            Cancel\n                        </button>\n                    </footer>\n                </form>\n            </div>\n\n            <todo-list state=\"Critical\"  title=\"Critical Tasks\" icon=\"warning\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Important\" title=\"Important Tasks\" icon=\"exclamation\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Completed\" title=\"Completed Tasks\" icon=\"check\" todos=\"todos\"></todo-list>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>");
 $templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\n    <li class=\"dropdown\" dropdown>\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\n            <i class=\"fa fa-angle-down\"></i> </a>\n        <ul class=\"dropdown-menu pull-right\">\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\n            </li>\n        </ul>\n    </li>\n</ul>");
-$templateCache.put("app/layout/partials/beacon.tpl.html","<div id=\"beacon\" ng-controller=\"beaconController\" ng-class=\"{translateBeacon:showBeacon.doShow}\" class=\"displayNone\">\r\n\r\n	<!-- Button collapse beacon -->\r\n	<div class=\"flecheHome\" ng-click=\"showBeacon.show()\" ng-class=\"{\'menu-open\':showBeacon.doShow}\">\r\n		<span class=\"glyphicon fleche-span\" ng-class=\"{\'glyphicon-menu-right\':showBeacon.doShow, \'glyphicon-menu-left\':!showBeacon.doShow}\"></span>\r\n	</div>   \r\n	<!-- end Button collapse beacon -->\r\n\r\n	<div class=\"beaconPanel\">\r\n\r\n		<div class=\"excluMag\">\r\n			<div class=\"excluMagTitre\">\r\n				<span class=\"traitExclu\"></span>\r\n				<p class=\"exclusivite\">Exclusivités</p>\r\n				<p class=\"magasin\">MAGASIN</p>\r\n			</div>\r\n			<p class=\"nomRayon\">Rayon {{rayon.nomRayon}}</p>\r\n\r\n			<div class=\"produitsPromoBeacon\">\r\n				<div class=\"produitBeacon row product{{$index}}\" ng-repeat=\"bProd in rayon.products\" ng-class=\"{notLast:!$last}\" ng-click=\"bProd.detailProduct.open($index, bProd)\">\r\n					<div class=\"promTagBeacon\">\r\n						<span class=\"backgroundPromo\"><span class=\"textPromo\"><p class=\"exclu\">Exclusivité</p><p class=\"mag\">MAGASIN</p></span></span>\r\n					</div>\r\n					<span class=\"spanImg col-xs-3\"><img ng-src=\"{{bProd.imgs[0]}}\"></span>\r\n					<div class=\"produitContent col-xs-9\">\r\n						<div class=\"produitName\">{{bProd.designation}}</div>\r\n						<div class=\"produitNote\">\r\n							<span ng-switch=\"bProd.stars\" class=\"noteMoy\" ng-class=\"{displayNone:!bProd.note}\">\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n							</span>\r\n							<span class=\"produitAvis\" ng-class=\"{displayNone:!bProd.avis}\">{{bProd.avisContent.length}} avis</span>\r\n						</div>\r\n						<div class=\"produitPrix\">\r\n							<span class=\"produitRemise\">{{bProd.pourcentage}} %</span>\r\n							<span class=\"prixGroup\">\r\n								<span class=\"produitPrixBarre\">{{bProd.prixNonRemise}} €</span>\r\n								<span class=\"produitPrixTTC\">{{bProd.prixTTC}} €</span>\r\n							</span>\r\n						</div>\r\n						<div class=\"produitPanier\">\r\n							<div class=\"panierButton\" ng-click=\"addCart(bProd)\">AJOUTER AU PANIER</div>\r\n						</div>\r\n					</div>\r\n					<div class=\"col-xs-12 descAvis\" ng-class=\"{displayNone:!bProd.avis&&!bProd.description}\">\r\n						<div class=\"descriptionProduct\" ng-class=\"{displayNone:!bProd.description}\">\r\n							<div class=\"descriptionProductTitle\" ng-click=\"bProd.descriptionShow.dispDesc()\">\r\n								<span class=\"descriptionProductText\">Description</span>\r\n								<span class=\"glyphicon fleche-description pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.descriptionShow.showDesc, \'glyphicon-menu-up\':bProd.descriptionShow.showDesc}\"></span>\r\n							</div>\r\n							<p class=\"descriptionProductContent\" ng-class=\"{displayNone:!bProd.descriptionShow.showDesc}\">{{bProd.descriptionContent}}</p>\r\n						</div>\r\n\r\n						<div class=\"avisProduct\" ng-class=\"{displayNone:!bProd.avis}\">\r\n							<div class=\"avisProductTitle\" ng-click=\"bProd.avisShow.dispDesc()\">\r\n								<span class=\"avisProductText\">Avis</span>\r\n								<span class=\"glyphicon fleche-avis pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.avisShow.showDesc, \'glyphicon-menu-up\':bProd.avisShow.showDesc}\"></span>\r\n							</div>\r\n							<div class=\"avisProductContent\" ng-class=\"{displayNone:!bProd.avisShow.showDesc}\">\r\n								<ul class=\"listAvis\">\r\n									<li class=\"listAvisProduct\" ng-repeat=\"avisCt in bProd.avisContent\" ng-class=\"{notLast:!$last}\">\r\n										<p class=\"listAvisProductHead\">\r\n											<span class=\"pseudoAvis\">{{avisCt.auteur}}</span>\r\n											<span class=\"starsavis pull-right\">\r\n												<span ng-switch=\"avisCt.stars\" class=\"noteMoy\">\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n												</span>\r\n											</span>\r\n										</p>\r\n										<p class=\"listAvisProductText\">{{avisCt.text}}</p>\r\n										<p class=\"listAvisProductDate\">{{avisCt.date}}</p>\r\n									</li>\r\n								</ul>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class=\"dejaVus\">\r\n				<span class=\"textDejaVus\">produits déjà vus</span>\r\n			</div>\r\n		</div>\r\n\r\n\r\n		<div class=\"conseils\">\r\n			<div class=\"conseilsTitreContainer\">\r\n				<div class=\"conseilsTitre\">CONSEILS</div>\r\n			</div>\r\n			<div class=\"conseilsContent row\" ng-repeat=\"conseil in rayon.conseils\">\r\n				<div class=\"imgContainer col-xs-3\">\r\n					<img ng-src=\"{{conseil.img}}\">\r\n				</div>\r\n				<div class=\"conseilContainer col-xs-9\">\r\n					<p class=\"titreConseil\">{{conseil.titre}}</p>\r\n					<p class=\"apercuConseil\">{{conseil.apercu}}</p>\r\n				</div>\r\n			</div>\r\n		</div>\r\n\r\n	</div>\r\n\r\n</div>");
+$templateCache.put("app/layout/partials/beacon.tpl.html","<div id=\"beacon\" ng-controller=\"beaconController\" ng-class=\"{translateBeacon:showBeacon.doShow}\" class=\"displayNone\">\r\n\r\n	<!-- Button collapse beacon -->\r\n	<div class=\"flecheHome\" ng-click=\"showBeacon.show()\" ng-class=\"{\'menu-open\':showBeacon.doShow}\">\r\n		<span class=\"glyphicon fleche-span\" ng-class=\"{\'glyphicon-menu-right\':showBeacon.doShow, \'glyphicon-menu-left\':!showBeacon.doShow}\"></span>\r\n	</div>   \r\n	<!-- end Button collapse beacon -->\r\n\r\n	<div class=\"beaconPanel\">\r\n\r\n		<div class=\"excluMag\">\r\n			<div class=\"excluMagTitre\">\r\n				<span class=\"traitExclu\"></span>\r\n				<p class=\"exclusivite\">Exclusivités</p>\r\n				<p class=\"magasin\">MAGASIN</p>\r\n			</div>\r\n			<p class=\"nomRayon\">Rayon {{nomRayon}}</p>\r\n\r\n			<div class=\"produitsPromoBeacon\">\r\n				<div class=\"produitBeacon row product{{$index}}\" ng-repeat=\"bProd in rayon\" ng-class=\"{notLast:!$last}\" ng-click=\"bProd.detailProduct.open($index, bProd)\">\r\n					<div class=\"promTagBeacon\">\r\n						<span class=\"backgroundPromo\"><span class=\"textPromo\"><p class=\"exclu\">Exclusivité</p><p class=\"mag\">MAGASIN</p></span></span>\r\n					</div>\r\n					<span class=\"spanImg col-xs-3\"><img ng-src=\"{{bProd.imgs[0]}}\"></span>\r\n					<div class=\"produitContent col-xs-9\">\r\n						<div class=\"produitName\">{{bProd.ArtDesignation}}</div>\r\n						<div class=\"produitNote\">\r\n							<span ng-switch=\"bProd.Note\" class=\"noteMoy\" ng-class=\"{displayNone:!bProd.hasNote}\">\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n							</span>\r\n							<span class=\"produitAvis\" ng-class=\"{displayNone:!bProd.avis}\">{{bProd.ListeAvis.length}} avis</span>\r\n						</div>\r\n						<div class=\"produitPrix\">\r\n							<span class=\"produitRemise\">{{bProd.pourcentage}} %</span>\r\n							<span class=\"prixGroup\">\r\n								<span class=\"produitPrixBarre\">{{bProd.prixNonRemise}} €</span>\r\n								<span class=\"produitPrixTTC\">{{bProd.PrixTTC}} €</span>\r\n							</span>\r\n						</div>\r\n						<div class=\"produitPanier\">\r\n							<div class=\"panierButton\" ng-click=\"addCart(bProd)\" ng-class=\'{noStock:!bProd.Stock}\'>AJOUTER AU PANIER</div>\r\n						</div>\r\n					</div>\r\n					<div class=\"col-xs-12 descAvis\" ng-class=\"{displayNone:!bProd.avis&&!bProd.description}\">\r\n						<div class=\"descriptionProduct\" ng-class=\"{displayNone:!bProd.description}\">\r\n							<div class=\"descriptionProductTitle\" ng-click=\"bProd.descriptionShow.dispDesc()\">\r\n								<span class=\"descriptionProductText\">Description</span>\r\n								<span class=\"glyphicon fleche-description pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.descriptionShow.showDesc, \'glyphicon-menu-up\':bProd.descriptionShow.showDesc}\"></span>\r\n							</div>\r\n							<p class=\"descriptionProductContent\" ng-class=\"{displayNone:!bProd.descriptionShow.showDesc}\">{{bProd.CatHTMLDesignation}}</p>\r\n						</div>\r\n\r\n						<div class=\"avisProduct\" ng-class=\"{displayNone:!bProd.avis}\">\r\n							<div class=\"avisProductTitle\" ng-click=\"bProd.avisShow.dispDesc()\">\r\n								<span class=\"avisProductText\">Avis</span>\r\n								<span class=\"glyphicon fleche-avis pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.avisShow.showDesc, \'glyphicon-menu-up\':bProd.avisShow.showDesc}\"></span>\r\n							</div>\r\n							<div class=\"avisProductContent\" ng-class=\"{displayNone:!bProd.avisShow.showDesc}\">\r\n								<ul class=\"listAvis\">\r\n									<li class=\"listAvisProduct\" ng-repeat=\"avisCt in bProd.ListeAvis\" ng-class=\"{notLast:!$last}\">\r\n										<p class=\"listAvisProductHead\">\r\n											<span class=\"pseudoAvis\">{{avisCt.Pseudo}}</span>\r\n											<span class=\"starsavis pull-right\">\r\n												<span ng-switch=\"avisCt.Note\" class=\"noteMoy\">\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n												</span>\r\n											</span>\r\n										</p>\r\n										<p class=\"listAvisProductText\">{{avisCt.Commentaire}}</p>\r\n										<p class=\"listAvisProductDate\">{{avisCt.DateCreation}}</p>\r\n									</li>\r\n								</ul>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class=\"dejaVus\">\r\n				<span class=\"textDejaVus\">produits déjà vus</span>\r\n			</div>\r\n		</div>\r\n\r\n\r\n		<div class=\"conseils\">\r\n			<div class=\"conseilsTitreContainer\">\r\n				<div class=\"conseilsTitre\">CONSEILS</div>\r\n			</div>\r\n			<div class=\"conseilsContent row\" ng-repeat=\"conseil in conseils\">\r\n				<div class=\"imgContainer col-xs-3\">\r\n					<img ng-src=\"{{conseil.img}}\">\r\n				</div>\r\n				<div class=\"conseilContainer col-xs-9\">\r\n					<p class=\"titreConseil\">{{conseil.titre}}</p>\r\n					<p class=\"apercuConseil\">{{conseil.apercu}}</p>\r\n				</div>\r\n			</div>\r\n		</div>\r\n\r\n	</div>\r\n\r\n</div>");
 $templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">SmartAdmin WebApp © 2013-2016</span>\n        </div>\n\n        <div class=\"col-xs-6 col-sm-6 text-right hidden-xs\">\n            <div class=\"txt-color-white inline-block\">\n                <i class=\"txt-color-blueLight hidden-mobile\">Last account activity <i class=\"fa fa-clock-o\"></i>\n                    <strong>52 mins ago &nbsp;</strong> </i>\n\n                <div class=\"btn-group dropup\">\n                    <button class=\"btn btn-xs dropdown-toggle bg-color-blue txt-color-white\" data-toggle=\"dropdown\">\n                        <i class=\"fa fa-link\"></i> <span class=\"caret\"></span>\n                    </button>\n                    <ul class=\"dropdown-menu pull-right text-left\">\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Download Progress</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 50%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Server Load</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 20%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Memory Load <span class=\"text-danger\">*critical*</span>\n                                </p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-danger\" style=\"width: 70%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <button class=\"btn btn-block btn-default\">refresh</button>\n                            </div>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
 $templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\n\n<!-- pulled left: menu + logo -->\n<div class=\"pull-left\">\n\n    <span id=\"logo\"> <img class=\"logoImage\" src=\"styles/img/octave/logo.png\" alt=\"ConnecShop\"> </span>\n</div>\n<!-- end pulled left: menu + logo -->\n\n<!-- pulled right: button magasin, account, shopping cart -->\n<div id=\"buttonsPullRight\" class=\"pull-right\">\n    \n    <div class=\"buttonMagContainer buttonContainer\" onclick=\"sessionStorage.clear()\">\n        <div class=\"buttonMag buttonRight\"></div>\n    </div>\n\n    <div class=\"buttonAccContainer buttonContainer\">\n        <div class=\"buttonAcc buttonRight\"></div>\n    </div>\n\n    <span class=\"controllerContainer\" ng-controller=\"PanierController\">\n    <div class=\"buttonCartContainer buttonContainer\" ng-click=\"goToPanier()\">\n        <div class=\"buttonCart buttonRight\"></div>\n        <span class=\"nbArticlesPanier\" ng-class=\"{displayNone:!nbArticles, twoDigits:nbArticles>9}\">{{nbArticles}}</span>\n    </div>\n\n    </span>\n\n</div>\n<!-- end pulled right: buttons -->\n\n\n\n\n</header>");
-$templateCache.put("app/layout/partials/menu.tpl.html","<div id=\"menu-panel\" class=\"row\" ng-controller=\"menuController\">	\r\n	<div id=\"menu-interface\" class=\"col-xs-12\">\r\n\r\n		<div class=\"menu-content\" ng-repeat=\"menu in menus\">\r\n			<h1 class=\"menu-head\">\r\n				<span ng-class=\"{firstHead:$first}\">{{menu.head}}</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories\" ng-class=\"{main:$first, last:$last}\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in menu.categories\" ng-class=\"{notfirst:$index, last:$last}\" ng-click=\"goToList(categorie.id)\">\r\n					{{categorie.name}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n	</div>\r\n</div>");
+$templateCache.put("app/layout/partials/menu.tpl.html","<div id=\"menu-panel\" class=\"row\" ng-controller=\"menuController\">	\r\n	<div id=\"menu-interface\" class=\"col-xs-12\">\r\n\r\n		<div class=\"menu-content\">\r\n			<h1 class=\"menu-head\">\r\n				<span class=\"firstHead\">Menu</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories first\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in categories\" ng-class=\"{notfirst:$index, last:$last}\" ng-click=\"goToList(categorie.key)\">\r\n					{{categorie.name}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n		<div class=\"menu-content\">\r\n			<h1 class=\"menu-head\">\r\n				<span class=\"firstHead\">A propos</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories last\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in aPropos\" ng-class=\"{notfirst:$index, last:$last}\">\r\n					{{categorie}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n	</div>\r\n</div>");
 $templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div login-info></div>\n    <!-- end user info -->\n\n    <nav>\n        <!-- NOTE: Notice the gaps after each icon usage <i></i>..\n        Please note that these links work a bit different than\n        traditional href=\"\" links. See documentation for details.\n        -->\n\n        <ul data-smart-menu>\n\n            <li data-ui-sref-active=\"active\">\n                <a data-ui-sref=\"app.home\" title=\"Outlook\">\n                    <i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">{{getWord(\'Home\')}}</span></a>\n            </li>\n\n        </ul>\n\n        <!-- NOTE: This allows you to pull menu items from server -->\n        <!-- <ul data-smart-menu-items=\"/api/menu-items.json\"></ul> -->\n    </nav>\n\n  <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\n    <i class=\"fa fa-arrow-circle-left hit\"></i>\n  </span>\n\n</aside>");
 $templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\n    <ul id=\"sparks\" class=\"\">\n        <li class=\"sparks-info\">\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n    </ul>\n</div>\n			");
 $templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\n\n<!-- MODAL PLACE HOLDER\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\n<div class=\"modal-dialog\">\n<div class=\"modal-content\"></div>\n</div>\n</div>   -->\n<!--////////////////////////////////////-->\n\n<!--<div class=\"modal-header\">\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\n&times;\n</button>\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\n</div>-->\n<div class=\"modal-body\">\n\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\n	<hr class=\"simple\">\n	<h5>Instruction</h5>\n\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\n	<br>\n	<br>\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\n	<br>\n	<br>\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\n	<br>\n	<br>\n	<h5>Commands</h5>\n	<ul>\n		<li>\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\n		</li>\n		<li>\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\n		</li>\n		<li>\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\n		</li>\n		<li>\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\n		</li>\n		<li>\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\n		</li>\n		<li>\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\n		</li>\n		<li>\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\n		</li>\n		<li>\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\n		</li>\n		<li>\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\n		</li>\n		<li>\n			<strong>\'logout\'</strong> - logs you out\n		</li>\n	</ul>\n	<br>\n	<h5>Adding your own commands</h5>\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \n\n	<hr class=\"simple\">\n	<div class=\"text-right\">\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\n			Got it!\n		</button>\n	</div>\n\n</div>\n<!--<div class=\"modal-footer\">\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\n</div> -->");
@@ -2875,11 +2875,11 @@ angular.module('app.eCommerce')
 
         for (var product of products) {
 
-            product.imgs=[
-                "styles/img/demo/e-comm/1.png",
-                "styles/img/demo/e-comm/3.png",
-                "styles/img/demo/e-comm/4.png"
+            product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
             ];
+            for (var image of product.ImagesSecondaires) {
+                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
+            }
             product.idPromo = 1;
             product.remise = true;
             product.pourcentage = -30;
@@ -2887,6 +2887,7 @@ angular.module('app.eCommerce')
             product.PrixTTC = priceToString(product.PrixTTC);
              for (var avis of product.ListeAvis) {
                 avis.DateCreation = dateReformate(avis.DateCreation);
+                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
                 avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
             }
             if (product.ListeAvis.length>0)
@@ -2911,23 +2912,27 @@ angular.module('app.eCommerce')
         $scope.products = products;
     });
 
-    $scope.menuTitle =[
-        "Meilleures Ventes",
-        "Promotions du Moment"
-    ];
+    $scope.menuTitle={
+        "best":"Meilleures Ventes",
+        "PROMOMOMENT":"Promotions du Moment"
+    };
 
     getMenuByID(2);
     getMenuByID(0);
     getMenuByID(1);
 
-    if (idCategory==='Accueil') {
-    	$scope.category = idCategory;
-    } else {
-    	$scope.category = menuTitle[idCategory];
-	}
 
     $scope.description = new Dispenser();
     $scope.avis = new Dispenser();
+
+
+    $scope.category = function () {
+        if (idCategory==='Accueil') {
+            return idCategory;
+        } else {
+            return $scope.menuTitle[idCategory];
+        }
+    }
 
 
     $scope.addCart = function (product) {
@@ -2951,11 +2956,10 @@ angular.module('app.eCommerce')
     function getMenuByID (idMenu) {
         $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
-            var menuTitle = [];
+
             for (var category of categories) {
-                menuTitle.push(category.Theme);
+                $scope.menuTitle[category.KeyTheme] = category.Theme;
             }
-            $scope.menuTitle.push.apply(menuTitle);
         });
     }
 
@@ -2981,16 +2985,60 @@ angular.module('app.eCommerce')
 
 	var hashCategory = document.location.hash.split("/");
     var idCategory = hashCategory[3];
+    $scope.idCategory = idCategory;
 
-    $http.get('http://ressource.octave.biz/ac01/connecshop/productslist/'+idCategory+'.json', { responseType: "json" })
-    .success(function (productsList) {
-      $scope.productsList = productsList;
-    	$scope.nbArticle = productsList.products.length;
+    $scope.menuTitle={
+        "best":"Meilleures Ventes",
+        "PROMOMOMENT":"Promotions du Moment"
+    };
+
+    getMenuByID(2);
+    getMenuByID(0);
+    getMenuByID(1);
+
+
+    if (idCategory=='best') {
+        var requetePost = $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes");
+    } else {
+        var requetePost = $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeArticlesParCategorie", { categorie: idCategory });
+    }
+
+    requetePost
+    .done(function(productsList) {
+
+        for (var product of productsList) {
+            product.remise = true;
+            product.pourcentage = -30;
+            product.prixNonRemise = '900';
+
+            if (product.Note===0)
+                product.hasNote = false;
+            else
+                product.hasNote = true;
+
+            product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
+            product.PrixTTC = priceToString(product.PrixTTC);
+        }
+
+        $scope.productsList = productsList;
+        $scope.nbArticle = productsList.length;
     });
 
+
     $scope.goToDetail = function (id) {
-		document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id;
-	}
+      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id;
+    }
+
+    function getMenuByID (idMenu) {
+        $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+        .done(function(categories) {
+
+            for (var category of categories) {
+                $scope.menuTitle[category.KeyTheme] = category.Theme;
+            }
+        });
+    }
+
 
 });
 
@@ -3610,13 +3658,12 @@ angular.module('app.home')
 
 .controller('HomeController', function ($scope) {
 
-
 	//FOR REAL WEB SERVICE
 	//MEILLEURESVENTES
 	$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
     	for (var article of articlesMeilleureVente) {
-    		article.img = "styles/img/demo/e-comm/1.png";
+    		article.img = "http://ac01.ow04.fr/I-Moyenne-"+article.IDImage+".net.jpg";
     		article.prixText = "";
     		article.PrixTTC = priceToString(article.PrixTTC);
     	}
@@ -3670,70 +3717,6 @@ var imagesMiseAvant = [{
 	"src":"styles/img/octave/miseavant2.png",
 	"url":"#/e-commerce/products-list/14"
 }];
-
-
-// Il y aura des propriété à ajouter avec les services
-var articlesMeilleureVente = [{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-}]
 "use strict";
 
 angular.module('app.inbox').directive('messageLabels', function (InboxConfig) {
@@ -3823,23 +3806,54 @@ angular.module('app.beacon', ['ui.router'])
 		}
 	});
 
+	//var idRayon = 'RAYON1';//Test PC
+	
 	$scope.selectRayon = function (idRayon) {
 
 		if (idRayon!=undefined) {
 
 			//FOR REAL WEB SERVICE
-			/*$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleParID", { id: "2299" })
-  			.done(function(data) {
-    			alert(JSON.stringify(data));
-  			});*/
+			$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: idRayon })
+  			.done(function(rayon) {
 
-			$http.get('http://ressource.octave.biz/ac01/connecshop/productsbeacon/'+idRayon+'.json', { responseType: "json" })
-			.success(function (rayon) {
+				for (var product of rayon) {
+					product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
+		            ];
+		            for (var image of product.ImagesSecondaires) {
+		                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
+		            }
+		            product.idPromo = 2;
+		            product.remise = true;
+		            product.pourcentage = -30;
+		            product.prixNonRemise = "900";
+		            product.PrixTTC = priceToString(product.PrixTTC);
+		             for (var avis of product.ListeAvis) {
+		                avis.DateCreation = dateReformate(avis.DateCreation);
+		                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
+		                avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
+		            }
+		            if (product.ListeAvis.length>0)
+		                product.avis = true;   
+		            else
+		                product.avis = false;
+		            
+		            product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
+		            if (product.CatHTMLDesignation==="")
+		                product.description = false;
+		            else
+		                product.description = true;
 
-				for (var product of rayon.products) {
+		            if (product.Note===0)
+		                product.hasNote = false;
+		            else
+		                product.hasNote = true;
+
+
 					product.descriptionShow = new Dispenser();
 					product.avisShow = new Dispenser();
 					product.detailProduct = new Opener();
+
+					$scope.nomRayon = product.Theme;
 				}
 
 				$scope.rayon = rayon;
@@ -3847,6 +3861,14 @@ angular.module('app.beacon', ['ui.router'])
 
 		}
 	}
+
+	$scope.conseils = [{
+		"id":0,
+		"titre":"Bien choisir son rouge à lèvres !",
+		"img":"styles/img/demo/e-comm/2.png",
+		"apercu":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
+	}];
+
 
 	$scope.addCart = function (product) {
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
@@ -3869,7 +3891,7 @@ angular.module('app.beacon', ['ui.router'])
 
 			var rayon = $scope.rayon;
 
-			for (var product of rayon.products) {
+			for (var product of rayon) {
 				if (product != bProd) {
 					product.avisShow.showDesc = false;
 					product.descriptionShow.showDesc = false;
@@ -3929,7 +3951,6 @@ angular.module('app.beacon', ['ui.router'])
 	}
 
 });
-
 function headerDispenser () {
 	if (document.location.hash==='#/home') {
 		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').removeClass('displayNone');
@@ -3985,9 +4006,29 @@ function dateReformate (str) {
 
 angular.module('app.menu', ['ui.router'])
 
-.controller('menuController', function ($scope) {	
+.controller('menuController', function ($scope) {
 
-	$scope.menus = menus;
+	$scope.categories = [{
+		"name":"Meilleures Ventes",
+		"key":"best"
+	},{
+		"name":"Promotions du Moment",
+		"key":"PROMOMOMENT"
+	}];
+
+	$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : 2 })
+        .done(function(categories) {
+
+        for (var category of categories) {
+        	var theme = {};
+        	theme.name = category.Theme;
+        	theme.key = category.KeyTheme;
+            $scope.categories.push(theme);
+        }
+    });	
+
+
+	$scope.aPropos = aPropos;
 
 	$scope.goToList = function (id) {
 		document.location.hash = '#/e-commerce/products-list/'+id;
@@ -4028,52 +4069,11 @@ angular.module('app.menu', ['ui.router'])
 
 });
 
-var menus = [{
-	"head":"Menu",
-	"categories":[{
-	"name":"Meilleures Ventes",
-	"id":0
-},{
-	"name":"Promotions du Moment",
-	"id":1
-},{
-	"name":"Catégorie 1",
-	"id":2
-},{
-	"name":"Catégorie 2",
-	"id":3
-},{
-	"name":"Catégorie 3",
-	"id":4
-},{
-	"name":"Catégorie 4",
-	"id":5
-},{
-	"name":"Catégorie 5",
-	"id":6
-},{
-	"name":"Catégorie 6",
-	"id":7
-},{
-	"name":"Catégorie 7",
-	"id":8
-},{
-	"name":"Catégorie 8",
-	"id":9
-	}]
-}, {
-	"head":"A propos",
-	"categories":[{
-	"name":"Qui sommes nous ?",
-	"id":10
-},{
-	"name":"CGV",
-	"id":11
-},{
-	"name":"Nous contacter",
-	"id":12
-	}]
-}]
+var aPropos = [
+	"Qui sommes nous ?",
+	"CGV",
+	"Nous contacter"
+];
 "use strict";
 
 angular.module('app').controller("LanguagesCtrl",  function LanguagesCtrl($scope, $rootScope, $log, Language){
@@ -8672,7 +8672,7 @@ var beaconApp = (function()
                     var idChoosen = productChooser(minorChoosen);
 
                     if ((sameId==undefined)||((sameId!=idChoosen)&&(!angular.element($("#beacon")).scope().showBeacon.doShow))) {
-                        //alert(sameId+''+idChoosen);
+                        //alert(sameId+''+idChoosen);//LOG
                         angular.element($("#beacon")).scope().selectRayon(idChoosen);
                         window.navigator.vibrate([600, 300, 600]);
 
@@ -8740,23 +8740,23 @@ function productChooser (minor) {
 	// récupèré dans les bdd dans le futur
 	switch (minor) {
 		case 46204 :
-			return 0;
+			return 'RAYON1';
 		case 35520 :
-			return 1;
+			return 'RAYON2';
 		case 8227 :
-			return 2;
+			return 'RAYON3';
 		case 21493 :
-			return 3;
+			return 'RAYON4';
 		case 37996 :
-			return 4;
+			return 'RAYON5';
 		case 45531 :
-			return 5;
+			return 'RAYON6';
 		case 9777 :
-			return 6;
+			return 'RAYON7';
 		case 43737 :
-			return 7;
+			return 'RAYON8';
 		case 23810 :
-			return 8;
+			return 'RAYON9';
 	}
 }
 'use strict';

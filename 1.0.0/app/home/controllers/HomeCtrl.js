@@ -4,13 +4,12 @@ angular.module('app.home')
 
 .controller('HomeController', function ($scope) {
 
-
 	//FOR REAL WEB SERVICE
 	//MEILLEURESVENTES
 	$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
     	for (var article of articlesMeilleureVente) {
-    		article.img = "styles/img/demo/e-comm/1.png";
+    		article.img = "http://ac01.ow04.fr/I-Moyenne-"+article.IDImage+".net.jpg";
     		article.prixText = "";
     		article.PrixTTC = priceToString(article.PrixTTC);
     	}
@@ -64,67 +63,3 @@ var imagesMiseAvant = [{
 	"src":"styles/img/octave/miseavant2.png",
 	"url":"#/e-commerce/products-list/14"
 }];
-
-
-// Il y aura des propriété à ajouter avec les services
-var articlesMeilleureVente = [{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-},{
-	"id":"0",
-	"img":"styles/img/demo/e-comm/1.png",
-	"designation":"Sac à main",
-	"prixText":"à partir de",
-	"prixTTC": "49,00"
-},{
-	"id":"1",
-	"img":"styles/img/demo/e-comm/2.png",
-	"designation":"Rouge à lèvres",
-	"prixText":"",
-	"prixTTC": "26,90"
-}]

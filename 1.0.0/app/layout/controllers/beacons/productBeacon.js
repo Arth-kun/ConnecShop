@@ -3,22 +3,22 @@ function productChooser (minor) {
 	// récupèré dans les bdd dans le futur
 	switch (minor) {
 		case 46204 :
-			return 0;
+			return 'RAYON1';
 		case 35520 :
-			return 1;
+			return 'RAYON2';
 		case 8227 :
-			return 2;
+			return 'RAYON3';
 		case 21493 :
-			return 3;
+			return 'RAYON4';
 		case 37996 :
-			return 4;
+			return 'RAYON5';
 		case 45531 :
-			return 5;
+			return 'RAYON6';
 		case 9777 :
-			return 6;
+			return 'RAYON7';
 		case 43737 :
-			return 7;
+			return 'RAYON8';
 		case 23810 :
-			return 8;
+			return 'RAYON9';
 	}
 }

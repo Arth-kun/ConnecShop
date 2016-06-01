@@ -18,23 +18,54 @@ angular.module('app.beacon', ['ui.router'])
 		}
 	});
 
+	//var idRayon = 'RAYON1';//Test PC
+	
 	$scope.selectRayon = function (idRayon) {
 
 		if (idRayon!=undefined) {
 
 			//FOR REAL WEB SERVICE
-			/*$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleParID", { id: "2299" })
-  			.done(function(data) {
-    			alert(JSON.stringify(data));
-  			});*/
+			$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: idRayon })
+  			.done(function(rayon) {
 
-			$http.get('http://ressource.octave.biz/ac01/connecshop/productsbeacon/'+idRayon+'.json', { responseType: "json" })
-			.success(function (rayon) {
+				for (var product of rayon) {
+					product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
+		            ];
+		            for (var image of product.ImagesSecondaires) {
+		                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
+		            }
+		            product.idPromo = 2;
+		            product.remise = true;
+		            product.pourcentage = -30;
+		            product.prixNonRemise = "900";
+		            product.PrixTTC = priceToString(product.PrixTTC);
+		             for (var avis of product.ListeAvis) {
+		                avis.DateCreation = dateReformate(avis.DateCreation);
+		                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
+		                avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
+		            }
+		            if (product.ListeAvis.length>0)
+		                product.avis = true;   
+		            else
+		                product.avis = false;
+		            
+		            product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
+		            if (product.CatHTMLDesignation==="")
+		                product.description = false;
+		            else
+		                product.description = true;
 
-				for (var product of rayon.products) {
+		            if (product.Note===0)
+		                product.hasNote = false;
+		            else
+		                product.hasNote = true;
+
+
 					product.descriptionShow = new Dispenser();
 					product.avisShow = new Dispenser();
 					product.detailProduct = new Opener();
+
+					$scope.nomRayon = product.Theme;
 				}
 
 				$scope.rayon = rayon;
@@ -42,6 +73,14 @@ angular.module('app.beacon', ['ui.router'])
 
 		}
 	}
+
+	$scope.conseils = [{
+		"id":0,
+		"titre":"Bien choisir son rouge à lèvres !",
+		"img":"styles/img/demo/e-comm/2.png",
+		"apercu":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
+	}];
+
 
 	$scope.addCart = function (product) {
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
@@ -64,7 +103,7 @@ angular.module('app.beacon', ['ui.router'])
 
 			var rayon = $scope.rayon;
 
-			for (var product of rayon.products) {
+			for (var product of rayon) {
 				if (product != bProd) {
 					product.avisShow.showDesc = false;
 					product.descriptionShow.showDesc = false;

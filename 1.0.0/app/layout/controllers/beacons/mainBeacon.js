@@ -47,7 +47,7 @@ var beaconApp = (function()
                     var idChoosen = productChooser(minorChoosen);
 
                     if ((sameId==undefined)||((sameId!=idChoosen)&&(!angular.element($("#beacon")).scope().showBeacon.doShow))) {
-                        //alert(sameId+''+idChoosen);
+                        //alert(sameId+''+idChoosen);//LOG
                         angular.element($("#beacon")).scope().selectRayon(idChoosen);
                         window.navigator.vibrate([600, 300, 600]);
 
