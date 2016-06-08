@@ -13,7 +13,7 @@ angular.module('app.eCommerce')
 
     //FOR REAL WEB SERVICE
     //ARTICLEDETAIL
-    $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleParID", { id: idProduct })
+    $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleParID", { id: idProduct })
     .done(function(products) {
 
         for (var product of products) {
@@ -97,7 +97,7 @@ angular.module('app.eCommerce')
 
 
     function getMenuByID (idMenu) {
-        $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+        $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
 
             for (var category of categories) {
@@ -109,13 +109,13 @@ angular.module('app.eCommerce')
 
     $(document).ready(function () {
 
-		$('.carousel, .promoTag').hammer().on("swipeleft", function(){
-			$('.carousel').carousel('next');
-		});
+        $('.carousel, .promoTag').hammer().on("swipeleft", function(){
+            $('.carousel').carousel('next');
+        });
 
-		$('.carousel, .promoTag').hammer().on("swiperight", function(){
-			$('.carousel').carousel('prev');
-		});
+        $('.carousel, .promoTag').hammer().on("swiperight", function(){
+            $('.carousel').carousel('prev');
+        });
 		
 	});
 

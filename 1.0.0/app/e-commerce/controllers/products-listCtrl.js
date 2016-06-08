@@ -19,9 +19,9 @@ angular.module('app.eCommerce')
 
 
     if (idCategory=='best') {
-        var requetePost = $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes");
+        var requetePost = $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes");
     } else {
-        var requetePost = $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeArticlesParCategorie", { categorie: idCategory });
+        var requetePost = $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeArticlesParCategorie", { categorie: idCategory });
     }
 
     requetePost
@@ -51,7 +51,7 @@ angular.module('app.eCommerce')
     }
 
     function getMenuByID (idMenu) {
-        $.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+        $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
 
             for (var category of categories) {

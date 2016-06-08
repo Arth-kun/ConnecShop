@@ -278,8 +278,7 @@ body {
 }
 
 .noStock {
-	background-color: grey!important;
-	border-color: grey!important;
+	opacity: 0.4;
 }
 
 /* menu.tpl.html */

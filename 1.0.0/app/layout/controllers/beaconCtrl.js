@@ -25,7 +25,7 @@ angular.module('app.beacon', ['ui.router'])
 		if (idRayon!=undefined) {
 
 			//FOR REAL WEB SERVICE
-			$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: idRayon })
+			$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: idRayon })
   			.done(function(rayon) {
 
 				for (var product of rayon) {

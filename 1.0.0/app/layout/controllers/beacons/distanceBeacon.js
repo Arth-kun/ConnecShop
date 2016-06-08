@@ -71,6 +71,11 @@ function distanceCalculating () {
 	//Pobj distanceManager
 	for (var i in distanceManager) {
 
+		/*
+		
+		*/
+
+
 		var distances=distanceManager[i];
 		distanceTotal[distanceCompt]=0;
 
@@ -84,7 +89,7 @@ function distanceCalculating () {
 			distLen[distanceCompt]=distances.length;
 
 
-			minors[distanceCompt]=i;
+			minors[distanceCompt]=i;//LOG
 
 			if (!distanceTotal[distanceCompt-1]){
 				minor=i;
@@ -104,13 +109,22 @@ function distanceCalculating () {
 
 	//Décommenter pour afficher les infos intérèssantes
 	//LOG
-	/*var date = new Date();
+	var date = new Date();
 	$('#header, #ribbon, #menu-toggle-button').addClass('displayNone');
 	$('body').prepend('<table class="dist table table-bordered"></table>');
-	$('table:first-child').append('<tr><th>'+compt+'</th><th>'+date.getHours()+'h '+date.getMinutes()+'min '+date.getSeconds()+', '+date.getMilliseconds()+'s</th><th>ServiceActuel: '+nomRayon(minor)+'</th></tr>')
-	for (var i in distanceTotal) {
-		$('body table:first-child').append('<tr><td>'+minors[i]+'</td><td>DistMoy:'+distanceTotal[i]/distLen[i]+'<br>DistTotal:'+distanceTotal[i]+'<br>nbValDist:'+distLen[i]+'</td><td>'+nomRayon(minors[i])+'</td></tr>')
+	$('body table:first-child').append('<tr><th>'+compt+'</th><th>'+date.getHours()+'h '+date.getMinutes()+'min '+date.getSeconds()+', '+date.getMilliseconds()+'s</th><th>ServiceActuel: '+nomRayon(minor)+'</th></tr>')
+	//for (var i in distanceTotal) {
+		//$('body table:first-child').append('<tr><td>'+minors[i]+'</td><td>DistMoy:'+distanceTotal[i]/distLen[i]+'<br>DistTotal:'+distanceTotal[i]+'<br>nbValDist:'+distLen[i]+'</td><td>'+nomRayon(minors[i])+'</td></tr>')
+	//}
+
+	for(var j in distanceManager){
+		$('body table:first-child').append('<tr><td>'+nomRayon(distanceManager[j])+'</td></tr>') 
+		for (var i in distanceManager[j]) {
+			$('body table:first-child tr:last-child').append('<td>'+distanceManager[j][i]+'</td>')
+		}
 	}
+
+
 	function nomRayon (minor) {
 		switch (parseInt(minor)) {
 			case 46204 :
@@ -132,8 +146,7 @@ function distanceCalculating () {
 			case 23810 :
 				return 'Commercial';
 		}
-	}*/
-
+	}
 
 
 	return parseInt(minor);

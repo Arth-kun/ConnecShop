@@ -15,9 +15,6 @@ var beaconApp = (function()
     // Application object.
     var beaconApp = {};
 
-    // Dictionary of beacons.
-    var beacons = {};
-
 
     beaconApp.initialize = function()
     {
@@ -40,7 +37,6 @@ var beaconApp = (function()
             // On vérifie si le beacons est trouvé
             if (beaconInfo.beacons[0] != undefined) {
 
-                //var minorChoosen = 37996;
                 var minorChoosen = distanceCalculator(beaconInfo);
                 
                 if (minorChoosen!=undefined) {

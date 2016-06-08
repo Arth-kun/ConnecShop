@@ -6,7 +6,7 @@ angular.module('app.home')
 
 	//FOR REAL WEB SERVICE
 	//MEILLEURESVENTES
-	$.post( "http://localhost:3058/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
+	$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
     	for (var article of articlesMeilleureVente) {
     		article.img = "http://ac01.ow04.fr/I-Moyenne-"+article.IDImage+".net.jpg";

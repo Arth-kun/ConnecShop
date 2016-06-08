@@ -74,7 +74,7 @@
 							</div>
 							<div class="avisProductContent" ng-class="{displayNone:!bProd.avisShow.showDesc}">
 								<ul class="listAvis">
-									<li class="listAvisProduct" ng-repeat="avisCt in bProd.ListeAvis" ng-class="{notLast:!$last}">
+									<li class="listAvisProduct" ng-repeat="avisCt in bProd.ListeAvis" ng-class="{notLast:!$last, displayNone:!avisCt.Visible}">
 										<p class="listAvisProductHead">
 											<span class="pseudoAvis">{{avisCt.Pseudo}}</span>
 											<span class="starsavis pull-right">

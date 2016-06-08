@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<div id="productsDetail" class="row" ng-repeat="product in products">
+<div id="productsDetail" class="row" ng-repeat="product in products" ng-init="carousel">
 
     <div class="col-xs-12">
 
@@ -83,7 +83,7 @@
                 </div>
                 <div class="avisProductContent" ng-class="{displayNone:!avis.showDesc}">
                     <ul class="listAvis">
-                        <li class="listAvisProduct" ng-repeat="avisCt in product.ListeAvis" ng-class="{notLast:!$last}">
+                        <li class="listAvisProduct" ng-repeat="avisCt in product.ListeAvis" ng-class="{notLast:!$last, displayNone:!avisCt.Visible}">
                             <p class="listAvisProductHead">
                                 <span class="pseudoAvis">{{avisCt.Pseudo}}</span>
                                 <span class="starsavis pull-right">
