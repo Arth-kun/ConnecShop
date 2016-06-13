@@ -2346,6 +2346,35 @@ angular.module('app.auth').directive('loginInfo', function(User){
     }
 })
 
+angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("app/dashboard/live-feeds.tpl.html","<div jarvis-widget id=\"live-feeds-widget\" data-widget-togglebutton=\"false\" data-widget-editbutton=\"false\"\n     data-widget-fullscreenbutton=\"false\" data-widget-colorbutton=\"false\" data-widget-deletebutton=\"false\">\n<!-- widget options:\nusage: <div class=\"jarviswidget\" id=\"wid-id-0\" data-widget-editbutton=\"false\">\n\ndata-widget-colorbutton=\"false\"\ndata-widget-editbutton=\"false\"\ndata-widget-togglebutton=\"false\"\ndata-widget-deletebutton=\"false\"\ndata-widget-fullscreenbutton=\"false\"\ndata-widget-custombutton=\"false\"\ndata-widget-collapsed=\"true\"\ndata-widget-sortable=\"false\"\n\n-->\n<header>\n    <span class=\"widget-icon\"> <i class=\"glyphicon glyphicon-stats txt-color-darken\"></i> </span>\n\n    <h2>Live Feeds </h2>\n\n    <ul class=\"nav nav-tabs pull-right in\" id=\"myTab\">\n        <li class=\"active\">\n            <a data-toggle=\"tab\" href=\"#s1\"><i class=\"fa fa-clock-o\"></i> <span class=\"hidden-mobile hidden-tablet\">Live Stats</span></a>\n        </li>\n\n        <li>\n            <a data-toggle=\"tab\" href=\"#s2\"><i class=\"fa fa-facebook\"></i> <span class=\"hidden-mobile hidden-tablet\">Social Network</span></a>\n        </li>\n\n        <li>\n            <a data-toggle=\"tab\" href=\"#s3\"><i class=\"fa fa-dollar\"></i> <span class=\"hidden-mobile hidden-tablet\">Revenue</span></a>\n        </li>\n    </ul>\n\n</header>\n\n<!-- widget div-->\n<div class=\"no-padding\">\n\n    <div class=\"widget-body\">\n        <!-- content -->\n        <div id=\"myTabContent\" class=\"tab-content\">\n            <div class=\"tab-pane fade active in padding-10 no-padding-bottom\" id=\"s1\">\n                <div class=\"row no-space\">\n                    <div class=\"col-xs-12 col-sm-12 col-md-8 col-lg-8\">\n														<span class=\"demo-liveupdate-1\"> <span\n                                                                class=\"onoffswitch-title\">Live switch</span> <span\n                                                                class=\"onoffswitch\">\n																<input type=\"checkbox\" name=\"start_interval\" ng-model=\"autoUpdate\"\n                                                                       class=\"onoffswitch-checkbox\" id=\"start_interval\">\n																<label class=\"onoffswitch-label\" for=\"start_interval\">\n                                                                    <span class=\"onoffswitch-inner\"\n                                                                          data-swchon-text=\"ON\"\n                                                                          data-swchoff-text=\"OFF\"></span>\n                                                                    <span class=\"onoffswitch-switch\"></span>\n                                                                </label> </span> </span>\n\n                        <div id=\"updating-chart\" class=\"chart-large txt-color-blue\" flot-basic flot-data=\"liveStats\" flot-options=\"liveStatsOptions\"></div>\n\n                    </div>\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 show-stats\">\n\n                        <div class=\"row\">\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> My Tasks <span\n                                    class=\"pull-right\">130/200</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blueDark\" style=\"width: 65%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> Transfered <span\n                                    class=\"pull-right\">440 GB</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blue\" style=\"width: 34%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> Bugs Squashed<span\n                                    class=\"pull-right\">77%</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blue\" style=\"width: 77%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> User Testing <span\n                                    class=\"pull-right\">7 Days</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-greenLight\" style=\"width: 84%;\"></div>\n                                </div>\n                            </div>\n\n                            <span class=\"show-stat-buttons\"> <span class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\"> <a\n                                    href-void class=\"btn btn-default btn-block hidden-xs\">Generate PDF</a> </span> <span\n                                    class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\"> <a href-void\n                                                                                     class=\"btn btn-default btn-block hidden-xs\">Report\n                                a bug</a> </span> </span>\n\n                        </div>\n\n                    </div>\n                </div>\n\n                <div class=\"show-stat-microcharts\" data-sparkline-container data-easy-pie-chart-container>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\n                        <div class=\"easy-pie-chart txt-color-orangeDark\" data-percent=\"33\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">35</span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Server Load <i class=\"fa fa-caret-up icon-color-bad\"></i> </span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-greenLight\"><i class=\"fa fa-caret-up\"></i> 97%</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blueLight\"><i class=\"fa fa-caret-down\"></i> 44%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-greenLight hidden-sm hidden-md pull-right\"\n                             data-sparkline-type=\"line\" data-sparkline-height=\"33px\" data-sparkline-width=\"70px\"\n                             data-fill-color=\"transparent\">\n                            130, 187, 250, 257, 200, 210, 300, 270, 363, 247, 270, 363, 247\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-greenLight\" data-percent=\"78.9\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">78.9 </span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Disk Space <i class=\"fa fa-caret-down icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-blueDark\"><i class=\"fa fa-caret-up\"></i> 76%</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blue\"><i class=\"fa fa-caret-down\"></i> 3%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-blue hidden-sm hidden-md pull-right\" data-sparkline-type=\"line\"\n                             data-sparkline-height=\"33px\" data-sparkline-width=\"70px\" data-fill-color=\"transparent\">\n                            257, 200, 210, 300, 270, 363, 130, 187, 250, 247, 270, 363, 247\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-blue\" data-percent=\"23\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">23 </span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Transfered <i class=\"fa fa-caret-up icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-darken\">10GB</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blueDark\"><i class=\"fa fa-caret-up\"></i> 10%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-darken hidden-sm hidden-md pull-right\"\n                             data-sparkline-type=\"line\" data-sparkline-height=\"33px\" data-sparkline-width=\"70px\"\n                             data-fill-color=\"transparent\">\n                            200, 210, 363, 247, 300, 270, 130, 187, 250, 257, 363, 247, 270\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-darken\" data-percent=\"36\" data-pie-size=\"50\">\n                            <span class=\"percent degree-sign\">36 <i class=\"fa fa-caret-up\"></i></span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Temperature <i\n                                class=\"fa fa-caret-down icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-red\"><i class=\"fa fa-caret-up\"></i> 124</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blue\"><i class=\"fa fa-caret-down\"></i> 40 F</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-red hidden-sm hidden-md pull-right\" data-sparkline-type=\"line\"\n                             data-sparkline-height=\"33px\" data-sparkline-width=\"70px\" data-fill-color=\"transparent\">\n                            2700, 3631, 2471, 2700, 3631, 2471, 1300, 1877, 2500, 2577, 2000, 2100, 3000\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n            <!-- end s1 tab pane -->\n\n            <div class=\"tab-pane fade\" id=\"s2\">\n                <div class=\"widget-body-toolbar bg-color-white\">\n\n                    <form class=\"form-inline\" role=\"form\">\n\n                        <div class=\"form-group\">\n                            <label class=\"sr-only\" for=\"s123\">Show From</label>\n                            <input type=\"email\" class=\"form-control input-sm\" id=\"s123\" placeholder=\"Show From\">\n                        </div>\n                        <div class=\"form-group\">\n                            <input type=\"email\" class=\"form-control input-sm\" id=\"s124\" placeholder=\"To\">\n                        </div>\n\n                        <div class=\"btn-group hidden-phone pull-right\">\n                            <a class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\"><i\n                                    class=\"fa fa-cog\"></i> More <span class=\"caret\"> </span> </a>\n                            <ul class=\"dropdown-menu pull-right\">\n                                <li>\n                                    <a href-void><i class=\"fa fa-file-text-alt\"></i> Export to PDF</a>\n                                </li>\n                                <li>\n                                    <a href-void><i class=\"fa fa-question-sign\"></i> Help</a>\n                                </li>\n                            </ul>\n                        </div>\n\n                    </form>\n\n                </div>\n                <div class=\"padding-10\">\n                    <div id=\"statsChart\" class=\"chart-large has-legend-unique\" flot-basic flot-data=\"statsData\" flot-options=\"statsDisplayOptions\"></div>\n                </div>\n\n            </div>\n            <!-- end s2 tab pane -->\n\n            <div class=\"tab-pane fade\" id=\"s3\">\n\n                <div class=\"widget-body-toolbar bg-color-white smart-form\" id=\"rev-toggles\">\n\n                    <div class=\"inline-group\">\n\n                        <label for=\"gra-0\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-0\" ng-model=\"targetsShow\">\n                            <i></i> Target </label>\n                        <label for=\"gra-1\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-1\" ng-model=\"actualsShow\">\n                            <i></i> Actual </label>\n                        <label for=\"gra-2\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-2\" ng-model=\"signupsShow\">\n                            <i></i> Signups </label>\n                    </div>\n\n                    <div class=\"btn-group hidden-phone pull-right\">\n                        <a class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\"><i\n                                class=\"fa fa-cog\"></i> More <span class=\"caret\"> </span> </a>\n                        <ul class=\"dropdown-menu pull-right\">\n                            <li>\n                                <a href-void><i class=\"fa fa-file-text-alt\"></i> Export to PDF</a>\n                            </li>\n                            <li>\n                                <a href-void><i class=\"fa fa-question-sign\"></i> Help</a>\n                            </li>\n                        </ul>\n                    </div>\n\n                </div>\n\n                <div class=\"padding-10\">\n                    <div id=\"flotcontainer\" class=\"chart-large has-legend-unique\" flot-basic flot-data=\"revenewData\" flot-options=\"revenewDisplayOptions\" ></div>\n                </div>\n            </div>\n            <!-- end s3 tab pane -->\n        </div>\n\n        <!-- end content -->\n    </div>\n\n</div>\n<!-- end widget div -->\n</div>\n");
+$templateCache.put("app/layout/layout.tpl.html","<!-- BEACON MENU -->\n<div data-smart-include=\"app/layout/partials/beacon.tpl.html\" class=\"placeholder-right-panel\"></div>\n\n<!-- END BEACON MENU -->\n\n<div id=\"bodyMainContent\">\n     <!-- collapse menu button -->\n    <div id=\"menu-toggle-button\" class=\"menu-icon-cross\">\n        <span></span>\n    </div>\n    <!-- end collapse menu -->\n\n    <div class=\"calqueOpacite\"></div>\n\n    <!-- HEADER -->\n    <div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div>\n    <!-- END HEADER -->\n\n\n    <!-- Menu : Navigation area -->\n    <div data-smart-include=\"app/layout/partials/menu.tpl.html\" class=\"placeholder-left-panel\"></div>\n\n    <!-- END MENU -->\n\n\n    <!-- MAIN PANEL -->\n    <div id=\"main\" role=\"main\">\n\n        <!-- RIBBON -->\n        <div id=\"ribbon\">\n            <div id=\'homeSearchbar\'>\n                <div class=\"inputSearchGroup\">\n                    <div class=\"buttonContainer\">\n                        <div class=\"buttonSearch\"></div>\n                    </div>\n                    <input type=\"text\" class=\"form-control inputSearch\" placeholder=\"Rechercher un article...\">\n                </div><!-- /input-group -->\n            </div>\n        </div>\n        <!-- END RIBBON -->\n\n\n    <div data-smart-router-animation-wrap=\"content content@app\" data-wrap-for=\"#content\">\n        <div data-ui-view=\"content\" data-autoscroll=\"false\"></div>\n    </div>\n\n    </div>\n    <!-- END MAIN PANEL -->\n</div>");
+$templateCache.put("app/auth/directives/login-info.tpl.html","<div class=\"login-info ng-cloak\">\n    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->\n        <a  href=\"\" toggle-shortcut>\n            <img ng-src=\"{{user.picture}}\" alt=\"me\" class=\"online\">\n                <span>{{user.username}}\n                </span>\n            <i class=\"fa fa-angle-down\"></i>\n        </a>\n     </span>\n</div>");
+$templateCache.put("app/calendar/directives/full-calendar.tpl.html","<div jarvis-widget data-widget-color=\"blueDark\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-calendar\"></i> </span>\n\n        <h2> My Events </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <div class=\"btn-group dropdown\" dropdown >\n                <button class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\">\n                    Showing <i class=\"fa fa-caret-down\"></i>\n                </button>\n                <ul class=\"dropdown-menu js-status-update pull-right\">\n                    <li>\n                        <a ng-click=\"changeView(\'month\')\">Month</a>\n                    </li>\n                    <li>\n                        <a ng-click=\"changeView(\'agendaWeek\')\">Agenda</a>\n                    </li>\n                    <li>\n                        <a ng-click=\"changeView(\'agendaDay\')\">Today</a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </header>\n\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding\">\n            <!-- content goes here -->\n            <div class=\"widget-body-toolbar\">\n\n                <div id=\"calendar-buttons\">\n\n                    <div class=\"btn-group\">\n                        <a ng-click=\"prev()\" class=\"btn btn-default btn-xs\"><i\n                                class=\"fa fa-chevron-left\"></i></a>\n                        <a ng-click=\"next()\" class=\"btn btn-default btn-xs\"><i\n                                class=\"fa fa-chevron-right\"></i></a>\n                    </div>\n                </div>\n            </div>\n            <div id=\"calendar\"></div>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>\n");
+$templateCache.put("app/calendar/views/calendar.tpl.html","<!-- MAIN CONTENT -->\n<div id=\"content\">\n\n    <div class=\"row\">\n        <big-breadcrumbs items=\"[\'Home\', \'Calendar\']\" class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\"></big-breadcrumbs>\n        <div smart-include=\"app/layout/partials/sub-header.tpl.html\"></div>\n    </div>\n    <!-- widget grid -->\n    <section id=\"widget-grid\" widget-grid>\n        <!-- row -->\n        <div class=\"row\" ng-controller=\"CalendarCtrl\" >\n\n\n            <div class=\"col-sm-12 col-md-12 col-lg-3\">\n                <!-- new widget -->\n                <div class=\"jarviswidget jarviswidget-color-blueDark\">\n                    <header>\n                        <h2> Add Events </h2>\n                    </header>\n\n                    <!-- widget div-->\n                    <div>\n\n                        <div class=\"widget-body\">\n                            <!-- content goes here -->\n\n                            <form id=\"add-event-form\">\n                                <fieldset>\n\n                                    <div class=\"form-group\">\n                                        <label>Select Event Icon</label>\n                                        <div class=\"btn-group btn-group-sm btn-group-justified\" data-toggle=\"buttons\" > <!--  -->\n                                            <label class=\"btn btn-default active\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-1\" value=\"fa-info\" radio-toggle ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-info text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-2\" value=\"fa-warning\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-warning text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-3\" value=\"fa-check\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-check text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-4\" value=\"fa-user\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-user text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-5\" value=\"fa-lock\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-lock text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-6\" value=\"fa-clock-o\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-clock-o text-muted\"></i> </label>\n                                        </div>\n                                    </div>\n\n                                    <div class=\"form-group\">\n                                        <label>Event Title</label>\n                                        <input ng-model=\"newEvent.title\" class=\"form-control\"  id=\"title\" name=\"title\" maxlength=\"40\" type=\"text\" placeholder=\"Event Title\">\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label>Event Description</label>\n                                        <textarea  ng-model=\"newEvent.description\" class=\"form-control\" placeholder=\"Please be brief\" rows=\"3\" maxlength=\"40\" id=\"description\"></textarea>\n                                        <p class=\"note\">Maxlength is set to 40 characters</p>\n                                    </div>\n\n                                    <div class=\"form-group\">\n                                        <label>Select Event Color</label>\n                                        <div class=\"btn-group btn-group-justified btn-select-tick\" data-toggle=\"buttons\" >\n                                            <label class=\"btn bg-color-darken active\">\n                                                <input   ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option1\" value=\"bg-color-darken txt-color-white\" >\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-blue\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option2\" value=\"bg-color-blue txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-orange\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option3\" value=\"bg-color-orange txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-greenLight\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option4\" value=\"bg-color-greenLight txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-blueLight\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option5\" value=\"bg-color-blueLight txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-red\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option6\" value=\"bg-color-red txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                        </div>\n                                    </div>\n\n                                </fieldset>\n                                <div class=\"form-actions\">\n                                    <div class=\"row\">\n                                        <div class=\"col-md-12\">\n                                            <button class=\"btn btn-default\" type=\"button\" id=\"add-event\" ng-click=\"addEvent()\" >\n                                                Add Event\n                                            </button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </form>\n\n                            <!-- end content -->\n                        </div>\n\n                    </div>\n                    <!-- end widget div -->\n                </div>\n                <!-- end widget -->\n\n                <div class=\"well well-sm\" id=\"event-container\">\n                    <form>\n                        <legend>\n                            Draggable Events\n                        </legend>\n                        <ul id=\'external-events\' class=\"list-unstyled\">\n\n                            <li ng-repeat=\"event in eventsExternal\" dragable-event>\n                                <span class=\"{{event.className}}\" \n                                    data-description=\"{{event.description}}\"\n                                    data-icon=\"{{event.icon}}\"\n                                >\n                                {{event.title}}</span>\n                            </li>\n                            \n                        </ul>\n\n                        <!-- <ul id=\'external-events\' class=\"list-unstyled\">\n                            <li>\n                                <span class=\"bg-color-darken txt-color-white\" data-description=\"Currently busy\" data-icon=\"fa-time\">Office Meeting</span>\n                            </li>\n                            <li>\n                                <span class=\"bg-color-blue txt-color-white\" data-description=\"No Description\" data-icon=\"fa-pie\">Lunch Break</span>\n                            </li>\n                            <li>\n                                <span class=\"bg-color-red txt-color-white\" data-description=\"Urgent Tasks\" data-icon=\"fa-alert\">URGENT</span>\n                            </li>\n                        </ul> -->\n\n                        <div class=\"checkbox\">\n                            <label>\n                                <input type=\"checkbox\" id=\"drop-remove\" class=\"checkbox style-0\" checked=\"checked\">\n                                <span>remove after drop</span> </label>\n\n                        </div>\n                    </form>\n\n                </div>\n            </div>\n\n\n            <article class=\"col-sm-12 col-md-12 col-lg-9\">\n                <full-calendar id=\"main-calendar-widget\" data-events=\"events\"></full-calendar>\n            </article>\n        </div>\n    </section>\n</div>");
+$templateCache.put("app/dashboard/projects/recent-projects.tpl.html","<div class=\"project-context hidden-xs dropdown\" dropdown>\n\n    <span class=\"label\">{{getWord(\'Projects\')}}:</span>\n    <span class=\"project-selector dropdown-toggle\" data-toggle=\"dropdown\">{{getWord(\'Recent projects\')}} <i ng-if=\"projects.length\"\n            class=\"fa fa-angle-down\"></i></span>\n\n    <ul class=\"dropdown-menu\" ng-if=\"projects.length\">\n        <li ng-repeat=\"project in projects\">\n            <a href=\"{{project.href}}\">{{project.title}}</a>\n        </li>\n        <li class=\"divider\"></li>\n        <li>\n            <a ng-click=\"clearProjects()\"><i class=\"fa fa-power-off\"></i> Clear</a>\n        </li>\n    </ul>\n\n</div>");
+$templateCache.put("app/dashboard/todo/todo-widget.tpl.html","<div id=\"todo-widget\" jarvis-widget data-widget-editbutton=\"false\" data-widget-color=\"blue\"\n     ng-controller=\"TodoCtrl\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-check txt-color-white\"></i> </span>\n\n        <h2> ToDo\'s </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <button class=\"btn btn-xs btn-default\" ng-class=\"{active: newTodo}\" ng-click=\"toggleAdd()\"><i ng-class=\"{ \'fa fa-plus\': !newTodo, \'fa fa-times\': newTodo}\"></i> Add</button>\n\n        </div>\n    </header>\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding smart-form\">\n            <!-- content goes here -->\n            <div ng-show=\"newTodo\">\n                <h5 class=\"todo-group-title\"><i class=\"fa fa-plus-circle\"></i> New Todo</h5>\n\n                <form name=\"newTodoForm\" class=\"smart-form\">\n                    <fieldset>\n                        <section>\n                            <label class=\"input\">\n                                <input type=\"text\" required class=\"input-lg\" ng-model=\"newTodo.title\"\n                                       placeholder=\"What needs to be done?\">\n                            </label>\n                        </section>\n                        <section>\n                            <div class=\"col-xs-6\">\n                                <label class=\"select\">\n                                    <select class=\"input-sm\" ng-model=\"newTodo.state\"\n                                            ng-options=\"state as state for state in states\"></select> <i></i> </label>\n                            </div>\n                        </section>\n                    </fieldset>\n                    <footer>\n                        <button ng-disabled=\"newTodoForm.$invalid\" type=\"button\" class=\"btn btn-primary\"\n                                ng-click=\"createTodo()\">\n                            Add\n                        </button>\n                        <button type=\"button\" class=\"btn btn-default\" ng-click=\"toggleAdd()\">\n                            Cancel\n                        </button>\n                    </footer>\n                </form>\n            </div>\n\n            <todo-list state=\"Critical\"  title=\"Critical Tasks\" icon=\"warning\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Important\" title=\"Important Tasks\" icon=\"exclamation\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Completed\" title=\"Completed Tasks\" icon=\"check\" todos=\"todos\"></todo-list>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>");
+$templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\n    <li class=\"dropdown\" dropdown>\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\n            <i class=\"fa fa-angle-down\"></i> </a>\n        <ul class=\"dropdown-menu pull-right\">\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\n            </li>\n        </ul>\n    </li>\n</ul>");
+$templateCache.put("app/layout/partials/beacon.tpl.html","<div id=\"beacon\" ng-controller=\"beaconController\" ng-class=\"{translateBeacon:showBeacon.doShow}\" class=\"displayNone\">\r\n\r\n	<!-- Button collapse beacon -->\r\n	<span class=\"paddingFleche\">\r\n		<div class=\"flecheHome\" ng-click=\"showBeacon.show()\" ng-class=\"{\'menu-open\':showBeacon.doShow}\">\r\n			<span class=\"glyphicon fleche-span\" ng-class=\"{\'glyphicon-menu-right\':showBeacon.doShow, \'glyphicon-menu-left\':!showBeacon.doShow}\"></span>\r\n		</div>\r\n	</span>   \r\n	<!-- end Button collapse beacon -->\r\n\r\n	<div class=\"beaconPanel\">\r\n\r\n		<div class=\"excluMag\">\r\n			<div class=\"excluMagTitre\">\r\n				<span class=\"traitExclu\"></span>\r\n				<p class=\"exclusivite\">Exclusivités</p>\r\n				<p class=\"magasin\">MAGASIN</p>\r\n			</div>\r\n			<p class=\"nomRayon\">Rayon {{nomRayon}}</p>\r\n\r\n			<div class=\"produitsPromoBeacon\">\r\n				<div class=\"produitBeacon row product{{$index}}\" ng-repeat=\"bProd in rayon\" ng-class=\"{notLast:!$last}\" ng-click=\"bProd.detailProduct.open($index, bProd)\">\r\n					<div class=\"promTagBeacon\">\r\n						<span class=\"backgroundPromo\"><span class=\"textPromo\"><p class=\"exclu\">Exclusivité</p><p class=\"mag\">MAGASIN</p></span></span>\r\n					</div>\r\n					<span class=\"spanImg col-xs-3\"><img ng-src=\"{{bProd.imgs[0]}}\"></span>\r\n					<div class=\"produitContent col-xs-9\">\r\n						<div class=\"produitName\">{{bProd.ArtDesignation}}</div>\r\n						<div class=\"produitNote\">\r\n							<span ng-switch=\"bProd.Note\" class=\"noteMoy\" ng-class=\"{displayNone:!bProd.hasNote}\">\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n							</span>\r\n							<span class=\"produitAvis\" ng-class=\"{displayNone:!bProd.avis}\">{{bProd.ListeAvis.length}} avis</span>\r\n						</div>\r\n						<div class=\"produitPrix\">\r\n							<span class=\"produitRemise\">{{bProd.pourcentage}} %</span>\r\n							<span class=\"prixGroup\">\r\n								<span class=\"produitPrixBarre\">{{bProd.prixNonRemise}} €</span>\r\n								<span class=\"produitPrixTTC\">{{bProd.PrixTTC}} €</span>\r\n							</span>\r\n						</div>\r\n						<div class=\"produitPanier\">\r\n							<div class=\"panierButton\" ng-click=\"addCart(bProd)\" ng-class=\'{noStock:!bProd.Stock}\'>AJOUTER AU PANIER</div>\r\n						</div>\r\n					</div>\r\n					<div class=\"col-xs-12 descAvis\" ng-class=\"{displayNone:!bProd.avis&&!bProd.description}\">\r\n						<div class=\"descriptionProduct\" ng-class=\"{displayNone:!bProd.description}\">\r\n							<div class=\"descriptionProductTitle\" ng-click=\"bProd.descriptionShow.dispDesc()\">\r\n								<span class=\"descriptionProductText\">Description</span>\r\n								<span class=\"glyphicon fleche-description pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.descriptionShow.showDesc, \'glyphicon-menu-up\':bProd.descriptionShow.showDesc}\"></span>\r\n							</div>\r\n							<p class=\"descriptionProductContent\" ng-class=\"{displayNone:!bProd.descriptionShow.showDesc}\">{{bProd.CatHTMLDesignation}}</p>\r\n						</div>\r\n\r\n						<div class=\"avisProduct\" ng-class=\"{displayNone:!bProd.avis}\">\r\n							<div class=\"avisProductTitle\" ng-click=\"bProd.avisShow.dispDesc()\">\r\n								<span class=\"avisProductText\">Avis</span>\r\n								<span class=\"glyphicon fleche-avis pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.avisShow.showDesc, \'glyphicon-menu-up\':bProd.avisShow.showDesc}\"></span>\r\n							</div>\r\n							<div class=\"avisProductContent\" ng-class=\"{displayNone:!bProd.avisShow.showDesc}\">\r\n								<ul class=\"listAvis\">\r\n									<li class=\"listAvisProduct\" ng-repeat=\"avisCt in bProd.ListeAvis\" ng-class=\"{notLast:!$last, displayNone:!avisCt.Visible}\">\r\n										<p class=\"listAvisProductHead\">\r\n											<span class=\"pseudoAvis\">{{avisCt.Pseudo}}</span>\r\n											<span class=\"starsavis pull-right\">\r\n												<span ng-switch=\"avisCt.Note\" class=\"noteMoy\">\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n												</span>\r\n											</span>\r\n										</p>\r\n										<p class=\"listAvisProductText\">{{avisCt.Commentaire}}</p>\r\n										<p class=\"listAvisProductDate\">{{avisCt.DateCreation}}</p>\r\n									</li>\r\n								</ul>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class=\"dejaVus\">\r\n				<span class=\"textDejaVus\">produits déjà vus</span>\r\n			</div>\r\n		</div>\r\n\r\n\r\n		<div class=\"conseils\">\r\n			<div class=\"conseilsTitreContainer\">\r\n				<div class=\"conseilsTitre\">CONSEILS</div>\r\n			</div>\r\n			<div class=\"conseilsContent row\" ng-repeat=\"conseil in conseils\">\r\n				<div class=\"imgContainer col-xs-3\">\r\n					<img ng-src=\"{{conseil.img}}\">\r\n				</div>\r\n				<div class=\"conseilContainer col-xs-9\">\r\n					<p class=\"titreConseil\">{{conseil.titre}}</p>\r\n					<p class=\"apercuConseil\">{{conseil.apercu}}</p>\r\n				</div>\r\n			</div>\r\n		</div>\r\n\r\n	</div>\r\n\r\n</div>");
+$templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">SmartAdmin WebApp © 2013-2016</span>\n        </div>\n\n        <div class=\"col-xs-6 col-sm-6 text-right hidden-xs\">\n            <div class=\"txt-color-white inline-block\">\n                <i class=\"txt-color-blueLight hidden-mobile\">Last account activity <i class=\"fa fa-clock-o\"></i>\n                    <strong>52 mins ago &nbsp;</strong> </i>\n\n                <div class=\"btn-group dropup\">\n                    <button class=\"btn btn-xs dropdown-toggle bg-color-blue txt-color-white\" data-toggle=\"dropdown\">\n                        <i class=\"fa fa-link\"></i> <span class=\"caret\"></span>\n                    </button>\n                    <ul class=\"dropdown-menu pull-right text-left\">\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Download Progress</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 50%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Server Load</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 20%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Memory Load <span class=\"text-danger\">*critical*</span>\n                                </p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-danger\" style=\"width: 70%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <button class=\"btn btn-block btn-default\">refresh</button>\n                            </div>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
+$templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\n\n<!-- pulled left: menu + logo -->\n<div class=\"pull-left\">\n\n    <span id=\"logo\"> <img class=\"logoImage\" src=\"styles/img/octave/logo.png\" alt=\"ConnecShop\"> </span>\n</div>\n<!-- end pulled left: menu + logo -->\n\n<!-- pulled right: button magasin, account, shopping cart -->\n<div id=\"buttonsPullRight\" class=\"pull-right\">\n    \n    <div class=\"buttonMagContainer buttonContainer\" onclick=\"sessionStorage.clear()\">\n        <div class=\"buttonMag buttonRight\"></div>\n    </div>\n\n    <div class=\"buttonAccContainer buttonContainer\">\n        <div class=\"buttonAcc buttonRight\"></div>\n    </div>\n\n    <span class=\"controllerContainer\" ng-controller=\"PanierController\">\n    <div class=\"buttonCartContainer buttonContainer\" ng-click=\"goToPanier()\">\n        <div class=\"buttonCart buttonRight\"></div>\n        <span class=\"nbArticlesPanier\" ng-class=\"{displayNone:!nbArticles, twoDigits:nbArticles>9}\">{{nbArticles}}</span>\n    </div>\n\n    </span>\n\n</div>\n<!-- end pulled right: buttons -->\n\n\n\n\n</header>");
+$templateCache.put("app/layout/partials/menu.tpl.html","<div id=\"menu-panel\" class=\"row\" ng-controller=\"menuController\">	\r\n	<div id=\"menu-interface\" class=\"col-xs-12\">\r\n\r\n		<div class=\"menu-content\">\r\n			<h1 class=\"menu-head\">\r\n				<span class=\"firstHead\">Menu</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories first\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in categories\" ng-class=\"{notfirst:$index, last:$last}\" ng-click=\"goToList(categorie.key)\">\r\n					{{categorie.name}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n		<div class=\"menu-content\">\r\n			<h1 class=\"menu-head\">\r\n				<span class=\"firstHead\">A propos</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories last\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in aPropos\" ng-class=\"{notfirst:$index, last:$last}\">\r\n					{{categorie}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n	</div>\r\n</div>");
+$templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div login-info></div>\n    <!-- end user info -->\n\n    <nav>\n        <!-- NOTE: Notice the gaps after each icon usage <i></i>..\n        Please note that these links work a bit different than\n        traditional href=\"\" links. See documentation for details.\n        -->\n\n        <ul data-smart-menu>\n\n            <li data-ui-sref-active=\"active\">\n                <a data-ui-sref=\"app.home\" title=\"Outlook\">\n                    <i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">{{getWord(\'Home\')}}</span></a>\n            </li>\n\n        </ul>\n\n        <!-- NOTE: This allows you to pull menu items from server -->\n        <!-- <ul data-smart-menu-items=\"/api/menu-items.json\"></ul> -->\n    </nav>\n\n  <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\n    <i class=\"fa fa-arrow-circle-left hit\"></i>\n  </span>\n\n</aside>");
+$templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\n    <ul id=\"sparks\" class=\"\">\n        <li class=\"sparks-info\">\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n    </ul>\n</div>\n			");
+$templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\n\n<!-- MODAL PLACE HOLDER\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\n<div class=\"modal-dialog\">\n<div class=\"modal-content\"></div>\n</div>\n</div>   -->\n<!--////////////////////////////////////-->\n\n<!--<div class=\"modal-header\">\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\n&times;\n</button>\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\n</div>-->\n<div class=\"modal-body\">\n\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\n	<hr class=\"simple\">\n	<h5>Instruction</h5>\n\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\n	<br>\n	<br>\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\n	<br>\n	<br>\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\n	<br>\n	<br>\n	<h5>Commands</h5>\n	<ul>\n		<li>\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\n		</li>\n		<li>\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\n		</li>\n		<li>\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\n		</li>\n		<li>\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\n		</li>\n		<li>\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\n		</li>\n		<li>\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\n		</li>\n		<li>\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\n		</li>\n		<li>\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\n		</li>\n		<li>\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\n		</li>\n		<li>\n			<strong>\'logout\'</strong> - logs you out\n		</li>\n	</ul>\n	<br>\n	<h5>Adding your own commands</h5>\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \n\n	<hr class=\"simple\">\n	<div class=\"text-right\">\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\n			Got it!\n		</button>\n	</div>\n\n</div>\n<!--<div class=\"modal-footer\">\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\n</div> -->");
+$templateCache.put("app/layout/shortcut/shortcut.tpl.html","<div id=\"shortcut\">\n	<ul>\n		<li>\n			<a href=\"#/inbox/\" class=\"jarvismetro-tile big-cubes bg-color-blue\"> <span class=\"iconbox\"> <i class=\"fa fa-envelope fa-4x\"></i> <span>Mail <span class=\"label pull-right bg-color-darken\">14</span></span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/calendar\" class=\"jarvismetro-tile big-cubes bg-color-orangeDark\"> <span class=\"iconbox\"> <i class=\"fa fa-calendar fa-4x\"></i> <span>Calendar</span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/maps\" class=\"jarvismetro-tile big-cubes bg-color-purple\"> <span class=\"iconbox\"> <i class=\"fa fa-map-marker fa-4x\"></i> <span>Maps</span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/invoice\" class=\"jarvismetro-tile big-cubes bg-color-blueDark\"> <span class=\"iconbox\"> <i class=\"fa fa-book fa-4x\"></i> <span>Invoice <span class=\"label pull-right bg-color-darken\">99</span></span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/gallery\" class=\"jarvismetro-tile big-cubes bg-color-greenLight\"> <span class=\"iconbox\"> <i class=\"fa fa-picture-o fa-4x\"></i> <span>Gallery </span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/profile\" class=\"jarvismetro-tile big-cubes selected bg-color-pinkDark\"> <span class=\"iconbox\"> <i class=\"fa fa-user fa-4x\"></i> <span>My Profile </span> </span> </a>\n		</li>\n	</ul>\n</div>");
+$templateCache.put("app/panier/views/panier_1.tpl.html","<div id=\"panier_1stStep\">\r\n\r\n	<div class=\"panierProducts row\" ng-repeat=\"product in products\">\r\n		<div class=\"promTag promTagBeacon\" ng-class=\"{displayNone:product.idPromo==1||product.idPromo==0}\">\r\n			<span class=\"backgroundPromo\"><span class=\"textPromo\"><p class=\"exclu\">Exclusivité</p><p class=\"mag\">MAGASIN</p></span></span>\r\n		</div>\r\n		<div class=\"promTag promTagClassique\" ng-class=\"{displayNone:product.idPromo==2||product.idPromo==0}\">\r\n			<span class=\"backgroundPromo\"><span class=\"textPromo\">PROMO</span></span>\r\n		</div>\r\n		<div class=\"imgContainer col-xs-3\">\r\n			<img ng-src=\"{{product.imgs[0]}}\">\r\n		</div>\r\n		<div class=\"productContentContainer col-xs-9\">\r\n			<span class=\"removeFromPanier glyphicon glyphicon-remove\" ng-click=\"changeQuantity($index, -product.quantity)\"></span>\r\n			<div class=\"productDesignation\">{{product.ArtDesignation}}</div>\r\n			<span class=\"productQuantity\">\r\n				<span class=\"quantityMoins glyphicon glyphicon-minus\" ng-click=\"changeQuantity($index, -1)\"></span>\r\n				<span class=\"quantityNumber\">{{product.quantity}}</span>\r\n				<span class=\"quantityPlus glyphicon glyphicon-plus\" ng-click=\"changeQuantity($index, 1)\"></span>\r\n			</span>\r\n			<span class=\"productsPrices\">\r\n				<span class=\"remiseGroup\" ng-class=\"{displayNone:!product.remise}\">\r\n					<span class=\"productRemise\" ng-class=\"{beaconBg:product.idPromo==2}\">{{product.pourcentage}}%</span>  \r\n					<span class=\"productPrixBarre\">{{product.prixNonRemiseStr}} €</span>\r\n				</span>  \r\n				<span class=\"productPrixTTC\">{{product.prixTTCStr}} €</span>\r\n			</span>\r\n		</div>\r\n\r\n	</div>\r\n\r\n	<div class=\"bilanPanier row\">\r\n		<div class=\"fraisDePort\">\r\n			<span class=\"textFraisDePort\">Frais de port</span>\r\n			<span class=\"prixFraisDePort\">6,60 €</span>\r\n		</div>\r\n		<div class=\"prixTotal\">\r\n			<span class=\"textPrixTotal\">Total</span>\r\n			<span class=\"prixPrixTotal\">{{prixTotal}} €</span>\r\n		</div>\r\n	</div>\r\n\r\n	<div class=\"bouttonContinuerContainer\">\r\n		<div class=\"bouttonContinuer\">CONTINUER</div>\r\n	</div>\r\n\r\n\r\n</div>");
+$templateCache.put("app/dashboard/chat/directives/aside-chat-widget.tpl.html","<ul>\n    <li>\n        <div class=\"display-users\">\n            <input class=\"form-control chat-user-filter\" placeholder=\"Filter\" type=\"text\">\n            <dl>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha1\"\n                       data-chat-fname=\"Sadi\"\n                       data-chat-lname=\"Orlaf\"\n                       data-chat-status=\"busy\"\n                       data-chat-alertmsg=\"Sadi Orlaf is in a meeting. Please do not disturb!\"\n                       data-chat-alertshow=\"true\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/5.png\' alt=\'Sadi Orlaf\'>\n											<div class=\'usr-card-content\'>\n												<h3>Sadi Orlaf</h3>\n												<p>Marketing Executive</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Sadi Orlaf\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha2\"\n                       data-chat-fname=\"Jessica\"\n                       data-chat-lname=\"Dolof\"\n                       data-chat-status=\"online\"\n                       data-chat-alertmsg=\"\"\n                       data-chat-alertshow=\"false\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/1.png\' alt=\'Jessica Dolof\'>\n											<div class=\'usr-card-content\'>\n												<h3>Jessica Dolof</h3>\n												<p>Sales Administrator</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Jessica Dolof\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha3\"\n                       data-chat-fname=\"Zekarburg\"\n                       data-chat-lname=\"Almandalie\"\n                       data-chat-status=\"online\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/3.png\' alt=\'Zekarburg Almandalie\'>\n											<div class=\'usr-card-content\'>\n												<h3>Zekarburg Almandalie</h3>\n												<p>Sales Admin</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Zekarburg Almandalie\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha4\"\n                       data-chat-fname=\"Barley\"\n                       data-chat-lname=\"Krazurkth\"\n                       data-chat-status=\"away\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/4.png\' alt=\'Barley Krazurkth\'>\n											<div class=\'usr-card-content\'>\n												<h3>Barley Krazurkth</h3>\n												<p>Sales Director</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Barley Krazurkth\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr offline\"\n                       data-chat-id=\"cha5\"\n                       data-chat-fname=\"Farhana\"\n                       data-chat-lname=\"Amrin\"\n                       data-chat-status=\"incognito\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/female.png\' alt=\'Farhana Amrin\'>\n											<div class=\'usr-card-content\'>\n												<h3>Farhana Amrin</h3>\n												<p>Support Admin <small><i class=\'fa fa-music\'></i> Playing Beethoven Classics</small></p>\n											</div>\n										</div>\n									\">\n                        <i></i>Farhana Amrin (offline)\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr offline\"\n                       data-chat-id=\"cha6\"\n                       data-chat-fname=\"Lezley\"\n                       data-chat-lname=\"Jacob\"\n                       data-chat-status=\"incognito\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/male.png\' alt=\'Lezley Jacob\'>\n											<div class=\'usr-card-content\'>\n												<h3>Lezley Jacob</h3>\n												<p>Sales Director</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Lezley Jacob (offline)\n                    </a>\n                </dt>\n            </dl>\n\n\n            <!--<a href=\"chat.html\" class=\"btn btn-xs btn-default btn-block sa-chat-learnmore-btn\">About the API</a>-->\n        </div>\n    </li>\n</ul>");
+$templateCache.put("app/dashboard/chat/directives/chat-users.tpl.html","<div id=\"chat-container\" ng-class=\"{open: open}\">\n    <span class=\"chat-list-open-close\" ng-click=\"openToggle()\"><i class=\"fa fa-user\"></i><b>!</b></span>\n\n    <div class=\"chat-list-body custom-scroll\">\n        <ul id=\"chat-users\">\n            <li ng-repeat=\"chatUser in chatUsers | filter: chatUserFilter\">\n                <a ng-click=\"messageTo(chatUser)\"><img ng-src=\"{{chatUser.picture}}\">{{chatUser.username}} <span\n                        class=\"badge badge-inverse\">{{chatUser.username.length}}</span><span class=\"state\"><i\n                        class=\"fa fa-circle txt-color-green pull-right\"></i></span></a>\n            </li>\n        </ul>\n    </div>\n    <div class=\"chat-list-footer\">\n        <div class=\"control-group\">\n            <form class=\"smart-form\">\n                <section>\n                    <label class=\"input\" >\n                        <input type=\"text\" ng-model=\"chatUserFilter\" id=\"filter-chat-list\" placeholder=\"Filter\">\n                    </label>\n                </section>\n            </form>\n        </div>\n    </div>\n</div>");
+$templateCache.put("app/dashboard/chat/directives/chat-widget.tpl.html","<div id=\"chat-widget\" jarvis-widget data-widget-color=\"blueDark\" data-widget-editbutton=\"false\"\n     data-widget-fullscreenbutton=\"false\">\n\n\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-comments txt-color-white\"></i> </span>\n\n        <h2> SmartMessage </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n\n            <div class=\"btn-group\" data-dropdown>\n                <button class=\"btn dropdown-toggle btn-xs btn-success\" data-toggle=\"dropdown\">\n                    Status <i class=\"fa fa-caret-down\"></i>\n                </button>\n                <ul class=\"dropdown-menu pull-right js-status-update\">\n                    <li>\n                        <a href-void><i class=\"fa fa-circle txt-color-green\"></i> Online</a>\n                    </li>\n                    <li>\n                        <a href-void><i class=\"fa fa-circle txt-color-red\"></i> Busy</a>\n                    </li>\n                    <li>\n                        <a href-void><i class=\"fa fa-circle txt-color-orange\"></i> Away</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href-void><i class=\"fa fa-power-off\"></i> Log Off</a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </header>\n\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body widget-hide-overflow no-padding\">\n            <!-- content goes here -->\n\n            <chat-users></chat-users>\n\n            <!-- CHAT BODY -->\n            <div id=\"chat-body\" class=\"chat-body custom-scroll\">\n                <ul>\n                    <li class=\"message\" ng-repeat=\"message in chatMessages\">\n                        <img class=\"message-picture online\" ng-src=\"{{message.user.picture}}\">\n\n                        <div class=\"message-text\">\n                            <time>\n                                {{message.date | date }}\n                            </time>\n                            <a ng-click=\"messageTo(message.user)\" class=\"username\">{{message.user.username}}</a>\n                            <div ng-bind-html=\"message.body\"></div>\n\n                        </div>\n                    </li>\n                </ul>\n            </div>\n\n            <!-- CHAT FOOTER -->\n            <div class=\"chat-footer\">\n\n                <!-- CHAT TEXTAREA -->\n                <div class=\"textarea-div\">\n\n                    <div class=\"typearea\">\n                        <textarea placeholder=\"Write a reply...\" id=\"textarea-expand\"\n                                  class=\"custom-scroll\" ng-model=\"newMessage\"></textarea>\n                    </div>\n\n                </div>\n\n                <!-- CHAT REPLY/SEND -->\n											<span class=\"textarea-controls\">\n												<button class=\"btn btn-sm btn-primary pull-right\" ng-click=\"sendMessage()\">\n                                                    Reply\n                                                </button> <span class=\"pull-right smart-form\"\n                                                                style=\"margin-top: 3px; margin-right: 10px;\"> <label\n                                                    class=\"checkbox pull-right\">\n                                                <input type=\"checkbox\" name=\"subscription\" id=\"subscription\">\n                                                <i></i>Press <strong> ENTER </strong> to send </label> </span> <a\n                                                    href-void class=\"pull-left\"><i\n                                                    class=\"fa fa-camera fa-fw fa-lg\"></i></a> </span>\n\n            </div>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>");
+$templateCache.put("app/dashboard/todo/directives/todo-list.tpl.html","<div>\n    <h5 class=\"todo-group-title\"><i class=\"fa fa-{{icon}}\"></i> {{title}} (\n        <small class=\"num-of-tasks\">{{scopeItems.length}}</small>\n        )\n    </h5>\n    <ul class=\"todo\">\n        <li ng-class=\"{complete: todo.completedAt}\" ng-repeat=\"todo in todos | orderBy: todo._id | filter: filter  track by todo._id\" >\n    	<span class=\"handle\"> <label class=\"checkbox\">\n            <input type=\"checkbox\" ng-click=\"todo.toggle()\" ng-checked=\"todo.completedAt\"\n                   name=\"checkbox-inline\">\n            <i></i> </label> </span>\n\n            <p>\n                <strong>Ticket #{{$index + 1}}</strong> - {{todo.title}}\n                <span class=\"text-muted\" ng-if=\"todo.description\">{{todo.description}}</span>\n                <span class=\"date\">{{todo.createdAt | date}} &dash; <a ng-click=\"deleteTodo(todo)\" class=\"text-muted\"><i\n                        class=\"fa fa-trash\"></i></a></span>\n\n            </p>\n        </li>\n    </ul>\n</div>");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-attribute-form.tpl.html","<form id=\"attributeForm\" class=\"form-horizontal\"\n      data-bv-message=\"This value is not valid\"\n      data-bv-feedbackicons-valid=\"glyphicon glyphicon-ok\"\n      data-bv-feedbackicons-invalid=\"glyphicon glyphicon-remove\"\n      data-bv-feedbackicons-validating=\"glyphicon glyphicon-refresh\">\n\n    <fieldset>\n        <legend>\n            Set validator options via HTML attributes\n        </legend>\n\n        <div class=\"alert alert-warning\">\n            <code>&lt; input\n                data-bv-validatorname\n                data-bv-validatorname-validatoroption=\"...\" / &gt;</code>\n\n            <br>\n            <br>\n            More validator options can be found here:\n            <a href=\"http://bootstrapvalidator.com/validators/\" target=\"_blank\">http://bootstrapvalidator.com/validators/</a>\n        </div>\n\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Full name</label>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The first name is required and cannot be empty\" />\n            </div>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The last name is required and cannot be empty\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Username</label>\n            <div class=\"col-lg-5\">\n                <input type=\"text\" class=\"form-control\" name=\"username\"\n                       data-bv-message=\"The username is not valid\"\n\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The username is required and cannot be empty\"\n\n                       data-bv-regexp=\"true\"\n                       data-bv-regexp-regexp=\"^[a-zA-Z0-9_\\.]+$\"\n                       data-bv-regexp-message=\"The username can only consist of alphabetical, number, dot and underscore\"\n\n                       data-bv-stringlength=\"true\"\n                       data-bv-stringlength-min=\"6\"\n                       data-bv-stringlength-max=\"30\"\n                       data-bv-stringlength-message=\"The username must be more than 6 and less than 30 characters long\"\n\n                       data-bv-different=\"true\"\n                       data-bv-different-field=\"password\"\n                       data-bv-different-message=\"The username and password cannot be the same as each other\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Email address</label>\n            <div class=\"col-lg-5\">\n                <input class=\"form-control\" name=\"email\" type=\"email\"\n                       data-bv-emailaddress=\"true\"\n                       data-bv-emailaddress-message=\"The input is not a valid email address\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Password</label>\n            <div class=\"col-lg-5\">\n                <input type=\"password\" class=\"form-control\" name=\"password\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The password is required and cannot be empty\"\n\n                       data-bv-identical=\"true\"\n                       data-bv-identical-field=\"confirmPassword\"\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\n\n                       data-bv-different=\"true\"\n                       data-bv-different-field=\"username\"\n                       data-bv-different-message=\"The password cannot be the same as username\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Retype password</label>\n            <div class=\"col-lg-5\">\n                <input type=\"password\" class=\"form-control\" name=\"confirmPassword\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The confirm password is required and cannot be empty\"\n\n                       data-bv-identical=\"true\"\n                       data-bv-identical-field=\"password\"\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\n\n                       data-bv-different=\"true\"\n                       data-bv-different-field=\"username\"\n                       data-bv-different-message=\"The password cannot be the same as username\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Languages</label>\n            <div class=\"col-lg-5\">\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\"\n                               data-bv-message=\"Please specify at least one language you can speak\"\n                               data-bv-notempty=\"true\" />\n                        English </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\n                        French </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\n                        German </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\n                        Russian </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"other\" />\n                        Other </label>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n     ");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-button-group-form.tpl.html","<form id=\"buttonGroupForm\" method=\"post\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Gender</label>\n            <div class=\"col-lg-9\">\n                <div class=\"btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default\">\n                        <input type=\"radio\" name=\"gender\" value=\"male\" />\n                        Male </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"radio\" name=\"gender\" value=\"female\" />\n                        Female </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"radio\" name=\"gender\" value=\"other\" />\n                        Other </label>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Languages</label>\n            <div class=\"col-lg-9\">\n                <div class=\"btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\" />\n                        English </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\n                        German </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\n                        French </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\n                        Russian </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"italian\">\n                        Italian </label>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-contact-form.tpl.html","<form id=\"contactForm\" method=\"post\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>Showing messages in custom area</legend>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Full name</label>\n            <div class=\"col-md-6\">\n                <input type=\"text\" class=\"form-control\" name=\"fullName\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Email</label>\n            <div class=\"col-md-6\">\n                <input type=\"text\" class=\"form-control\" name=\"email\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Title</label>\n            <div class=\"col-md-6\">\n                <input type=\"text\" class=\"form-control\" name=\"title\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Content</label>\n            <div class=\"col-md-6\">\n                <textarea class=\"form-control\" name=\"content\" rows=\"5\"></textarea>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <!-- #messages is where the messages are placed inside -->\n        <div class=\"form-group\">\n            <div class=\"col-md-9 col-md-offset-3\">\n                <div id=\"messages\"></div>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-movie-form.tpl.html","\n<form id=\"movieForm\" method=\"post\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <div class=\"row\">\n                <div class=\"col-md-8\">\n                    <label class=\"control-label\">Movie title</label>\n                    <input type=\"text\" class=\"form-control\" name=\"title\" />\n                </div>\n\n                <div class=\"col-md-4 selectContainer\">\n                    <label class=\"control-label\">Genre</label>\n                    <select class=\"form-control\" name=\"genre\">\n                        <option value=\"\">Choose a genre</option>\n                        <option value=\"action\">Action</option>\n                        <option value=\"comedy\">Comedy</option>\n                        <option value=\"horror\">Horror</option>\n                        <option value=\"romance\">Romance</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <div class=\"row\">\n                <div class=\"col-sm-12 col-md-4\">\n                    <label class=\"control-label\">Director</label>\n                    <input type=\"text\" class=\"form-control\" name=\"director\" />\n                </div>\n\n                <div class=\"col-sm-12 col-md-4\">\n                    <label class=\"control-label\">Writer</label>\n                    <input type=\"text\" class=\"form-control\" name=\"writer\" />\n                </div>\n\n                <div class=\"col-sm-12 col-md-4\">\n                    <label class=\"control-label\">Producer</label>\n                    <input type=\"text\" class=\"form-control\" name=\"producer\" />\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <div class=\"row\">\n                <div class=\"col-sm-12 col-md-6\">\n                    <label class=\"control-label\">Website</label>\n                    <input type=\"text\" class=\"form-control\" name=\"website\" />\n                </div>\n\n                <div class=\"col-sm-12 col-md-6\">\n                    <label class=\"control-label\">Youtube trailer</label>\n                    <input type=\"text\" class=\"form-control\" name=\"trailer\" />\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"control-label\">Review</label>\n            <textarea class=\"form-control\" name=\"review\" rows=\"8\"></textarea>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n\n            <div class=\"row\">\n                <div class=\"col-sm-12 col-md-12\">\n                    <label class=\"control-label\">Rating</label>\n                </div>\n\n                <div class=\"col-sm-12 col-md-10\">\n\n                    <label class=\"radio radio-inline no-margin\">\n                        <input type=\"radio\" name=\"rating\" value=\"terrible\" class=\"radiobox style-2\" />\n                        <span>Terrible</span> </label>\n\n                    <label class=\"radio radio-inline\">\n                        <input type=\"radio\" name=\"rating\" value=\"watchable\" class=\"radiobox style-2\" />\n                        <span>Watchable</span> </label>\n                    <label class=\"radio radio-inline\">\n                        <input type=\"radio\" name=\"rating\" value=\"best\" class=\"radiobox style-2\" />\n                        <span>Best ever</span> </label>\n\n                </div>\n\n            </div>\n\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n ");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-product-form.tpl.html","<form id=\"productForm\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Price</label>\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\n                <div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\" name=\"price\" />\n                    <span class=\"input-group-addon\">$</span>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Amount</label>\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\n                <div class=\"input-group\">\n                    <span class=\"input-group-addon\">&#8364;</span>\n                    <input type=\"text\" class=\"form-control\" name=\"amount\" />\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Color</label>\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\n                <select class=\"form-control\" name=\"color\">\n                    <option value=\"\">Choose a color</option>\n                    <option value=\"blue\">Blue</option>\n                    <option value=\"green\">Green</option>\n                    <option value=\"red\">Red</option>\n                    <option value=\"yellow\">Yellow</option>\n                    <option value=\"white\">White</option>\n                </select>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Size</label>\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\n                <select class=\"form-control\" name=\"size\">\n                    <option value=\"\">Choose a size</option>\n                    <option value=\"S\">S</option>\n                    <option value=\"M\">M</option>\n                    <option value=\"L\">L</option>\n                    <option value=\"XL\">XL</option>\n                </select>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n</form>\n\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-profile-form.tpl.html","<form id=\"profileForm\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label>Email address</label>\n            <input type=\"text\" class=\"form-control\" name=\"email\" />\n        </div>\n    </fieldset>\n    <fieldset>\n        <div class=\"form-group\">\n            <label>Password</label>\n            <input type=\"password\" class=\"form-control\" name=\"password\" />\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n</form>\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-toggling-form.tpl.html","<form id=\"togglingForm\" method=\"post\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Full name <sup>*</sup></label>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\" />\n            </div>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Company <sup>*</sup></label>\n            <div class=\"col-lg-5\">\n                <input type=\"text\" class=\"form-control\" name=\"company\"\n                       required data-bv-notempty-message=\"The company name is required\" />\n            </div>\n            <div class=\"col-lg-2\">\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#jobInfo\">\n                    Add more info\n                </button>\n            </div>\n        </div>\n    </fieldset>\n\n    <!-- These fields will not be validated as long as they are not visible -->\n    <div id=\"jobInfo\" style=\"display: none;\">\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Job title <sup>*</sup></label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"job\" />\n                </div>\n            </div>\n        </fieldset>\n\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Department <sup>*</sup></label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"department\" />\n                </div>\n            </div>\n        </fieldset>\n    </div>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Mobile phone <sup>*</sup></label>\n            <div class=\"col-lg-5\">\n                <input type=\"text\" class=\"form-control\" name=\"mobilePhone\" />\n            </div>\n            <div class=\"col-lg-2\">\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#phoneInfo\">\n                    Add more phone numbers\n                </button>\n            </div>\n        </div>\n    </fieldset>\n    <!-- These fields will not be validated as long as they are not visible -->\n    <div id=\"phoneInfo\" style=\"display: none;\">\n\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Home phone</label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"homePhone\" />\n                </div>\n            </div>\n        </fieldset>\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Office phone</label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"officePhone\" />\n                </div>\n            </div>\n        </fieldset>\n    </div>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n</form>");
+$templateCache.put("app/_common/layout/directives/demo/demo-states.tpl.html","<div class=\"demo\"><span id=\"demo-setting\"><i class=\"fa fa-cog txt-color-blueDark\"></i></span>\n\n    <form>\n        <legend class=\"no-padding margin-bottom-10\">Layout Options</legend>\n        <section>\n            <label><input type=\"checkbox\" ng-model=\"fixedHeader\"\n                          class=\"checkbox style-0\"><span>Fixed Header</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"fixedNavigation\"\n                          class=\"checkbox style-0\"><span>Fixed Navigation</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"fixedRibbon\"\n                          class=\"checkbox style-0\"><span>Fixed Ribbon</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"fixedPageFooter\"\n                          class=\"checkbox style-0\"><span>Fixed Footer</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"insideContainer\"\n                          class=\"checkbox style-0\"><span>Inside <b>.container</b></span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"rtl\"\n                          class=\"checkbox style-0\"><span>RTL</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"menuOnTop\"\n                          class=\"checkbox style-0\"><span>Menu on <b>top</b></span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"colorblindFriendly\"\n                          class=\"checkbox style-0\"><span>For Colorblind <div\n                    class=\"font-xs text-right\">(experimental)\n            </div></span>\n            </label><span id=\"smart-bgimages\"></span></section>\n        <section><h6 class=\"margin-top-10 semi-bold margin-bottom-5\">Clear Localstorage</h6><a\n                ng-click=\"factoryReset()\" class=\"btn btn-xs btn-block btn-primary\" id=\"reset-smart-widget\"><i\n                class=\"fa fa-refresh\"></i> Factory Reset</a></section>\n\n        <h6 class=\"margin-top-10 semi-bold margin-bottom-5\">SmartAdmin Skins</h6>\n\n\n        <section id=\"smart-styles\">\n            <a ng-repeat=\"skin in skins\" ng-click=\"setSkin(skin)\" class=\"{{skin.class}}\" style=\"{{skin.style}}\"><i ng-if=\"skin.name == $parent.smartSkin\" class=\"fa fa-check fa-fw\"></i> {{skin.label}} <sup ng-if=\"skin.beta\">beta</sup></a>\n        </section>\n    </form>\n</div>");}]);
 "use strict";
 
 angular.module('app.auth').controller('LoginCtrl', function ($scope, $state, GooglePlus, User, ezfb) {
@@ -2390,35 +2419,6 @@ angular.module('app.auth').factory('User', function ($http, $q, APP_CONFIG) {
     return UserModel;
 });
 
-angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("app/dashboard/live-feeds.tpl.html","<div jarvis-widget id=\"live-feeds-widget\" data-widget-togglebutton=\"false\" data-widget-editbutton=\"false\"\n     data-widget-fullscreenbutton=\"false\" data-widget-colorbutton=\"false\" data-widget-deletebutton=\"false\">\n<!-- widget options:\nusage: <div class=\"jarviswidget\" id=\"wid-id-0\" data-widget-editbutton=\"false\">\n\ndata-widget-colorbutton=\"false\"\ndata-widget-editbutton=\"false\"\ndata-widget-togglebutton=\"false\"\ndata-widget-deletebutton=\"false\"\ndata-widget-fullscreenbutton=\"false\"\ndata-widget-custombutton=\"false\"\ndata-widget-collapsed=\"true\"\ndata-widget-sortable=\"false\"\n\n-->\n<header>\n    <span class=\"widget-icon\"> <i class=\"glyphicon glyphicon-stats txt-color-darken\"></i> </span>\n\n    <h2>Live Feeds </h2>\n\n    <ul class=\"nav nav-tabs pull-right in\" id=\"myTab\">\n        <li class=\"active\">\n            <a data-toggle=\"tab\" href=\"#s1\"><i class=\"fa fa-clock-o\"></i> <span class=\"hidden-mobile hidden-tablet\">Live Stats</span></a>\n        </li>\n\n        <li>\n            <a data-toggle=\"tab\" href=\"#s2\"><i class=\"fa fa-facebook\"></i> <span class=\"hidden-mobile hidden-tablet\">Social Network</span></a>\n        </li>\n\n        <li>\n            <a data-toggle=\"tab\" href=\"#s3\"><i class=\"fa fa-dollar\"></i> <span class=\"hidden-mobile hidden-tablet\">Revenue</span></a>\n        </li>\n    </ul>\n\n</header>\n\n<!-- widget div-->\n<div class=\"no-padding\">\n\n    <div class=\"widget-body\">\n        <!-- content -->\n        <div id=\"myTabContent\" class=\"tab-content\">\n            <div class=\"tab-pane fade active in padding-10 no-padding-bottom\" id=\"s1\">\n                <div class=\"row no-space\">\n                    <div class=\"col-xs-12 col-sm-12 col-md-8 col-lg-8\">\n														<span class=\"demo-liveupdate-1\"> <span\n                                                                class=\"onoffswitch-title\">Live switch</span> <span\n                                                                class=\"onoffswitch\">\n																<input type=\"checkbox\" name=\"start_interval\" ng-model=\"autoUpdate\"\n                                                                       class=\"onoffswitch-checkbox\" id=\"start_interval\">\n																<label class=\"onoffswitch-label\" for=\"start_interval\">\n                                                                    <span class=\"onoffswitch-inner\"\n                                                                          data-swchon-text=\"ON\"\n                                                                          data-swchoff-text=\"OFF\"></span>\n                                                                    <span class=\"onoffswitch-switch\"></span>\n                                                                </label> </span> </span>\n\n                        <div id=\"updating-chart\" class=\"chart-large txt-color-blue\" flot-basic flot-data=\"liveStats\" flot-options=\"liveStatsOptions\"></div>\n\n                    </div>\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 show-stats\">\n\n                        <div class=\"row\">\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> My Tasks <span\n                                    class=\"pull-right\">130/200</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blueDark\" style=\"width: 65%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> Transfered <span\n                                    class=\"pull-right\">440 GB</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blue\" style=\"width: 34%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> Bugs Squashed<span\n                                    class=\"pull-right\">77%</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blue\" style=\"width: 77%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> User Testing <span\n                                    class=\"pull-right\">7 Days</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-greenLight\" style=\"width: 84%;\"></div>\n                                </div>\n                            </div>\n\n                            <span class=\"show-stat-buttons\"> <span class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\"> <a\n                                    href-void class=\"btn btn-default btn-block hidden-xs\">Generate PDF</a> </span> <span\n                                    class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\"> <a href-void\n                                                                                     class=\"btn btn-default btn-block hidden-xs\">Report\n                                a bug</a> </span> </span>\n\n                        </div>\n\n                    </div>\n                </div>\n\n                <div class=\"show-stat-microcharts\" data-sparkline-container data-easy-pie-chart-container>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\n                        <div class=\"easy-pie-chart txt-color-orangeDark\" data-percent=\"33\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">35</span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Server Load <i class=\"fa fa-caret-up icon-color-bad\"></i> </span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-greenLight\"><i class=\"fa fa-caret-up\"></i> 97%</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blueLight\"><i class=\"fa fa-caret-down\"></i> 44%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-greenLight hidden-sm hidden-md pull-right\"\n                             data-sparkline-type=\"line\" data-sparkline-height=\"33px\" data-sparkline-width=\"70px\"\n                             data-fill-color=\"transparent\">\n                            130, 187, 250, 257, 200, 210, 300, 270, 363, 247, 270, 363, 247\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-greenLight\" data-percent=\"78.9\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">78.9 </span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Disk Space <i class=\"fa fa-caret-down icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-blueDark\"><i class=\"fa fa-caret-up\"></i> 76%</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blue\"><i class=\"fa fa-caret-down\"></i> 3%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-blue hidden-sm hidden-md pull-right\" data-sparkline-type=\"line\"\n                             data-sparkline-height=\"33px\" data-sparkline-width=\"70px\" data-fill-color=\"transparent\">\n                            257, 200, 210, 300, 270, 363, 130, 187, 250, 247, 270, 363, 247\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-blue\" data-percent=\"23\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">23 </span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Transfered <i class=\"fa fa-caret-up icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-darken\">10GB</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blueDark\"><i class=\"fa fa-caret-up\"></i> 10%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-darken hidden-sm hidden-md pull-right\"\n                             data-sparkline-type=\"line\" data-sparkline-height=\"33px\" data-sparkline-width=\"70px\"\n                             data-fill-color=\"transparent\">\n                            200, 210, 363, 247, 300, 270, 130, 187, 250, 257, 363, 247, 270\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-darken\" data-percent=\"36\" data-pie-size=\"50\">\n                            <span class=\"percent degree-sign\">36 <i class=\"fa fa-caret-up\"></i></span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Temperature <i\n                                class=\"fa fa-caret-down icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-red\"><i class=\"fa fa-caret-up\"></i> 124</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blue\"><i class=\"fa fa-caret-down\"></i> 40 F</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-red hidden-sm hidden-md pull-right\" data-sparkline-type=\"line\"\n                             data-sparkline-height=\"33px\" data-sparkline-width=\"70px\" data-fill-color=\"transparent\">\n                            2700, 3631, 2471, 2700, 3631, 2471, 1300, 1877, 2500, 2577, 2000, 2100, 3000\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n            <!-- end s1 tab pane -->\n\n            <div class=\"tab-pane fade\" id=\"s2\">\n                <div class=\"widget-body-toolbar bg-color-white\">\n\n                    <form class=\"form-inline\" role=\"form\">\n\n                        <div class=\"form-group\">\n                            <label class=\"sr-only\" for=\"s123\">Show From</label>\n                            <input type=\"email\" class=\"form-control input-sm\" id=\"s123\" placeholder=\"Show From\">\n                        </div>\n                        <div class=\"form-group\">\n                            <input type=\"email\" class=\"form-control input-sm\" id=\"s124\" placeholder=\"To\">\n                        </div>\n\n                        <div class=\"btn-group hidden-phone pull-right\">\n                            <a class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\"><i\n                                    class=\"fa fa-cog\"></i> More <span class=\"caret\"> </span> </a>\n                            <ul class=\"dropdown-menu pull-right\">\n                                <li>\n                                    <a href-void><i class=\"fa fa-file-text-alt\"></i> Export to PDF</a>\n                                </li>\n                                <li>\n                                    <a href-void><i class=\"fa fa-question-sign\"></i> Help</a>\n                                </li>\n                            </ul>\n                        </div>\n\n                    </form>\n\n                </div>\n                <div class=\"padding-10\">\n                    <div id=\"statsChart\" class=\"chart-large has-legend-unique\" flot-basic flot-data=\"statsData\" flot-options=\"statsDisplayOptions\"></div>\n                </div>\n\n            </div>\n            <!-- end s2 tab pane -->\n\n            <div class=\"tab-pane fade\" id=\"s3\">\n\n                <div class=\"widget-body-toolbar bg-color-white smart-form\" id=\"rev-toggles\">\n\n                    <div class=\"inline-group\">\n\n                        <label for=\"gra-0\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-0\" ng-model=\"targetsShow\">\n                            <i></i> Target </label>\n                        <label for=\"gra-1\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-1\" ng-model=\"actualsShow\">\n                            <i></i> Actual </label>\n                        <label for=\"gra-2\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-2\" ng-model=\"signupsShow\">\n                            <i></i> Signups </label>\n                    </div>\n\n                    <div class=\"btn-group hidden-phone pull-right\">\n                        <a class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\"><i\n                                class=\"fa fa-cog\"></i> More <span class=\"caret\"> </span> </a>\n                        <ul class=\"dropdown-menu pull-right\">\n                            <li>\n                                <a href-void><i class=\"fa fa-file-text-alt\"></i> Export to PDF</a>\n                            </li>\n                            <li>\n                                <a href-void><i class=\"fa fa-question-sign\"></i> Help</a>\n                            </li>\n                        </ul>\n                    </div>\n\n                </div>\n\n                <div class=\"padding-10\">\n                    <div id=\"flotcontainer\" class=\"chart-large has-legend-unique\" flot-basic flot-data=\"revenewData\" flot-options=\"revenewDisplayOptions\" ></div>\n                </div>\n            </div>\n            <!-- end s3 tab pane -->\n        </div>\n\n        <!-- end content -->\n    </div>\n\n</div>\n<!-- end widget div -->\n</div>\n");
-$templateCache.put("app/layout/layout.tpl.html","<!-- BEACON MENU -->\n<div data-smart-include=\"app/layout/partials/beacon.tpl.html\" class=\"placeholder-right-panel\"></div>\n\n<!-- END BEACON MENU -->\n\n<div id=\"bodyMainContent\">\n     <!-- collapse menu button -->\n    <div id=\"menu-toggle-button\" class=\"menu-icon-cross\">\n        <span></span>\n    </div>\n    <!-- end collapse menu -->\n\n    <div class=\"calqueOpacite\"></div>\n\n    <!-- HEADER -->\n    <div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div>\n    <!-- END HEADER -->\n\n\n    <!-- Menu : Navigation area -->\n    <div data-smart-include=\"app/layout/partials/menu.tpl.html\" class=\"placeholder-left-panel\"></div>\n\n    <!-- END MENU -->\n\n\n    <!-- MAIN PANEL -->\n    <div id=\"main\" role=\"main\">\n\n        <!-- RIBBON -->\n        <div id=\"ribbon\">\n            <div id=\'homeSearchbar\'>\n                <div class=\"inputSearchGroup\">\n                    <div class=\"buttonContainer\">\n                        <div class=\"buttonSearch\"></div>\n                    </div>\n                    <input type=\"text\" class=\"form-control inputSearch\" placeholder=\"Rechercher un article...\">\n                </div><!-- /input-group -->\n            </div>\n        </div>\n        <!-- END RIBBON -->\n\n\n    <div data-smart-router-animation-wrap=\"content content@app\" data-wrap-for=\"#content\">\n        <div data-ui-view=\"content\" data-autoscroll=\"false\"></div>\n    </div>\n\n    </div>\n    <!-- END MAIN PANEL -->\n</div>");
-$templateCache.put("app/auth/directives/login-info.tpl.html","<div class=\"login-info ng-cloak\">\n    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->\n        <a  href=\"\" toggle-shortcut>\n            <img ng-src=\"{{user.picture}}\" alt=\"me\" class=\"online\">\n                <span>{{user.username}}\n                </span>\n            <i class=\"fa fa-angle-down\"></i>\n        </a>\n     </span>\n</div>");
-$templateCache.put("app/calendar/directives/full-calendar.tpl.html","<div jarvis-widget data-widget-color=\"blueDark\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-calendar\"></i> </span>\n\n        <h2> My Events </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <div class=\"btn-group dropdown\" dropdown >\n                <button class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\">\n                    Showing <i class=\"fa fa-caret-down\"></i>\n                </button>\n                <ul class=\"dropdown-menu js-status-update pull-right\">\n                    <li>\n                        <a ng-click=\"changeView(\'month\')\">Month</a>\n                    </li>\n                    <li>\n                        <a ng-click=\"changeView(\'agendaWeek\')\">Agenda</a>\n                    </li>\n                    <li>\n                        <a ng-click=\"changeView(\'agendaDay\')\">Today</a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </header>\n\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding\">\n            <!-- content goes here -->\n            <div class=\"widget-body-toolbar\">\n\n                <div id=\"calendar-buttons\">\n\n                    <div class=\"btn-group\">\n                        <a ng-click=\"prev()\" class=\"btn btn-default btn-xs\"><i\n                                class=\"fa fa-chevron-left\"></i></a>\n                        <a ng-click=\"next()\" class=\"btn btn-default btn-xs\"><i\n                                class=\"fa fa-chevron-right\"></i></a>\n                    </div>\n                </div>\n            </div>\n            <div id=\"calendar\"></div>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>\n");
-$templateCache.put("app/calendar/views/calendar.tpl.html","<!-- MAIN CONTENT -->\n<div id=\"content\">\n\n    <div class=\"row\">\n        <big-breadcrumbs items=\"[\'Home\', \'Calendar\']\" class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\"></big-breadcrumbs>\n        <div smart-include=\"app/layout/partials/sub-header.tpl.html\"></div>\n    </div>\n    <!-- widget grid -->\n    <section id=\"widget-grid\" widget-grid>\n        <!-- row -->\n        <div class=\"row\" ng-controller=\"CalendarCtrl\" >\n\n\n            <div class=\"col-sm-12 col-md-12 col-lg-3\">\n                <!-- new widget -->\n                <div class=\"jarviswidget jarviswidget-color-blueDark\">\n                    <header>\n                        <h2> Add Events </h2>\n                    </header>\n\n                    <!-- widget div-->\n                    <div>\n\n                        <div class=\"widget-body\">\n                            <!-- content goes here -->\n\n                            <form id=\"add-event-form\">\n                                <fieldset>\n\n                                    <div class=\"form-group\">\n                                        <label>Select Event Icon</label>\n                                        <div class=\"btn-group btn-group-sm btn-group-justified\" data-toggle=\"buttons\" > <!--  -->\n                                            <label class=\"btn btn-default active\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-1\" value=\"fa-info\" radio-toggle ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-info text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-2\" value=\"fa-warning\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-warning text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-3\" value=\"fa-check\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-check text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-4\" value=\"fa-user\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-user text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-5\" value=\"fa-lock\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-lock text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-6\" value=\"fa-clock-o\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-clock-o text-muted\"></i> </label>\n                                        </div>\n                                    </div>\n\n                                    <div class=\"form-group\">\n                                        <label>Event Title</label>\n                                        <input ng-model=\"newEvent.title\" class=\"form-control\"  id=\"title\" name=\"title\" maxlength=\"40\" type=\"text\" placeholder=\"Event Title\">\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label>Event Description</label>\n                                        <textarea  ng-model=\"newEvent.description\" class=\"form-control\" placeholder=\"Please be brief\" rows=\"3\" maxlength=\"40\" id=\"description\"></textarea>\n                                        <p class=\"note\">Maxlength is set to 40 characters</p>\n                                    </div>\n\n                                    <div class=\"form-group\">\n                                        <label>Select Event Color</label>\n                                        <div class=\"btn-group btn-group-justified btn-select-tick\" data-toggle=\"buttons\" >\n                                            <label class=\"btn bg-color-darken active\">\n                                                <input   ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option1\" value=\"bg-color-darken txt-color-white\" >\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-blue\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option2\" value=\"bg-color-blue txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-orange\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option3\" value=\"bg-color-orange txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-greenLight\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option4\" value=\"bg-color-greenLight txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-blueLight\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option5\" value=\"bg-color-blueLight txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-red\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option6\" value=\"bg-color-red txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                        </div>\n                                    </div>\n\n                                </fieldset>\n                                <div class=\"form-actions\">\n                                    <div class=\"row\">\n                                        <div class=\"col-md-12\">\n                                            <button class=\"btn btn-default\" type=\"button\" id=\"add-event\" ng-click=\"addEvent()\" >\n                                                Add Event\n                                            </button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </form>\n\n                            <!-- end content -->\n                        </div>\n\n                    </div>\n                    <!-- end widget div -->\n                </div>\n                <!-- end widget -->\n\n                <div class=\"well well-sm\" id=\"event-container\">\n                    <form>\n                        <legend>\n                            Draggable Events\n                        </legend>\n                        <ul id=\'external-events\' class=\"list-unstyled\">\n\n                            <li ng-repeat=\"event in eventsExternal\" dragable-event>\n                                <span class=\"{{event.className}}\" \n                                    data-description=\"{{event.description}}\"\n                                    data-icon=\"{{event.icon}}\"\n                                >\n                                {{event.title}}</span>\n                            </li>\n                            \n                        </ul>\n\n                        <!-- <ul id=\'external-events\' class=\"list-unstyled\">\n                            <li>\n                                <span class=\"bg-color-darken txt-color-white\" data-description=\"Currently busy\" data-icon=\"fa-time\">Office Meeting</span>\n                            </li>\n                            <li>\n                                <span class=\"bg-color-blue txt-color-white\" data-description=\"No Description\" data-icon=\"fa-pie\">Lunch Break</span>\n                            </li>\n                            <li>\n                                <span class=\"bg-color-red txt-color-white\" data-description=\"Urgent Tasks\" data-icon=\"fa-alert\">URGENT</span>\n                            </li>\n                        </ul> -->\n\n                        <div class=\"checkbox\">\n                            <label>\n                                <input type=\"checkbox\" id=\"drop-remove\" class=\"checkbox style-0\" checked=\"checked\">\n                                <span>remove after drop</span> </label>\n\n                        </div>\n                    </form>\n\n                </div>\n            </div>\n\n\n            <article class=\"col-sm-12 col-md-12 col-lg-9\">\n                <full-calendar id=\"main-calendar-widget\" data-events=\"events\"></full-calendar>\n            </article>\n        </div>\n    </section>\n</div>");
-$templateCache.put("app/dashboard/projects/recent-projects.tpl.html","<div class=\"project-context hidden-xs dropdown\" dropdown>\n\n    <span class=\"label\">{{getWord(\'Projects\')}}:</span>\n    <span class=\"project-selector dropdown-toggle\" data-toggle=\"dropdown\">{{getWord(\'Recent projects\')}} <i ng-if=\"projects.length\"\n            class=\"fa fa-angle-down\"></i></span>\n\n    <ul class=\"dropdown-menu\" ng-if=\"projects.length\">\n        <li ng-repeat=\"project in projects\">\n            <a href=\"{{project.href}}\">{{project.title}}</a>\n        </li>\n        <li class=\"divider\"></li>\n        <li>\n            <a ng-click=\"clearProjects()\"><i class=\"fa fa-power-off\"></i> Clear</a>\n        </li>\n    </ul>\n\n</div>");
-$templateCache.put("app/dashboard/todo/todo-widget.tpl.html","<div id=\"todo-widget\" jarvis-widget data-widget-editbutton=\"false\" data-widget-color=\"blue\"\n     ng-controller=\"TodoCtrl\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-check txt-color-white\"></i> </span>\n\n        <h2> ToDo\'s </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <button class=\"btn btn-xs btn-default\" ng-class=\"{active: newTodo}\" ng-click=\"toggleAdd()\"><i ng-class=\"{ \'fa fa-plus\': !newTodo, \'fa fa-times\': newTodo}\"></i> Add</button>\n\n        </div>\n    </header>\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding smart-form\">\n            <!-- content goes here -->\n            <div ng-show=\"newTodo\">\n                <h5 class=\"todo-group-title\"><i class=\"fa fa-plus-circle\"></i> New Todo</h5>\n\n                <form name=\"newTodoForm\" class=\"smart-form\">\n                    <fieldset>\n                        <section>\n                            <label class=\"input\">\n                                <input type=\"text\" required class=\"input-lg\" ng-model=\"newTodo.title\"\n                                       placeholder=\"What needs to be done?\">\n                            </label>\n                        </section>\n                        <section>\n                            <div class=\"col-xs-6\">\n                                <label class=\"select\">\n                                    <select class=\"input-sm\" ng-model=\"newTodo.state\"\n                                            ng-options=\"state as state for state in states\"></select> <i></i> </label>\n                            </div>\n                        </section>\n                    </fieldset>\n                    <footer>\n                        <button ng-disabled=\"newTodoForm.$invalid\" type=\"button\" class=\"btn btn-primary\"\n                                ng-click=\"createTodo()\">\n                            Add\n                        </button>\n                        <button type=\"button\" class=\"btn btn-default\" ng-click=\"toggleAdd()\">\n                            Cancel\n                        </button>\n                    </footer>\n                </form>\n            </div>\n\n            <todo-list state=\"Critical\"  title=\"Critical Tasks\" icon=\"warning\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Important\" title=\"Important Tasks\" icon=\"exclamation\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Completed\" title=\"Completed Tasks\" icon=\"check\" todos=\"todos\"></todo-list>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>");
-$templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\n    <li class=\"dropdown\" dropdown>\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\n            <i class=\"fa fa-angle-down\"></i> </a>\n        <ul class=\"dropdown-menu pull-right\">\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\n            </li>\n        </ul>\n    </li>\n</ul>");
-$templateCache.put("app/layout/partials/beacon.tpl.html","<div id=\"beacon\" ng-controller=\"beaconController\" ng-class=\"{translateBeacon:showBeacon.doShow}\" class=\"displayNone\">\r\n\r\n	<!-- Button collapse beacon -->\r\n	<div class=\"flecheHome\" ng-click=\"showBeacon.show()\" ng-class=\"{\'menu-open\':showBeacon.doShow}\">\r\n		<span class=\"glyphicon fleche-span\" ng-class=\"{\'glyphicon-menu-right\':showBeacon.doShow, \'glyphicon-menu-left\':!showBeacon.doShow}\"></span>\r\n	</div>   \r\n	<!-- end Button collapse beacon -->\r\n\r\n	<div class=\"beaconPanel\">\r\n\r\n		<div class=\"excluMag\">\r\n			<div class=\"excluMagTitre\">\r\n				<span class=\"traitExclu\"></span>\r\n				<p class=\"exclusivite\">Exclusivités</p>\r\n				<p class=\"magasin\">MAGASIN</p>\r\n			</div>\r\n			<p class=\"nomRayon\">Rayon {{nomRayon}}</p>\r\n\r\n			<div class=\"produitsPromoBeacon\">\r\n				<div class=\"produitBeacon row product{{$index}}\" ng-repeat=\"bProd in rayon\" ng-class=\"{notLast:!$last}\" ng-click=\"bProd.detailProduct.open($index, bProd)\">\r\n					<div class=\"promTagBeacon\">\r\n						<span class=\"backgroundPromo\"><span class=\"textPromo\"><p class=\"exclu\">Exclusivité</p><p class=\"mag\">MAGASIN</p></span></span>\r\n					</div>\r\n					<span class=\"spanImg col-xs-3\"><img ng-src=\"{{bProd.imgs[0]}}\"></span>\r\n					<div class=\"produitContent col-xs-9\">\r\n						<div class=\"produitName\">{{bProd.ArtDesignation}}</div>\r\n						<div class=\"produitNote\">\r\n							<span ng-switch=\"bProd.Note\" class=\"noteMoy\" ng-class=\"{displayNone:!bProd.hasNote}\">\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n								<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n									<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n								</span>\r\n							</span>\r\n							<span class=\"produitAvis\" ng-class=\"{displayNone:!bProd.avis}\">{{bProd.ListeAvis.length}} avis</span>\r\n						</div>\r\n						<div class=\"produitPrix\">\r\n							<span class=\"produitRemise\">{{bProd.pourcentage}} %</span>\r\n							<span class=\"prixGroup\">\r\n								<span class=\"produitPrixBarre\">{{bProd.prixNonRemise}} €</span>\r\n								<span class=\"produitPrixTTC\">{{bProd.PrixTTC}} €</span>\r\n							</span>\r\n						</div>\r\n						<div class=\"produitPanier\">\r\n							<div class=\"panierButton\" ng-click=\"addCart(bProd)\" ng-class=\'{noStock:!bProd.Stock}\'>AJOUTER AU PANIER</div>\r\n						</div>\r\n					</div>\r\n					<div class=\"col-xs-12 descAvis\" ng-class=\"{displayNone:!bProd.avis&&!bProd.description}\">\r\n						<div class=\"descriptionProduct\" ng-class=\"{displayNone:!bProd.description}\">\r\n							<div class=\"descriptionProductTitle\" ng-click=\"bProd.descriptionShow.dispDesc()\">\r\n								<span class=\"descriptionProductText\">Description</span>\r\n								<span class=\"glyphicon fleche-description pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.descriptionShow.showDesc, \'glyphicon-menu-up\':bProd.descriptionShow.showDesc}\"></span>\r\n							</div>\r\n							<p class=\"descriptionProductContent\" ng-class=\"{displayNone:!bProd.descriptionShow.showDesc}\">{{bProd.CatHTMLDesignation}}</p>\r\n						</div>\r\n\r\n						<div class=\"avisProduct\" ng-class=\"{displayNone:!bProd.avis}\">\r\n							<div class=\"avisProductTitle\" ng-click=\"bProd.avisShow.dispDesc()\">\r\n								<span class=\"avisProductText\">Avis</span>\r\n								<span class=\"glyphicon fleche-avis pull-right\" ng-class=\"{\'glyphicon-menu-down\':!bProd.avisShow.showDesc, \'glyphicon-menu-up\':bProd.avisShow.showDesc}\"></span>\r\n							</div>\r\n							<div class=\"avisProductContent\" ng-class=\"{displayNone:!bProd.avisShow.showDesc}\">\r\n								<ul class=\"listAvis\">\r\n									<li class=\"listAvisProduct\" ng-repeat=\"avisCt in bProd.ListeAvis\" ng-class=\"{notLast:!$last, displayNone:!avisCt.Visible}\">\r\n										<p class=\"listAvisProductHead\">\r\n											<span class=\"pseudoAvis\">{{avisCt.Pseudo}}</span>\r\n											<span class=\"starsavis pull-right\">\r\n												<span ng-switch=\"avisCt.Note\" class=\"noteMoy\">\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"0\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=0, \'yellow-star\':$index<0}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"1\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=1, \'yellow-star\':$index<1}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"2\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=2, \'yellow-star\':$index<2}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"3\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=3, \'yellow-star\':$index<3}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"4\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=4, \'yellow-star\':$index<4}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n													<span class=\"notes-moyennes\" ng-switch-when=\"5\">\r\n														<span class=\"glyphicon glyphicon-star\" ng-class=\"{\'grey-star\':$index>=5, \'yellow-star\':$index<5}\" ng-repeat=\"nbStars in [1,2,3,4,5]\"></span>\r\n													</span>\r\n												</span>\r\n											</span>\r\n										</p>\r\n										<p class=\"listAvisProductText\">{{avisCt.Commentaire}}</p>\r\n										<p class=\"listAvisProductDate\">{{avisCt.DateCreation}}</p>\r\n									</li>\r\n								</ul>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class=\"dejaVus\">\r\n				<span class=\"textDejaVus\">produits déjà vus</span>\r\n			</div>\r\n		</div>\r\n\r\n\r\n		<div class=\"conseils\">\r\n			<div class=\"conseilsTitreContainer\">\r\n				<div class=\"conseilsTitre\">CONSEILS</div>\r\n			</div>\r\n			<div class=\"conseilsContent row\" ng-repeat=\"conseil in conseils\">\r\n				<div class=\"imgContainer col-xs-3\">\r\n					<img ng-src=\"{{conseil.img}}\">\r\n				</div>\r\n				<div class=\"conseilContainer col-xs-9\">\r\n					<p class=\"titreConseil\">{{conseil.titre}}</p>\r\n					<p class=\"apercuConseil\">{{conseil.apercu}}</p>\r\n				</div>\r\n			</div>\r\n		</div>\r\n\r\n	</div>\r\n\r\n</div>");
-$templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">SmartAdmin WebApp © 2013-2016</span>\n        </div>\n\n        <div class=\"col-xs-6 col-sm-6 text-right hidden-xs\">\n            <div class=\"txt-color-white inline-block\">\n                <i class=\"txt-color-blueLight hidden-mobile\">Last account activity <i class=\"fa fa-clock-o\"></i>\n                    <strong>52 mins ago &nbsp;</strong> </i>\n\n                <div class=\"btn-group dropup\">\n                    <button class=\"btn btn-xs dropdown-toggle bg-color-blue txt-color-white\" data-toggle=\"dropdown\">\n                        <i class=\"fa fa-link\"></i> <span class=\"caret\"></span>\n                    </button>\n                    <ul class=\"dropdown-menu pull-right text-left\">\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Download Progress</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 50%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Server Load</p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-success\" style=\"width: 20%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <p class=\"txt-color-darken font-sm no-margin\">Memory Load <span class=\"text-danger\">*critical*</span>\n                                </p>\n\n                                <div class=\"progress progress-micro no-margin\">\n                                    <div class=\"progress-bar progress-bar-danger\" style=\"width: 70%;\"></div>\n                                </div>\n                            </div>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <div class=\"padding-5\">\n                                <button class=\"btn btn-block btn-default\">refresh</button>\n                            </div>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
-$templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\n\n<!-- pulled left: menu + logo -->\n<div class=\"pull-left\">\n\n    <span id=\"logo\"> <img class=\"logoImage\" src=\"styles/img/octave/logo.png\" alt=\"ConnecShop\"> </span>\n</div>\n<!-- end pulled left: menu + logo -->\n\n<!-- pulled right: button magasin, account, shopping cart -->\n<div id=\"buttonsPullRight\" class=\"pull-right\">\n    \n    <div class=\"buttonMagContainer buttonContainer\" onclick=\"sessionStorage.clear()\">\n        <div class=\"buttonMag buttonRight\"></div>\n    </div>\n\n    <div class=\"buttonAccContainer buttonContainer\">\n        <div class=\"buttonAcc buttonRight\"></div>\n    </div>\n\n    <span class=\"controllerContainer\" ng-controller=\"PanierController\">\n    <div class=\"buttonCartContainer buttonContainer\" ng-click=\"goToPanier()\">\n        <div class=\"buttonCart buttonRight\"></div>\n        <span class=\"nbArticlesPanier\" ng-class=\"{displayNone:!nbArticles, twoDigits:nbArticles>9}\">{{nbArticles}}</span>\n    </div>\n\n    </span>\n\n</div>\n<!-- end pulled right: buttons -->\n\n\n\n\n</header>");
-$templateCache.put("app/layout/partials/menu.tpl.html","<div id=\"menu-panel\" class=\"row\" ng-controller=\"menuController\">	\r\n	<div id=\"menu-interface\" class=\"col-xs-12\">\r\n\r\n		<div class=\"menu-content\">\r\n			<h1 class=\"menu-head\">\r\n				<span class=\"firstHead\">Menu</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories first\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in categories\" ng-class=\"{notfirst:$index, last:$last}\" ng-click=\"goToList(categorie.key)\">\r\n					{{categorie.name}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n		<div class=\"menu-content\">\r\n			<h1 class=\"menu-head\">\r\n				<span class=\"firstHead\">A propos</span>\r\n			</h1>\r\n\r\n			<ul class=\"menu-categories last\">\r\n				<li class=\"menu-categorie\" ng-repeat=\" categorie in aPropos\" ng-class=\"{notfirst:$index, last:$last}\">\r\n					{{categorie}}<span class=\"glyphicon glyphicon-menu-right pull-right menu-fleche\"></span>\r\n				</li>\r\n			</ul>\r\n		</div>\r\n\r\n	</div>\r\n</div>");
-$templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div login-info></div>\n    <!-- end user info -->\n\n    <nav>\n        <!-- NOTE: Notice the gaps after each icon usage <i></i>..\n        Please note that these links work a bit different than\n        traditional href=\"\" links. See documentation for details.\n        -->\n\n        <ul data-smart-menu>\n\n            <li data-ui-sref-active=\"active\">\n                <a data-ui-sref=\"app.home\" title=\"Outlook\">\n                    <i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">{{getWord(\'Home\')}}</span></a>\n            </li>\n\n        </ul>\n\n        <!-- NOTE: This allows you to pull menu items from server -->\n        <!-- <ul data-smart-menu-items=\"/api/menu-items.json\"></ul> -->\n    </nav>\n\n  <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\n    <i class=\"fa fa-arrow-circle-left hit\"></i>\n  </span>\n\n</aside>");
-$templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\n    <ul id=\"sparks\" class=\"\">\n        <li class=\"sparks-info\">\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n    </ul>\n</div>\n			");
-$templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\n\n<!-- MODAL PLACE HOLDER\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\n<div class=\"modal-dialog\">\n<div class=\"modal-content\"></div>\n</div>\n</div>   -->\n<!--////////////////////////////////////-->\n\n<!--<div class=\"modal-header\">\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\n&times;\n</button>\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\n</div>-->\n<div class=\"modal-body\">\n\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\n	<hr class=\"simple\">\n	<h5>Instruction</h5>\n\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\n	<br>\n	<br>\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\n	<br>\n	<br>\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\n	<br>\n	<br>\n	<h5>Commands</h5>\n	<ul>\n		<li>\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\n		</li>\n		<li>\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\n		</li>\n		<li>\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\n		</li>\n		<li>\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\n		</li>\n		<li>\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\n		</li>\n		<li>\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\n		</li>\n		<li>\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\n		</li>\n		<li>\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\n		</li>\n		<li>\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\n		</li>\n		<li>\n			<strong>\'logout\'</strong> - logs you out\n		</li>\n	</ul>\n	<br>\n	<h5>Adding your own commands</h5>\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \n\n	<hr class=\"simple\">\n	<div class=\"text-right\">\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\n			Got it!\n		</button>\n	</div>\n\n</div>\n<!--<div class=\"modal-footer\">\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\n</div> -->");
-$templateCache.put("app/panier/views/panier_1.tpl.html","<div id=\"panier_1stStep\">\r\n\r\n	<div class=\"panierProducts row\" ng-repeat=\"product in products\">\r\n		<div class=\"promTag promTagBeacon\" ng-class=\"{displayNone:product.idPromo==1||product.idPromo==0}\">\r\n			<span class=\"backgroundPromo\"><span class=\"textPromo\"><p class=\"exclu\">Exclusivité</p><p class=\"mag\">MAGASIN</p></span></span>\r\n		</div>\r\n		<div class=\"promTag promTagClassique\" ng-class=\"{displayNone:product.idPromo==2||product.idPromo==0}\">\r\n			<span class=\"backgroundPromo\"><span class=\"textPromo\">PROMO</span></span>\r\n		</div>\r\n		<div class=\"imgContainer col-xs-3\">\r\n			<img ng-src=\"{{product.imgs[0]}}\">\r\n		</div>\r\n		<div class=\"productContentContainer col-xs-9\">\r\n			<span class=\"removeFromPanier glyphicon glyphicon-remove\" ng-click=\"changeQuantity($index, -product.quantity)\"></span>\r\n			<div class=\"productDesignation\">{{product.ArtDesignation}}</div>\r\n			<span class=\"productQuantity\">\r\n				<span class=\"quantityMoins glyphicon glyphicon-minus\" ng-click=\"changeQuantity($index, -1)\"></span>\r\n				<span class=\"quantityNumber\">{{product.quantity}}</span>\r\n				<span class=\"quantityPlus glyphicon glyphicon-plus\" ng-click=\"changeQuantity($index, 1)\"></span>\r\n			</span>\r\n			<span class=\"productsPrices\">\r\n				<span class=\"remiseGroup\" ng-class=\"{displayNone:!product.remise}\">\r\n					<span class=\"productRemise\" ng-class=\"{beaconBg:product.idPromo==2}\">{{product.pourcentage}}%</span>  \r\n					<span class=\"productPrixBarre\">{{product.prixNonRemiseStr}} €</span>\r\n				</span>  \r\n				<span class=\"productPrixTTC\">{{product.prixTTCStr}} €</span>\r\n			</span>\r\n		</div>\r\n\r\n	</div>\r\n\r\n	<div class=\"bilanPanier row\">\r\n		<div class=\"fraisDePort\">\r\n			<span class=\"textFraisDePort\">Frais de port</span>\r\n			<span class=\"prixFraisDePort\">6,60 €</span>\r\n		</div>\r\n		<div class=\"prixTotal\">\r\n			<span class=\"textPrixTotal\">Total</span>\r\n			<span class=\"prixPrixTotal\">{{prixTotal}} €</span>\r\n		</div>\r\n	</div>\r\n\r\n	<div class=\"bouttonContinuerContainer\">\r\n		<div class=\"bouttonContinuer\">CONTINUER</div>\r\n	</div>\r\n\r\n\r\n</div>");
-$templateCache.put("app/layout/shortcut/shortcut.tpl.html","<div id=\"shortcut\">\n	<ul>\n		<li>\n			<a href=\"#/inbox/\" class=\"jarvismetro-tile big-cubes bg-color-blue\"> <span class=\"iconbox\"> <i class=\"fa fa-envelope fa-4x\"></i> <span>Mail <span class=\"label pull-right bg-color-darken\">14</span></span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/calendar\" class=\"jarvismetro-tile big-cubes bg-color-orangeDark\"> <span class=\"iconbox\"> <i class=\"fa fa-calendar fa-4x\"></i> <span>Calendar</span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/maps\" class=\"jarvismetro-tile big-cubes bg-color-purple\"> <span class=\"iconbox\"> <i class=\"fa fa-map-marker fa-4x\"></i> <span>Maps</span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/invoice\" class=\"jarvismetro-tile big-cubes bg-color-blueDark\"> <span class=\"iconbox\"> <i class=\"fa fa-book fa-4x\"></i> <span>Invoice <span class=\"label pull-right bg-color-darken\">99</span></span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/gallery\" class=\"jarvismetro-tile big-cubes bg-color-greenLight\"> <span class=\"iconbox\"> <i class=\"fa fa-picture-o fa-4x\"></i> <span>Gallery </span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/profile\" class=\"jarvismetro-tile big-cubes selected bg-color-pinkDark\"> <span class=\"iconbox\"> <i class=\"fa fa-user fa-4x\"></i> <span>My Profile </span> </span> </a>\n		</li>\n	</ul>\n</div>");
-$templateCache.put("app/dashboard/chat/directives/aside-chat-widget.tpl.html","<ul>\n    <li>\n        <div class=\"display-users\">\n            <input class=\"form-control chat-user-filter\" placeholder=\"Filter\" type=\"text\">\n            <dl>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha1\"\n                       data-chat-fname=\"Sadi\"\n                       data-chat-lname=\"Orlaf\"\n                       data-chat-status=\"busy\"\n                       data-chat-alertmsg=\"Sadi Orlaf is in a meeting. Please do not disturb!\"\n                       data-chat-alertshow=\"true\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/5.png\' alt=\'Sadi Orlaf\'>\n											<div class=\'usr-card-content\'>\n												<h3>Sadi Orlaf</h3>\n												<p>Marketing Executive</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Sadi Orlaf\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha2\"\n                       data-chat-fname=\"Jessica\"\n                       data-chat-lname=\"Dolof\"\n                       data-chat-status=\"online\"\n                       data-chat-alertmsg=\"\"\n                       data-chat-alertshow=\"false\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/1.png\' alt=\'Jessica Dolof\'>\n											<div class=\'usr-card-content\'>\n												<h3>Jessica Dolof</h3>\n												<p>Sales Administrator</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Jessica Dolof\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha3\"\n                       data-chat-fname=\"Zekarburg\"\n                       data-chat-lname=\"Almandalie\"\n                       data-chat-status=\"online\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/3.png\' alt=\'Zekarburg Almandalie\'>\n											<div class=\'usr-card-content\'>\n												<h3>Zekarburg Almandalie</h3>\n												<p>Sales Admin</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Zekarburg Almandalie\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr\"\n                       data-chat-id=\"cha4\"\n                       data-chat-fname=\"Barley\"\n                       data-chat-lname=\"Krazurkth\"\n                       data-chat-status=\"away\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/4.png\' alt=\'Barley Krazurkth\'>\n											<div class=\'usr-card-content\'>\n												<h3>Barley Krazurkth</h3>\n												<p>Sales Director</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Barley Krazurkth\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr offline\"\n                       data-chat-id=\"cha5\"\n                       data-chat-fname=\"Farhana\"\n                       data-chat-lname=\"Amrin\"\n                       data-chat-status=\"incognito\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/female.png\' alt=\'Farhana Amrin\'>\n											<div class=\'usr-card-content\'>\n												<h3>Farhana Amrin</h3>\n												<p>Support Admin <small><i class=\'fa fa-music\'></i> Playing Beethoven Classics</small></p>\n											</div>\n										</div>\n									\">\n                        <i></i>Farhana Amrin (offline)\n                    </a>\n                </dt>\n                <dt>\n                    <a href=\"#\" class=\"usr offline\"\n                       data-chat-id=\"cha6\"\n                       data-chat-fname=\"Lezley\"\n                       data-chat-lname=\"Jacob\"\n                       data-chat-status=\"incognito\"\n                       popover-trigger=\"hover\"\n                       popover-placement=\"right\"\n                       smart-popover-html=\"\n										<div class=\'usr-card\'>\n											<img src=\'styles/img/avatars/male.png\' alt=\'Lezley Jacob\'>\n											<div class=\'usr-card-content\'>\n												<h3>Lezley Jacob</h3>\n												<p>Sales Director</p>\n											</div>\n										</div>\n									\">\n                        <i></i>Lezley Jacob (offline)\n                    </a>\n                </dt>\n            </dl>\n\n\n            <!--<a href=\"chat.html\" class=\"btn btn-xs btn-default btn-block sa-chat-learnmore-btn\">About the API</a>-->\n        </div>\n    </li>\n</ul>");
-$templateCache.put("app/dashboard/chat/directives/chat-users.tpl.html","<div id=\"chat-container\" ng-class=\"{open: open}\">\n    <span class=\"chat-list-open-close\" ng-click=\"openToggle()\"><i class=\"fa fa-user\"></i><b>!</b></span>\n\n    <div class=\"chat-list-body custom-scroll\">\n        <ul id=\"chat-users\">\n            <li ng-repeat=\"chatUser in chatUsers | filter: chatUserFilter\">\n                <a ng-click=\"messageTo(chatUser)\"><img ng-src=\"{{chatUser.picture}}\">{{chatUser.username}} <span\n                        class=\"badge badge-inverse\">{{chatUser.username.length}}</span><span class=\"state\"><i\n                        class=\"fa fa-circle txt-color-green pull-right\"></i></span></a>\n            </li>\n        </ul>\n    </div>\n    <div class=\"chat-list-footer\">\n        <div class=\"control-group\">\n            <form class=\"smart-form\">\n                <section>\n                    <label class=\"input\" >\n                        <input type=\"text\" ng-model=\"chatUserFilter\" id=\"filter-chat-list\" placeholder=\"Filter\">\n                    </label>\n                </section>\n            </form>\n        </div>\n    </div>\n</div>");
-$templateCache.put("app/dashboard/chat/directives/chat-widget.tpl.html","<div id=\"chat-widget\" jarvis-widget data-widget-color=\"blueDark\" data-widget-editbutton=\"false\"\n     data-widget-fullscreenbutton=\"false\">\n\n\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-comments txt-color-white\"></i> </span>\n\n        <h2> SmartMessage </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n\n            <div class=\"btn-group\" data-dropdown>\n                <button class=\"btn dropdown-toggle btn-xs btn-success\" data-toggle=\"dropdown\">\n                    Status <i class=\"fa fa-caret-down\"></i>\n                </button>\n                <ul class=\"dropdown-menu pull-right js-status-update\">\n                    <li>\n                        <a href-void><i class=\"fa fa-circle txt-color-green\"></i> Online</a>\n                    </li>\n                    <li>\n                        <a href-void><i class=\"fa fa-circle txt-color-red\"></i> Busy</a>\n                    </li>\n                    <li>\n                        <a href-void><i class=\"fa fa-circle txt-color-orange\"></i> Away</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href-void><i class=\"fa fa-power-off\"></i> Log Off</a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </header>\n\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body widget-hide-overflow no-padding\">\n            <!-- content goes here -->\n\n            <chat-users></chat-users>\n\n            <!-- CHAT BODY -->\n            <div id=\"chat-body\" class=\"chat-body custom-scroll\">\n                <ul>\n                    <li class=\"message\" ng-repeat=\"message in chatMessages\">\n                        <img class=\"message-picture online\" ng-src=\"{{message.user.picture}}\">\n\n                        <div class=\"message-text\">\n                            <time>\n                                {{message.date | date }}\n                            </time>\n                            <a ng-click=\"messageTo(message.user)\" class=\"username\">{{message.user.username}}</a>\n                            <div ng-bind-html=\"message.body\"></div>\n\n                        </div>\n                    </li>\n                </ul>\n            </div>\n\n            <!-- CHAT FOOTER -->\n            <div class=\"chat-footer\">\n\n                <!-- CHAT TEXTAREA -->\n                <div class=\"textarea-div\">\n\n                    <div class=\"typearea\">\n                        <textarea placeholder=\"Write a reply...\" id=\"textarea-expand\"\n                                  class=\"custom-scroll\" ng-model=\"newMessage\"></textarea>\n                    </div>\n\n                </div>\n\n                <!-- CHAT REPLY/SEND -->\n											<span class=\"textarea-controls\">\n												<button class=\"btn btn-sm btn-primary pull-right\" ng-click=\"sendMessage()\">\n                                                    Reply\n                                                </button> <span class=\"pull-right smart-form\"\n                                                                style=\"margin-top: 3px; margin-right: 10px;\"> <label\n                                                    class=\"checkbox pull-right\">\n                                                <input type=\"checkbox\" name=\"subscription\" id=\"subscription\">\n                                                <i></i>Press <strong> ENTER </strong> to send </label> </span> <a\n                                                    href-void class=\"pull-left\"><i\n                                                    class=\"fa fa-camera fa-fw fa-lg\"></i></a> </span>\n\n            </div>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>");
-$templateCache.put("app/dashboard/todo/directives/todo-list.tpl.html","<div>\n    <h5 class=\"todo-group-title\"><i class=\"fa fa-{{icon}}\"></i> {{title}} (\n        <small class=\"num-of-tasks\">{{scopeItems.length}}</small>\n        )\n    </h5>\n    <ul class=\"todo\">\n        <li ng-class=\"{complete: todo.completedAt}\" ng-repeat=\"todo in todos | orderBy: todo._id | filter: filter  track by todo._id\" >\n    	<span class=\"handle\"> <label class=\"checkbox\">\n            <input type=\"checkbox\" ng-click=\"todo.toggle()\" ng-checked=\"todo.completedAt\"\n                   name=\"checkbox-inline\">\n            <i></i> </label> </span>\n\n            <p>\n                <strong>Ticket #{{$index + 1}}</strong> - {{todo.title}}\n                <span class=\"text-muted\" ng-if=\"todo.description\">{{todo.description}}</span>\n                <span class=\"date\">{{todo.createdAt | date}} &dash; <a ng-click=\"deleteTodo(todo)\" class=\"text-muted\"><i\n                        class=\"fa fa-trash\"></i></a></span>\n\n            </p>\n        </li>\n    </ul>\n</div>");
-$templateCache.put("app/_common/layout/directives/demo/demo-states.tpl.html","<div class=\"demo\"><span id=\"demo-setting\"><i class=\"fa fa-cog txt-color-blueDark\"></i></span>\n\n    <form>\n        <legend class=\"no-padding margin-bottom-10\">Layout Options</legend>\n        <section>\n            <label><input type=\"checkbox\" ng-model=\"fixedHeader\"\n                          class=\"checkbox style-0\"><span>Fixed Header</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"fixedNavigation\"\n                          class=\"checkbox style-0\"><span>Fixed Navigation</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"fixedRibbon\"\n                          class=\"checkbox style-0\"><span>Fixed Ribbon</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"fixedPageFooter\"\n                          class=\"checkbox style-0\"><span>Fixed Footer</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"insideContainer\"\n                          class=\"checkbox style-0\"><span>Inside <b>.container</b></span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"rtl\"\n                          class=\"checkbox style-0\"><span>RTL</span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"menuOnTop\"\n                          class=\"checkbox style-0\"><span>Menu on <b>top</b></span></label>\n            <label><input type=\"checkbox\"\n                          ng-model=\"colorblindFriendly\"\n                          class=\"checkbox style-0\"><span>For Colorblind <div\n                    class=\"font-xs text-right\">(experimental)\n            </div></span>\n            </label><span id=\"smart-bgimages\"></span></section>\n        <section><h6 class=\"margin-top-10 semi-bold margin-bottom-5\">Clear Localstorage</h6><a\n                ng-click=\"factoryReset()\" class=\"btn btn-xs btn-block btn-primary\" id=\"reset-smart-widget\"><i\n                class=\"fa fa-refresh\"></i> Factory Reset</a></section>\n\n        <h6 class=\"margin-top-10 semi-bold margin-bottom-5\">SmartAdmin Skins</h6>\n\n\n        <section id=\"smart-styles\">\n            <a ng-repeat=\"skin in skins\" ng-click=\"setSkin(skin)\" class=\"{{skin.class}}\" style=\"{{skin.style}}\"><i ng-if=\"skin.name == $parent.smartSkin\" class=\"fa fa-check fa-fw\"></i> {{skin.label}} <sup ng-if=\"skin.beta\">beta</sup></a>\n        </section>\n    </form>\n</div>");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-attribute-form.tpl.html","<form id=\"attributeForm\" class=\"form-horizontal\"\n      data-bv-message=\"This value is not valid\"\n      data-bv-feedbackicons-valid=\"glyphicon glyphicon-ok\"\n      data-bv-feedbackicons-invalid=\"glyphicon glyphicon-remove\"\n      data-bv-feedbackicons-validating=\"glyphicon glyphicon-refresh\">\n\n    <fieldset>\n        <legend>\n            Set validator options via HTML attributes\n        </legend>\n\n        <div class=\"alert alert-warning\">\n            <code>&lt; input\n                data-bv-validatorname\n                data-bv-validatorname-validatoroption=\"...\" / &gt;</code>\n\n            <br>\n            <br>\n            More validator options can be found here:\n            <a href=\"http://bootstrapvalidator.com/validators/\" target=\"_blank\">http://bootstrapvalidator.com/validators/</a>\n        </div>\n\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Full name</label>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The first name is required and cannot be empty\" />\n            </div>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The last name is required and cannot be empty\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Username</label>\n            <div class=\"col-lg-5\">\n                <input type=\"text\" class=\"form-control\" name=\"username\"\n                       data-bv-message=\"The username is not valid\"\n\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The username is required and cannot be empty\"\n\n                       data-bv-regexp=\"true\"\n                       data-bv-regexp-regexp=\"^[a-zA-Z0-9_\\.]+$\"\n                       data-bv-regexp-message=\"The username can only consist of alphabetical, number, dot and underscore\"\n\n                       data-bv-stringlength=\"true\"\n                       data-bv-stringlength-min=\"6\"\n                       data-bv-stringlength-max=\"30\"\n                       data-bv-stringlength-message=\"The username must be more than 6 and less than 30 characters long\"\n\n                       data-bv-different=\"true\"\n                       data-bv-different-field=\"password\"\n                       data-bv-different-message=\"The username and password cannot be the same as each other\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Email address</label>\n            <div class=\"col-lg-5\">\n                <input class=\"form-control\" name=\"email\" type=\"email\"\n                       data-bv-emailaddress=\"true\"\n                       data-bv-emailaddress-message=\"The input is not a valid email address\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Password</label>\n            <div class=\"col-lg-5\">\n                <input type=\"password\" class=\"form-control\" name=\"password\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The password is required and cannot be empty\"\n\n                       data-bv-identical=\"true\"\n                       data-bv-identical-field=\"confirmPassword\"\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\n\n                       data-bv-different=\"true\"\n                       data-bv-different-field=\"username\"\n                       data-bv-different-message=\"The password cannot be the same as username\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Retype password</label>\n            <div class=\"col-lg-5\">\n                <input type=\"password\" class=\"form-control\" name=\"confirmPassword\"\n                       data-bv-notempty=\"true\"\n                       data-bv-notempty-message=\"The confirm password is required and cannot be empty\"\n\n                       data-bv-identical=\"true\"\n                       data-bv-identical-field=\"password\"\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\n\n                       data-bv-different=\"true\"\n                       data-bv-different-field=\"username\"\n                       data-bv-different-message=\"The password cannot be the same as username\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Languages</label>\n            <div class=\"col-lg-5\">\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\"\n                               data-bv-message=\"Please specify at least one language you can speak\"\n                               data-bv-notempty=\"true\" />\n                        English </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\n                        French </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\n                        German </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\n                        Russian </label>\n                </div>\n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"other\" />\n                        Other </label>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n     ");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-button-group-form.tpl.html","<form id=\"buttonGroupForm\" method=\"post\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Gender</label>\n            <div class=\"col-lg-9\">\n                <div class=\"btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default\">\n                        <input type=\"radio\" name=\"gender\" value=\"male\" />\n                        Male </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"radio\" name=\"gender\" value=\"female\" />\n                        Female </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"radio\" name=\"gender\" value=\"other\" />\n                        Other </label>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Languages</label>\n            <div class=\"col-lg-9\">\n                <div class=\"btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\" />\n                        English </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\n                        German </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\n                        French </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\n                        Russian </label>\n                    <label class=\"btn btn-default\">\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"italian\">\n                        Italian </label>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-contact-form.tpl.html","<form id=\"contactForm\" method=\"post\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>Showing messages in custom area</legend>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Full name</label>\n            <div class=\"col-md-6\">\n                <input type=\"text\" class=\"form-control\" name=\"fullName\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Email</label>\n            <div class=\"col-md-6\">\n                <input type=\"text\" class=\"form-control\" name=\"email\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Title</label>\n            <div class=\"col-md-6\">\n                <input type=\"text\" class=\"form-control\" name=\"title\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-md-3 control-label\">Content</label>\n            <div class=\"col-md-6\">\n                <textarea class=\"form-control\" name=\"content\" rows=\"5\"></textarea>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <!-- #messages is where the messages are placed inside -->\n        <div class=\"form-group\">\n            <div class=\"col-md-9 col-md-offset-3\">\n                <div id=\"messages\"></div>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-movie-form.tpl.html","\n<form id=\"movieForm\" method=\"post\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <div class=\"row\">\n                <div class=\"col-md-8\">\n                    <label class=\"control-label\">Movie title</label>\n                    <input type=\"text\" class=\"form-control\" name=\"title\" />\n                </div>\n\n                <div class=\"col-md-4 selectContainer\">\n                    <label class=\"control-label\">Genre</label>\n                    <select class=\"form-control\" name=\"genre\">\n                        <option value=\"\">Choose a genre</option>\n                        <option value=\"action\">Action</option>\n                        <option value=\"comedy\">Comedy</option>\n                        <option value=\"horror\">Horror</option>\n                        <option value=\"romance\">Romance</option>\n                    </select>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <div class=\"row\">\n                <div class=\"col-sm-12 col-md-4\">\n                    <label class=\"control-label\">Director</label>\n                    <input type=\"text\" class=\"form-control\" name=\"director\" />\n                </div>\n\n                <div class=\"col-sm-12 col-md-4\">\n                    <label class=\"control-label\">Writer</label>\n                    <input type=\"text\" class=\"form-control\" name=\"writer\" />\n                </div>\n\n                <div class=\"col-sm-12 col-md-4\">\n                    <label class=\"control-label\">Producer</label>\n                    <input type=\"text\" class=\"form-control\" name=\"producer\" />\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <div class=\"row\">\n                <div class=\"col-sm-12 col-md-6\">\n                    <label class=\"control-label\">Website</label>\n                    <input type=\"text\" class=\"form-control\" name=\"website\" />\n                </div>\n\n                <div class=\"col-sm-12 col-md-6\">\n                    <label class=\"control-label\">Youtube trailer</label>\n                    <input type=\"text\" class=\"form-control\" name=\"trailer\" />\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"control-label\">Review</label>\n            <textarea class=\"form-control\" name=\"review\" rows=\"8\"></textarea>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n\n            <div class=\"row\">\n                <div class=\"col-sm-12 col-md-12\">\n                    <label class=\"control-label\">Rating</label>\n                </div>\n\n                <div class=\"col-sm-12 col-md-10\">\n\n                    <label class=\"radio radio-inline no-margin\">\n                        <input type=\"radio\" name=\"rating\" value=\"terrible\" class=\"radiobox style-2\" />\n                        <span>Terrible</span> </label>\n\n                    <label class=\"radio radio-inline\">\n                        <input type=\"radio\" name=\"rating\" value=\"watchable\" class=\"radiobox style-2\" />\n                        <span>Watchable</span> </label>\n                    <label class=\"radio radio-inline\">\n                        <input type=\"radio\" name=\"rating\" value=\"best\" class=\"radiobox style-2\" />\n                        <span>Best ever</span> </label>\n\n                </div>\n\n            </div>\n\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n ");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-product-form.tpl.html","<form id=\"productForm\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Price</label>\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\n                <div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\" name=\"price\" />\n                    <span class=\"input-group-addon\">$</span>\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Amount</label>\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\n                <div class=\"input-group\">\n                    <span class=\"input-group-addon\">&#8364;</span>\n                    <input type=\"text\" class=\"form-control\" name=\"amount\" />\n                </div>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Color</label>\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\n                <select class=\"form-control\" name=\"color\">\n                    <option value=\"\">Choose a color</option>\n                    <option value=\"blue\">Blue</option>\n                    <option value=\"green\">Green</option>\n                    <option value=\"red\">Red</option>\n                    <option value=\"yellow\">Yellow</option>\n                    <option value=\"white\">White</option>\n                </select>\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-xs-2 col-lg-3 control-label\">Size</label>\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\n                <select class=\"form-control\" name=\"size\">\n                    <option value=\"\">Choose a size</option>\n                    <option value=\"S\">S</option>\n                    <option value=\"M\">M</option>\n                    <option value=\"L\">L</option>\n                    <option value=\"XL\">XL</option>\n                </select>\n            </div>\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n</form>\n\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-profile-form.tpl.html","<form id=\"profileForm\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label>Email address</label>\n            <input type=\"text\" class=\"form-control\" name=\"email\" />\n        </div>\n    </fieldset>\n    <fieldset>\n        <div class=\"form-group\">\n            <label>Password</label>\n            <input type=\"password\" class=\"form-control\" name=\"password\" />\n        </div>\n    </fieldset>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n</form>\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-toggling-form.tpl.html","<form id=\"togglingForm\" method=\"post\" class=\"form-horizontal\">\n\n    <fieldset>\n        <legend>\n            Default Form Elements\n        </legend>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Full name <sup>*</sup></label>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\" />\n            </div>\n            <div class=\"col-lg-4\">\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\" />\n            </div>\n        </div>\n    </fieldset>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Company <sup>*</sup></label>\n            <div class=\"col-lg-5\">\n                <input type=\"text\" class=\"form-control\" name=\"company\"\n                       required data-bv-notempty-message=\"The company name is required\" />\n            </div>\n            <div class=\"col-lg-2\">\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#jobInfo\">\n                    Add more info\n                </button>\n            </div>\n        </div>\n    </fieldset>\n\n    <!-- These fields will not be validated as long as they are not visible -->\n    <div id=\"jobInfo\" style=\"display: none;\">\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Job title <sup>*</sup></label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"job\" />\n                </div>\n            </div>\n        </fieldset>\n\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Department <sup>*</sup></label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"department\" />\n                </div>\n            </div>\n        </fieldset>\n    </div>\n\n    <fieldset>\n        <div class=\"form-group\">\n            <label class=\"col-lg-3 control-label\">Mobile phone <sup>*</sup></label>\n            <div class=\"col-lg-5\">\n                <input type=\"text\" class=\"form-control\" name=\"mobilePhone\" />\n            </div>\n            <div class=\"col-lg-2\">\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#phoneInfo\">\n                    Add more phone numbers\n                </button>\n            </div>\n        </div>\n    </fieldset>\n    <!-- These fields will not be validated as long as they are not visible -->\n    <div id=\"phoneInfo\" style=\"display: none;\">\n\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Home phone</label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"homePhone\" />\n                </div>\n            </div>\n        </fieldset>\n        <fieldset>\n            <div class=\"form-group\">\n                <label class=\"col-lg-3 control-label\">Office phone</label>\n                <div class=\"col-lg-5\">\n                    <input type=\"text\" class=\"form-control\" name=\"officePhone\" />\n                </div>\n            </div>\n        </fieldset>\n    </div>\n\n    <div class=\"form-actions\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <button class=\"btn btn-default\" type=\"submit\">\n                    <i class=\"fa fa-eye\"></i>\n                    Validate\n                </button>\n            </div>\n        </div>\n    </div>\n</form>");}]);
 'use strict';
 
 angular.module('app.calendar').controller('CalendarCtrl', function ($scope, $log, CalendarEvent) {
@@ -4167,6 +4167,154 @@ angular.module('app').directive('languageSelector', function(Language){
         scope: true
     }
 });
+"use strict";
+
+angular.module('app').directive('toggleShortcut', function($log,$timeout) {
+
+	var initDomEvents = function($element){
+
+		var shortcut_dropdown = $('#shortcut');
+
+		$element.on('click',function(){
+		
+			if (shortcut_dropdown.is(":visible")) {
+				shortcut_buttons_hide();
+			} else {
+				shortcut_buttons_show();
+			}
+
+		})
+
+		shortcut_dropdown.find('a').click(function(e) {
+			e.preventDefault();
+			window.location = $(this).attr('href');
+			setTimeout(shortcut_buttons_hide, 300);
+		});
+
+		
+
+		// SHORTCUT buttons goes away if mouse is clicked outside of the area
+		$(document).mouseup(function(e) {
+			if (shortcut_dropdown && !shortcut_dropdown.is(e.target) && shortcut_dropdown.has(e.target).length === 0) {
+				shortcut_buttons_hide();
+			}
+		});
+
+		// SHORTCUT ANIMATE HIDE
+		function shortcut_buttons_hide() {
+			shortcut_dropdown.animate({
+				height : "hide"
+			}, 300, "easeOutCirc");
+			$('body').removeClass('shortcut-on');
+
+		}
+
+		// SHORTCUT ANIMATE SHOW
+		function shortcut_buttons_show() {
+			shortcut_dropdown.animate({
+				height : "show"
+			}, 200, "easeOutCirc");
+			$('body').addClass('shortcut-on');
+		}
+	}
+
+	var link = function($scope,$element){
+		$timeout(function(){
+			initDomEvents($element);
+		});
+	}
+
+	return{
+		restrict:'EA',
+		link:link
+	}
+})
+'use strict';
+
+angular.module('app.maps').controller('MapsDemoCtrl',
+    function ($scope, $http, $q, SmartMapStyle, uiGmapGoogleMapApi) {
+
+
+        $scope.styles = SmartMapStyle.styles;
+
+        $scope.setType = function (key) {
+            SmartMapStyle.getMapType(key).then(function (type) {
+                $scope.map.control.getGMap().mapTypes.set(key, type);
+                $scope.map.control.getGMap().setMapTypeId(key);
+            });
+            $scope.currentType = key;
+        };
+
+
+        $scope.map = {
+            center: {latitude: 45, longitude: -73},
+            zoom: 8,
+            control: {}
+        };
+
+
+        uiGmapGoogleMapApi.then(function (maps) {
+
+            })
+            .then(function () {
+                return SmartMapStyle.getMapType('colorful')
+            }).then(function () {
+            $scope.setType('colorful')
+        });
+
+
+
+    });
+"use strict";
+
+
+angular.module('app.maps').factory('SmartMapStyle', function ($q, $http, APP_CONFIG) {
+
+    var styles = {
+        'colorful': { name: 'Colorful', url: APP_CONFIG.apiRootUrl + '/maps/colorful.json'},
+        'greyscale': { name: 'greyscale', url: APP_CONFIG.apiRootUrl + '/maps/greyscale.json'},
+        'metro': { name: 'metro', url: APP_CONFIG.apiRootUrl + '/maps/metro.json'},
+        'mono-color': { name: 'mono-color', url: APP_CONFIG.apiRootUrl + '/maps/mono-color.json'},
+        'monochrome': { name: 'monochrome', url: APP_CONFIG.apiRootUrl + '/maps/monochrome.json'},
+        'nightvision': { name: 'Nightvision', url: APP_CONFIG.apiRootUrl + '/maps/nightvision.json'},
+        'nightvision-highlight': { name: 'nightvision-highlight', url: APP_CONFIG.apiRootUrl + '/maps/nightvision-highlight.json'},
+        'old-paper': { name: 'Old Paper', url: APP_CONFIG.apiRootUrl + '/maps/old-paper.json'}
+    };
+
+
+    function getMapType(key){
+        var keyData = styles[key];
+
+        if(!keyData.cache){
+            keyData.cache = createMapType(keyData)
+        }
+
+        return keyData.cache;
+    }
+
+    function createMapType(keyData){
+        var dfd = $q.defer();
+        $http.get(keyData.url).then(function(resp){
+            var styleData = resp.data;
+            var type = new google.maps.StyledMapType(styleData, {name: keyData.name})
+            dfd.resolve(type);
+        }, function(reason){
+            console.error(reason);
+            dfd.reject(reason);
+        });
+
+        return dfd.promise;
+    }
+
+
+    return {
+        getMapType: getMapType,
+        styles: styles
+    }
+
+
+
+});
 'use strict';
 
 angular.module('app.panier')
@@ -4314,154 +4462,6 @@ angular.module('app.panier')
 			$scope.prixTotal = prixTotalString.replace(".",",");
 		}
 	}
-
-});
-"use strict";
-
-angular.module('app').directive('toggleShortcut', function($log,$timeout) {
-
-	var initDomEvents = function($element){
-
-		var shortcut_dropdown = $('#shortcut');
-
-		$element.on('click',function(){
-		
-			if (shortcut_dropdown.is(":visible")) {
-				shortcut_buttons_hide();
-			} else {
-				shortcut_buttons_show();
-			}
-
-		})
-
-		shortcut_dropdown.find('a').click(function(e) {
-			e.preventDefault();
-			window.location = $(this).attr('href');
-			setTimeout(shortcut_buttons_hide, 300);
-		});
-
-		
-
-		// SHORTCUT buttons goes away if mouse is clicked outside of the area
-		$(document).mouseup(function(e) {
-			if (shortcut_dropdown && !shortcut_dropdown.is(e.target) && shortcut_dropdown.has(e.target).length === 0) {
-				shortcut_buttons_hide();
-			}
-		});
-
-		// SHORTCUT ANIMATE HIDE
-		function shortcut_buttons_hide() {
-			shortcut_dropdown.animate({
-				height : "hide"
-			}, 300, "easeOutCirc");
-			$('body').removeClass('shortcut-on');
-
-		}
-
-		// SHORTCUT ANIMATE SHOW
-		function shortcut_buttons_show() {
-			shortcut_dropdown.animate({
-				height : "show"
-			}, 200, "easeOutCirc");
-			$('body').addClass('shortcut-on');
-		}
-	}
-
-	var link = function($scope,$element){
-		$timeout(function(){
-			initDomEvents($element);
-		});
-	}
-
-	return{
-		restrict:'EA',
-		link:link
-	}
-})
-'use strict';
-
-angular.module('app.maps').controller('MapsDemoCtrl',
-    function ($scope, $http, $q, SmartMapStyle, uiGmapGoogleMapApi) {
-
-
-        $scope.styles = SmartMapStyle.styles;
-
-        $scope.setType = function (key) {
-            SmartMapStyle.getMapType(key).then(function (type) {
-                $scope.map.control.getGMap().mapTypes.set(key, type);
-                $scope.map.control.getGMap().setMapTypeId(key);
-            });
-            $scope.currentType = key;
-        };
-
-
-        $scope.map = {
-            center: {latitude: 45, longitude: -73},
-            zoom: 8,
-            control: {}
-        };
-
-
-        uiGmapGoogleMapApi.then(function (maps) {
-
-            })
-            .then(function () {
-                return SmartMapStyle.getMapType('colorful')
-            }).then(function () {
-            $scope.setType('colorful')
-        });
-
-
-
-    });
-"use strict";
-
-
-angular.module('app.maps').factory('SmartMapStyle', function ($q, $http, APP_CONFIG) {
-
-    var styles = {
-        'colorful': { name: 'Colorful', url: APP_CONFIG.apiRootUrl + '/maps/colorful.json'},
-        'greyscale': { name: 'greyscale', url: APP_CONFIG.apiRootUrl + '/maps/greyscale.json'},
-        'metro': { name: 'metro', url: APP_CONFIG.apiRootUrl + '/maps/metro.json'},
-        'mono-color': { name: 'mono-color', url: APP_CONFIG.apiRootUrl + '/maps/mono-color.json'},
-        'monochrome': { name: 'monochrome', url: APP_CONFIG.apiRootUrl + '/maps/monochrome.json'},
-        'nightvision': { name: 'Nightvision', url: APP_CONFIG.apiRootUrl + '/maps/nightvision.json'},
-        'nightvision-highlight': { name: 'nightvision-highlight', url: APP_CONFIG.apiRootUrl + '/maps/nightvision-highlight.json'},
-        'old-paper': { name: 'Old Paper', url: APP_CONFIG.apiRootUrl + '/maps/old-paper.json'}
-    };
-
-
-    function getMapType(key){
-        var keyData = styles[key];
-
-        if(!keyData.cache){
-            keyData.cache = createMapType(keyData)
-        }
-
-        return keyData.cache;
-    }
-
-    function createMapType(keyData){
-        var dfd = $q.defer();
-        $http.get(keyData.url).then(function(resp){
-            var styleData = resp.data;
-            var type = new google.maps.StyledMapType(styleData, {name: keyData.name})
-            dfd.resolve(type);
-        }, function(reason){
-            console.error(reason);
-            dfd.reject(reason);
-        });
-
-        return dfd.promise;
-    }
-
-
-    return {
-        getMapType: getMapType,
-        styles: styles
-    }
-
-
 
 });
 /**
@@ -8483,168 +8483,156 @@ angular.module('app.graphs').directive('vectorMap', function () {
         }
     }
 });
+// var distanceBeacon.js
+var array = [];
+var maxValues = 20;
+var minValues = 5
+var moyennes = [];
+var minor;
+
 /* distanceCalculator
 Enregistrement de la distance de chaque beacon en fonction du minor */
 function distanceCalculator (beaconInfo) {
 
-	if (compt===15)
-		compt=0;
+	//beaconInfo.beacons[0].name
+    //beaconInfo.beacons[0].proximity
+    //beaconInfo.beacons[0].distance
+    //$("body").html(beaconInfo.beacons[0].name + " - " + beaconInfo.beacons[0].proximity + "<br/>" + beaconInfo.beacons[0].distance);
 
-	//Pobj beaconInfo.beacons
-	for (var i in beaconInfo.beacons) {
+    array = decalVal(array);
+    moyennes = decalVal(moyennes);
 
-		var beacon=beaconInfo.beacons[i];
+    for (var index = 0; index < beaconInfo.beacons.length; index++) {
+    	var beacon = beaconInfo.beacons[index];
 
-		// On initialise chaque case beacon si elles n'existent pas
-		if (!distanceManager[beacon.minor])
-			distanceManager[beacon.minor]=[];
-		distanceManager[beacon.minor][compt]=beacon.distance;
-	}
 
-	//Verif value minor update
-	//Pobj distanceManager
-	for (var i in distanceManager) {
 
-		var here=false;//bool
+        //beacon.name
+        //beacon.minor
 
-		//Pobj beaconInfo.beacons
-		for (var j in beaconInfo.beacons){
-			if (i == beaconInfo.beacons[j].minor)
-				here=true;
-		}
+        //create if not exists
+        if (!array[beacon.minor]) {
+        	array[beacon.minor] = [];
+        	for (var i = 0; i < maxValues; i++) {
+        		array[beacon.minor][i] = -1;
+        	}
+        }
 
-		if (!here)
-			distanceManager[i].splice(compt,1);
-	}
 
-	compt++;
 
-	if (compt===3&&firstDetection) 
-		firstDetection = false;
+        array[beacon.minor][0] = beacon.distance;
+    }
+
+
+    var allowed = false;
+
+    for (var key in array) {
+
+
+    	var total = 0;
+    	var count = 0;
+    	for (var i = 0; i < maxValues; i++) {
+    		if (array[key][i] != -1) {
+    			total = total + array[key][i];
+    			count = count + 1;
+    		}
+    	}
+
+
+    	if (!moyennes[key]) {
+        	moyennes[key] = [];
+        	for (var i = 0; i < maxValues; i++) {
+        		moyennes[key][i] = 1000;
+        	}
+        }
+
+
+    	if (count > minValues)
+    		moyennes[key][0] = total / count;
+    	else
+    		moyennes[key][0] = 1000;
+
+    }
+
+
+
+    //$("body").html(JSON.stringify(beaconInfo.beacons[0]));
+    //$('#header, #ribbon, #menu-toggle-button, #beacon').addClass('displayNone');
+    $("body").html("");
+
+
+    if (sortBy(moyennes, 0, true) === sortBy(moyennes, 1, true) && sortBy(moyennes, 0) === sortBy(moyennes, 2, true) && sortBy(moyennes, 2) === sortBy(moyennes, 3, true))
+		minor = sortBy(moyennes, 0);
 	
-	if (!firstDetection) 
-		return distanceCalculating();//Fint
-	
-}
-
-
-/* distanceCalculator
-Calcul du beacon le plus proche grâce aux données enregistrées sur 15 valeurs */
-function distanceCalculating () {
-
-	//Ivar
-	var distanceTotal=[];//arr
-	var distLen=[];//arr
-	var distanceCompt=0;//int
-	var distance=false;//bool
-	var minor;//int
-
-	var dist;//LOG
-	var minors=[]//LOG
-
-	//Pobj distanceManager
-	for (var i in distanceManager) {
-		var distances=distanceManager[i];
-		if (distances.length>=5) {
-			distance=true;//ce boolean sert juste dans le cas où aucun ne validerai la première condition afin de laisser 'exeption'
-			exeption=false;
-		} else if (!distance) {
-			exeption=true;
-		}
-	}
-
-	//Pobj distanceManager
-	for (var i in distanceManager) {
-
-		/*
-		
-		*/
-
-
-		var distances=distanceManager[i];
-		distanceTotal[distanceCompt]=0;
-
-		if (distances.length>=5||exeption==true) {
-			//Ptab distanceManager.distances
-			for (var j in distances) {
-				if (distances[j]!=null) {
-					distanceTotal[distanceCompt]+=distances[j];
-				}
-			}
-			distLen[distanceCompt]=distances.length;
-
-
-			minors[distanceCompt]=i;//LOG
-
-			if (!distanceTotal[distanceCompt-1]){
-				minor=i;
-				dist=distanceTotal[distanceCompt]/distLen[distanceCompt];//LOG
-			}
-
-			else if (distanceTotal[distanceCompt]/distLen[distanceCompt]<distanceTotal[distanceCompt-1]/distLen[distanceCompt-1]){
-				minor=i;
-				dist=distanceTotal[distanceCompt]/distLen[distanceCompt];//LOG
-			}
-
-			distanceCompt++;
-		}
-	}
-
-
-
-	//Décommenter pour afficher les infos intérèssantes
-	//LOG
-	var date = new Date();
-	$('#header, #ribbon, #menu-toggle-button').addClass('displayNone');
-	$('body').prepend('<table class="dist table table-bordered"></table>');
-	$('body table:first-child').append('<tr><th>'+compt+'</th><th>'+date.getHours()+'h '+date.getMinutes()+'min '+date.getSeconds()+', '+date.getMilliseconds()+'s</th><th>ServiceActuel: '+nomRayon(minor)+'</th></tr>')
-	//for (var i in distanceTotal) {
-		//$('body table:first-child').append('<tr><td>'+minors[i]+'</td><td>DistMoy:'+distanceTotal[i]/distLen[i]+'<br>DistTotal:'+distanceTotal[i]+'<br>nbValDist:'+distLen[i]+'</td><td>'+nomRayon(minors[i])+'</td></tr>')
-	//}
-
-	for(var j in distanceManager){
-		$('body table:first-child').append('<tr><td>'+nomRayon(distanceManager[j])+'</td></tr>') 
-		for (var i in distanceManager[j]) {
-			$('body table:first-child tr:last-child').append('<td>'+distanceManager[j][i]+'</td>')
-		}
-	}
-
-
-	function nomRayon (minor) {
-		switch (parseInt(minor)) {
-			case 46204 :
-				return 'Hotline';
-			case 35520 :
-				return 'Projets';
-			case 8227 :
-				return 'Privilèges';
-			case 21493 :
-				return 'Marketing';
-			case 37996 :
-				return 'Produit';
-			case 45531 :
-				return 'Web';
-			case 9777 :
-				return 'Infra';
-			case 43737 :
-				return 'Accueil';
-			case 23810 :
-				return 'Commercial';
-		}
-	}
-
-
+	$("body").append(nomRayon(minor));
 	return parseInt(minor);
+	
+
 }
-var store = false;
 
-// var distanceBeacon.js
-var distanceManager = {};
-var compt = 0;
-var firstDetection = true;//bool
-var exeption = true;//bool
 
+function decalVal (array) {
+	//decalage des valeurs
+    for (var key in array) {
+      	for (var i = maxValues - 1; i > 0; i--) {
+            array[key][i] = array[key][i - 1];
+        }
+        array[key][0] = -1;
+    }
+    return array;
+}
+
+
+function sortBy (array, x, debug) {
+	var tuples = [];
+
+    for (var key in array)
+    	tuples.push([key, array[key][x]]);
+
+    tuples.sort(function(a, b) {
+    	a = a[1];
+    	b = b[1];
+
+    	return a < b ? -1 : (a > b ? 1 : 0);
+    });
+
+    for (var i = 0; i < tuples.length; i++) {
+    	var key = tuples[i][0];
+    	var value = tuples[i][1];
+
+        // do something with key and value
+
+        if (debug)
+        	$("body").append(x + " " + nomRayon(key) + " - " + value + "<br/>");
+    }
+
+    return tuples[0][0];
+}
+
+function nomRayon (minor) {
+	switch (parseInt(minor)) {
+		case 46204 :
+		return 'Hotline';
+		case 35520 :
+		return 'Projets';
+		case 8227 :
+		return 'Privilèges';
+		case 21493 :
+		return 'Marketing';
+		case 37996 :
+		return 'Produit';
+		case 45531 :
+		return 'Web';
+		case 9777 :
+		return 'Infra';
+		case 43737 :
+		return 'Accueil';
+		case 23810 :
+		return 'Commercial';
+	}
+}
 // var affichage beacon
+var store = false;
 var sameId;
 var newRayon = false;
 
@@ -8670,14 +8658,16 @@ var beaconApp = (function()
 
     function startScan()
     {   
+
         function onBeaconsRanged(beaconInfo)
         {
+
             // On v�rifie si le beacons est trouv�
             if (beaconInfo.beacons[0] != undefined) {
 
                 var minorChoosen = distanceCalculator(beaconInfo);
                 
-                if (minorChoosen!=undefined) {
+                if (minorChoosen!=undefined&&minorChoosen!=NaN) {
                     var idChoosen = productChooser(minorChoosen);
 
                     if ((sameId==undefined)||((sameId!=idChoosen)&&(!angular.element($("#beacon")).scope().showBeacon.doShow))) {
@@ -8691,19 +8681,26 @@ var beaconApp = (function()
                             newRayon = true;
                         
                         sameId=idChoosen;
+
+                    } else if ((sameId==undefined)||(sameId!=idChoosen)) {
+
+                        window.navigator.vibrate([600, 300, 600]);
                     }
+
                 }
 
 
                 if (!store) {//store init tout en haut pour re-use dans noLayout.add
                     $('#beacon').removeClass('displayNone');
-                    $.prompt('Bienvenue dans le magasin !', {top: '20%'});
+                    //$.prompt('Bienvenue dans le magasin !', {top: '20%'});
                     store = true;
                 }
             }
             else if (store) {
-                $.prompt('Vous �tes sortie du magasin.', {top: '20%'});
-                angular.element($("#beacon")).scope().showBeacon.show();
+                //$.prompt('Vous �tes sortie du magasin.', {top: '20%'});
+                if (angular.element($("#beacon")).scope().showBeacon.doShow)
+                    angular.element($("#beacon")).scope().showBeacon.show();
+                
                 $('#beacon').addClass('displayNone');
                 store = false;
             }
@@ -8723,6 +8720,14 @@ var beaconApp = (function()
             sameId=idChoosen;
         }
 
+        function onMonitoringSuccess(regionState)
+        {
+            $("body").html(regionState.state);
+            setTimeout(function() {
+                $("body").html("")
+            }, 800);
+        }
+
         // Request permission from user to access location info.
         // This is needed on iOS 8.
         estimote.beacons.requestAlwaysAuthorization();
@@ -8731,19 +8736,20 @@ var beaconApp = (function()
         // Le scan se fait syst�matiquement et renvoie toujours true
         // M�me si il ne trouve pas le bon Beacon
         estimote.beacons.startRangingBeaconsInRegion(
-            {
-                identifier: 'Octave',
-                uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D',
-                major: 200
+        {
+            identifier: 'Octave',
+            uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D',
+            major: 200
+                //minor: 37996
             }, 
             onBeaconsRanged,
             onError);
-    }
+        }
 
-    return beaconApp;
-})();
+        return beaconApp;
+    })();
 
-beaconApp.initialize();
+    beaconApp.initialize();
 function productChooser (minor) {
 	// Les id produit associés aux minors devront être 
 	// récupèré dans les bdd dans le futur
@@ -10568,508 +10574,6 @@ angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
     }
 );
 
-'use strict';
-
-angular.module('SmartAdmin.Layout').directive('demoStates', function ($rootScope) {
-    return {
-        restrict: 'EA',
-        replace: true,
-        templateUrl: 'app/_common/layout/directives/demo/demo-states.tpl.html',
-        scope: true,
-        link: function (scope, element, attributes) {
-            element.parent().css({
-                position: 'relative'
-            });
-
-            element.on('click', '#demo-setting', function () {
-                element.toggleClass('activate')
-            })
-        },
-        controller: function ($scope) {
-            var $root = $('body');
-
-            $scope.$watch('fixedHeader', function (fixedHeader) {
-                localStorage.setItem('sm-fixed-header', fixedHeader);
-                $root.toggleClass('fixed-header', fixedHeader);
-                if (fixedHeader == false) {
-                    $scope.fixedRibbon = false;
-                    $scope.fixedNavigation = false;
-                }
-            });
-
-
-            $scope.$watch('fixedNavigation', function (fixedNavigation) {
-                localStorage.setItem('sm-fixed-navigation', fixedNavigation);
-                $root.toggleClass('fixed-navigation', fixedNavigation);
-                if (fixedNavigation) {
-                    $scope.insideContainer = false;
-                    $scope.fixedHeader = true;
-                } else {
-                    $scope.fixedRibbon = false;
-                }
-            });
-
-
-            $scope.$watch('fixedRibbon', function (fixedRibbon) {
-                localStorage.setItem('sm-fixed-ribbon', fixedRibbon);
-                $root.toggleClass('fixed-ribbon', fixedRibbon);
-                if (fixedRibbon) {
-                    $scope.fixedHeader = true;
-                    $scope.fixedNavigation = true;
-                    $scope.insideContainer = false;
-                }
-            });
-
-            $scope.$watch('fixedPageFooter', function (fixedPageFooter) {
-                localStorage.setItem('sm-fixed-page-footer', fixedPageFooter);
-                $root.toggleClass('fixed-page-footer', fixedPageFooter);
-            });
-
-            $scope.$watch('insideContainer', function (insideContainer) {
-                localStorage.setItem('sm-inside-container', insideContainer);
-                $root.toggleClass('container', insideContainer);
-                if (insideContainer) {
-                    $scope.fixedRibbon = false;
-                    $scope.fixedNavigation = false;
-                }
-            });
-
-            $scope.$watch('rtl', function (rtl) {
-                localStorage.setItem('sm-rtl', rtl);
-                $root.toggleClass('smart-rtl', rtl);
-            });
-
-            $scope.$watch('menuOnTop', function (menuOnTop) {
-                $rootScope.$broadcast('$smartLayoutMenuOnTop', menuOnTop);
-                localStorage.setItem('sm-menu-on-top', menuOnTop);
-                $root.toggleClass('menu-on-top', menuOnTop);
-
-                if(menuOnTop)$root.removeClass('minified');
-            });
-
-            $scope.$watch('colorblindFriendly', function (colorblindFriendly) {
-                localStorage.setItem('sm-colorblind-friendly', colorblindFriendly);
-                $root.toggleClass('colorblind-friendly', colorblindFriendly);
-            });
-
-
-            $scope.fixedHeader = localStorage.getItem('sm-fixed-header') == 'true';
-            $scope.fixedNavigation = localStorage.getItem('sm-fixed-navigation') == 'true';
-            $scope.fixedRibbon = localStorage.getItem('sm-fixed-ribbon') == 'true';
-            $scope.fixedPageFooter = localStorage.getItem('sm-fixed-page-footer') == 'true';
-            $scope.insideContainer = localStorage.getItem('sm-inside-container') == 'true';
-            $scope.rtl = localStorage.getItem('sm-rtl') == 'true';
-            $scope.menuOnTop = localStorage.getItem('sm-menu-on-top') == 'true' || $root.hasClass('menu-on-top');
-            $scope.colorblindFriendly = localStorage.getItem('sm-colorblind-friendly') == 'true';
-
-
-            $scope.skins = appConfig.skins;
-
-
-            $scope.smartSkin = localStorage.getItem('sm-skin') ? localStorage.getItem('sm-skin') : appConfig.smartSkin;
-
-            $scope.setSkin = function (skin) {
-                $scope.smartSkin = skin.name;
-                $root.removeClass(_.pluck($scope.skins, 'name').join(' '));
-                $root.addClass(skin.name);
-                localStorage.setItem('sm-skin', skin.name);
-                $("#logo img").attr('src', skin.logo);
-            };
-
-
-            if($scope.smartSkin != "smart-style-0"){
-                $scope.setSkin(_.find($scope.skins, {name: $scope.smartSkin}))
-            }
-
-
-            $scope.factoryReset = function () {
-                $.SmartMessageBox({
-                    title: "<i class='fa fa-refresh' style='color:green'></i> Clear Local Storage",
-                    content: "Would you like to RESET all your saved widgets and clear LocalStorage?1",
-                    buttons: '[No][Yes]'
-                }, function (ButtonPressed) {
-                    if (ButtonPressed == "Yes" && localStorage) {
-                        localStorage.clear();
-                        location.reload()
-                    }
-                });
-            }
-        }
-    }
-});
-"use strict";
-
-(function ($) {
-
-    $.fn.smartCollapseToggle = function () {
-
-        return this.each(function () {
-
-            var $body = $('body');
-            var $this = $(this);
-
-            // only if not  'menu-on-top'
-            if ($body.hasClass('menu-on-top')) {
-
-
-            } else {
-
-                $body.hasClass('mobile-view-activated')
-
-                // toggle open
-                $this.toggleClass('open');
-
-                // for minified menu collapse only second level
-                if ($body.hasClass('minified')) {
-                    if ($this.closest('nav ul ul').length) {
-                        $this.find('>a .collapse-sign .fa').toggleClass('fa-minus-square-o fa-plus-square-o');
-                        $this.find('ul:first').slideToggle(appConfig.menu_speed || 200);
-                    }
-                } else {
-                    // toggle expand item
-                    $this.find('>a .collapse-sign .fa').toggleClass('fa-minus-square-o fa-plus-square-o');
-                    $this.find('ul:first').slideToggle(appConfig.menu_speed || 200);
-                }
-            }
-        });
-    };
-})(jQuery);
-
-angular.module('SmartAdmin.Layout').directive('smartMenu', function ($state, $rootScope) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var $body = $('body');
-
-            var $collapsible = element.find('li[data-menu-collapse]');
-
-            var bindEvents = function(){
-                $collapsible.each(function (idx, li) {
-                    var $li = $(li);
-                    $li
-                        .on('click', '>a', function (e) {
-
-                            // collapse all open siblings
-                            $li.siblings('.open').smartCollapseToggle();
-
-                            // toggle element
-                            $li.smartCollapseToggle();
-
-                            // add active marker to collapsed element if it has active childs
-                            if (!$li.hasClass('open') && $li.find('li.active').length > 0) {
-                                $li.addClass('active')
-                            }
-
-                            e.preventDefault();
-                        })
-                        .find('>a').append('<b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b>');
-
-                    // initialization toggle
-                    if ($li.find('li.active').length) {
-                        $li.smartCollapseToggle();
-                        $li.find('li.active').parents('li').addClass('active');
-                    }
-                });
-            }
-            bindEvents();
-
-
-            // click on route link
-            element.on('click', 'a[data-ui-sref]', function (e) {
-                // collapse all siblings to element parents and remove active markers
-                $(this)
-                    .parents('li').addClass('active')
-                    .each(function () {
-                        $(this).siblings('li.open').smartCollapseToggle();
-                        $(this).siblings('li').removeClass('active')
-                    });
-
-                if ($body.hasClass('mobile-view-activated')) {
-                    $rootScope.$broadcast('requestToggleMenu');
-                }
-            });
-
-
-            scope.$on('$smartLayoutMenuOnTop', function (event, menuOnTop) {
-                if (menuOnTop) {
-                    $collapsible.filter('.open').smartCollapseToggle();
-                }
-            });
-        }
-    }
-});
-(function(){
-    "use strict";
-
-    angular.module('SmartAdmin.Layout').directive('smartMenuItems', function ($http, $rootScope, $compile) {
-    return {
-        restrict: 'A',
-        compile: function (element, attrs) {
-            
-
-            function createItem(item, parent, level){
-                var li = $('<li />' ,{'ui-sref-active': "active"})
-                var a = $('<a />');
-                var i = $('<i />');
-
-                li.append(a);
-
-                if(item.sref)
-                    a.attr('ui-sref', item.sref);
-                if(item.href)
-                    a.attr('href', item.href);
-                if(item.icon){
-                    i.attr('class', 'fa fa-lg fa-fw fa-'+item.icon);
-                    a.append(i);
-                }
-                if(item.title){
-                    a.attr('title', item.title);
-                    if(level == 1){ 
-                        a.append(' <span class="menu-item-parent">' + item.title + '</span>');
-                    } else {
-                        a.append(' ' + item.title);
-
-                    }
-                }
-
-                if(item.items){
-                    var ul = $('<ul />');
-                    li.append(ul);
-                    li.attr('data-menu-collapse', '');
-                    _.forEach(item.items, function(child) {
-                        createItem(child, ul, level+1);
-                    })
-                } 
-
-                parent.append(li); 
-            }
-
-
-            $http.get(attrs.smartMenuItems).then(function(res){
-                var ul = $('<ul />', {
-                    'smart-menu': ''
-                })
-                _.forEach(res.data.items, function(item) {
-                    createItem(item, ul, 1);
-                })
-                
-                var $scope = $rootScope.$new();
-                var html = $('<div>').append(ul).html(); 
-                var linkingFunction = $compile(html);
-                
-                var _element = linkingFunction($scope);
-
-                element.replaceWith(_element);                
-            })
-        }
-    }
-});
-})();
-/**
- * Jarvis Widget Directive
- *
- *    colorbutton="false"
- *    editbutton="false"
-      togglebutton="false"
-       deletebutton="false"
-        fullscreenbutton="false"
-        custombutton="false"
-        collapsed="true"
-          sortable="false"
- *
- *
- */
-"use strict";
-
-angular.module('SmartAdmin.Layout').directive('jarvisWidget', function($rootScope){
-    return {
-        restrict: "A",
-        compile: function(element, attributes){
-            if(element.data('widget-color'))
-                element.addClass('jarviswidget-color-' + element.data('widget-color'));
-
-
-            element.find('.widget-body').prepend('<div class="jarviswidget-editbox"><input class="form-control" type="text"></div>');
-
-            element.addClass('jarviswidget');
-            $rootScope.$emit('jarvisWidgetAdded', element )
-
-        }
-    }
-});
- "use strict";
- 
- angular.module('SmartAdmin.Layout').directive('widgetGrid', function ($rootScope, $compile, $q, $state, $timeout) {
-
-    var jarvisWidgetsDefaults = {
-        grid: 'article',
-        widgets: '.jarviswidget',
-        localStorage: true,
-        deleteSettingsKey: '#deletesettingskey-options',
-        settingsKeyLabel: 'Reset settings?',
-        deletePositionKey: '#deletepositionkey-options',
-        positionKeyLabel: 'Reset position?',
-        sortable: true,
-        buttonsHidden: false,
-        // toggle button
-        toggleButton: true,
-        toggleClass: 'fa fa-minus | fa fa-plus',
-        toggleSpeed: 200,
-        onToggle: function () {
-        },
-        // delete btn
-        deleteButton: true,
-        deleteMsg: 'Warning: This action cannot be undone!',
-        deleteClass: 'fa fa-times',
-        deleteSpeed: 200,
-        onDelete: function () {
-        },
-        // edit btn
-        editButton: true,
-        editPlaceholder: '.jarviswidget-editbox',
-        editClass: 'fa fa-cog | fa fa-save',
-        editSpeed: 200,
-        onEdit: function () {
-        },
-        // color button
-        colorButton: true,
-        // full screen
-        fullscreenButton: true,
-        fullscreenClass: 'fa fa-expand | fa fa-compress',
-        fullscreenDiff: 3,
-        onFullscreen: function () {
-        },
-        // custom btn
-        customButton: false,
-        customClass: 'folder-10 | next-10',
-        customStart: function () {
-            alert('Hello you, this is a custom button...');
-        },
-        customEnd: function () {
-            alert('bye, till next time...');
-        },
-        // order
-        buttonOrder: '%refresh% %custom% %edit% %toggle% %fullscreen% %delete%',
-        opacity: 1.0,
-        dragHandle: '> header',
-        placeholderClass: 'jarviswidget-placeholder',
-        indicator: true,
-        indicatorTime: 600,
-        ajax: true,
-        timestampPlaceholder: '.jarviswidget-timestamp',
-        timestampFormat: 'Last update: %m%/%d%/%y% %h%:%i%:%s%',
-        refreshButton: true,
-        refreshButtonClass: 'fa fa-refresh',
-        labelError: 'Sorry but there was a error:',
-        labelUpdated: 'Last Update:',
-        labelRefresh: 'Refresh',
-        labelDelete: 'Delete widget:',
-        afterLoad: function () {
-        },
-        rtl: false, // best not to toggle this!
-        onChange: function () {
-
-        },
-        onSave: function () {
-
-        },
-        ajaxnav: true
-
-    }
-
-    var dispatchedWidgetIds = [];
-    var setupWaiting = false;
-
-    var debug = 1;
-
-    var setupWidgets = function (element, widgetIds) {
-
-        if (!setupWaiting) {
-
-            if(_.intersection(widgetIds, dispatchedWidgetIds).length != widgetIds.length){
-
-                dispatchedWidgetIds = _.union(widgetIds, dispatchedWidgetIds);
-
-//                    console.log('setupWidgets', debug++);
-
-                element.data('jarvisWidgets') && element.data('jarvisWidgets').destroy();
-                element.jarvisWidgets(jarvisWidgetsDefaults);
-                initDropdowns(widgetIds);
-            }
-
-        } else {
-            if (!setupWaiting) {
-                setupWaiting = true;
-                $timeout(function () {
-                    setupWaiting = false;
-                    setupWidgets(element, widgetIds)
-                }, 200);
-            }
-        }
-
-    };
-
-    var destroyWidgets = function(element, widgetIds){
-        element.data('jarvisWidgets') && element.data('jarvisWidgets').destroy();
-        dispatchedWidgetIds = _.xor(dispatchedWidgetIds, widgetIds);
-    };
-
-    var initDropdowns = function (widgetIds) {
-        angular.forEach(widgetIds, function (wid) {
-            $('#' + wid + ' [data-toggle="dropdown"]').each(function () {
-                var $parent = $(this).parent();
-                // $(this).removeAttr('data-toggle');
-                if (!$parent.attr('dropdown')) {
-                    $(this).removeAttr('href');
-                    $parent.attr('dropdown', '');
-                    var compiled = $compile($parent)($parent.scope())
-                    $parent.replaceWith(compiled);
-                }
-            })
-        });
-    };
-
-    var jarvisWidgetAddedOff,
-        $viewContentLoadedOff,
-        $stateChangeStartOff;
-
-    return {
-        restrict: 'A',
-        compile: function(element){
-
-            element.removeAttr('widget-grid data-widget-grid');
-
-            var widgetIds = [];
-
-            $viewContentLoadedOff = $rootScope.$on('$viewContentLoaded', function (event, data) {
-                $timeout(function () {
-                    setupWidgets(element, widgetIds)
-                }, 100);
-            });
-
-
-            $stateChangeStartOff = $rootScope.$on('$stateChangeStart',
-                function(event, toState, toParams, fromState, fromParams){
-                    jarvisWidgetAddedOff();
-                    $viewContentLoadedOff();
-                    $stateChangeStartOff();
-                    destroyWidgets(element, widgetIds)
-                });
-
-            jarvisWidgetAddedOff = $rootScope.$on('jarvisWidgetAdded', function (event, widget) {
-                if (widgetIds.indexOf(widget.attr('id')) == -1) {
-                    widgetIds.push(widget.attr('id'));
-                    $timeout(function () {
-                        setupWidgets(element, widgetIds)
-                    }, 100);
-                }
-//                    console.log('jarvisWidgetAdded', widget.attr('id'));
-            });
-
-        }
-    }
-});
-
 "use strict";
 
 
@@ -11507,6 +11011,97 @@ angular.module('SmartAdmin.Forms').directive('bootstrapTogglingForm', function()
 
 
 
+});
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartCkEditor', function () {
+    return {
+        restrict: 'A',
+        compile: function ( tElement) {
+            tElement.removeAttr('smart-ck-editor data-smart-ck-editor');
+            //CKEDITOR.basePath = 'bower_components/ckeditor/';
+
+            CKEDITOR.replace( tElement.attr('name'), { height: '380px', startupFocus : true} );
+        }
+    }
+});
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartDestroySummernote', function () {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-destroy-summernote data-smart-destroy-summernote')
+            tElement.on('click', function() {
+                angular.element(tAttributes.smartDestroySummernote).destroy();
+            })
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartEditSummernote', function () {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-edit-summernote data-smart-edit-summernote');
+            tElement.on('click', function(){
+                angular.element(tAttributes.smartEditSummernote).summernote({
+                    focus : true
+                });  
+            });
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartMarkdownEditor', function () {
+    return {
+        restrict: 'A',
+        compile: function (element, attributes) {
+            element.removeAttr('smart-markdown-editor data-smart-markdown-editor')
+
+            var options = {
+                autofocus:false,
+                savable:true,
+                fullscreen: {
+                    enable: false
+                }
+            };
+
+            if(attributes.height){
+                options.height = parseInt(attributes.height);
+            }
+
+            element.markdown(options);
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartSummernoteEditor', function (lazyScript) {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-summernote-editor data-smart-summernote-editor');
+
+            var options = {
+                focus : true,
+                tabsize : 2
+            };
+
+            if(tAttributes.height){
+                options.height = tAttributes.height;
+            }
+
+            lazyScript.register('build/vendor.ui.js').then(function(){
+                tElement.summernote(options);                
+            });
+        }
+    }
 });
 'use strict';
 
@@ -12519,97 +12114,6 @@ angular.module('SmartAdmin.Forms').directive('smartValidateForm', function (form
 
 'use strict';
 
-angular.module('SmartAdmin.Forms').directive('smartCkEditor', function () {
-    return {
-        restrict: 'A',
-        compile: function ( tElement) {
-            tElement.removeAttr('smart-ck-editor data-smart-ck-editor');
-            //CKEDITOR.basePath = 'bower_components/ckeditor/';
-
-            CKEDITOR.replace( tElement.attr('name'), { height: '380px', startupFocus : true} );
-        }
-    }
-});
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartDestroySummernote', function () {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-destroy-summernote data-smart-destroy-summernote')
-            tElement.on('click', function() {
-                angular.element(tAttributes.smartDestroySummernote).destroy();
-            })
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartEditSummernote', function () {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-edit-summernote data-smart-edit-summernote');
-            tElement.on('click', function(){
-                angular.element(tAttributes.smartEditSummernote).summernote({
-                    focus : true
-                });  
-            });
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartMarkdownEditor', function () {
-    return {
-        restrict: 'A',
-        compile: function (element, attributes) {
-            element.removeAttr('smart-markdown-editor data-smart-markdown-editor')
-
-            var options = {
-                autofocus:false,
-                savable:true,
-                fullscreen: {
-                    enable: false
-                }
-            };
-
-            if(attributes.height){
-                options.height = parseInt(attributes.height);
-            }
-
-            element.markdown(options);
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartSummernoteEditor', function (lazyScript) {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-summernote-editor data-smart-summernote-editor');
-
-            var options = {
-                focus : true,
-                tabsize : 2
-            };
-
-            if(tAttributes.height){
-                options.height = tAttributes.height;
-            }
-
-            lazyScript.register('build/vendor.ui.js').then(function(){
-                tElement.summernote(options);                
-            });
-        }
-    }
-});
-'use strict';
-
 angular.module('SmartAdmin.Forms').directive('smartFueluxWizard', function () {
     return {
         restrict: 'A',
@@ -12730,6 +12234,507 @@ angular.module('SmartAdmin.Forms').directive('smartWizard', function () {
 
 
             setStep(currentStep);
+
+        }
+    }
+});
+'use strict';
+
+angular.module('SmartAdmin.Layout').directive('demoStates', function ($rootScope) {
+    return {
+        restrict: 'EA',
+        replace: true,
+        templateUrl: 'app/_common/layout/directives/demo/demo-states.tpl.html',
+        scope: true,
+        link: function (scope, element, attributes) {
+            element.parent().css({
+                position: 'relative'
+            });
+
+            element.on('click', '#demo-setting', function () {
+                element.toggleClass('activate')
+            })
+        },
+        controller: function ($scope) {
+            var $root = $('body');
+
+            $scope.$watch('fixedHeader', function (fixedHeader) {
+                localStorage.setItem('sm-fixed-header', fixedHeader);
+                $root.toggleClass('fixed-header', fixedHeader);
+                if (fixedHeader == false) {
+                    $scope.fixedRibbon = false;
+                    $scope.fixedNavigation = false;
+                }
+            });
+
+
+            $scope.$watch('fixedNavigation', function (fixedNavigation) {
+                localStorage.setItem('sm-fixed-navigation', fixedNavigation);
+                $root.toggleClass('fixed-navigation', fixedNavigation);
+                if (fixedNavigation) {
+                    $scope.insideContainer = false;
+                    $scope.fixedHeader = true;
+                } else {
+                    $scope.fixedRibbon = false;
+                }
+            });
+
+
+            $scope.$watch('fixedRibbon', function (fixedRibbon) {
+                localStorage.setItem('sm-fixed-ribbon', fixedRibbon);
+                $root.toggleClass('fixed-ribbon', fixedRibbon);
+                if (fixedRibbon) {
+                    $scope.fixedHeader = true;
+                    $scope.fixedNavigation = true;
+                    $scope.insideContainer = false;
+                }
+            });
+
+            $scope.$watch('fixedPageFooter', function (fixedPageFooter) {
+                localStorage.setItem('sm-fixed-page-footer', fixedPageFooter);
+                $root.toggleClass('fixed-page-footer', fixedPageFooter);
+            });
+
+            $scope.$watch('insideContainer', function (insideContainer) {
+                localStorage.setItem('sm-inside-container', insideContainer);
+                $root.toggleClass('container', insideContainer);
+                if (insideContainer) {
+                    $scope.fixedRibbon = false;
+                    $scope.fixedNavigation = false;
+                }
+            });
+
+            $scope.$watch('rtl', function (rtl) {
+                localStorage.setItem('sm-rtl', rtl);
+                $root.toggleClass('smart-rtl', rtl);
+            });
+
+            $scope.$watch('menuOnTop', function (menuOnTop) {
+                $rootScope.$broadcast('$smartLayoutMenuOnTop', menuOnTop);
+                localStorage.setItem('sm-menu-on-top', menuOnTop);
+                $root.toggleClass('menu-on-top', menuOnTop);
+
+                if(menuOnTop)$root.removeClass('minified');
+            });
+
+            $scope.$watch('colorblindFriendly', function (colorblindFriendly) {
+                localStorage.setItem('sm-colorblind-friendly', colorblindFriendly);
+                $root.toggleClass('colorblind-friendly', colorblindFriendly);
+            });
+
+
+            $scope.fixedHeader = localStorage.getItem('sm-fixed-header') == 'true';
+            $scope.fixedNavigation = localStorage.getItem('sm-fixed-navigation') == 'true';
+            $scope.fixedRibbon = localStorage.getItem('sm-fixed-ribbon') == 'true';
+            $scope.fixedPageFooter = localStorage.getItem('sm-fixed-page-footer') == 'true';
+            $scope.insideContainer = localStorage.getItem('sm-inside-container') == 'true';
+            $scope.rtl = localStorage.getItem('sm-rtl') == 'true';
+            $scope.menuOnTop = localStorage.getItem('sm-menu-on-top') == 'true' || $root.hasClass('menu-on-top');
+            $scope.colorblindFriendly = localStorage.getItem('sm-colorblind-friendly') == 'true';
+
+
+            $scope.skins = appConfig.skins;
+
+
+            $scope.smartSkin = localStorage.getItem('sm-skin') ? localStorage.getItem('sm-skin') : appConfig.smartSkin;
+
+            $scope.setSkin = function (skin) {
+                $scope.smartSkin = skin.name;
+                $root.removeClass(_.pluck($scope.skins, 'name').join(' '));
+                $root.addClass(skin.name);
+                localStorage.setItem('sm-skin', skin.name);
+                $("#logo img").attr('src', skin.logo);
+            };
+
+
+            if($scope.smartSkin != "smart-style-0"){
+                $scope.setSkin(_.find($scope.skins, {name: $scope.smartSkin}))
+            }
+
+
+            $scope.factoryReset = function () {
+                $.SmartMessageBox({
+                    title: "<i class='fa fa-refresh' style='color:green'></i> Clear Local Storage",
+                    content: "Would you like to RESET all your saved widgets and clear LocalStorage?1",
+                    buttons: '[No][Yes]'
+                }, function (ButtonPressed) {
+                    if (ButtonPressed == "Yes" && localStorage) {
+                        localStorage.clear();
+                        location.reload()
+                    }
+                });
+            }
+        }
+    }
+});
+"use strict";
+
+(function ($) {
+
+    $.fn.smartCollapseToggle = function () {
+
+        return this.each(function () {
+
+            var $body = $('body');
+            var $this = $(this);
+
+            // only if not  'menu-on-top'
+            if ($body.hasClass('menu-on-top')) {
+
+
+            } else {
+
+                $body.hasClass('mobile-view-activated')
+
+                // toggle open
+                $this.toggleClass('open');
+
+                // for minified menu collapse only second level
+                if ($body.hasClass('minified')) {
+                    if ($this.closest('nav ul ul').length) {
+                        $this.find('>a .collapse-sign .fa').toggleClass('fa-minus-square-o fa-plus-square-o');
+                        $this.find('ul:first').slideToggle(appConfig.menu_speed || 200);
+                    }
+                } else {
+                    // toggle expand item
+                    $this.find('>a .collapse-sign .fa').toggleClass('fa-minus-square-o fa-plus-square-o');
+                    $this.find('ul:first').slideToggle(appConfig.menu_speed || 200);
+                }
+            }
+        });
+    };
+})(jQuery);
+
+angular.module('SmartAdmin.Layout').directive('smartMenu', function ($state, $rootScope) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var $body = $('body');
+
+            var $collapsible = element.find('li[data-menu-collapse]');
+
+            var bindEvents = function(){
+                $collapsible.each(function (idx, li) {
+                    var $li = $(li);
+                    $li
+                        .on('click', '>a', function (e) {
+
+                            // collapse all open siblings
+                            $li.siblings('.open').smartCollapseToggle();
+
+                            // toggle element
+                            $li.smartCollapseToggle();
+
+                            // add active marker to collapsed element if it has active childs
+                            if (!$li.hasClass('open') && $li.find('li.active').length > 0) {
+                                $li.addClass('active')
+                            }
+
+                            e.preventDefault();
+                        })
+                        .find('>a').append('<b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b>');
+
+                    // initialization toggle
+                    if ($li.find('li.active').length) {
+                        $li.smartCollapseToggle();
+                        $li.find('li.active').parents('li').addClass('active');
+                    }
+                });
+            }
+            bindEvents();
+
+
+            // click on route link
+            element.on('click', 'a[data-ui-sref]', function (e) {
+                // collapse all siblings to element parents and remove active markers
+                $(this)
+                    .parents('li').addClass('active')
+                    .each(function () {
+                        $(this).siblings('li.open').smartCollapseToggle();
+                        $(this).siblings('li').removeClass('active')
+                    });
+
+                if ($body.hasClass('mobile-view-activated')) {
+                    $rootScope.$broadcast('requestToggleMenu');
+                }
+            });
+
+
+            scope.$on('$smartLayoutMenuOnTop', function (event, menuOnTop) {
+                if (menuOnTop) {
+                    $collapsible.filter('.open').smartCollapseToggle();
+                }
+            });
+        }
+    }
+});
+(function(){
+    "use strict";
+
+    angular.module('SmartAdmin.Layout').directive('smartMenuItems', function ($http, $rootScope, $compile) {
+    return {
+        restrict: 'A',
+        compile: function (element, attrs) {
+            
+
+            function createItem(item, parent, level){
+                var li = $('<li />' ,{'ui-sref-active': "active"})
+                var a = $('<a />');
+                var i = $('<i />');
+
+                li.append(a);
+
+                if(item.sref)
+                    a.attr('ui-sref', item.sref);
+                if(item.href)
+                    a.attr('href', item.href);
+                if(item.icon){
+                    i.attr('class', 'fa fa-lg fa-fw fa-'+item.icon);
+                    a.append(i);
+                }
+                if(item.title){
+                    a.attr('title', item.title);
+                    if(level == 1){ 
+                        a.append(' <span class="menu-item-parent">' + item.title + '</span>');
+                    } else {
+                        a.append(' ' + item.title);
+
+                    }
+                }
+
+                if(item.items){
+                    var ul = $('<ul />');
+                    li.append(ul);
+                    li.attr('data-menu-collapse', '');
+                    _.forEach(item.items, function(child) {
+                        createItem(child, ul, level+1);
+                    })
+                } 
+
+                parent.append(li); 
+            }
+
+
+            $http.get(attrs.smartMenuItems).then(function(res){
+                var ul = $('<ul />', {
+                    'smart-menu': ''
+                })
+                _.forEach(res.data.items, function(item) {
+                    createItem(item, ul, 1);
+                })
+                
+                var $scope = $rootScope.$new();
+                var html = $('<div>').append(ul).html(); 
+                var linkingFunction = $compile(html);
+                
+                var _element = linkingFunction($scope);
+
+                element.replaceWith(_element);                
+            })
+        }
+    }
+});
+})();
+/**
+ * Jarvis Widget Directive
+ *
+ *    colorbutton="false"
+ *    editbutton="false"
+      togglebutton="false"
+       deletebutton="false"
+        fullscreenbutton="false"
+        custombutton="false"
+        collapsed="true"
+          sortable="false"
+ *
+ *
+ */
+"use strict";
+
+angular.module('SmartAdmin.Layout').directive('jarvisWidget', function($rootScope){
+    return {
+        restrict: "A",
+        compile: function(element, attributes){
+            if(element.data('widget-color'))
+                element.addClass('jarviswidget-color-' + element.data('widget-color'));
+
+
+            element.find('.widget-body').prepend('<div class="jarviswidget-editbox"><input class="form-control" type="text"></div>');
+
+            element.addClass('jarviswidget');
+            $rootScope.$emit('jarvisWidgetAdded', element )
+
+        }
+    }
+});
+ "use strict";
+ 
+ angular.module('SmartAdmin.Layout').directive('widgetGrid', function ($rootScope, $compile, $q, $state, $timeout) {
+
+    var jarvisWidgetsDefaults = {
+        grid: 'article',
+        widgets: '.jarviswidget',
+        localStorage: true,
+        deleteSettingsKey: '#deletesettingskey-options',
+        settingsKeyLabel: 'Reset settings?',
+        deletePositionKey: '#deletepositionkey-options',
+        positionKeyLabel: 'Reset position?',
+        sortable: true,
+        buttonsHidden: false,
+        // toggle button
+        toggleButton: true,
+        toggleClass: 'fa fa-minus | fa fa-plus',
+        toggleSpeed: 200,
+        onToggle: function () {
+        },
+        // delete btn
+        deleteButton: true,
+        deleteMsg: 'Warning: This action cannot be undone!',
+        deleteClass: 'fa fa-times',
+        deleteSpeed: 200,
+        onDelete: function () {
+        },
+        // edit btn
+        editButton: true,
+        editPlaceholder: '.jarviswidget-editbox',
+        editClass: 'fa fa-cog | fa fa-save',
+        editSpeed: 200,
+        onEdit: function () {
+        },
+        // color button
+        colorButton: true,
+        // full screen
+        fullscreenButton: true,
+        fullscreenClass: 'fa fa-expand | fa fa-compress',
+        fullscreenDiff: 3,
+        onFullscreen: function () {
+        },
+        // custom btn
+        customButton: false,
+        customClass: 'folder-10 | next-10',
+        customStart: function () {
+            alert('Hello you, this is a custom button...');
+        },
+        customEnd: function () {
+            alert('bye, till next time...');
+        },
+        // order
+        buttonOrder: '%refresh% %custom% %edit% %toggle% %fullscreen% %delete%',
+        opacity: 1.0,
+        dragHandle: '> header',
+        placeholderClass: 'jarviswidget-placeholder',
+        indicator: true,
+        indicatorTime: 600,
+        ajax: true,
+        timestampPlaceholder: '.jarviswidget-timestamp',
+        timestampFormat: 'Last update: %m%/%d%/%y% %h%:%i%:%s%',
+        refreshButton: true,
+        refreshButtonClass: 'fa fa-refresh',
+        labelError: 'Sorry but there was a error:',
+        labelUpdated: 'Last Update:',
+        labelRefresh: 'Refresh',
+        labelDelete: 'Delete widget:',
+        afterLoad: function () {
+        },
+        rtl: false, // best not to toggle this!
+        onChange: function () {
+
+        },
+        onSave: function () {
+
+        },
+        ajaxnav: true
+
+    }
+
+    var dispatchedWidgetIds = [];
+    var setupWaiting = false;
+
+    var debug = 1;
+
+    var setupWidgets = function (element, widgetIds) {
+
+        if (!setupWaiting) {
+
+            if(_.intersection(widgetIds, dispatchedWidgetIds).length != widgetIds.length){
+
+                dispatchedWidgetIds = _.union(widgetIds, dispatchedWidgetIds);
+
+//                    console.log('setupWidgets', debug++);
+
+                element.data('jarvisWidgets') && element.data('jarvisWidgets').destroy();
+                element.jarvisWidgets(jarvisWidgetsDefaults);
+                initDropdowns(widgetIds);
+            }
+
+        } else {
+            if (!setupWaiting) {
+                setupWaiting = true;
+                $timeout(function () {
+                    setupWaiting = false;
+                    setupWidgets(element, widgetIds)
+                }, 200);
+            }
+        }
+
+    };
+
+    var destroyWidgets = function(element, widgetIds){
+        element.data('jarvisWidgets') && element.data('jarvisWidgets').destroy();
+        dispatchedWidgetIds = _.xor(dispatchedWidgetIds, widgetIds);
+    };
+
+    var initDropdowns = function (widgetIds) {
+        angular.forEach(widgetIds, function (wid) {
+            $('#' + wid + ' [data-toggle="dropdown"]').each(function () {
+                var $parent = $(this).parent();
+                // $(this).removeAttr('data-toggle');
+                if (!$parent.attr('dropdown')) {
+                    $(this).removeAttr('href');
+                    $parent.attr('dropdown', '');
+                    var compiled = $compile($parent)($parent.scope())
+                    $parent.replaceWith(compiled);
+                }
+            })
+        });
+    };
+
+    var jarvisWidgetAddedOff,
+        $viewContentLoadedOff,
+        $stateChangeStartOff;
+
+    return {
+        restrict: 'A',
+        compile: function(element){
+
+            element.removeAttr('widget-grid data-widget-grid');
+
+            var widgetIds = [];
+
+            $viewContentLoadedOff = $rootScope.$on('$viewContentLoaded', function (event, data) {
+                $timeout(function () {
+                    setupWidgets(element, widgetIds)
+                }, 100);
+            });
+
+
+            $stateChangeStartOff = $rootScope.$on('$stateChangeStart',
+                function(event, toState, toParams, fromState, fromParams){
+                    jarvisWidgetAddedOff();
+                    $viewContentLoadedOff();
+                    $stateChangeStartOff();
+                    destroyWidgets(element, widgetIds)
+                });
+
+            jarvisWidgetAddedOff = $rootScope.$on('jarvisWidgetAdded', function (event, widget) {
+                if (widgetIds.indexOf(widget.attr('id')) == -1) {
+                    widgetIds.push(widget.attr('id'));
+                    $timeout(function () {
+                        setupWidgets(element, widgetIds)
+                    }, 100);
+                }
+//                    console.log('jarvisWidgetAdded', widget.attr('id'));
+            });
 
         }
     }

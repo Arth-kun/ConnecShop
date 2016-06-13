@@ -1,153 +1,148 @@
+// var distanceBeacon.js
+var array = [];
+var maxValues = 20;
+var minValues = 5
+var moyennes = [];
+var minor;
+
 /* distanceCalculator
 Enregistrement de la distance de chaque beacon en fonction du minor */
 function distanceCalculator (beaconInfo) {
 
-	if (compt===15)
-		compt=0;
+	//beaconInfo.beacons[0].name
+    //beaconInfo.beacons[0].proximity
+    //beaconInfo.beacons[0].distance
+    //$("body").html(beaconInfo.beacons[0].name + " - " + beaconInfo.beacons[0].proximity + "<br/>" + beaconInfo.beacons[0].distance);
 
-	//Pobj beaconInfo.beacons
-	for (var i in beaconInfo.beacons) {
+    array = decalVal(array);
+    moyennes = decalVal(moyennes);
 
-		var beacon=beaconInfo.beacons[i];
+    for (var index = 0; index < beaconInfo.beacons.length; index++) {
+    	var beacon = beaconInfo.beacons[index];
 
-		// On initialise chaque case beacon si elles n'existent pas
-		if (!distanceManager[beacon.minor])
-			distanceManager[beacon.minor]=[];
-		distanceManager[beacon.minor][compt]=beacon.distance;
-	}
 
-	//Verif value minor update
-	//Pobj distanceManager
-	for (var i in distanceManager) {
 
-		var here=false;//bool
+        //beacon.name
+        //beacon.minor
 
-		//Pobj beaconInfo.beacons
-		for (var j in beaconInfo.beacons){
-			if (i == beaconInfo.beacons[j].minor)
-				here=true;
-		}
+        //create if not exists
+        if (!array[beacon.minor]) {
+        	array[beacon.minor] = [];
+        	for (var i = 0; i < maxValues; i++) {
+        		array[beacon.minor][i] = -1;
+        	}
+        }
 
-		if (!here)
-			distanceManager[i].splice(compt,1);
-	}
 
-	compt++;
 
-	if (compt===3&&firstDetection) 
-		firstDetection = false;
+        array[beacon.minor][0] = beacon.distance;
+    }
+
+
+    var allowed = false;
+
+    for (var key in array) {
+
+
+    	var total = 0;
+    	var count = 0;
+    	for (var i = 0; i < maxValues; i++) {
+    		if (array[key][i] != -1) {
+    			total = total + array[key][i];
+    			count = count + 1;
+    		}
+    	}
+
+
+    	if (!moyennes[key]) {
+        	moyennes[key] = [];
+        	for (var i = 0; i < maxValues; i++) {
+        		moyennes[key][i] = 1000;
+        	}
+        }
+
+
+    	if (count > minValues)
+    		moyennes[key][0] = total / count;
+    	else
+    		moyennes[key][0] = 1000;
+
+    }
+
+
+
+    //$("body").html(JSON.stringify(beaconInfo.beacons[0]));
+    //$('#header, #ribbon, #menu-toggle-button, #beacon').addClass('displayNone');
+    $("body").html("");
+
+
+    if (sortBy(moyennes, 0, true) === sortBy(moyennes, 1, true) && sortBy(moyennes, 0) === sortBy(moyennes, 2, true) && sortBy(moyennes, 2) === sortBy(moyennes, 3, true))
+		minor = sortBy(moyennes, 0);
 	
-	if (!firstDetection) 
-		return distanceCalculating();//Fint
+	$("body").append(nomRayon(minor));
+	return parseInt(minor);
 	
+
 }
 
 
-/* distanceCalculator
-Calcul du beacon le plus proche grâce aux données enregistrées sur 15 valeurs */
-function distanceCalculating () {
+function decalVal (array) {
+	//decalage des valeurs
+    for (var key in array) {
+      	for (var i = maxValues - 1; i > 0; i--) {
+            array[key][i] = array[key][i - 1];
+        }
+        array[key][0] = -1;
+    }
+    return array;
+}
 
-	//Ivar
-	var distanceTotal=[];//arr
-	var distLen=[];//arr
-	var distanceCompt=0;//int
-	var distance=false;//bool
-	var minor;//int
 
-	var dist;//LOG
-	var minors=[]//LOG
+function sortBy (array, x, debug) {
+	var tuples = [];
 
-	//Pobj distanceManager
-	for (var i in distanceManager) {
-		var distances=distanceManager[i];
-		if (distances.length>=5) {
-			distance=true;//ce boolean sert juste dans le cas où aucun ne validerai la première condition afin de laisser 'exeption'
-			exeption=false;
-		} else if (!distance) {
-			exeption=true;
-		}
+    for (var key in array)
+    	tuples.push([key, array[key][x]]);
+
+    tuples.sort(function(a, b) {
+    	a = a[1];
+    	b = b[1];
+
+    	return a < b ? -1 : (a > b ? 1 : 0);
+    });
+
+    for (var i = 0; i < tuples.length; i++) {
+    	var key = tuples[i][0];
+    	var value = tuples[i][1];
+
+        // do something with key and value
+
+        if (debug)
+        	$("body").append(x + " " + nomRayon(key) + " - " + value + "<br/>");
+    }
+
+    return tuples[0][0];
+}
+
+function nomRayon (minor) {
+	switch (parseInt(minor)) {
+		case 46204 :
+		return 'Hotline';
+		case 35520 :
+		return 'Projets';
+		case 8227 :
+		return 'Privilèges';
+		case 21493 :
+		return 'Marketing';
+		case 37996 :
+		return 'Produit';
+		case 45531 :
+		return 'Web';
+		case 9777 :
+		return 'Infra';
+		case 43737 :
+		return 'Accueil';
+		case 23810 :
+		return 'Commercial';
 	}
-
-	//Pobj distanceManager
-	for (var i in distanceManager) {
-
-		/*
-		
-		*/
-
-
-		var distances=distanceManager[i];
-		distanceTotal[distanceCompt]=0;
-
-		if (distances.length>=5||exeption==true) {
-			//Ptab distanceManager.distances
-			for (var j in distances) {
-				if (distances[j]!=null) {
-					distanceTotal[distanceCompt]+=distances[j];
-				}
-			}
-			distLen[distanceCompt]=distances.length;
-
-
-			minors[distanceCompt]=i;//LOG
-
-			if (!distanceTotal[distanceCompt-1]){
-				minor=i;
-				dist=distanceTotal[distanceCompt]/distLen[distanceCompt];//LOG
-			}
-
-			else if (distanceTotal[distanceCompt]/distLen[distanceCompt]<distanceTotal[distanceCompt-1]/distLen[distanceCompt-1]){
-				minor=i;
-				dist=distanceTotal[distanceCompt]/distLen[distanceCompt];//LOG
-			}
-
-			distanceCompt++;
-		}
-	}
-
-
-
-	//Décommenter pour afficher les infos intérèssantes
-	//LOG
-	var date = new Date();
-	$('#header, #ribbon, #menu-toggle-button').addClass('displayNone');
-	$('body').prepend('<table class="dist table table-bordered"></table>');
-	$('body table:first-child').append('<tr><th>'+compt+'</th><th>'+date.getHours()+'h '+date.getMinutes()+'min '+date.getSeconds()+', '+date.getMilliseconds()+'s</th><th>ServiceActuel: '+nomRayon(minor)+'</th></tr>')
-	//for (var i in distanceTotal) {
-		//$('body table:first-child').append('<tr><td>'+minors[i]+'</td><td>DistMoy:'+distanceTotal[i]/distLen[i]+'<br>DistTotal:'+distanceTotal[i]+'<br>nbValDist:'+distLen[i]+'</td><td>'+nomRayon(minors[i])+'</td></tr>')
-	//}
-
-	for(var j in distanceManager){
-		$('body table:first-child').append('<tr><td>'+nomRayon(distanceManager[j])+'</td></tr>') 
-		for (var i in distanceManager[j]) {
-			$('body table:first-child tr:last-child').append('<td>'+distanceManager[j][i]+'</td>')
-		}
-	}
-
-
-	function nomRayon (minor) {
-		switch (parseInt(minor)) {
-			case 46204 :
-				return 'Hotline';
-			case 35520 :
-				return 'Projets';
-			case 8227 :
-				return 'Privilèges';
-			case 21493 :
-				return 'Marketing';
-			case 37996 :
-				return 'Produit';
-			case 45531 :
-				return 'Web';
-			case 9777 :
-				return 'Infra';
-			case 43737 :
-				return 'Accueil';
-			case 23810 :
-				return 'Commercial';
-		}
-	}
-
-
-	return parseInt(minor);
 }
