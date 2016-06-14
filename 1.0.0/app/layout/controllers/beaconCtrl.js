@@ -34,16 +34,13 @@ angular.module('app.beacon', ['ui.router'])
 		            for (var image of product.ImagesSecondaires) {
 		                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
 		            }
-		            product.idPromo = 2;
-		            product.remise = true;
-		            product.pourcentage = -30;
-		            product.prixNonRemise = "900";
-		            product.PrixTTC = priceToString(product.PrixTTC);
-		             for (var avis of product.ListeAvis) {
+
+		            for (var avis of product.ListeAvis) {
 		                avis.DateCreation = dateReformate(avis.DateCreation);
 		                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
 		                avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
 		            }
+
 		            if (product.ListeAvis.length>0)
 		                product.avis = true;   
 		            else
@@ -59,6 +56,20 @@ angular.module('app.beacon', ['ui.router'])
 		                product.hasNote = false;
 		            else
 		                product.hasNote = true;
+
+		            if (product.Remise===0) {
+		                product.hasRemise = false;
+		                product.idPromo = 0;
+		                product.pourcentage = 0;
+		                product.prixNonRemise = 0;
+		                product.PrixTTC = priceToString(product.PrixTTC);
+		            } else {
+		                product.hasRemise = true;
+		                product.idPromo = 2;
+		                product.pourcentage = -product.Remise*100;
+		                product.prixNonRemise = priceToString(product.PrixTTC);
+		                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
+		            }
 
 
 					product.descriptionShow = new Dispenser();

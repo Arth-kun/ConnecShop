@@ -3,6 +3,7 @@
 
 // Price to string
 function priceToString (price) {
+	price = price.toFixed(2);
 	var priceStr = price.toString();
 	return priceStr.replace(".",",");
 }

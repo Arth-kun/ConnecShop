@@ -10,20 +10,30 @@ angular.module('app.home')
   	.done(function(articlesMeilleureVente) {
     	for (var article of articlesMeilleureVente) {
     		article.img = "http://ac01.ow04.fr/I-Moyenne-"+article.IDImage+".net.jpg";
-    		article.prixText = "";
-    		article.PrixTTC = priceToString(article.PrixTTC);
-    	}
+
+            if (article.Remise===0) {
+                article.hasRemise = false;
+                article.prixText = "";
+                article.PrixTTC = priceToString(article.PrixTTC);
+            } else {
+                article.hasRemise = true;
+               	article.prixText = "à partir de ";
+                article.PrixTTC = priceToString(article.PrixTTC-article.PrixTTC*article.Remise);
+			}
+		}
 
     	$scope.articlesMeilleureVente = articlesMeilleureVente;
-  	});
+	});
 
 
-	$scope.imagesCarousel = imagesCarsouel;
-
-	$scope.imagesMiseAvant = imagesMiseAvant;
+	$scope.promo = [];
 
 	$scope.goToDetail = function (id) {
 		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id;
+	}
+
+	$scope.goToList = function (KeyTheme) {
+		document.location.hash ='#/e-commerce/products-list/'+KeyTheme;
 	}
 
 	//Swipe Carousel functions
@@ -43,23 +53,21 @@ angular.module('app.home')
 		
 	});
 
+	getMenuByID(0);
+	getMenuByID(1);
+
+   function getMenuByID (idMenu) {
+	    $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+	    .done(function(categories) {
+
+	        for (var category of categories) {
+	        	category.src = "http://ac01.ow04.fr/I-Moyenne-"+category.IDImage+".net.jpg";
+	    	}
+
+	    	$scope.promo[idMenu] = categories;
+
+	    });
+    }
+
+
 });
-
-var imagesCarsouel = [{
-	"src":"styles/img/octave/carousel.png",
-	"url":"#/e-commerce/products-detail/Accueil/2"
-},{
-	"src":"styles/img/octave/carousel.png",
-	"url":"#/e-commerce/products-detail/Accueil/2"
-},{
-	"src":"styles/img/octave/carousel.png",
-	"url":"#/e-commerce/products-detail/Accueil/2"
-}];
-
-var imagesMiseAvant = [{
-	"src":"styles/img/octave/miseavant1.png",
-	"url":"#/e-commerce/products-list/13"
-},{
-	"src":"styles/img/octave/miseavant2.png",
-	"url":"#/e-commerce/products-list/14"
-}];

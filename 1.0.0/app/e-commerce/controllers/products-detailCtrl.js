@@ -23,11 +23,7 @@ angular.module('app.eCommerce')
             for (var image of product.ImagesSecondaires) {
                 product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
             }
-            product.idPromo = 1;
-            product.remise = true;
-            product.pourcentage = -30;
-            product.prixNonRemise = "900";
-            product.PrixTTC = priceToString(product.PrixTTC);
+
              for (var avis of product.ListeAvis) {
                 avis.DateCreation = dateReformate(avis.DateCreation);
                 //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
@@ -48,6 +44,20 @@ angular.module('app.eCommerce')
                 product.hasNote = false;
             else
                 product.hasNote = true;
+
+            if (product.Remise===0) {
+                product.hasRemise = false;
+                product.idPromo = 0;
+                product.pourcentage = 0;
+                product.prixNonRemise = 0;
+                product.PrixTTC = priceToString(product.PrixTTC);
+            } else {
+                product.hasRemise = true;
+                product.idPromo = 1;
+                product.pourcentage = -product.Remise*100;
+                product.prixNonRemise = priceToString(product.PrixTTC);
+                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
+            }
 
             $scope.nbAvis = product.ListeAvis.length;
         }

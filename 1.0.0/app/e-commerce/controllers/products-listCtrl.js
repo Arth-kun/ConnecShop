@@ -28,9 +28,6 @@ angular.module('app.eCommerce')
     .done(function(productsList) {
 
         for (var product of productsList) {
-            product.remise = true;
-            product.pourcentage = -30;
-            product.prixNonRemise = '900';
 
             if (product.Note===0)
                 product.hasNote = false;
@@ -38,7 +35,19 @@ angular.module('app.eCommerce')
                 product.hasNote = true;
 
             product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
-            product.PrixTTC = priceToString(product.PrixTTC);
+            
+            if (product.Remise===0) {
+                product.hasRemise = false;
+                product.pourcentage = 0;
+                product.prixNonRemise = 0;
+                product.PrixTTC = priceToString(product.PrixTTC);
+            } else {
+                product.hasRemise = true;
+                product.pourcentage = -product.Remise*100;
+                product.prixNonRemise = priceToString(product.PrixTTC);
+                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
+            }
+
         }
 
         $scope.productsList = productsList;

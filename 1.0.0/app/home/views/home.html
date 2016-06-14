@@ -5,13 +5,13 @@
 	<div id="homeCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#homeCarousel" data-slide-to="{{$index}}" ng-class="{active:$first}" ng-repeat="image in imagesCarousel"></li>
+			<li data-target="#homeCarousel" data-slide-to="{{$index}}" ng-class="{active:$first}" ng-repeat="promo in promo[0]"></li>
 		</ol>
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-			<div class="item" ng-class="{active:$first}" ng-repeat="image in imagesCarousel">
-				<a href="{{image.url}}"><img ng-src="{{image.src}}"></a>
+			<div class="item" ng-class="{active:$first}" ng-repeat="promo in promo[0]" ng-click="goToList(promo.KeyTheme)">
+				<img ng-src="{{promo.src}}">
 			</div>
 		</div>
 	</div>
@@ -19,8 +19,8 @@
 
 	<!-- Mise en avant -->
 	<div id="miseEnAvant">
-		<div class="miseAvantHome" ng-repeat="image in imagesMiseAvant">
-			<a href="{{image.url}}"><img class="imageMiseAvant" ng-src="{{image.src}}"></a>
+		<div class="miseAvantHome" ng-repeat="promo in promo[1]" ng-click="goToList(promo.KeyTheme)">
+			<img class="imageMiseAvant" ng-src="{{promo.src}}">
 		</div>
 	</div>
 

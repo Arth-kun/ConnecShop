@@ -73,13 +73,13 @@ function distanceCalculator (beaconInfo) {
 
     //$("body").html(JSON.stringify(beaconInfo.beacons[0]));
     //$('#header, #ribbon, #menu-toggle-button, #beacon').addClass('displayNone');
-    $("body").html("");
+    //$("body").html("");
 
 
     if (sortBy(moyennes, 0, true) === sortBy(moyennes, 1, true) && sortBy(moyennes, 0) === sortBy(moyennes, 2, true) && sortBy(moyennes, 2) === sortBy(moyennes, 3, true))
 		minor = sortBy(moyennes, 0);
 	
-	$("body").append(nomRayon(minor));
+	//$("body").append(nomRayon(minor));
 	return parseInt(minor);
 	
 
@@ -117,8 +117,8 @@ function sortBy (array, x, debug) {
 
         // do something with key and value
 
-        if (debug)
-        	$("body").append(x + " " + nomRayon(key) + " - " + value + "<br/>");
+        //if (debug)
+        //	$("body").append(x + " " + nomRayon(key) + " - " + value + "<br/>");
     }
 
     return tuples[0][0];

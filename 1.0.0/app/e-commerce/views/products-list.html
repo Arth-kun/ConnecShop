@@ -23,7 +23,7 @@
 
     <div class="col-xs-6 articleProductsList" ng-class="{pair:$even, impair:$odd}" ng-repeat="articleVente in productsList" ng-click="goToDetail(articleVente.ID)">
         <div class="inner">
-            <span class="promoTag" ng-show="{{articleVente.remise}}">
+            <span class="promoTag" ng-show="{{articleVente.hasRemise}}">
                     <span class="backgroundPromo"><span class="textPromo">PROMO</span></span>
             </span>
             <img class="imageArticle" ng-src="{{articleVente.img}}">
@@ -51,11 +51,11 @@
                 </span>
             </div>
             <p class="prixTTCVente">
-                <span class="remiseContainer" ng-show="{{articleVente.remise}}">
+                <span class="remiseContainer" ng-show="{{articleVente.hasRemise}}">
                     <span class="pourcentage">{{articleVente.pourcentage}}%</span>
                     <span class="prixNonRemise">{{articleVente.prixNonRemise}}€</span>
                 </span>
-                <span class="prixTTC" ng-class="{prixReduit:articleVente.remise}">{{articleVente.PrixTTC}} €</span>
+                <span class="prixTTC" ng-class="{prixReduit:articleVente.hasRemise}">{{articleVente.PrixTTC}} €</span>
             </p>
         </div>
     </div>

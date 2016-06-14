@@ -1,10 +1,10 @@
 <div id="beacon" ng-controller="beaconController" ng-class="{translateBeacon:showBeacon.doShow}" class="displayNone">
 
 	<!-- Button collapse beacon -->
-	<span class="paddingFleche">
-		<div class="flecheHome" ng-click="showBeacon.show()" ng-class="{'menu-open':showBeacon.doShow}">
-			<span class="glyphicon fleche-span" ng-class="{'glyphicon-menu-right':showBeacon.doShow, 'glyphicon-menu-left':!showBeacon.doShow}"></span>
-		</div>
+	<div class="flecheHome" ng-class="{'menu-open':showBeacon.doShow}">
+		<span class="glyphicon fleche-span" ng-class="{'glyphicon-menu-right':showBeacon.doShow, 'glyphicon-menu-left':!showBeacon.doShow}"></span>
+	</div>
+	<span class="paddingFleche" ng-click="showBeacon.show()">
 	</span>   
 	<!-- end Button collapse beacon -->
 

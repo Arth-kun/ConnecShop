@@ -37,7 +37,7 @@
             </div>
 
             <div class="productBlock">
-                <span class="promoTag" ng-class="{displayNone:!product.remise}">
+                <span class="promoTag" ng-class="{displayNone:!product.hasRemise}">
                     <span class="backgroundPromo"><span class="textPromo">PROMO</span></span>
                 </span>
 
@@ -56,7 +56,7 @@
                 </div>
 
                 <p class="prixProduct">
-                    <span class="remiseContainer" ng-class="{displayNone:!product.remise}">
+                    <span class="remiseContainer" ng-class="{displayNone:!product.hasRemise}">
                         <span class="pourcentage">{{product.pourcentage}}%</span>
                         <span class="prixNonRemise">{{product.prixNonRemise}}€</span>
                     </span>
