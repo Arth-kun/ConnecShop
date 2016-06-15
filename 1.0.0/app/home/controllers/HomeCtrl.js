@@ -29,7 +29,7 @@ angular.module('app.home')
 	$scope.promo = [];
 
 	$scope.goToDetail = function (id) {
-		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id;
+		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/0';
 	}
 
 	$scope.goToList = function (KeyTheme) {
@@ -61,7 +61,7 @@ angular.module('app.home')
 	    .done(function(categories) {
 
 	        for (var category of categories) {
-	        	category.src = "http://ac01.ow04.fr/I-Moyenne-"+category.IDImage+".net.jpg";
+	        	category.src = "http://ac01.ow04.fr/I-Grande-"+category.IDImage+".net.jpg";
 	    	}
 
 	    	$scope.promo[idMenu] = categories;

@@ -27,36 +27,42 @@ angular.module('app.eCommerce')
     requetePost
     .done(function(productsList) {
 
-        for (var product of productsList) {
+        if(productsList.length===1) {
+            document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/1';
+        } else {
 
-            if (product.Note===0)
-                product.hasNote = false;
-            else
-                product.hasNote = true;
+            for (var product of productsList) {
 
-            product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
-            
-            if (product.Remise===0) {
-                product.hasRemise = false;
-                product.pourcentage = 0;
-                product.prixNonRemise = 0;
-                product.PrixTTC = priceToString(product.PrixTTC);
-            } else {
-                product.hasRemise = true;
-                product.pourcentage = -product.Remise*100;
-                product.prixNonRemise = priceToString(product.PrixTTC);
-                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
+
+                if (product.Note===0)
+                    product.hasNote = false;
+                else
+                    product.hasNote = true;
+
+                product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
+                
+                if (product.Remise===0) {
+                    product.hasRemise = false;
+                    product.pourcentage = 0;
+                    product.prixNonRemise = 0;
+                    product.PrixTTC = priceToString(product.PrixTTC);
+                } else {
+                    product.hasRemise = true;
+                    product.pourcentage = -product.Remise*100;
+                    product.prixNonRemise = priceToString(product.PrixTTC);
+                    product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
+                }
+
             }
 
+            $scope.productsList = productsList;
+            $scope.nbArticle = productsList.length;
         }
-
-        $scope.productsList = productsList;
-        $scope.nbArticle = productsList.length;
     });
 
 
     $scope.goToDetail = function (id) {
-      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id;
+      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id+'/0';
     }
 
     function getMenuByID (idMenu) {

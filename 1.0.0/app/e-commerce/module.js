@@ -26,7 +26,7 @@ angular.module('app.eCommerce', ['ui.router'])
         })
 
         .state('app.eCommerce.detail', {
-            url: '/e-commerce/products-detail/:category/:id',
+            url: '/e-commerce/products-detail/:category/:id/:history',
             data: {
                 title: 'Products Detail'
             },

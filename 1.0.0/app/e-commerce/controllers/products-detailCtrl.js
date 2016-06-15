@@ -87,6 +87,13 @@ angular.module('app.eCommerce')
         }
     }
 
+    $scope.goBack = function () {
+        if (hashProduct[5])
+            history.go(-2);
+        else
+            history.back();
+    }
+
 
     $scope.addCart = function (product) {
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
