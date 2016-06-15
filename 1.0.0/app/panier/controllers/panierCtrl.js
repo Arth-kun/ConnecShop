@@ -7,7 +7,6 @@ angular.module('app.panier')
 
 	calcProducts();
 
-
 	function calcProducts () {
 		if (sessionStorage.getItem('articlesPanier')) {
 
@@ -18,7 +17,9 @@ angular.module('app.panier')
 				//alert(JSON.stringify(article));
 				$scope.nbArticles+=article.quantity;
 
-				article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity);
+				if (article.prixNonRemise)
+					article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity);
+
 				article.prixTTCStr=multiplyStr(article.PrixTTC, article.quantity);
 
 				totalPrix(article.prixTTCStr);
@@ -50,7 +51,7 @@ angular.module('app.panier')
 
 		if ($scope.nbArticles==0) {
 			$.prompt('Le panier est vide', {top: '10%'});
-			history.back();
+			document.location.hash = '#/home';
 		}
 	}
 
@@ -86,7 +87,7 @@ angular.module('app.panier')
 					else {
 						var products=JSON.parse(sessionStorage.getItem('articlesPanier'));
 						for (var productStored of products) {
-							if (productStored.id===product.id&&productStored.idPromo===product.idPromo){
+							if (productStored.ID===product.ID&&productStored.idPromo===product.idPromo){
 								doublon=true;
 								productStored.quantity+=quantity;
 							}

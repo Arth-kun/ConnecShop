@@ -2878,7 +2878,9 @@ angular.module('app.eCommerce')
             product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
             ];
             for (var image of product.ImagesSecondaires) {
-                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
+                var value = "http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg";
+                if (!isInArray(value, product.imgs))    
+                    product.imgs.push(value);
             }
 
              for (var avis of product.ListeAvis) {
@@ -2945,10 +2947,7 @@ angular.module('app.eCommerce')
     }
 
     $scope.goBack = function () {
-        if (hashProduct[5])
-            history.go(-2);
-        else
-            history.back();
+        history.go(-hashProduct[5]);
     }
 
 
@@ -3024,7 +3023,7 @@ angular.module('app.eCommerce')
     .done(function(productsList) {
 
         if(productsList.length===1) {
-            document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/1';
+            document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/2';
         } else {
 
             for (var product of productsList) {
@@ -3058,7 +3057,7 @@ angular.module('app.eCommerce')
 
 
     $scope.goToDetail = function (id) {
-      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id+'/0';
+      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id+'/1';
     }
 
     function getMenuByID (idMenu) {
@@ -3715,7 +3714,7 @@ angular.module('app.home')
 	$scope.promo = [];
 
 	$scope.goToDetail = function (id) {
-		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/0';
+		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/1';
 	}
 
 	$scope.goToList = function (KeyTheme) {
@@ -4054,6 +4053,11 @@ function dateReformate (str) {
         d = str.substr(6,2);
         return d+'/'+m+'/'+y;
 }
+
+// Check presence in Array
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
 'use strict';
 
 angular.module('app.menu', ['ui.router'])
@@ -4376,7 +4380,6 @@ angular.module('app.panier')
 
 	calcProducts();
 
-
 	function calcProducts () {
 		if (sessionStorage.getItem('articlesPanier')) {
 
@@ -4387,7 +4390,9 @@ angular.module('app.panier')
 				//alert(JSON.stringify(article));
 				$scope.nbArticles+=article.quantity;
 
-				article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity);
+				if (article.prixNonRemise)
+					article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity);
+
 				article.prixTTCStr=multiplyStr(article.PrixTTC, article.quantity);
 
 				totalPrix(article.prixTTCStr);
@@ -4419,7 +4424,7 @@ angular.module('app.panier')
 
 		if ($scope.nbArticles==0) {
 			$.prompt('Le panier est vide', {top: '10%'});
-			history.back();
+			document.location.hash = '#/home';
 		}
 	}
 
@@ -4455,7 +4460,7 @@ angular.module('app.panier')
 					else {
 						var products=JSON.parse(sessionStorage.getItem('articlesPanier'));
 						for (var productStored of products) {
-							if (productStored.id===product.id&&productStored.idPromo===product.idPromo){
+							if (productStored.ID===product.ID&&productStored.idPromo===product.idPromo){
 								doublon=true;
 								productStored.quantity+=quantity;
 							}

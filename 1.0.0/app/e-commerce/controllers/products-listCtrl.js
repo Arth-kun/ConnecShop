@@ -28,7 +28,7 @@ angular.module('app.eCommerce')
     .done(function(productsList) {
 
         if(productsList.length===1) {
-            document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/1';
+            document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/2';
         } else {
 
             for (var product of productsList) {
@@ -62,7 +62,7 @@ angular.module('app.eCommerce')
 
 
     $scope.goToDetail = function (id) {
-      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id+'/0';
+      document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id+'/1';
     }
 
     function getMenuByID (idMenu) {

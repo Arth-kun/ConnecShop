@@ -21,7 +21,9 @@ angular.module('app.eCommerce')
             product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
             ];
             for (var image of product.ImagesSecondaires) {
-                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
+                var value = "http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg";
+                if (!isInArray(value, product.imgs))    
+                    product.imgs.push(value);
             }
 
              for (var avis of product.ListeAvis) {
@@ -88,10 +90,7 @@ angular.module('app.eCommerce')
     }
 
     $scope.goBack = function () {
-        if (hashProduct[5])
-            history.go(-2);
-        else
-            history.back();
+        history.go(-hashProduct[5]);
     }
 
 

@@ -29,7 +29,7 @@ angular.module('app.home')
 	$scope.promo = [];
 
 	$scope.goToDetail = function (id) {
-		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/0';
+		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/1';
 	}
 
 	$scope.goToList = function (KeyTheme) {

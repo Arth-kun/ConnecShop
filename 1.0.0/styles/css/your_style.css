@@ -1573,8 +1573,6 @@ body {
 	padding: 0px;
 	padding: 2.5% 1.75%;
 
-	border-right: 1px solid #ececec;
-
 	text-align: center;
 
 	min-height: 79px;
@@ -1588,8 +1586,11 @@ body {
 	font-family: Open Sans;
 	color: #313C3E;
 
+	border-left: 1px solid #ececec;
+
 	padding-top: 3%;
 	padding-right: 0%;
+	padding-bottom: 10px;
 }
 
 #panier_1stStep .panierProducts .productContentContainer .removeFromPanier {
@@ -1640,13 +1641,16 @@ body {
 }
 
 #panier_1stStep .panierProducts .productContentContainer .productQuantity .quantityPlus {
-	font-size: 0.5em;
-	padding: 2px;
+	padding: 0px 1px;
 
 	position: absolute;
 	top: 5px;
 	bottom: 2px;
 	right: 5%;
+}
+
+#panier_1stStep .panierProducts .productContentContainer .productQuantity .quantityMoins {
+	padding-right: 1px;
 }
 
 #panier_1stStep .panierProducts .productContentContainer .productsPrices {

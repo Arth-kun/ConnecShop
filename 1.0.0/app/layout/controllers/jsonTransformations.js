@@ -15,3 +15,8 @@ function dateReformate (str) {
         d = str.substr(6,2);
         return d+'/'+m+'/'+y;
 }
+
+// Check presence in Array
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
