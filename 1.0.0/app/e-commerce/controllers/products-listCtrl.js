@@ -19,44 +19,23 @@ angular.module('app.eCommerce')
 
 
     if (idCategory=='best') {
-        var requetePost = $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes");
+        var requetePost = $.post( webServUrl+"GET_ArticleMeilleuresVentes");
     } else {
-        var requetePost = $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeArticlesParCategorie", { categorie: idCategory });
+        var requetePost = $.post( webServUrl+"GET_ListeArticlesParCategorie", { categorie: idCategory });
     }
 
     requetePost
     .done(function(productsList) {
 
-        if(productsList.length===1) {
+        if (productsList.length===1) {
+
             document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/2';
+        
         } else {
 
-            for (var product of productsList) {
-
-
-                if (product.Note===0)
-                    product.hasNote = false;
-                else
-                    product.hasNote = true;
-
-                product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
-                
-                if (product.Remise===0) {
-                    product.hasRemise = false;
-                    product.pourcentage = 0;
-                    product.prixNonRemise = 0;
-                    product.PrixTTC = priceToString(product.PrixTTC);
-                } else {
-                    product.hasRemise = true;
-                    product.pourcentage = -product.Remise*100;
-                    product.prixNonRemise = priceToString(product.PrixTTC);
-                    product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
-                }
-
-            }
-
-            $scope.productsList = productsList;
             $scope.nbArticle = productsList.length;
+            $scope.productsList = formateJson(productsList, 'list');
+        
         }
     });
 
@@ -66,7 +45,7 @@ angular.module('app.eCommerce')
     }
 
     function getMenuByID (idMenu) {
-        $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+        $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
 
             for (var category of categories) {

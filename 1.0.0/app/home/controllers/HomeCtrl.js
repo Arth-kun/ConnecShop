@@ -6,23 +6,11 @@ angular.module('app.home')
 
 	//FOR REAL WEB SERVICE
 	//MEILLEURESVENTES
-	$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
+	$.post(webServUrl+"GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
-    	for (var article of articlesMeilleureVente) {
-    		article.img = "http://ac01.ow04.fr/I-Moyenne-"+article.IDImage+".net.jpg";
 
-            if (article.Remise===0) {
-                article.hasRemise = false;
-                article.prixText = "";
-                article.PrixTTC = priceToString(article.PrixTTC);
-            } else {
-                article.hasRemise = true;
-               	article.prixText = "à partir de ";
-                article.PrixTTC = priceToString(article.PrixTTC-article.PrixTTC*article.Remise);
-			}
-		}
+    	$scope.articlesMeilleureVente = formateJson(articlesMeilleureVente, 'home');
 
-    	$scope.articlesMeilleureVente = articlesMeilleureVente;
 	});
 
 
@@ -37,27 +25,23 @@ angular.module('app.home')
 	}
 
 	//Swipe Carousel functions
-	$(document).ready(function () {
+	$('.carousel').carousel({
+		interval: 7000
+	});
 
-		$('.carousel').carousel({
-  			interval: 7000
-		});
+	$('.carousel').hammer().on("swipeleft", function(){
+		$(this).carousel('next');
+	});
 
-		$('.carousel').hammer().on("swipeleft", function(){
-			$(this).carousel('next');
-		});
-
-		$('.carousel').hammer().on("swiperight", function(){
-			$(this).carousel('prev');
-		});
-		
+	$('.carousel').hammer().on("swiperight", function(){
+		$(this).carousel('prev');
 	});
 
 	getMenuByID(0);
 	getMenuByID(1);
 
    function getMenuByID (idMenu) {
-	    $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+	    $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
 	    .done(function(categories) {
 
 	        for (var category of categories) {

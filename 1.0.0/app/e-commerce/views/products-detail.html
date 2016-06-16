@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<div id="productsDetail" class="row" ng-repeat="product in products" ng-init="carousel">
+<div id="productsDetail" class="row" ng-repeat="product in products" ng-init="initCarousel()">
 
     <div class="col-xs-12">
 
@@ -33,7 +33,7 @@
                         <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=5, 'yellow-star':$index<5}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
                     </span>
                 </span>
-                <span class="nbAvis" ng-class="{displayNone:!product.avis}">{{nbAvis}} avis</span>
+                <span class="nbAvis" ng-class="{displayNone:!product.avis}">{{product.ListeAvis.length}} avis</span>
             </div>
 
             <div class="productBlock">

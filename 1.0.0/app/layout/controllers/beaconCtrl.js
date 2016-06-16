@@ -12,7 +12,7 @@ angular.module('app.beacon', ['ui.router'])
 		}
 	});
 
-	$('#beacon .flecheHome').hammer().on("swipeleft", function(){
+	$('#beacon .paddingFleche').hammer().on("swipeleft", function(){
 		if (!$scope.showBeacon.doShow) {
 			$scope.showBeacon.show();
 		}
@@ -25,61 +25,19 @@ angular.module('app.beacon', ['ui.router'])
 		if (idRayon!=undefined) {
 
 			//FOR REAL WEB SERVICE
-			$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: idRayon })
+			$.post( webServUrl+"GET_ListeArticlesParRayon", { rayon: idRayon })
   			.done(function(rayon) {
 
 				for (var product of rayon) {
-					product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
-		            ];
-		            for (var image of product.ImagesSecondaires) {
-		                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
-		            }
-
-		            for (var avis of product.ListeAvis) {
-		                avis.DateCreation = dateReformate(avis.DateCreation);
-		                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
-		                avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
-		            }
-
-		            if (product.ListeAvis.length>0)
-		                product.avis = true;   
-		            else
-		                product.avis = false;
-		            
-		            product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
-		            if (product.CatHTMLDesignation==="")
-		                product.description = false;
-		            else
-		                product.description = true;
-
-		            if (product.Note===0)
-		                product.hasNote = false;
-		            else
-		                product.hasNote = true;
-
-		            if (product.Remise===0) {
-		                product.hasRemise = false;
-		                product.idPromo = 0;
-		                product.pourcentage = 0;
-		                product.prixNonRemise = 0;
-		                product.PrixTTC = priceToString(product.PrixTTC);
-		            } else {
-		                product.hasRemise = true;
-		                product.idPromo = 2;
-		                product.pourcentage = -product.Remise*100;
-		                product.prixNonRemise = priceToString(product.PrixTTC);
-		                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
-		            }
-
 
 					product.descriptionShow = new Dispenser();
 					product.avisShow = new Dispenser();
 					product.detailProduct = new Opener();
-
-					$scope.nomRayon = product.Theme;
+					
 				}
 
-				$scope.rayon = rayon;
+				$scope.nomRayon = rayon[0].Theme;
+				$scope.rayon = formateJson(rayon, 'beacon');
 			});
 
 		}

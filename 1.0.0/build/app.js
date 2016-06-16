@@ -2870,58 +2870,12 @@ angular.module('app.eCommerce')
 
     //FOR REAL WEB SERVICE
     //ARTICLEDETAIL
-    $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleParID", { id: idProduct })
+
+    $.post( webServUrl+"GET_ArticleParID", { id: idProduct })
     .done(function(products) {
 
-        for (var product of products) {
+        $scope.products = formateJson(products, 'detail');
 
-            product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
-            ];
-            for (var image of product.ImagesSecondaires) {
-                var value = "http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg";
-                if (!isInArray(value, product.imgs))    
-                    product.imgs.push(value);
-            }
-
-             for (var avis of product.ListeAvis) {
-                avis.DateCreation = dateReformate(avis.DateCreation);
-                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
-                avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
-            }
-            if (product.ListeAvis.length>0)
-                product.avis = true;   
-            else
-                product.avis = false;
-            
-            product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
-            if (product.CatHTMLDesignation==="")
-                product.description = false;
-            else
-                product.description = true;
-
-            if (product.Note===0)
-                product.hasNote = false;
-            else
-                product.hasNote = true;
-
-            if (product.Remise===0) {
-                product.hasRemise = false;
-                product.idPromo = 0;
-                product.pourcentage = 0;
-                product.prixNonRemise = 0;
-                product.PrixTTC = priceToString(product.PrixTTC);
-            } else {
-                product.hasRemise = true;
-                product.idPromo = 1;
-                product.pourcentage = -product.Remise*100;
-                product.prixNonRemise = priceToString(product.PrixTTC);
-                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
-            }
-
-            $scope.nbAvis = product.ListeAvis.length;
-        }
-
-        $scope.products = products;
     });
 
     $scope.menuTitle={
@@ -2936,6 +2890,16 @@ angular.module('app.eCommerce')
 
     $scope.description = new Dispenser();
     $scope.avis = new Dispenser();
+
+    $scope.initCarousel = function () {
+        $('.carousel, .promoTag').hammer().on("swipeleft", function(){
+            $('.carousel').carousel('next');
+        });
+
+        $('.carousel, .promoTag').hammer().on("swiperight", function(){
+            $('.carousel').carousel('prev');
+        });
+    }
 
 
     $scope.category = function () {
@@ -2970,7 +2934,7 @@ angular.module('app.eCommerce')
 
 
     function getMenuByID (idMenu) {
-        $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+        $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
 
             for (var category of categories) {
@@ -2978,19 +2942,7 @@ angular.module('app.eCommerce')
             }
         });
     }
-
-
-    $(document).ready(function () {
-
-        $('.carousel, .promoTag').hammer().on("swipeleft", function(){
-            $('.carousel').carousel('next');
-        });
-
-        $('.carousel, .promoTag').hammer().on("swiperight", function(){
-            $('.carousel').carousel('prev');
-        });
 		
-	});
 
 });
 'use strict';
@@ -3014,44 +2966,23 @@ angular.module('app.eCommerce')
 
 
     if (idCategory=='best') {
-        var requetePost = $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes");
+        var requetePost = $.post( webServUrl+"GET_ArticleMeilleuresVentes");
     } else {
-        var requetePost = $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeArticlesParCategorie", { categorie: idCategory });
+        var requetePost = $.post( webServUrl+"GET_ListeArticlesParCategorie", { categorie: idCategory });
     }
 
     requetePost
     .done(function(productsList) {
 
-        if(productsList.length===1) {
+        if (productsList.length===1) {
+
             document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/2';
+        
         } else {
 
-            for (var product of productsList) {
-
-
-                if (product.Note===0)
-                    product.hasNote = false;
-                else
-                    product.hasNote = true;
-
-                product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
-                
-                if (product.Remise===0) {
-                    product.hasRemise = false;
-                    product.pourcentage = 0;
-                    product.prixNonRemise = 0;
-                    product.PrixTTC = priceToString(product.PrixTTC);
-                } else {
-                    product.hasRemise = true;
-                    product.pourcentage = -product.Remise*100;
-                    product.prixNonRemise = priceToString(product.PrixTTC);
-                    product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
-                }
-
-            }
-
-            $scope.productsList = productsList;
             $scope.nbArticle = productsList.length;
+            $scope.productsList = formateJson(productsList, 'list');
+        
         }
     });
 
@@ -3061,7 +2992,7 @@ angular.module('app.eCommerce')
     }
 
     function getMenuByID (idMenu) {
-        $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+        $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
 
             for (var category of categories) {
@@ -3691,23 +3622,11 @@ angular.module('app.home')
 
 	//FOR REAL WEB SERVICE
 	//MEILLEURESVENTES
-	$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ArticleMeilleuresVentes")
+	$.post(webServUrl+"GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
-    	for (var article of articlesMeilleureVente) {
-    		article.img = "http://ac01.ow04.fr/I-Moyenne-"+article.IDImage+".net.jpg";
 
-            if (article.Remise===0) {
-                article.hasRemise = false;
-                article.prixText = "";
-                article.PrixTTC = priceToString(article.PrixTTC);
-            } else {
-                article.hasRemise = true;
-               	article.prixText = "à partir de ";
-                article.PrixTTC = priceToString(article.PrixTTC-article.PrixTTC*article.Remise);
-			}
-		}
+    	$scope.articlesMeilleureVente = formateJson(articlesMeilleureVente, 'home');
 
-    	$scope.articlesMeilleureVente = articlesMeilleureVente;
 	});
 
 
@@ -3722,27 +3641,23 @@ angular.module('app.home')
 	}
 
 	//Swipe Carousel functions
-	$(document).ready(function () {
+	$('.carousel').carousel({
+		interval: 7000
+	});
 
-		$('.carousel').carousel({
-  			interval: 7000
-		});
+	$('.carousel').hammer().on("swipeleft", function(){
+		$(this).carousel('next');
+	});
 
-		$('.carousel').hammer().on("swipeleft", function(){
-			$(this).carousel('next');
-		});
-
-		$('.carousel').hammer().on("swiperight", function(){
-			$(this).carousel('prev');
-		});
-		
+	$('.carousel').hammer().on("swiperight", function(){
+		$(this).carousel('prev');
 	});
 
 	getMenuByID(0);
 	getMenuByID(1);
 
    function getMenuByID (idMenu) {
-	    $.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : idMenu })
+	    $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
 	    .done(function(categories) {
 
 	        for (var category of categories) {
@@ -3839,7 +3754,7 @@ angular.module('app.beacon', ['ui.router'])
 		}
 	});
 
-	$('#beacon .flecheHome').hammer().on("swipeleft", function(){
+	$('#beacon .paddingFleche').hammer().on("swipeleft", function(){
 		if (!$scope.showBeacon.doShow) {
 			$scope.showBeacon.show();
 		}
@@ -3852,61 +3767,19 @@ angular.module('app.beacon', ['ui.router'])
 		if (idRayon!=undefined) {
 
 			//FOR REAL WEB SERVICE
-			$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeArticlesParRayon", { rayon: idRayon })
+			$.post( webServUrl+"GET_ListeArticlesParRayon", { rayon: idRayon })
   			.done(function(rayon) {
 
 				for (var product of rayon) {
-					product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
-		            ];
-		            for (var image of product.ImagesSecondaires) {
-		                product.imgs.push("http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg");
-		            }
-
-		            for (var avis of product.ListeAvis) {
-		                avis.DateCreation = dateReformate(avis.DateCreation);
-		                //var commentaireHTML = '<b>'+avis.Commentaire+'</b>';
-		                avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
-		            }
-
-		            if (product.ListeAvis.length>0)
-		                product.avis = true;   
-		            else
-		                product.avis = false;
-		            
-		            product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
-		            if (product.CatHTMLDesignation==="")
-		                product.description = false;
-		            else
-		                product.description = true;
-
-		            if (product.Note===0)
-		                product.hasNote = false;
-		            else
-		                product.hasNote = true;
-
-		            if (product.Remise===0) {
-		                product.hasRemise = false;
-		                product.idPromo = 0;
-		                product.pourcentage = 0;
-		                product.prixNonRemise = 0;
-		                product.PrixTTC = priceToString(product.PrixTTC);
-		            } else {
-		                product.hasRemise = true;
-		                product.idPromo = 2;
-		                product.pourcentage = -product.Remise*100;
-		                product.prixNonRemise = priceToString(product.PrixTTC);
-		                product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
-		            }
-
 
 					product.descriptionShow = new Dispenser();
 					product.avisShow = new Dispenser();
 					product.detailProduct = new Opener();
-
-					$scope.nomRayon = product.Theme;
+					
 				}
 
-				$scope.rayon = rayon;
+				$scope.nomRayon = rayon[0].Theme;
+				$scope.rayon = formateJson(rayon, 'beacon');
 			});
 
 		}
@@ -4038,6 +3911,82 @@ $.prompt.setDefaults({
 
 //JSON TRANSFORMATION OF WEB SERVICES
 
+// Url of webservices
+var webServUrl = "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/";
+
+
+// Formate the product from webservices to be use in app
+function formateJson (products, page) {
+
+	for (var product of products) {
+
+		if (page === 'beacon' || page === 'detail') {
+
+		    product.imgs=["http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg"
+		    ];
+		    for (var image of product.ImagesSecondaires) {
+		        var value = "http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg";
+		        if (!isInArray(value, product.imgs))    
+		            product.imgs.push(value);
+		    }
+
+		    for (var avis of product.ListeAvis) {
+		        avis.DateCreation = dateReformate(avis.DateCreation);
+
+		        avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
+		        avis.Commentaire = $('<span>'+avis.Commentaire+'</span>').text();
+	    	}
+
+		    if (product.ListeAvis.length>0)
+		        product.avis = true;   
+		    else
+		        product.avis = false;
+
+    	    product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
+		    product.CatHTMLDesignation = $('<span>'+product.CatHTMLDesignation+'</span>').text(); // enlève les balises HTML
+		    
+		    if (product.CatHTMLDesignation==="")
+		        product.description = false;
+		    else
+		        product.description = true;
+
+		} else if (page === 'home' || page === 'list') {
+
+			product.img = "http://ac01.ow04.fr/I-Moyenne-"+product.IDImage+".net.jpg";
+
+		}
+
+		if (page != 'home') {
+		
+		    if (product.Note===0)
+		        product.hasNote = false;
+		    else
+		        product.hasNote = true;
+		}
+
+	    if (product.Remise===0) {
+
+	        product.hasRemise = false;
+	        product.idPromo = 0;
+	        product.pourcentage = 0;
+	        product.prixNonRemise = 0;
+	        product.PrixTTC = priceToString(product.PrixTTC);
+
+	    } else {
+
+	        product.hasRemise = true;
+	        product.idPromo = 1;
+	        product.pourcentage = -product.Remise*100;
+	        product.prixNonRemise = priceToString(product.PrixTTC);
+	        product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);
+
+	    }
+
+	}
+
+	return products;
+
+}
 
 // Price to string
 function priceToString (price) {
@@ -4072,7 +4021,7 @@ angular.module('app.menu', ['ui.router'])
 		"key":"PROMOMOMENT"
 	}];
 
-	$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : 2 })
+	$.post( webServUrl+"GET_ListeCategorieParMenu", { menu : 2 })
         .done(function(categories) {
 
         for (var category of categories) {

@@ -12,7 +12,7 @@ angular.module('app.menu', ['ui.router'])
 		"key":"PROMOMOMENT"
 	}];
 
-	$.post( "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/GET_ListeCategorieParMenu", { menu : 2 })
+	$.post( webServUrl+"GET_ListeCategorieParMenu", { menu : 2 })
         .done(function(categories) {
 
         for (var category of categories) {
