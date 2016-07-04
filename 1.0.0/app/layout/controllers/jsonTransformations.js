@@ -1,9 +1,11 @@
 //JSON TRANSFORMATION OF WEB SERVICES
 
 // Url of webservices
+//Gvar
 var webServUrl = "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/";
 
 
+//DGfunc
 // Formate the product from webservices to be use in app
 function formateJson (products, page) {
 
@@ -15,14 +17,14 @@ function formateJson (products, page) {
 		    ];
 		    for (var image of product.ImagesSecondaires) {
 		        var value = "http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg";
-		        if (!isInArray(value, product.imgs))    
+		        if (!isInArray(value, product.imgs))
 		            product.imgs.push(value);
 		    }
 
 		    for (var avis of product.ListeAvis) {
 		        avis.DateCreation = dateReformate(avis.DateCreation);
 
-		        avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
+		        avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Don't work without any explanation !
 		        avis.Commentaire = $('<span>'+avis.Commentaire+'</span>').text();
 	    	}
 
@@ -31,8 +33,8 @@ function formateJson (products, page) {
 		    else
 		        product.avis = false;
 
-    	    product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
-		    product.CatHTMLDesignation = $('<span>'+product.CatHTMLDesignation+'</span>').text(); // enlève les balises HTML
+    	    product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // but this one works perfectly !
+		    product.CatHTMLDesignation = $('<span>'+product.CatHTMLDesignation+'</span>').text(); // removes HTML balises
 		    
 		    if (product.CatHTMLDesignation==="")
 		        product.description = false;
@@ -77,6 +79,7 @@ function formateJson (products, page) {
 
 }
 
+//DGfunc
 // Price to string
 function priceToString (price) {
 	price = price.toFixed(2);
@@ -84,6 +87,7 @@ function priceToString (price) {
 	return priceStr.replace(".",",");
 }
 
+//DGfunc
 // Reformation of Date
 function dateReformate (str) {
 	    var y = str.substr(0,4),
@@ -92,6 +96,7 @@ function dateReformate (str) {
         return d+'/'+m+'/'+y;
 }
 
+//DGfunc
 // Check presence in Array
 function isInArray(value, array) {
   return array.indexOf(value) > -1;

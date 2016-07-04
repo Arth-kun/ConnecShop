@@ -2859,38 +2859,45 @@ angular.module('app.eCommerce').controller('OrdersDemoCtrl', function ($scope, o
 
 angular.module('app.eCommerce')
 
-.controller('products-detailController', function ($scope) {
+.controller('products-detailController', function ($scope, $location) {
 
+    //Ddom
     $('#ribbon').addClass('displayNone');
     $('#header').addClass('productsDetailHeader');
 
-	var hashProduct = document.location.hash.split("/");
-    var idProduct = parseInt(hashProduct[4]);
-    var idCategory = hashProduct[3];
+    //Rdom
+    // Récupèration des paramètres(rayon, id) dans l'url
+    //Ivar
+	var hashProduct = document.location.hash.split("/"); //arr
+    var idProduct = parseInt(hashProduct[4]); //int as str
+    var idCategory = hashProduct[3]; //str
 
-    //FOR REAL WEB SERVICE
-    //ARTICLEDETAIL
-
+    //Rext
+    //WebService
     $.post( webServUrl+"GET_ArticleParID", { id: idProduct })
     .done(function(products) {
 
-        $scope.products = formateJson(products, 'detail');
+        //Svar
+        $scope.products = formateJson(products, 'detail'); //obj /Efunc jsonTransformation.js
 
     });
 
+    //Svar
     $scope.menuTitle={
         "best":"Meilleures Ventes",
         "PROMOMOMENT":"Promotions du Moment"
-    };
-
+    }; //obj
+    //Ifunc
     getMenuByID(2);
     getMenuByID(0);
     getMenuByID(1);
 
 
-    $scope.description = new Dispenser();
-    $scope.avis = new Dispenser();
+    //Svar
+    $scope.description = new Dispenser(); //func
+    $scope.avis = new Dispenser(); //func
 
+    //Sfunc
     $scope.initCarousel = function () {
         $('.carousel, .promoTag').hammer().on("swipeleft", function(){
             $('.carousel').carousel('next');
@@ -2901,7 +2908,7 @@ angular.module('app.eCommerce')
         });
     }
 
-
+    //Sfunc
     $scope.category = function () {
         if (idCategory==='Accueil') {
             return idCategory;
@@ -2910,16 +2917,17 @@ angular.module('app.eCommerce')
         }
     }
 
+    //Sfunc
     $scope.goBack = function () {
         history.go(-hashProduct[5]);
     }
 
-
+    //Sfunc
     $scope.addCart = function (product) {
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
 	}
 
-
+    //Iclass
     function Dispenser () {
     	this.showDesc = false;
 
@@ -2932,7 +2940,7 @@ angular.module('app.eCommerce')
     	}
     }
 
-
+    //DIfunc
     function getMenuByID (idMenu) {
         $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
@@ -2951,46 +2959,57 @@ angular.module('app.eCommerce')
 
 .controller('products-listController', function ($scope, $http) {
 
-	var hashCategory = document.location.hash.split("/");
-    var idCategory = hashCategory[3];
-    $scope.idCategory = idCategory;
+    //Rdom
+    // Récupèration des paramètres(rayon, id) dans l'url
+    //Ivar
+	var hashCategory = document.location.hash.split("/"); //arr
+    var idCategory = hashCategory[3]; //str
 
+    //Svar
+    $scope.idCategory = idCategory;
     $scope.menuTitle={
         "best":"Meilleures Ventes",
         "PROMOMOMENT":"Promotions du Moment"
-    };
-
+    }; //obj
+    //Ifunc
     getMenuByID(2);
     getMenuByID(0);
     getMenuByID(1);
 
 
     if (idCategory=='best') {
-        var requetePost = $.post( webServUrl+"GET_ArticleMeilleuresVentes");
+        //Ivar
+        var requetePost = $.post( webServUrl+"GET_ArticleMeilleuresVentes"); //obj
     } else {
-        var requetePost = $.post( webServUrl+"GET_ListeArticlesParCategorie", { categorie: idCategory });
+        //Ivar
+        var requetePost = $.post( webServUrl+"GET_ListeArticlesParCategorie", { categorie: idCategory }); //obj
     }
 
+    //Rext
     requetePost
     .done(function(productsList) {
 
         if (productsList.length===1) {
-
+            //On va directement au détail s'il n'y a qu'un produit dans la liste
             document.location.hash = '#/e-commerce/products-detail/'+idCategory+'/'+productsList[0].ID+'/2';
         
         } else {
 
-            $scope.nbArticle = productsList.length;
-            $scope.productsList = formateJson(productsList, 'list');
+            //Svar
+            $scope.nbArticle = productsList.length; //int
+            $scope.productsList = formateJson(productsList, 'list'); //obj /Efunc jsonTransformation.js
         
         }
     });
 
 
+    //Sfunc
     $scope.goToDetail = function (id) {
       document.location.hash ='#/e-commerce/products-detail/'+idCategory+'/'+id+'/1';
     }
 
+
+    //DIfunc
     function getMenuByID (idMenu) {
         $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
@@ -3620,26 +3639,30 @@ angular.module('app.home')
 
 .controller('HomeController', function ($scope) {
 
-	//FOR REAL WEB SERVICE
-	//MEILLEURESVENTES
+	//Rext
 	$.post(webServUrl+"GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
 
-    	$scope.articlesMeilleureVente = formateJson(articlesMeilleureVente, 'home');
+  		//Svar
+    	$scope.articlesMeilleureVente = formateJson(articlesMeilleureVente, 'home'); //obj /Efunc jsonTransformation.js
 
 	});
 
+  	//Svar
+	$scope.promo = []; //arr
 
-	$scope.promo = [];
 
+	//Sfunc
 	$scope.goToDetail = function (id) {
 		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/1';
 	}
 
+	//Sfunc
 	$scope.goToList = function (KeyTheme) {
 		document.location.hash ='#/e-commerce/products-list/'+KeyTheme;
 	}
 
+	//Ifunc
 	//Swipe Carousel functions
 	$('.carousel').carousel({
 		interval: 7000
@@ -3653,10 +3676,12 @@ angular.module('app.home')
 		$(this).carousel('prev');
 	});
 
+	//Ifunc
 	getMenuByID(0);
 	getMenuByID(1);
 
-   function getMenuByID (idMenu) {
+	//DIfunc
+   	function getMenuByID (idMenu) {
 	    $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
 	    .done(function(categories) {
 
@@ -3746,27 +3771,31 @@ angular.module('app.beacon', ['ui.router'])
 
 .controller('beaconController', function ($scope, $http) {
 
-	$scope.showBeacon = new Shower();
+	//Svar
+	$scope.showBeacon = new Shower(); //func
 
+	//close the view with swipe
 	$('#beacon').hammer().on("swiperight", function(){
 		if ($scope.showBeacon.doShow) {
 			$scope.showBeacon.show();
 		}
 	});
 
+	//open and close the view by swipe the arrow
 	$('#beacon .paddingFleche').hammer().on("swipeleft", function(){
 		if (!$scope.showBeacon.doShow) {
 			$scope.showBeacon.show();
 		}
 	});
 
-	//var idRayon = 'RAYON1';//Test PC
+	//var idRayon = 'RAYON1'; //DUR
 	
+	//Sfunc
 	$scope.selectRayon = function (idRayon) {
 
 		if (idRayon!=undefined) {
 
-			//FOR REAL WEB SERVICE
+			//Rext
 			$.post( webServUrl+"GET_ListeArticlesParRayon", { rayon: idRayon })
   			.done(function(rayon) {
 
@@ -3778,26 +3807,31 @@ angular.module('app.beacon', ['ui.router'])
 					
 				}
 
-				$scope.nomRayon = rayon[0].Theme;
-				$scope.rayon = formateJson(rayon, 'beacon');
+				//Svar
+				$scope.nomRayon = rayon[0].Theme; //string
+				$scope.rayon = formateJson(rayon, 'beacon'); //obj /Efunc jsonTransformations.js
 			});
 
 		}
 	}
 
+
+	//Svar
 	$scope.conseils = [{
 		"id":0,
 		"titre":"Bien choisir son rouge à lèvres !",
 		"img":"styles/img/demo/e-comm/2.png",
 		"apercu":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
-	}];
+	}]; //arr
 
 
+	//Sfunc
 	$scope.addCart = function (product) {
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
 	}
 
 
+	//Iclass
 	function Opener () {
 
 		this.open = function (classProd, bProd) {
@@ -3825,37 +3859,46 @@ angular.module('app.beacon', ['ui.router'])
 	}	
 
 
+	//Iclass
 	function Shower () {
 
 		this.doShow = false;
 
 		this.show = function () {
+
 			if (!this.doShow) {
+
 				$('#bodyMainContent').addClass('translateBody');
 				$('#header, #ribbon').addClass('translateRibbonHeader');
 				$('#menu-toggle-button').addClass('translateButtunToggleMenu');
 				$('.calqueOpacite').addClass('calqueOpaciteBeacon');
+
 				document.addEventListener('touchmove', stopScroll, false);
 				$('body').addClass('noscroll');
 
 				this.doShow = true;
-			} else {
-				$('#bodyMainContent, #header, #ribbon').removeClass('translateBody');
 
+			} else {
+
+				$('#bodyMainContent, #header, #ribbon').removeClass('translateBody');
 				window.setTimeout(function() {
 					$('#header, #ribbon').removeClass('translateRibbonHeader');
 					$('#menu-toggle-button').removeClass('translateButtunToggleMenu');
 				}, 300);
-
 				$('.calqueOpacite').removeClass('calqueOpaciteBeacon');
+
 				document.removeEventListener('touchmove', stopScroll, false);
 				$('body').removeClass('noscroll');
 
 				this.doShow = false;
+				
 			}
+
 		}
 	}
 
+
+	//Iclass
 	function Dispenser () {
 		this.showDesc = false;
 
@@ -3868,20 +3911,32 @@ angular.module('app.beacon', ['ui.router'])
 		}
 	}
 
+	//Ifunc
 	function stopScroll (e) {
 		if(!$('#beacon').has($(e.target)).length)
 			e.preventDefault(); 
 	}
 
 });
+//DGfunc
 function headerDispenser () {
+	//this show and hide the header elements depending on wich page you're on
+
 	if (document.location.hash==='#/home') {
+
 		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').removeClass('displayNone');
+		
+		//fire if the new rayon has been detecting while you were on another page
 		if (newRayon) {
+
+			//show the beacon view
 			angular.element($("#beacon")).scope().showBeacon.show();
-			newRayon = false; //On décharge le booléan
+			newRayon = false;
+
 		}
+
 	} else {
+
 		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').addClass('displayNone');
 		
 		if (document.location.hash!=='#/panier') {
@@ -3891,17 +3946,22 @@ function headerDispenser () {
 	}
 
 	if (!document.location.hash.includes("products-detail")) {
+
 		if (document.location.hash!=='#/panier')
 			$('#ribbon').removeClass('displayNone');
 
     	$('#header').removeClass('productsDetailHeader');
+
 	}
 
 }
 
 window.onhashchange = function () {
+
 	headerDispenser();
+
 }
+// settings of impromptu (pop-ups)
 $.prompt.setDefaults({
 	zIndex: '1005',
 	top: '40%',
@@ -3912,9 +3972,11 @@ $.prompt.setDefaults({
 //JSON TRANSFORMATION OF WEB SERVICES
 
 // Url of webservices
+//Gvar
 var webServUrl = "http://auth01-04.octavesaas04.fr/WSE_Beacon/ConnecShopWS.asmx/";
 
 
+//DGfunc
 // Formate the product from webservices to be use in app
 function formateJson (products, page) {
 
@@ -3926,14 +3988,14 @@ function formateJson (products, page) {
 		    ];
 		    for (var image of product.ImagesSecondaires) {
 		        var value = "http://ac01.ow04.fr/I-Moyenne-"+image+".net.jpg";
-		        if (!isInArray(value, product.imgs))    
+		        if (!isInArray(value, product.imgs))
 		            product.imgs.push(value);
 		    }
 
 		    for (var avis of product.ListeAvis) {
 		        avis.DateCreation = dateReformate(avis.DateCreation);
 
-		        avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Ne fonctionne pas sans raison apparente !
+		        avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Don't work without any explanation !
 		        avis.Commentaire = $('<span>'+avis.Commentaire+'</span>').text();
 	    	}
 
@@ -3942,8 +4004,8 @@ function formateJson (products, page) {
 		    else
 		        product.avis = false;
 
-    	    product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // Alors que celui ci marche très bien !
-		    product.CatHTMLDesignation = $('<span>'+product.CatHTMLDesignation+'</span>').text(); // enlève les balises HTML
+    	    product.CatHTMLDesignation = $('<textarea />').html(product.CatHTMLDesignation).text(); // but this one works perfectly !
+		    product.CatHTMLDesignation = $('<span>'+product.CatHTMLDesignation+'</span>').text(); // removes HTML balises
 		    
 		    if (product.CatHTMLDesignation==="")
 		        product.description = false;
@@ -3988,6 +4050,7 @@ function formateJson (products, page) {
 
 }
 
+//DGfunc
 // Price to string
 function priceToString (price) {
 	price = price.toFixed(2);
@@ -3995,6 +4058,7 @@ function priceToString (price) {
 	return priceStr.replace(".",",");
 }
 
+//DGfunc
 // Reformation of Date
 function dateReformate (str) {
 	    var y = str.substr(0,4),
@@ -4003,6 +4067,7 @@ function dateReformate (str) {
         return d+'/'+m+'/'+y;
 }
 
+//DGfunc
 // Check presence in Array
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
@@ -4013,72 +4078,90 @@ angular.module('app.menu', ['ui.router'])
 
 .controller('menuController', function ($scope) {
 
+	//Svar
 	$scope.categories = [{
 		"name":"Meilleures Ventes",
 		"key":"best"
 	},{
 		"name":"Promotions du Moment",
 		"key":"PROMOMOMENT"
-	}];
+	}]; //arr
 
+
+	//Rext
 	$.post( webServUrl+"GET_ListeCategorieParMenu", { menu : 2 })
         .done(function(categories) {
 
         for (var category of categories) {
+
         	var theme = {};
         	theme.name = category.Theme;
         	theme.key = category.KeyTheme;
+
             $scope.categories.push(theme);
+
         }
     });	
 
+    //Svar
+	$scope.aPropos = [
+		"Qui sommes nous ?",
+		"CGV",
+		"Nous contacter"
+	]; //arr
 
-	$scope.aPropos = aPropos;
 
+	//Sfunc
 	$scope.goToList = function (id) {
+
 		document.location.hash = '#/e-commerce/products-list/'+id;
 		closeMenu();
+
 	}
 
-	// Fonction de hiding du menu
-	$('body').on('click', '#menu-toggle-button', function () {
-		
-		if (!$(this).hasClass('is-opened')) {
-
-			$(this).addClass('is-opened').removeClass('is-closed');
-			$('#menu-panel').addClass('opened');
-			document.addEventListener('touchmove', stopScroll, false);
-			$('body').addClass('noscroll');
-			$('.menu-head .firstHead').fadeIn('1200');
+		// hidde and show of the menu
+		$('body').on('click', '#menu-toggle-button', function () {
 			
-		} else {
+			if (!$(this).hasClass('is-opened')) {
+
+				$(this).addClass('is-opened').removeClass('is-closed');
+				$('#menu-panel').addClass('opened');
+				document.addEventListener('touchmove', stopScroll, false);
+				$('body').addClass('noscroll');
+				$('.menu-head .firstHead').fadeIn('1200');
+				
+			} else {
+
+				//Ifunc
+				closeMenu();
+
+			}
+		});
+
+		$('#menu-panel').hammer().on("swipeleft", function () {
+
+			//Ifunc
 			closeMenu();
+		
+		});
+
+		//DIfunc
+		function closeMenu () {
+
+			$('#menu-toggle-button').addClass('is-closed').removeClass('is-opened');
+			$('#menu-panel').removeClass('opened');
+			document.removeEventListener('touchmove', stopScroll, false);
+			$('body').removeClass('noscroll');
+			$('.menu-head .firstHead').fadeOut('1200');
+
 		}
-	});
 
-	$('#menu-panel').hammer().on("swipeleft", function () {
-		closeMenu();
-	});
 
-	function closeMenu () {
-		$('#menu-toggle-button').addClass('is-closed').removeClass('is-opened');
-		$('#menu-panel').removeClass('opened');
-		document.removeEventListener('touchmove', stopScroll, false);
-		$('body').removeClass('noscroll');
-		$('.menu-head .firstHead').fadeOut('1200');
-	}
-
-	function stopScroll (e) { 
+	function stopScroll (e) {
 		e.preventDefault(); 
 	}
 
 });
-
-var aPropos = [
-	"Qui sommes nous ?",
-	"CGV",
-	"Nous contacter"
-];
 "use strict";
 
 angular.module('app').controller("LanguagesCtrl",  function LanguagesCtrl($scope, $rootScope, $log, Language){
@@ -4326,65 +4409,86 @@ angular.module('app.panier')
 
 .controller('PanierController'/*majuscule obligatoire quand on défini le ctrl dans module.js*/, function ($scope) {
 
-
+	//Ifunc
 	calcProducts();
 
+	//DIfunc
 	function calcProducts () {
+		//calcul of the products's total price
+
 		if (sessionStorage.getItem('articlesPanier')) {
 
-			var articlesPanier = JSON.parse(sessionStorage.getItem('articlesPanier'));
-			$scope.nbArticles=0;
-			$scope.prixTotal=6.6;
+			//Ivar
+			var articlesPanier = JSON.parse(sessionStorage.getItem('articlesPanier')); //obj
+
+			//Svar
+			$scope.nbArticles=0; //int
+			$scope.prixTotal=6.6; //int
+
 			for (var article of articlesPanier) {
-				//alert(JSON.stringify(article));
-				$scope.nbArticles+=article.quantity;
+				//alert(JSON.stringify(article)); //LOG
+
+				//Svar
+				$scope.nbArticles+=article.quantity; //int
 
 				if (article.prixNonRemise)
-					article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity);
+					article.prixNonRemiseStr=multiplyStr(article.prixNonRemise, article.quantity); //Ifunc
 
-				article.prixTTCStr=multiplyStr(article.PrixTTC, article.quantity);
+				article.prixTTCStr=multiplyStr(article.PrixTTC, article.quantity); //Ifunc
 
-				totalPrix(article.prixTTCStr);
+				totalPrix(article.prixTTCStr); //Ifunc
 			}
 
-			totalPrix($scope.prixTotal);
+			totalPrix($scope.prixTotal); //Ifunc
 
+			//Svar
 			$scope.products = articlesPanier;
 
 		} else {
 
+			//Svar
 			$scope.nbArticles=0;
 		
 		}
+
 	}
 
 
+	//Sfunc
 	$scope.changeQuantity = function (index, quantity) {
 		
-		var productsStored=JSON.parse(sessionStorage.getItem('articlesPanier'));
+		//Ivar
+		var productsStored=JSON.parse(sessionStorage.getItem('articlesPanier')); //obj
+
+		//augment quantity
 		productsStored[index].quantity+=quantity;
 
+		//remove product if quantity is to 0
 		if (!productsStored[index].quantity) {
 			productsStored.splice(index,1);
 		}
-		sessionStorage.articlesPanier = JSON.stringify(productsStored);
-		calcProducts();
-		angular.element($("#header #buttonsPullRight .controllerContainer")).scope().recalcNbArticles();
 
+		sessionStorage.articlesPanier = JSON.stringify(productsStored);
+
+		//call the func to make the maj
+		calcProducts(); //Ifunc
+
+
+		//When there is no more products in the shopping cart -> back home
 		if ($scope.nbArticles==0) {
+
 			$.prompt('Le panier est vide', {top: '10%'});
 			document.location.hash = '#/home';
+
 		}
 	}
 
 
-	$scope.recalcNbArticles = function () {
-			calcProducts();
-	}
-
-
+	//Sfunc
 	$scope.addCart = function (product) {
-		//Il faudrait que le nombre d'article à choisir se fasse en fonction de nombre d'article disponible
+
+		//the quantity option aren't in function of the disponibilities of the product
+		//Ivar popUp impromptu
 		var addCartPopup = {
 			state0: {
 				title: 'Quantité',
@@ -4398,33 +4502,47 @@ angular.module('app.panier')
 				buttons: { "Ajouter": true },
 				submit:function(e,v,m,f){
 
-				 	var quantity = parseInt(f.quantity);
-				 	var doublon = false;
+					//Ivar
+				 	var quantity = parseInt(f.quantity); //int
+				 	var doublon = false; //bool
 
 					if ($.isEmptyObject(sessionStorage)) {
-						var products=[];
-						product.quantity=quantity;
-						products[0]=product;
+
+						//Ivar
+						var products=[]; //arr
+						product.quantity=quantity; //int
+						products[0]=product; //obj
+
 					}
 					else {
-						var products=JSON.parse(sessionStorage.getItem('articlesPanier'));
+
+						//Ivar
+						var products=JSON.parse(sessionStorage.getItem('articlesPanier')); //objs
+
 						for (var productStored of products) {
+
+							//verify if the product already is in the shopping cart
 							if (productStored.ID===product.ID&&productStored.idPromo===product.idPromo){
-								doublon=true;
+
 								productStored.quantity+=quantity;
+								doublon=true;
+
 							}
+
 						}
 
-						if (!doublon) {				
+						if (!doublon) {		
+
 							product.quantity=quantity;
 							products[products.length]=product;
+
 						}
 					}
 
 					sessionStorage.articlesPanier = JSON.stringify(products);
-			  		//alert(sessionStorage.getItem('articlesPanier'));
+			  		//alert(sessionStorage.getItem('articlesPanier')); //LOG
 
-			  		calcProducts();
+			  		calcProducts(); //Fint
 
 
 			  		e.preventDefault();
@@ -4436,12 +4554,16 @@ angular.module('app.panier')
   				html: '<p>Votre produit a bien été ajouté.</p>',
   			}
 		};
+
+		//If product's stock == 0
 		if (product.Stock)
 			$.prompt(addCartPopup);
 		else
 			$.prompt('Le produit n\'est plus en stock')
 	}
 
+
+	//Sfunc
 	$scope.goToPanier = function () {
 		if ($scope.nbArticles!==0) {
 			document.location.hash='#/panier';
@@ -4450,22 +4572,41 @@ angular.module('app.panier')
 		}
 	}
 
+
+	//Ifunc
 	function multiplyStr (str, factor) {
-		var strNumber = str.replace(",",".");
-		var number = parseFloat(strNumber);
-		var doubleNumber = (number*factor).toFixed(2);	
-		var newStrNumber = doubleNumber.toString();
+		//multiply the price from string to int and return in string again
+
+		//Ivar
+		var strNumber = str.replace(",","."); //str
+		var number = parseFloat(strNumber); //float
+		var doubleNumber = (number*factor).toFixed(2);	//float
+		var newStrNumber = doubleNumber.toString(); //str
+
 		return newStrNumber.replace(".",",");
 	}
 
+	//Ifunc
 	function totalPrix (prix) {
+		//Calcul of the total price
+
 		if (typeof prix === 'string') {
-			var prixNumber = prix.replace(",",".");
-			$scope.prixTotal += parseFloat(prixNumber);
+
+			//Ivar
+			var prixNumber = prix.replace(",","."); //str
+			
+			//Svar	
+			$scope.prixTotal += parseFloat(prixNumber); //float
+
 		} else {
-			var prixTotal = prix.toFixed(2);
-			var prixTotalString = prixTotal.toString();
-			$scope.prixTotal = prixTotalString.replace(".",",");
+
+			//Ivar
+			var prixTotal = prix.toFixed(2); //float
+			var prixTotalString = prixTotal.toString(); //str
+
+			//Svar
+			$scope.prixTotal = prixTotalString.replace(".",","); //str
+
 		}
 	}
 
@@ -8489,32 +8630,29 @@ angular.module('app.graphs').directive('vectorMap', function () {
         }
     }
 });
-// var distanceBeacon.js
-var array = [];
-var maxValues = 20;
-var minValues = 5
-var moyennes = [];
-var minor;
+//Gvar
+var array = []; //arr
+var maxValues = 20; //int
+var minValues = 5; //int
+var moyennes = []; //arr
+var minor; //int
 
-/* distanceCalculator
-Enregistrement de la distance de chaque beacon en fonction du minor */
+//DGfunc
 function distanceCalculator (beaconInfo) {
 
+	//HISTO LOG
 	//beaconInfo.beacons[0].name
     //beaconInfo.beacons[0].proximity
     //beaconInfo.beacons[0].distance
     //$("body").html(beaconInfo.beacons[0].name + " - " + beaconInfo.beacons[0].proximity + "<br/>" + beaconInfo.beacons[0].distance);
 
-    array = decalVal(array);
-    moyennes = decalVal(moyennes);
+    array = decalVal(array); //Ifunc
+    moyennes = decalVal(moyennes); //Ifunc
 
     for (var index = 0; index < beaconInfo.beacons.length; index++) {
-    	var beacon = beaconInfo.beacons[index];
+    	//Ivar
+    	var beacon = beaconInfo.beacons[index]; //obj
 
-
-
-        //beacon.name
-        //beacon.minor
 
         //create if not exists
         if (!array[beacon.minor]) {
@@ -8525,26 +8663,28 @@ function distanceCalculator (beaconInfo) {
         }
 
 
-
+        //On remplace la valeur 0 par la valeur actuelle
         array[beacon.minor][0] = beacon.distance;
     }
 
-
-    var allowed = false;
+    //Ivar
+    var allowed = false; //bool
 
     for (var key in array) {
 
+    	//Ivar
+    	var total = 0; //int
+    	var count = 0; //int
 
-    	var total = 0;
-    	var count = 0;
+    	//Calcul of total
     	for (var i = 0; i < maxValues; i++) {
     		if (array[key][i] != -1) {
     			total = total + array[key][i];
-    			count = count + 1;
+    			count++;
     		}
     	}
 
-
+    	//if doesn't exists
     	if (!moyennes[key]) {
         	moyennes[key] = [];
         	for (var i = 0; i < maxValues; i++) {
@@ -8552,7 +8692,7 @@ function distanceCalculator (beaconInfo) {
         	}
         }
 
-
+        //Calcul of moyennes
     	if (count > minValues)
     		moyennes[key][0] = total / count;
     	else
@@ -8561,24 +8701,26 @@ function distanceCalculator (beaconInfo) {
     }
 
 
-
+    // LOG
     //$("body").html(JSON.stringify(beaconInfo.beacons[0]));
     //$('#header, #ribbon, #menu-toggle-button, #beacon').addClass('displayNone');
     //$("body").html("");
 
 
+    //Verif that the n°1 minor is the same in the last 3 moyenne calculs
     if (sortBy(moyennes, 0, true) === sortBy(moyennes, 1, true) && sortBy(moyennes, 0) === sortBy(moyennes, 2, true) && sortBy(moyennes, 2) === sortBy(moyennes, 3, true))
 		minor = sortBy(moyennes, 0);
 	
-	//$("body").append(nomRayon(minor));
+	//$("body").append(nomRayon(minor)); //LOG
 	return parseInt(minor);
 	
 
 }
 
 
+//Dfunc
 function decalVal (array) {
-	//decalage des valeurs
+	//decalage of values
     for (var key in array) {
       	for (var i = maxValues - 1; i > 0; i--) {
             array[key][i] = array[key][i - 1];
@@ -8589,7 +8731,9 @@ function decalVal (array) {
 }
 
 
+//Dfunc
 function sortBy (array, x, debug) {
+	//Sort by the bigest moyenne value at an index x
 	var tuples = [];
 
     for (var key in array)
@@ -8606,8 +8750,7 @@ function sortBy (array, x, debug) {
     	var key = tuples[i][0];
     	var value = tuples[i][1];
 
-        // do something with key and value
-
+    	// LOG
         //if (debug)
         //	$("body").append(x + " " + nomRayon(key) + " - " + value + "<br/>");
     }
@@ -8615,6 +8758,7 @@ function sortBy (array, x, debug) {
     return tuples[0][0];
 }
 
+//Ifunc LOG use only
 function nomRayon (minor) {
 	switch (parseInt(minor)) {
 		case 46204 :
@@ -8637,110 +8781,114 @@ function nomRayon (minor) {
 		return 'Commercial';
 	}
 }
-// var affichage beacon
-var store = false;
-var sameId;
-var newRayon = false;
+//Gvar
+var store = false; //bool
+var sameId; //int
+var newRayon = false; //bool
 
+//Iclass
 var beaconApp = (function()
 {
-    // Application object.
-    var beaconApp = {};
+    //Ivar
+    var beaconApp = {}; //obj
 
-
+    //DIfunc
     beaconApp.initialize = function()
     {
+        // Watch for the mobile device to be ready to fire
         document.addEventListener(
             'deviceready',
             function() { evothings.scriptsLoaded(onDeviceReady) },
             false);
     }
 
+    //DIfunc
     function onDeviceReady()
     {
-        // Start tracking beacons!
-        startScan();
+        //Ifunc
+        startScan();   
     }
 
+    //DIfunc
     function startScan()
     {   
 
+        //DIfunc
         function onBeaconsRanged(beaconInfo)
         {
-
-            // On v�rifie si le beacons est trouv�
+            
+            // Fire if beacon is finded
             if (beaconInfo.beacons[0] != undefined) {
 
-                var minorChoosen = distanceCalculator(beaconInfo);
+                //Ivar
+                var minorChoosen = distanceCalculator(beaconInfo); //int
                 
                 if (minorChoosen!=undefined&&minorChoosen!=NaN) {
-                    var idChoosen = productChooser(minorChoosen);
+
+                    //Ivar
+                    var idChoosen = productChooser(minorChoosen); //int
 
                     if ((sameId==undefined)||((sameId!=idChoosen)&&(!angular.element($("#beacon")).scope().showBeacon.doShow))) {
+                        
                         //alert(sameId+''+idChoosen);//LOG
+
+                        //Change the rayon in the beaconCtrl.js's scope
                         angular.element($("#beacon")).scope().selectRayon(idChoosen);
                         window.navigator.vibrate([600, 300, 600]);
 
                         if (document.location.hash==='#/home')
-                            angular.element($("#beacon")).scope().showBeacon.show();
+                            angular.element($("#beacon")).scope().showBeacon.show(); //open the beacon view
                         else
-                            newRayon = true;
+                            newRayon = true; //The view will be open when returning into the home page (see headerDispenser.js)
                         
-                        sameId=idChoosen;
+                        sameId=idChoosen; 
 
                     } else if ((sameId==undefined)||(sameId!=idChoosen)) {
 
+                        //vibrations are firing in any situations
                         window.navigator.vibrate([600, 300, 600]);
-                    }
 
+                    }
                 }
 
 
-                if (!store) {//store init tout en haut pour re-use dans noLayout.add
+                if (!store) {
+
                     $('#beacon').removeClass('displayNone');
-                    //$.prompt('Bienvenue dans le magasin !', {top: '20%'});
+                    //$.prompt('Bienvenue dans le magasin !', {top: '20%'}); //HISTO
                     store = true;
+
                 }
             }
             else if (store) {
+
                 //$.prompt('Vous �tes sortie du magasin.', {top: '20%'});
+
+                //Hide all the beacon view stuffs
                 if (angular.element($("#beacon")).scope().showBeacon.doShow)
                     angular.element($("#beacon")).scope().showBeacon.show();
                 
                 $('#beacon').addClass('displayNone');
+
                 store = false;
+
             }
         }
 
-
+        //DIfunc
+        //Actually never fire
         function onError(errorMessage)
         {
             alert('Ranging beacons did fail: ' + errorMessage);
         }
 
-        function beaconShow () {
-            //alert(sameId+''+idChoosen);
-            angular.element($("#beacon")).scope().selectRayon(idChoosen);
-            if (document.location.hash==='#/home')
-                angular.element($("#beacon")).scope().showBeacon.show();
-            sameId=idChoosen;
-        }
-
-        function onMonitoringSuccess(regionState)
-        {
-            $("body").html(regionState.state);
-            setTimeout(function() {
-                $("body").html("")
-            }, 800);
-        }
 
         // Request permission from user to access location info.
         // This is needed on iOS 8.
         estimote.beacons.requestAlwaysAuthorization();
 
         // Start ranging beacons.
-        // Le scan se fait syst�matiquement et renvoie toujours true
-        // M�me si il ne trouve pas le bon Beacon
+        // The scan is returning true even if the condition are false but beacon are undefined then.
         estimote.beacons.startRangingBeaconsInRegion(
         {
             identifier: 'Octave',
@@ -8755,10 +8903,13 @@ var beaconApp = (function()
         return beaconApp;
     })();
 
+    //Ifunc
     beaconApp.initialize();
+//DGfunc
 function productChooser (minor) {
-	// Les id produit associés aux minors devront être 
-	// récupèré dans les bdd dans le futur
+	// this should be stored in a database
+	// return a rayon key in function of the minor of the beacon
+
 	switch (minor) {
 		case 46204 :
 			return 'RAYON1';
@@ -8779,6 +8930,7 @@ function productChooser (minor) {
 		case 23810 :
 			return 'RAYON9';
 	}
+	
 }
 'use strict';
 
@@ -10580,6 +10732,97 @@ angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
     }
 );
 
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartCkEditor', function () {
+    return {
+        restrict: 'A',
+        compile: function ( tElement) {
+            tElement.removeAttr('smart-ck-editor data-smart-ck-editor');
+            //CKEDITOR.basePath = 'bower_components/ckeditor/';
+
+            CKEDITOR.replace( tElement.attr('name'), { height: '380px', startupFocus : true} );
+        }
+    }
+});
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartDestroySummernote', function () {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-destroy-summernote data-smart-destroy-summernote')
+            tElement.on('click', function() {
+                angular.element(tAttributes.smartDestroySummernote).destroy();
+            })
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartEditSummernote', function () {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-edit-summernote data-smart-edit-summernote');
+            tElement.on('click', function(){
+                angular.element(tAttributes.smartEditSummernote).summernote({
+                    focus : true
+                });  
+            });
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartMarkdownEditor', function () {
+    return {
+        restrict: 'A',
+        compile: function (element, attributes) {
+            element.removeAttr('smart-markdown-editor data-smart-markdown-editor')
+
+            var options = {
+                autofocus:false,
+                savable:true,
+                fullscreen: {
+                    enable: false
+                }
+            };
+
+            if(attributes.height){
+                options.height = parseInt(attributes.height);
+            }
+
+            element.markdown(options);
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartSummernoteEditor', function (lazyScript) {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-summernote-editor data-smart-summernote-editor');
+
+            var options = {
+                focus : true,
+                tabsize : 2
+            };
+
+            if(tAttributes.height){
+                options.height = tAttributes.height;
+            }
+
+            lazyScript.register('build/vendor.ui.js').then(function(){
+                tElement.summernote(options);                
+            });
+        }
+    }
+});
 "use strict";
 
 
@@ -11017,97 +11260,6 @@ angular.module('SmartAdmin.Forms').directive('bootstrapTogglingForm', function()
 
 
 
-});
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartCkEditor', function () {
-    return {
-        restrict: 'A',
-        compile: function ( tElement) {
-            tElement.removeAttr('smart-ck-editor data-smart-ck-editor');
-            //CKEDITOR.basePath = 'bower_components/ckeditor/';
-
-            CKEDITOR.replace( tElement.attr('name'), { height: '380px', startupFocus : true} );
-        }
-    }
-});
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartDestroySummernote', function () {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-destroy-summernote data-smart-destroy-summernote')
-            tElement.on('click', function() {
-                angular.element(tAttributes.smartDestroySummernote).destroy();
-            })
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartEditSummernote', function () {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-edit-summernote data-smart-edit-summernote');
-            tElement.on('click', function(){
-                angular.element(tAttributes.smartEditSummernote).summernote({
-                    focus : true
-                });  
-            });
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartMarkdownEditor', function () {
-    return {
-        restrict: 'A',
-        compile: function (element, attributes) {
-            element.removeAttr('smart-markdown-editor data-smart-markdown-editor')
-
-            var options = {
-                autofocus:false,
-                savable:true,
-                fullscreen: {
-                    enable: false
-                }
-            };
-
-            if(attributes.height){
-                options.height = parseInt(attributes.height);
-            }
-
-            element.markdown(options);
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartSummernoteEditor', function (lazyScript) {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-summernote-editor data-smart-summernote-editor');
-
-            var options = {
-                focus : true,
-                tabsize : 2
-            };
-
-            if(tAttributes.height){
-                options.height = tAttributes.height;
-            }
-
-            lazyScript.register('build/vendor.ui.js').then(function(){
-                tElement.summernote(options);                
-            });
-        }
-    }
 });
 'use strict';
 

@@ -2,38 +2,45 @@
 
 angular.module('app.eCommerce')
 
-.controller('products-detailController', function ($scope) {
+.controller('products-detailController', function ($scope, $location) {
 
+    //Ddom
     $('#ribbon').addClass('displayNone');
     $('#header').addClass('productsDetailHeader');
 
-	var hashProduct = document.location.hash.split("/");
-    var idProduct = parseInt(hashProduct[4]);
-    var idCategory = hashProduct[3];
+    //Rdom
+    // Récupèration des paramètres(rayon, id) dans l'url
+    //Ivar
+	var hashProduct = document.location.hash.split("/"); //arr
+    var idProduct = parseInt(hashProduct[4]); //int as str
+    var idCategory = hashProduct[3]; //str
 
-    //FOR REAL WEB SERVICE
-    //ARTICLEDETAIL
-
+    //Rext
+    //WebService
     $.post( webServUrl+"GET_ArticleParID", { id: idProduct })
     .done(function(products) {
 
-        $scope.products = formateJson(products, 'detail');
+        //Svar
+        $scope.products = formateJson(products, 'detail'); //obj /Efunc jsonTransformation.js
 
     });
 
+    //Svar
     $scope.menuTitle={
         "best":"Meilleures Ventes",
         "PROMOMOMENT":"Promotions du Moment"
-    };
-
+    }; //obj
+    //Ifunc
     getMenuByID(2);
     getMenuByID(0);
     getMenuByID(1);
 
 
-    $scope.description = new Dispenser();
-    $scope.avis = new Dispenser();
+    //Svar
+    $scope.description = new Dispenser(); //func
+    $scope.avis = new Dispenser(); //func
 
+    //Sfunc
     $scope.initCarousel = function () {
         $('.carousel, .promoTag').hammer().on("swipeleft", function(){
             $('.carousel').carousel('next');
@@ -44,7 +51,7 @@ angular.module('app.eCommerce')
         });
     }
 
-
+    //Sfunc
     $scope.category = function () {
         if (idCategory==='Accueil') {
             return idCategory;
@@ -53,16 +60,17 @@ angular.module('app.eCommerce')
         }
     }
 
+    //Sfunc
     $scope.goBack = function () {
         history.go(-hashProduct[5]);
     }
 
-
+    //Sfunc
     $scope.addCart = function (product) {
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
 	}
 
-
+    //Iclass
     function Dispenser () {
     	this.showDesc = false;
 
@@ -75,7 +83,7 @@ angular.module('app.eCommerce')
     	}
     }
 
-
+    //DIfunc
     function getMenuByID (idMenu) {
         $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {

@@ -4,26 +4,30 @@ angular.module('app.home')
 
 .controller('HomeController', function ($scope) {
 
-	//FOR REAL WEB SERVICE
-	//MEILLEURESVENTES
+	//Rext
 	$.post(webServUrl+"GET_ArticleMeilleuresVentes")
   	.done(function(articlesMeilleureVente) {
 
-    	$scope.articlesMeilleureVente = formateJson(articlesMeilleureVente, 'home');
+  		//Svar
+    	$scope.articlesMeilleureVente = formateJson(articlesMeilleureVente, 'home'); //obj /Efunc jsonTransformation.js
 
 	});
 
+  	//Svar
+	$scope.promo = []; //arr
 
-	$scope.promo = [];
 
+	//Sfunc
 	$scope.goToDetail = function (id) {
 		document.location.hash ='#/e-commerce/products-detail/Accueil/'+id+'/1';
 	}
 
+	//Sfunc
 	$scope.goToList = function (KeyTheme) {
 		document.location.hash ='#/e-commerce/products-list/'+KeyTheme;
 	}
 
+	//Ifunc
 	//Swipe Carousel functions
 	$('.carousel').carousel({
 		interval: 7000
@@ -37,10 +41,12 @@ angular.module('app.home')
 		$(this).carousel('prev');
 	});
 
+	//Ifunc
 	getMenuByID(0);
 	getMenuByID(1);
 
-   function getMenuByID (idMenu) {
+	//DIfunc
+   	function getMenuByID (idMenu) {
 	    $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
 	    .done(function(categories) {
 

@@ -1,6 +1,8 @@
+//DGfunc
 function productChooser (minor) {
-	// Les id produit associés aux minors devront être 
-	// récupèré dans les bdd dans le futur
+	// this should be stored in a database
+	// return a rayon key in function of the minor of the beacon
+
 	switch (minor) {
 		case 46204 :
 			return 'RAYON1';
@@ -21,4 +23,5 @@ function productChooser (minor) {
 		case 23810 :
 			return 'RAYON9';
 	}
+	
 }
