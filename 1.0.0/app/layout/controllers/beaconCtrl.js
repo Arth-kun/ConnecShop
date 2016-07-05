@@ -94,6 +94,7 @@ angular.module('app.beacon', ['ui.router'])
 
 	//Iclass
 	function Shower () {
+		//Permit to hide and show the product details
 
 		this.doShow = false;
 
@@ -135,6 +136,7 @@ angular.module('app.beacon', ['ui.router'])
 	function Dispenser () {
 		this.showDesc = false;
 
+		//Permit to hide and show the description of a product
 		this.dispDesc = function () {
 			if (!this.showDesc) {
 				this.showDesc = true;

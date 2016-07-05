@@ -45,7 +45,7 @@ angular.module('app.menu', ['ui.router'])
 
 	}
 
-		// hidde and show of the menu
+		// hide and show the menu
 		$('body').on('click', '#menu-toggle-button', function () {
 			
 			if (!$(this).hasClass('is-opened')) {
@@ -84,7 +84,7 @@ angular.module('app.menu', ['ui.router'])
 
 
 	function stopScroll (e) {
-		e.preventDefault(); 
+		e.preventDefault();
 	}
 
 });

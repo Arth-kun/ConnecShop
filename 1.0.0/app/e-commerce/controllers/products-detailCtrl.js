@@ -72,6 +72,8 @@ angular.module('app.eCommerce')
 
     //Iclass
     function Dispenser () {
+        //Permit to hide and show the product details
+
     	this.showDesc = false;
 
     	this.dispDesc = function () {
@@ -85,6 +87,8 @@ angular.module('app.eCommerce')
 
     //DIfunc
     function getMenuByID (idMenu) {
+        //Get the categories in function of a certain idMenu
+
         $.post( webServUrl+"GET_ListeCategorieParMenu", { menu : idMenu })
         .done(function(categories) {
 
