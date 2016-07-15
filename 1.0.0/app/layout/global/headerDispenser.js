@@ -19,19 +19,21 @@ function headerDispenser () {
 
 		$('#ribbon, #ribbon #homeSearchbar, #header .pull-left #logo, #header #buttonsPullRight .buttonContainer, #menu-toggle-button, #beacon .flecheHome').addClass('displayNone');
 		
-		if (document.location.hash!=='#/panier') {
+		if (document.location.hash!=='#/panier' && document.location.hash!=='#/account') {
 			$('#header #buttonsPullRight .buttonCartContainer').removeClass('displayNone');
 		}
 
 	}
 
-	if (!document.location.hash.includes("products-detail")) {
+	if (!document.location.hash.includes("products-detail") && document.location.hash!=='#/account') {
 
 		if (document.location.hash!=='#/panier')
 			$('#ribbon').removeClass('displayNone');
 
     	$('#header').removeClass('productsDetailHeader');
 
+	} else if (document.location.hash==='#/account') {
+    	$('#header').addClass('productsDetailHeader');
 	}
 
 }

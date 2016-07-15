@@ -1687,7 +1687,6 @@ body {
 
 
 	/* Promo Tag Panier */
-
 #panier_1stStep .panierProducts .promTag {
 	position: absolute;
 	top: 0;
@@ -1749,7 +1748,6 @@ body {
 }
 
 	/* Frais de Port, Total + Boutton Continuer */
-
 #panier_1stStep .bilanPanier {
 	position: relative;
 
@@ -1824,4 +1822,184 @@ body {
 	box-shadow: 0px 1px 3px rgba(45, 45, 45, 0.25);
 
 	padding: 5% 0% 6%;
+}
+
+
+/* account.html */
+
+.changes .headerChanges.headerOverride {
+	width: 100%;
+}
+
+.changes .headerChanges .accountHeader {
+	padding-left: 20%;
+	width: 100%;
+}
+
+.changes .headerChanges .accountHeader .accountTitre {
+	margin-right: 3px;
+}
+
+/* login.html */
+
+#account .login .connexion {
+	padding: 20px;
+}
+
+
+	/* label et input */
+#account .login .connexion .webLogin {
+	margin-bottom: 10px;
+}
+
+#account .login .connexion .labelLoginPassword {
+	color: #313C3E;
+	font-family: Open Sans;
+	font-weight: bold;
+
+	margin-top: 5px;
+}
+
+#account .login .connexion .inputLoginPassword {
+	border: 1px solid #313C3E;
+	border-radius: 3px!important;
+
+	height: 27px;
+
+	padding-left: 4px;
+}
+
+	/* buttons */
+#account .login .connexion .validation,
+#account .logged .menuGestion .deconnexion,
+#account .logged .gestion .modification {
+	text-align: center;
+
+	margin-top: 20px;
+}
+
+#account .login .connexion .validation .validateForm,
+#account .logged .menuGestion .deconnexion .disconection,
+#account .logged .gestion .modification .modificationForm {
+	background-color: #FD7454;
+	border: 1px solid #FD7454;
+	border-radius: 2px;
+
+	color: #F8F8F8;
+	text-align: center;
+	font-size: 1.0em;
+	text-shadow: 1px 1px 0px rgba(45, 45, 45, 0.25);
+
+	box-shadow: 0px 1px 3px rgba(45, 45, 45, 0.25);
+
+	padding: 2% 3.5% 2.3%;
+}
+
+/* logged.html */
+
+#account .logged .menuGestion {
+	padding: 25px 10%;
+}
+
+#account .logged .menuGestion .welcome {
+	color: #313C3E;
+	font-family: Open Sans;
+	font-weight: bold;
+
+	margin-bottom: 25px;
+}
+
+#account .logged .menuGestion .menusAccount {
+	text-align: center;
+    font-size: 1.05em;
+
+	margin-top: 10px;
+
+ 	padding: 7% 0 6%;
+
+    border: 1px solid #ececec;
+    border-top-color: #f1f1f1;
+    border-radius: 6px;
+
+    background-color: #FFF;
+    box-shadow: 0px 1px 0px 0px rgba(155, 155, 155, 0.5);
+    
+}
+
+/* Gestion views */
+
+#account .logged .gestion {
+	padding: 0px 15px;
+}
+
+#account .logged .gestion .contentsGestion {
+	margin-top: 10px;
+	margin-bottom: 15px;
+
+ 	padding: 5% 9% 5% 3%;
+
+    border: 1px solid #ececec;
+    border-top-color: #f1f1f1;
+    border-radius: 6px;
+
+    background-color: #FFF;
+    box-shadow: 0px 1px 0px 0px rgba(155, 155, 155, 0.5);
+}
+
+#account .logged .gestion .contentGestion {
+	margin-bottom: 7px;
+}
+
+#account .logged .gestion .textGestion {
+	font-size: 1.05em;
+	font-family: Open Sans;
+	
+	padding-left: 10px;
+	margin-top: 15px;
+}
+
+#account .logged .gestion .inputGestion {
+	font-family: Open Sans;
+
+	border: 1px solid #313C3E;
+	border-radius: 3px!important;
+}
+
+#account .logged .gestion .inputGestion.dateNaissance {
+	padding: 0;
+}
+
+#account .logged .gestion .inputGestion.checkboxInput {
+	margin-left: 10px;
+}
+
+#account .logged .gestion .labelGestion.checkboxLabel {
+	margin-left: -30px;
+	padding : 0;
+}
+
+#account .logged .gestion .labelGestion {
+	font-family: Open Sans;
+	text-align: right;
+
+}
+
+#account .logged .gestion .confirmMail {
+	margin-bottom: 20px;
+}
+
+#account .logged .gestion .adresseGestionFirst,
+#account .logged .gestion .offreMail {
+	margin-top: 20px;
+}
+
+
+/* Fidelite override */
+#account .logged .gestion .contentsGestion.fideliteOverride {
+	margin-top: 20px;	
+ 	padding: 4% 5% 2.5% 5%;
+}
+
+#account .logged .gestion .labelGestion.fideliteOverride {
+	text-align: left;
 }

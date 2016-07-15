@@ -22,7 +22,7 @@ function formateJson (products, page) {
 		    }
 
 		    for (var avis of product.ListeAvis) {
-		        avis.DateCreation = dateReformate(avis.DateCreation);
+		        avis.DateCreationString = dateReformate(avis.DateCreationString);
 
 		        avis.Commentaire = $('<textarea />').html(avis.Commentaire).text(); // Don't work without any explanation !
 		        avis.Commentaire = $('<span>'+avis.Commentaire+'</span>').text();

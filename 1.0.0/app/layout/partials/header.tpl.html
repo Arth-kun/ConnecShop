@@ -14,9 +14,11 @@
         <div class="buttonMag buttonRight"></div>
     </div>
 
-    <div class="buttonAccContainer buttonContainer">
+    <span class="controllerAccountContainer" ng-controller="AccountController">
+    <div class="buttonAccContainer buttonContainer" ng-click="goToAccount()">
         <div class="buttonAcc buttonRight"></div>
     </div>
+    </span>
 
     <span class="controllerContainer" ng-controller="PanierController">
     <div class="buttonCartContainer buttonContainer" ng-click="goToPanier()">

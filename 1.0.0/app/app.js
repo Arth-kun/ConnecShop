@@ -20,7 +20,7 @@ angular.module('app', [
     'SmartAdmin',
 
     // App
-    'app.auth',
+    //'app.auth',
     'app.layout',
     //'app.chat',
     //'app.dashboard',
@@ -39,7 +39,8 @@ angular.module('app', [
     'app.menu',
     'app.beacon',
     'app.home',
-    'app.panier'
+    'app.panier',
+    'app.account'
 ])
 .config(function ($provide, $httpProvider, RestangularProvider) {
 
