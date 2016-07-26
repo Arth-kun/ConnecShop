@@ -1085,6 +1085,11 @@ body {
 	padding: 8px 5% 20px;
 }
 
+/* override déjà vus */
+#beacon .beaconPanel .excluMag .dejaVus .produitsPromoBeacon {
+	padding: 25px 5% 0px;
+}
+
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon {
 	position: relative;
 
@@ -1095,6 +1100,8 @@ body {
 	border-right: none;
 
 	margin: 0px;
+
+	text-align: left;
 }
 
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon.notLast {
@@ -1316,6 +1323,8 @@ body {
 
 	margin-top: -1px;
 	margin-left: -1px;
+
+	text-align: left;
 }
 
 #beacon .beaconPanel .excluMag .produitsPromoBeacon .produitBeacon .promTagBeacon .backgroundPromo {
@@ -1363,7 +1372,7 @@ body {
 	padding: 2% 5%;
 
 	border: 1px solid #d9d9d9;
-	border-radius: 3px; 
+	border-radius: 3px;
 
 	text-align: center;
 	color : #F3F3F3;
@@ -1372,6 +1381,10 @@ body {
 	font-family: open sans;
 }
 
+#beacon .beaconPanel .excluMag .dejaVus .textDejaVus.dejaVusOpened {
+	color: #313C3E;
+	background-color: #F3F3F3
+}
 
 	/* Conseils */
 #beacon .beaconPanel .conseils {

@@ -13,24 +13,9 @@
 
             <p class="artDesignation">{{product.ArtDesignation}}</p>
             <div class="noteAvis" ng-class="{displayNone:!product.hasNote}">
-                <span ng-switch="product.Note" class="noteMoy">
-                    <span class="notes-moyennes" ng-switch-when="0">
-                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=0, 'yellow-star':$index<0}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                    </span>
-                    <span class="notes-moyennes" ng-switch-when="1">
-                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=1, 'yellow-star':$index<1}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                    </span>
-                    <span class="notes-moyennes" ng-switch-when="2">
-                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=2, 'yellow-star':$index<2}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                    </span>
-                    <span class="notes-moyennes" ng-switch-when="3">
-                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=3, 'yellow-star':$index<3}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                    </span>
-                    <span class="notes-moyennes" ng-switch-when="4">
-                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=4, 'yellow-star':$index<4}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                    </span>
-                    <span class="notes-moyennes" ng-switch-when="5">
-                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=5, 'yellow-star':$index<5}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
+                <span class="noteMoy">
+                    <span class="notes-moyennes">
+                        <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=product.Note, 'yellow-star':$index<product.Note}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
                     </span>
                 </span>
                 <span class="nbAvis" ng-class="{displayNone:!product.avis}">{{product.ListeAvis.length}} avis</span>
@@ -87,24 +72,9 @@
                             <p class="listAvisProductHead">
                                 <span class="pseudoAvis">{{avisCt.Pseudo}}</span>
                                 <span class="starsavis pull-right">
-                                    <span ng-switch="avisCt.Note" class="noteMoy">
-                                        <span class="notes-moyennes" ng-switch-when="0">
-                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=0, 'yellow-star':$index<0}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                                        </span>
-                                        <span class="notes-moyennes" ng-switch-when="1">
-                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=1, 'yellow-star':$index<1}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                                        </span>
-                                        <span class="notes-moyennes" ng-switch-when="2">
-                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=2, 'yellow-star':$index<2}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                                        </span>
-                                        <span class="notes-moyennes" ng-switch-when="3">
-                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=3, 'yellow-star':$index<3}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                                        </span>
-                                        <span class="notes-moyennes" ng-switch-when="4">
-                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=4, 'yellow-star':$index<4}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
-                                        </span>
-                                        <span class="notes-moyennes" ng-switch-when="5">
-                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=5, 'yellow-star':$index<5}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
+                                    <span class="noteMoy">
+                                        <span class="notes-moyennes">
+                                            <span class="glyphicon glyphicon-star" ng-class="{'grey-star':$index>=avisCt.Note, 'yellow-star':$index<avisCt.Note}" ng-repeat="nbStars in [1,2,3,4,5]"></span>
                                         </span>
                                     </span>
                                 </span>

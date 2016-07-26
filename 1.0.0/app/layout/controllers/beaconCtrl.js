@@ -2,7 +2,7 @@
 
 angular.module('app.beacon', ['ui.router'])
 
-.controller('beaconController', function ($scope, $http) {
+.controller('beaconController', function ($scope) {
 
 	//Svar
 	$scope.showBeacon = new Shower(); //func
@@ -21,8 +21,66 @@ angular.module('app.beacon', ['ui.router'])
 		}
 	});
 
+	//Ivar
+	var dejaVu = []; //arr
+
+	//Sfunc Show all the product that has been already seen
+	$scope.showDejaVu = function () {
+
+		//Svar
+		$scope.dejaVu = JSON.parse(JSON.stringify(dejaVu)); //obj
+
+		for (var product of $scope.dejaVu) {
+
+			//We have to add those again
+			product.descriptionShow = new Dispenser();
+			product.avisShow = new Dispenser();
+			product.detailProduct = new Opener();
+			product.randomID = getRandom();
+
+		}
+
+		//Svar
+		$scope.hideDejaVu = new Dispenser(); //obj
+
+ 	}
+
+ 	//Sfunc
+	$scope.addDejaVu = function (rayon) {
+
+		for (var product of rayon) {
+
+			if (dejaVu != "") {
+
+				//Ivar
+				var storeProd = true; //bool
+
+				for (var dejaVuProd of dejaVu) {
+
+					if (dejaVuProd.ID == product.ID) {
+						storeProd = false;
+					}
+				}
+				
+				//we had only if it's not already added
+				if(storeProd)
+					dejaVu.push(product);
+
+			} else {
+
+				dejaVu.push(product);
+
+			}
+
+		}
+
+		//$scope.showDejaVu(); //DUR
+
+	}
+
 	//var idRayon = 'RAYON1'; //DUR
-	
+
+
 	//Sfunc
 	$scope.selectRayon = function (idRayon) {
 
@@ -37,16 +95,20 @@ angular.module('app.beacon', ['ui.router'])
 					product.descriptionShow = new Dispenser();
 					product.avisShow = new Dispenser();
 					product.detailProduct = new Opener();
-					
+					product.randomID = getRandom();
+
 				}
 
 				//Svar
 				$scope.nomRayon = rayon[0].Theme; //string
 				$scope.rayon = formateJson(rayon, 'beacon'); //obj /Efunc jsonTransformations.js
+				$scope.addDejaVu($scope.rayon);
 			});
 
 		}
 	}
+
+	//$scope.selectRayon(idRayon); //DUR
 
 
 	//Svar
@@ -60,9 +122,18 @@ angular.module('app.beacon', ['ui.router'])
 
 	//Sfunc
 	$scope.addCart = function (product) {
+
     	angular.element($("#header #buttonsPullRight .controllerContainer")).scope().addCart(product);
+	
 	}
 
+
+	//Ifunc
+	function getRandom () {
+
+	  	return Math.floor((Math.random()*6)+1);
+
+	}
 
 	//Iclass
 	function Opener () {
@@ -134,22 +205,22 @@ angular.module('app.beacon', ['ui.router'])
 
 	//Iclass
 	function Dispenser () {
+
 		this.showDesc = false;
 
 		//Permit to hide and show the description of a product
 		this.dispDesc = function () {
-			if (!this.showDesc) {
-				this.showDesc = true;
-			} else {
-				this.showDesc = false;
-			}
+			this.showDesc = !this.showDesc;
 		}
+
 	}
 
 	//Ifunc
 	function stopScroll (e) {
+
 		if(!$('#beacon').has($(e.target)).length)
 			e.preventDefault(); 
+
 	}
 
 });

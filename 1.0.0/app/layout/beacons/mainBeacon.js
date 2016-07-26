@@ -23,7 +23,7 @@ var beaconApp = (function()
     function onDeviceReady()
     {
         //Ifunc
-        startScan();   
+        startScan();
     }
 
     //DIfunc
@@ -40,14 +40,17 @@ var beaconApp = (function()
                 //Ivar
                 var minorChoosen = distanceCalculator(beaconInfo); //int
                 
-                if (minorChoosen!=undefined&&minorChoosen!=NaN) {
+                if (minorChoosen != undefined && minorChoosen != NaN) {
 
                     //Ivar
                     var idChoosen = productChooser(minorChoosen); //int
 
-                    if ((sameId==undefined)||((sameId!=idChoosen)&&(!angular.element($("#beacon")).scope().showBeacon.doShow))) {
+                    if ((sameId == undefined) || ((sameId != idChoosen) && (!angular.element($("#beacon")).scope().showBeacon.doShow))) {
                         
                         //alert(sameId+''+idChoosen);//LOG
+
+                        //Comment
+                        angular.element($("#beacon")).scope().showDejaVu();
 
                         //Change the rayon in the beaconCtrl.js's scope
                         angular.element($("#beacon")).scope().selectRayon(idChoosen);
@@ -58,9 +61,9 @@ var beaconApp = (function()
                         else
                             newRayon = true; //The view will be open when returning into the home page (see headerDispenser.js)
                         
-                        sameId=idChoosen; 
+                        sameId = idChoosen; 
 
-                    } else if ((sameId==undefined)||(sameId!=idChoosen)) {
+                    } else if ((sameId == undefined) || (sameId != idChoosen)) {
 
                         //vibrations are firing in any situations
                         window.navigator.vibrate([600, 300, 600]);

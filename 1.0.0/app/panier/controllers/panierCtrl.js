@@ -7,11 +7,12 @@ angular.module('app.panier')
 	//Ifunc
 	calcProducts();
 
+	//This function is called on hash change in headerDispenser.js
 	//DIfunc
 	function calcProducts () {
 		//calcul of the products's total price
 
-		if (sessionStorage.getItem('articlesPanier')) {
+		if (sessionStorage.getItem('articlesPanier') && JSON.parse(sessionStorage.getItem('articlesPanier')) != null && JSON.parse(sessionStorage.getItem('articlesPanier')) != '') {
 
 			//Ivar
 			var articlesPanier = JSON.parse(sessionStorage.getItem('articlesPanier')); //obj
@@ -101,7 +102,7 @@ angular.module('app.panier')
 				 	var quantity = parseInt(f.quantity); //int
 				 	var doublon = false; //bool
 
-					if ($.isEmptyObject(sessionStorage)) {
+					if ($.isEmptyObject(sessionStorage) || JSON.parse(sessionStorage.getItem('articlesPanier')) == null) {
 
 						//Ivar
 						var products=[]; //arr
@@ -203,6 +204,10 @@ angular.module('app.panier')
 			$scope.prixTotal = prixTotalString.replace(".",","); //str
 
 		}
+	}
+
+	$scope.recalc = function () {
+		calcProducts();
 	}
 
 });

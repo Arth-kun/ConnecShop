@@ -4,28 +4,43 @@ angular.module('app.account')
 
 .controller('AccountController'/*majuscule obligatoire quand on défini le ctrl dans module.js*/, function ($scope) {
 
+//Svar
+$scope.menu = 0; //int
 
-$scope.menu = 0;
-var menuReference;
-var menuReferencePassword;
+//Ivar
+var menuReference; //obj
+var menuReferencePassword; //obj
 
-$scope.day = 31;
-$scope.mois = 12;
-$scope.annee = 117;
+//Svar
+$scope.day = 31; //int
+$scope.mois = 12; //int
+$scope.annee = 117; //int
 
+
+// verif sessionStorage
 if (sessionStorage.getItem('fiche')) {
+
+	//Svar
 	$scope.logged = true;
 	$scope.fiche = JSON.parse(sessionStorage.getItem('fiche'));
+
 } else {
+
+	//Svar
 	$scope.logged = false;
 	$scope.fiche = "";
+
 }
 
 
+//Sfunc permet de récupèrer les tableaux allant de 0 à $scope.day/$scope.mois/$scope.annee
 $scope.getNumber = function (num) {
+
 	return new Array(num);
+
 }
 
+//Sfunc
 $scope.valid = function (login, password) {
 
 	$.post( webServUrl+"GET_FicheParLogin", { webLogin: login, webPassword : password })
@@ -37,15 +52,18 @@ $scope.valid = function (login, password) {
   		
   		} else {
 
-  			$scope.logged = true;
-  			$scope.fiche = fiche[0];
+  			//Svar
+  			$scope.logged = true; //bool
+  			$scope.fiche = fiche[0]; //obj
   			sessionStorage.setItem('fiche', JSON.stringify(fiche[0]));
   		
   		}
 
   	});
+
 }
 
+//Sfunc valid form on keypress enter
 $scope.keypress = function (login, password, event) {
 
 	if (event.which === 13){
@@ -54,6 +72,7 @@ $scope.keypress = function (login, password, event) {
 
 }
 
+//Sfunc
 $scope.disconect = function () {
 
 	$scope.logged = false;
@@ -61,9 +80,8 @@ $scope.disconect = function () {
 
 }
 
+//Sfunc
 $scope.goToMenu = function (id, idFiche) {
-
-	var webServ;
 
 	$scope.menu = id;
 
@@ -81,21 +99,26 @@ $scope.goToMenu = function (id, idFiche) {
 	
 }
 
+//Sfunc
 $scope.goBack = function (menu) {
 
 	if (menu === 0)
 		history.back();
 	else
 		$scope.menu = 0;
+
 }
 
+//Sfunc
 $scope.modifyFiche = function () {
 
-	var menuDetail = $scope.menuDetail;
+	//Ivar
+	var menuDetail = $scope.menuDetail; //obj
 
 	if(JSON.stringify(menuDetail) != JSON.stringify(menuReference)) {
 		
-  		var menuChange = {};
+		//Ivar
+  		var menuChange = {}; //obj
   		
 
 		if (menuDetail.EMail === menuDetail.confirmEMail) {
@@ -119,7 +142,24 @@ $scope.modifyFiche = function () {
 
 		}
 
-		$.post( webServUrl + "UPDATE_FicheParIDFiche", { idFiche : menuChange.ID, WebLogin: menuChange.WebLogin, EMail : menuChange.EMail, Prenom : menuChange.Prenom, NomFamille : menuChange.NomFamille, DateNaissanceString : menuChange.DateNaissanceString, Adresse2 : menuChange.Adresse2, Adresse0 : menuChange.Adresse0, Adresse1 : menuChange.Adresse1, Adresse3 : menuChange.Adresse3, CodePostal : menuChange.CodePostal, Ville : menuChange.Ville, Pays : menuChange.Pays, Telephone : menuChange.Telephone, Mobile : menuChange.Mobile, AutoriseContactMail : menuChange.AutoriseContactMail })
+		$.post( webServUrl + "UPDATE_FicheParIDFiche", {
+		 	idFiche : menuChange.ID,
+		 	WebLogin: menuChange.WebLogin,
+		 	EMail : menuChange.EMail,
+		 	Prenom : menuChange.Prenom, 
+		 	NomFamille : menuChange.NomFamille,
+		 	DateNaissanceString : menuChange.DateNaissanceString,
+		 	Adresse2 : menuChange.Adresse2,
+		 	Adresse0 : menuChange.Adresse0,
+		 	Adresse1 : menuChange.Adresse1,
+		 	Adresse3 : menuChange.Adresse3,
+		 	CodePostal : menuChange.CodePostal,
+		 	Ville : menuChange.Ville,
+		 	Pays : menuChange.Pays,
+		 	Telephone : menuChange.Telephone,
+		 	Mobile : menuChange.Mobile,
+		 	AutoriseContactMail : menuChange.AutoriseContactMail 
+		})
   		.done(function(fiche) {
 
   			menuReference = JSON.parse(JSON.stringify(menuDetail));
@@ -135,11 +175,13 @@ $scope.modifyFiche = function () {
 
 }
 
+//Sfunc
 $scope.modifyPassword = function (menuDetail) {
 
 	if(menuDetail.webPasswordActuel === menuReferencePassword.WebPassword) {
 		
 		if (menuDetail.newWebPassword == menuDetail.confirmNewWebPassword) {
+			
 			$.post( webServUrl + "UPDATE_PasswordParIDFiche", { idFiche : menuReferencePassword.ID, WebPassword: menuDetail.newWebPassword })
 	  		.done(function(fiche) {
 
@@ -165,7 +207,7 @@ $scope.modifyPassword = function (menuDetail) {
 
 }
 
-
+//Svar
 $scope.menusAccount = [{
 	"message" : "Informations personnelles",
 	"id" : "1" 
@@ -175,17 +217,17 @@ $scope.menusAccount = [{
 },{
 	"message" : "Points fidélité",
 	"id" : "3"
-}];
+}]; //arr
 
 
-
+//Sfunc
 $scope.goToAccount = function () {
 
 	document.location.hash='#/account';
 
 }
 
-
+//Ifunc
 function getToInfoPerso (idFiche) {
 
 	$.post( webServUrl + "GET_FicheParIDFiche", { IDFiche : idFiche })
@@ -205,6 +247,7 @@ function getToInfoPerso (idFiche) {
 
 }
 
+//Ifunc
 function getToChangePassword (idFiche) {
 
 	$.post( webServUrl + "GET_PasswordParIDFiche", { IDFiche : idFiche })
@@ -218,6 +261,7 @@ function getToChangePassword (idFiche) {
 
 }
 
+//Ifunc
 function getToInfoFidelite (idFiche) {
 
 	$.post( webServUrl + "GET_FideliteParIDFiche", { idFiche : idFiche })
