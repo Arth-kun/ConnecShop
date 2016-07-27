@@ -66,7 +66,10 @@ function formateJson (products, page) {
 	    } else {
 
 	        product.hasRemise = true;
-	        product.idPromo = 1;
+	        if (page === 'beacon')
+	        	product.idPromo = 2;
+	        else if(page === 'detail')
+	        	product.idPromo = 1;
 	        product.pourcentage = -product.Remise*100;
 	        product.prixNonRemise = priceToString(product.PrixTTC);
 	        product.PrixTTC = priceToString(product.PrixTTC-product.PrixTTC*product.Remise);

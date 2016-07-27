@@ -27,21 +27,26 @@ angular.module('app.beacon', ['ui.router'])
 	//Sfunc Show all the product that has been already seen
 	$scope.showDejaVu = function () {
 
-		//Svar
-		$scope.dejaVu = JSON.parse(JSON.stringify(dejaVu)); //obj
 
-		for (var product of $scope.dejaVu) {
+		if (JSON.parse(JSON.stringify(dejaVu)) != null && JSON.parse(JSON.stringify(dejaVu)) != undefined && JSON.parse(JSON.stringify(dejaVu)) != '') {
+			//Svar
+			$scope.dejaVu = JSON.parse(JSON.stringify(dejaVu)); //obj
 
-			//We have to add those again
-			product.descriptionShow = new Dispenser();
-			product.avisShow = new Dispenser();
-			product.detailProduct = new Opener();
-			product.randomID = getRandom();
+			for (var product of $scope.dejaVu) {
+
+				//We have to add those again
+				product.descriptionShow = new Dispenser();
+				product.avisShow = new Dispenser();
+				product.detailProduct = new Opener();
+				product.randomID = getRandom();
+
+			}
+
+
+			//Svar
+			$scope.hideDejaVu = new Dispenser(); //obj
 
 		}
-
-		//Svar
-		$scope.hideDejaVu = new Dispenser(); //obj
 
  	}
 

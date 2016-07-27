@@ -133,11 +133,11 @@ $scope.modifyFiche = function () {
 
 		}
 
-		menuChange.DateNaissanceString = menuDetail.annee + menuDetail.mois + menuDetail.jour
+		menuDetail.DateNaissanceString = menuDetail.annee + menuDetail.mois + menuDetail.jour;
 
 		for (var key in menuDetail) {
 
-			if (key != "EMail" && key != "confirmEMail" && key != "WebLogin" && key != "jour" && key != "mois" && key != "annee")
+			if (key != "EMail" && key != "confirmEMail" && key != "WebLogin" && key != "jour" && key != "mois" && key != "annee" && key != "annee")
 				menuChange[key] = menuDetail[key];
 
 		}
@@ -159,7 +159,7 @@ $scope.modifyFiche = function () {
 		 	Telephone : menuChange.Telephone,
 		 	Mobile : menuChange.Mobile,
 		 	AutoriseContactMail : menuChange.AutoriseContactMail 
-		})
+		 })
   		.done(function(fiche) {
 
   			menuReference = JSON.parse(JSON.stringify(menuDetail));
